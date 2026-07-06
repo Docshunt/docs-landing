@@ -88,4 +88,7 @@ PR notes must include which checks ran and where screenshots/artifacts were save
 - Never force-push.
 - Stage only the intended files; do not use `git add -A` in mixed worktrees.
 - Draft PRs are preferred unless the user explicitly asks for ready review.
-- PR body should describe user-visible behavior and QA steps, not only implementation details.
+- Commit messages should follow the recent history while using Korean Conventional Commit style by default, for example `chore: 랜딩 PR 제출 규칙 정렬`.
+- PR titles should use the same Korean Conventional Commit style, for example `feat: 랜딩 SEO/GEO 메타데이터 보강`.
+- PR body must use the Docshunt Korean QA format from `.agents/skills/submit-pr/SKILL.md`, including `변경 사항`, `QA 안내`, `QA 체크리스트`, `코드 리뷰 결과`, `변경된 파일`, and `리스크 및 후속 작업`.
+- PR notes should describe user-visible behavior, changed scope, verification evidence, risks, and follow-up work, not only implementation details.
