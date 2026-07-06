@@ -13,6 +13,7 @@ Trigger examples:
 - edits to `src/app/page.tsx`, `src/app/blog_*`, `src/app/layout.tsx`
 - edits to `src/seo/**`
 - edits to `robots`, `sitemap`, `llms.txt`, `ai.txt`
+- edits to `src/data/blog-posts/*.ts`
 - edits to `src/data/docshunt-blog*`
 - proxy or mirror behavior changes
 - public asset rename affecting OG/social/blog images
@@ -37,7 +38,7 @@ Classify impact:
 - `src/app/**/layout.tsx`: inherited metadata, global JSON-LD, analytics tags
 - `src/app/**/route.ts`: crawler endpoint or dynamic content
 - `src/seo/**`: shared SEO/GEO contract
-- `src/data/docshunt-blog*`: blog slug/title/description/image/date/sitemap contract
+- `src/data/blog-posts/*.ts`, `src/data/docshunt-blog*`: blog slug/title/description/image/date/sitemap contract
 - `src/proxy.ts`, `src/app/mirror/**`: local page vs Bubble mirror behavior
 - `public/docshunt-assets/**`: OG/social/blog/static image behavior
 

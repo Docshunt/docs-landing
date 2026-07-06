@@ -10,6 +10,8 @@ Use this skill for any `docs-landing` blog work:
 - creating a new blog post
 - editing an existing post title, description, date, images, slug, or body
 - importing Bubble blog content
+- editing `src/data/blog-posts/*.ts`
+- editing `src/data/docshunt-blog*`
 - adding inline blog screenshots or recommendation cards
 - changing blog list/detail rendering
 
@@ -73,7 +75,7 @@ For every blog post change:
 - `description` must be unique and useful for search snippets.
 - `heroImage` should be suitable for article OG/social preview.
 - `BLOG_POSTS` ordering must preserve intended list order.
-- `BLOG_PAGE_COUNT` must still reflect the highest `page` value.
+- `BLOG_PAGE_COUNT` must still reflect the unique page values used by `BLOG_POSTS`.
 - `/blog_detail/[slug]` must be generated through `generateStaticParams`.
 - `/sitemap-blog_detail.xml` must include the post URL.
 - Blog JSON-LD must receive the new post through `blogListJsonLd` and `articleJsonLd`.
@@ -99,6 +101,8 @@ node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs
 Run before handoff:
 
 ```bash
+npm run precommit
+npm run build
 npm run check
 node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs
 ```

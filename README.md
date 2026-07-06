@@ -40,7 +40,7 @@ npm run check
 
 - `npm run validate`: ESLint와 TypeScript 검증
 - `npm run build`: production build
-- `npm run check`: validate 후 build까지 실행하는 PR 전 기본 검증
+- `npm run check`: security scan, precommit, build를 순서대로 실행하는 PR 전 기본 검증
 
 ## Main Surfaces
 
@@ -187,7 +187,7 @@ Production과 Preview 모두에 설정하면 preview에서도 실제 analytics t
 - 테스트가 실패하거나 unresolved review comment/thread가 남아 있으면 병합하지 않습니다.
 - force push하지 않습니다.
 - PR은 draft로 시작하는 것을 기본으로 합니다.
-- PR 본문에는 변경 사항, QA 안내, QA 체크리스트, 검증 결과, 리스크 및 후속 작업을 한글로 적습니다.
+- PR 본문에는 변경 사항, QA 안내, QA 체크리스트, 코드 리뷰 결과, 변경된 파일, 리스크 및 후속 작업을 한글로 적습니다.
 - 변경 파일만 명시적으로 stage합니다. mixed worktree에서 `git add -A`를 사용하지 않습니다.
 
 권장 PR 검증:
