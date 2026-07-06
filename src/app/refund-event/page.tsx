@@ -326,7 +326,7 @@ export default function RefundEventPage() {
           <p>사업자등록번호 : 575-86-03204 | 통신판매업신고번호 : 제 2024-서울동작-0430 호</p>
         </div>
         <div className="refund-footer-links">
-          <a href="https://www.instagram.com/docshunt_official/" target="_blank" rel="noreferrer">
+          <a href="https://www.instagram.com/docshunt.ai/" target="_blank" rel="noreferrer">
             <img src={`${assets}/instagram-icon.png`} alt="" width="32" height="32" />
             docshunt_official
           </a>

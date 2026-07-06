@@ -49,7 +49,7 @@ export function DocshuntFooter() {
         <span>통신판매업신고번호 : 제 2024-서울동작-0430 호</span>
       </div>
       <div className="footer-bottom">
-        <a className="instagram" href="https://www.instagram.com/docshunt_official/" target="_blank" rel="noreferrer">
+        <a className="instagram" href="https://www.instagram.com/docshunt.ai/" target="_blank" rel="noreferrer">
           <img src={`${assets}/instagram-icon.png`} alt="" />
           <span>docshunt_official</span>
         </a>

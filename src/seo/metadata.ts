@@ -94,7 +94,7 @@ export function organizationJsonLd() {
     legalName: "주식회사 사페레아우데",
     url: SITE_URL,
     logo: `${SITE_URL}/docshunt-assets/docshunt-logo-white.svg`,
-    sameAs: ["https://www.instagram.com/docshunt_official/"],
+    sameAs: ["https://www.instagram.com/docshunt.ai/"],
     contactPoint: {
       "@type": "ContactPoint",
       email: "yes-reply@docshunt.ai",
