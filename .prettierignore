@@ -1,0 +1,19 @@
+node_modules/
+.next/
+out/
+build/
+dist/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+package-lock.json
+public/docshunt-assets/blog-inline/
+public/docshunt-assets/*.png
+public/docshunt-assets/*.jpg
+public/docshunt-assets/*.svg
+
+# Generated Bubble mirror content; keep source snapshots stable.
+src/data/docshunt-blog-content.ts
+src/data/docshunt-blog-recommendations.ts
+src/data/docshunt-blogs.ts

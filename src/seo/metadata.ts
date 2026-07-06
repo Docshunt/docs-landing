@@ -14,15 +14,7 @@ export const DEFAULT_DESCRIPTION =
 export const LANDING_OG_DESCRIPTION =
   "사업계획서 작성이 막막하다면? 이제 2-3주 걸리던 지원사업 준비를 단 몇 분만에 끝낼 수 있어요. 독스헌트에서는 아이디어만 입력해 전문가 수준의 사업계획서를 자동 생성하고, 필수 항목을 체계적으로 구조화해 빠짐없이 완성할 수 있습니다. 다양한 사업계획서 예시를 확인하고, 이제 독스헌트에서 바로 작성하고 제출까지 빠르게 완료하세요.";
 export const TWITTER_TITLE = "독스헌트 - 아이디어만 입력해도 전문가 수준 사업계획서 완성";
-export const SEO_KEYWORDS = [
-  "사업계획서",
-  "사업계획서 예시",
-  "사업계획서 AI",
-  "사업계획서 작성",
-  "창업",
-  "독스헌트",
-  "정부지원사업",
-];
+export const SEO_KEYWORDS = ["사업계획서", "사업계획서 예시", "사업계획서 AI", "사업계획서 작성", "창업", "독스헌트", "정부지원사업"];
 export const OG_IMAGE = `${CDN_URL}/cdn-cgi/image/w=,h=,f=auto,dpr=1,fit=contain/f1766369335570x680703495650288900/OGimge.png`;
 export const FAVICON_URL = `${CDN_URL}/f1757483516803x613112797294277800/favicon.ico`;
 export const NAVER_SITE_VERIFICATION = "8b95bd75264aba5160dbc5493c948c6059c20628";

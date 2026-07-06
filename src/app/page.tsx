@@ -27,7 +27,11 @@ const questionVideo = `${cdn}/f1779716417056x278852230160279800/%E1%84%83%E1%85%
 const interviewVideos = [
   { id: "eHCOCuoaI5M", title: "지원사업은 잘 쓰는 싸움이 아니라 많이 넣는 싸움입니다", className: "large" },
   { id: "XDzMe3WWUEo", title: "[지원사업 합격자 인터뷰] 정부 지원사업 막막하다면? 사업계획서 고퀄 초안을 만드세요", className: "small" },
-  { id: "GmIQijv2EFw", title: "[지원사업 합격자 인터뷰] 사업계획서 마감 3일 전에 시작했는데, 2천만원 확보한 썰 풉니다.", className: "small" },
+  {
+    id: "GmIQijv2EFw",
+    title: "[지원사업 합격자 인터뷰] 사업계획서 마감 3일 전에 시작했는데, 2천만원 확보한 썰 풉니다.",
+    className: "small",
+  },
 ];
 
 const toolColumns = [
@@ -87,12 +91,10 @@ function buildAppUrl() {
   const url = new URL(startPath);
   if (typeof window === "undefined") return url.toString();
   const params = new URLSearchParams(window.location.search);
-  ["atTrackId", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"].forEach(
-    (key) => {
-      const value = params.get(key);
-      if (value) url.searchParams.set(key, value);
-    },
-  );
+  ["atTrackId", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"].forEach((key) => {
+    const value = params.get(key);
+    if (value) url.searchParams.set(key, value);
+  });
   return url.toString();
 }
 
@@ -141,11 +143,7 @@ export default function Home() {
         <Link className="logo-link" href="/" aria-label="독스헌트 홈">
           <img
             className="logo"
-            src={
-              scrolled
-                ? `${cdn}/f1777294562574x255613413900380960/DocsHunt%20logo.svg`
-                : `${assets}/docshunt-logo-white.svg`
-            }
+            src={scrolled ? `${cdn}/f1777294562574x255613413900380960/DocsHunt%20logo.svg` : `${assets}/docshunt-logo-white.svg`}
             alt="DocsHunt"
             width="160"
             height="25"
@@ -191,7 +189,11 @@ export default function Home() {
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-copy">
             <h1 className="hero-title" id="hero-title">
-              맞춤 공고 탐색부터<span className="mobile-break"><br /></span> 사업계획서 작성까지 한 번에
+              맞춤 공고 탐색부터
+              <span className="mobile-break">
+                <br />
+              </span>{" "}
+              사업계획서 작성까지 한 번에
             </h1>
             <p className="hero-subtitle">독스헌트와 함께 지원사업을 쉽고 빠르게</p>
             <a className="cta-button" href={startPath} onClick={handleStart}>
@@ -229,14 +231,30 @@ export default function Home() {
             </span>
             <span className="line">사업계획서를 완성합니다</span>
           </h2>
-          <video className="question-video" src={questionVideo} autoPlay muted loop playsInline aria-label="독스헌트 AI 질문 작성 화면 미리보기" />
+          <video
+            className="question-video"
+            src={questionVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-label="독스헌트 AI 질문 작성 화면 미리보기"
+          />
 
           <div className="feature-intro">
             <h2 className="section-title">
-              사업 한 번 정리하면,<span className="mobile-break"><br /></span> 모든 지원사업 자동 완성!
+              사업 한 번 정리하면,
+              <span className="mobile-break">
+                <br />
+              </span>{" "}
+              모든 지원사업 자동 완성!
             </h2>
             <p className="section-subtitle">
-              아이템 정보를 모아두고,<span className="mobile-break"><br /></span> 사업계획서를 지원사업마다 더 정교하게
+              아이템 정보를 모아두고,
+              <span className="mobile-break">
+                <br />
+              </span>{" "}
+              사업계획서를 지원사업마다 더 정교하게
             </p>
           </div>
 
@@ -274,7 +292,11 @@ export default function Home() {
 
         <section className="tools-section" aria-labelledby="tools-title">
           <h2 className="section-title" id="tools-title">
-            아이템을 더 단단하게<span className="mobile-break"><br /></span> 만드는 도구들
+            아이템을 더 단단하게
+            <span className="mobile-break">
+              <br />
+            </span>{" "}
+            만드는 도구들
           </h2>
           <div className="tool-grid">
             {toolColumns.map((column, columnIndex) => (
@@ -306,13 +328,23 @@ export default function Home() {
         <section className="interview-section" id="interviews" aria-labelledby="interviews-title">
           <div className="interview-heading">
             <h2 className="section-title" id="interviews-title">
-              합격한 대표님들이<span className="mobile-break"><br /></span> 직접 말해요
+              합격한 대표님들이
+              <span className="mobile-break">
+                <br />
+              </span>{" "}
+              직접 말해요
             </h2>
             <p className="section-subtitle">
               <span className="interview-subtitle-default">
-                독스헌트로 지원사업에 합격한<span className="mobile-break"><br /></span> 대표님들의 생생한 인터뷰
+                독스헌트로 지원사업에 합격한
+                <span className="mobile-break">
+                  <br />
+                </span>{" "}
+                대표님들의 생생한 인터뷰
               </span>
-              <span className="interview-subtitle-tablet">누적 사업계획서 생성 1만 건을 돌파한, 수많은 창업자가 믿고 쓰는 사업계획서 AI</span>
+              <span className="interview-subtitle-tablet">
+                누적 사업계획서 생성 1만 건을 돌파한, 수많은 창업자가 믿고 쓰는 사업계획서 AI
+              </span>
             </p>
           </div>
           <div className="video-grid" aria-label="독스헌트 고객 인터뷰 영상">
@@ -331,7 +363,11 @@ export default function Home() {
         </section>
 
         <section className="security-section" aria-label="보안 안내">
-          <img className="security-title desktop" src={`${assets}/hero-ownership-headline-full.svg`} alt="사업계획서는 오직 사용자만의 것입니다" />
+          <img
+            className="security-title desktop"
+            src={`${assets}/hero-ownership-headline-full.svg`}
+            alt="사업계획서는 오직 사용자만의 것입니다"
+          />
           <div className="security-title mobile" aria-label="사업계획서는 오직 사용자만의 것입니다">
             <img src={`${assets}/hero-ownership-headline-prefix.svg`} alt="사업계획서는" />
             <img src={`${assets}/hero-ownership-headline-suffix.svg`} alt="오직 사용자만의 것입니다" />
@@ -343,7 +379,9 @@ export default function Home() {
               <br />
               외부 유출 및 AI 모델 학습에 절대 이용되지 않습니다.
             </span>
-            <span className="mobile-only">입력하신 모든 데이터는 전송 및 저장 시 암호화되어 안전하게 보호됩니다. 외부 유출 및 AI 모델 학습에 절대 이용되지 않습니다.</span>
+            <span className="mobile-only">
+              입력하신 모든 데이터는 전송 및 저장 시 암호화되어 안전하게 보호됩니다. 외부 유출 및 AI 모델 학습에 절대 이용되지 않습니다.
+            </span>
           </p>
         </section>
 
@@ -351,7 +389,11 @@ export default function Home() {
 
         <section className="final-cta" aria-labelledby="final-title">
           <h2 className="final-title" id="final-title">
-            사업계획서에 쓰던 시간,<span className="mobile-break"><br /></span> 이제 사업에 쓰세요
+            사업계획서에 쓰던 시간,
+            <span className="mobile-break">
+              <br />
+            </span>{" "}
+            이제 사업에 쓰세요
           </h2>
           <p className="final-subtitle">독스헌트와 함께 지원사업을 쉽고 빠르게</p>
           <a className="cta-button dark" href={startPath} onClick={handleStart}>

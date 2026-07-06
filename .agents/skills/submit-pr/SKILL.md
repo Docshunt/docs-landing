@@ -30,7 +30,7 @@ This skill adapts the Docshunt frontend submit-pr flow for the standalone `docs-
 Always run:
 
 ```bash
-npm run validate
+npm run precommit
 npm run build
 ```
 
@@ -58,6 +58,8 @@ git diff --cached --stat
 git diff --cached --check
 ```
 
+Also confirm `.githooks/pre-commit` would pass through `npm run precommit` before push.
+
 Risk-prioritize:
 
 - SEO regressions: relative canonical/OG URLs, missing sitemap URLs, missing Naver verification.
@@ -84,17 +86,21 @@ Include:
 
 ```markdown
 ## Summary
+
 - user-visible changes
 - SEO/GEO or design behavior changes
 - asset rename scope when applicable
 
 ## Verification
+
 - npm run validate
+- npm run precommit
 - npm run build
 - Playwright responsive screenshots: <paths>
 - SEO/GEO curl smoke: <results>
 
 ## QA Notes
+
 - mobile viewport:
 - tablet viewport:
 - desktop viewport:

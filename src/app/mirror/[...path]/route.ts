@@ -17,11 +17,7 @@ const hopByHopHeaders = new Set([
   "transfer-encoding",
   "upgrade",
 ]);
-const strippedResponseHeaders = new Set([
-  "content-security-policy",
-  "content-security-policy-report-only",
-  "x-frame-options",
-]);
+const strippedResponseHeaders = new Set(["content-security-policy", "content-security-policy-report-only", "x-frame-options"]);
 
 type MirrorContext = {
   params: Promise<{
@@ -57,16 +53,7 @@ function rewriteHtml(html: string) {
 
 function buildForwardHeaders(request: NextRequest, upstreamUrl: URL) {
   const headers = new Headers();
-  const passThrough = [
-    "accept",
-    "accept-language",
-    "cache-control",
-    "content-type",
-    "cookie",
-    "pragma",
-    "range",
-    "user-agent",
-  ];
+  const passThrough = ["accept", "accept-language", "cache-control", "content-type", "cookie", "pragma", "range", "user-agent"];
 
   for (const header of passThrough) {
     const value = request.headers.get(header);

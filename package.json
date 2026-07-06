@@ -28,12 +28,16 @@
     "dev:host": "next dev -H 0.0.0.0 -p 3001",
     "build": "next build",
     "build:strict": "npm run validate && npm run build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "start": "next start -p 3001",
     "lint": "eslint --max-warnings=0 .",
     "type-check": "tsc --noEmit --pretty false",
     "typecheck": "npm run type-check",
     "validate": "npm run lint && npm run type-check",
-    "check": "npm run validate && npm run build"
+    "precommit": "npm run type-check && npm run lint && npm run format:check",
+    "prepare": "node scripts/install-git-hooks.mjs",
+    "check": "npm run precommit && npm run build"
   },
   "dependencies": {
     "next": "16.2.10",
@@ -48,6 +52,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
     "playwright": "^1.61.1",
+    "prettier": "^3.9.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

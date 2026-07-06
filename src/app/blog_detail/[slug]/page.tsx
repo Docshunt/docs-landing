@@ -55,9 +55,8 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
   const contentHtml = BLOG_CONTENT_HTML[post.slug] ?? BLOG_CONTENT_HTML[decodeBlogSlug(post.slug)];
   const recommendedPosts = getRecommendedPosts(post.slug);
   const recommendationImages = BLOG_RECOMMENDATION_IMAGES[post.slug] ?? [];
-  const recommendationCards = (recommendationImages.length
-    ? recommendationImages
-    : recommendedPosts.map((recommended) => recommended.image)
+  const recommendationCards = (
+    recommendationImages.length ? recommendationImages : recommendedPosts.map((recommended) => recommended.image)
   ).map((image, index) => ({
     image,
     href: detailHref(recommendedPosts[index]?.slug ?? recommendedPosts[0]?.slug ?? post.slug),
@@ -84,11 +83,7 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
               <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
             ) : (
               post.paragraphs.map((line, index) =>
-                isHeading(line) ? (
-                  <h2 key={`${line}-${index}`}>{line}</h2>
-                ) : (
-                  <p key={`${line}-${index}`}>{line}</p>
-                ),
+                isHeading(line) ? <h2 key={`${line}-${index}`}>{line}</h2> : <p key={`${line}-${index}`}>{line}</p>,
               )
             )}
           </div>

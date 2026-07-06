@@ -18,6 +18,8 @@
 
 - Install: `npm ci`
 - Lint and type-check: `npm run validate`
+- Precommit verification: `npm run precommit`
+- Format check: `npm run format:check`
 - Build: `npm run build`
 - Production smoke: `npm run start -- -p 3011`
 - Dev server: `npm run dev -- -p 3001`
@@ -58,7 +60,7 @@ Codex-compatible skill discovery is exposed through `.codex/skills` when the sym
 
 For any PR that changes landing, blog, SEO/GEO, styles, or public assets:
 
-1. `npm run validate`
+1. `npm run precommit`
 2. `npm run build`
 3. Playwright screenshots at:
    - mobile: `390x844`
@@ -72,6 +74,13 @@ For any PR that changes landing, blog, SEO/GEO, styles, or public assets:
    - `/ai.txt`
 
 PR notes must include which checks ran and where screenshots/artifacts were saved.
+
+## Precommit and CI Rules
+
+- `.githooks/pre-commit` runs `npm run precommit`.
+- `npm run precommit` must run type-check, lint, and format check.
+- CI must test the pre-commit hook itself before build.
+- If a file is intentionally excluded from Prettier, record the reason in `.prettierignore`.
 
 ## Git and PR Rules
 

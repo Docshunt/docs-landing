@@ -8,13 +8,7 @@ export function BlogHeader() {
   return (
     <header className="site-header blog-header" aria-label="독스헌트 사이트 내비게이션">
       <Link className="logo-link" href="/" aria-label="독스헌트 홈">
-        <img
-          className="logo"
-          src={`${cdn}/f1777294562574x255613413900380960/DocsHunt%20logo.svg`}
-          alt="DocsHunt"
-          width="160"
-          height="25"
-        />
+        <img className="logo" src={`${cdn}/f1777294562574x255613413900380960/DocsHunt%20logo.svg`} alt="DocsHunt" width="160" height="25" />
       </Link>
       <nav className="header-nav" aria-label="주요 메뉴">
         <Link className="nav-link" href="/blog_list">
