@@ -1,7 +1,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-const mirroredPagePaths = ["/blog_list", "/blog_detail"];
 const mirroredRuntimePaths = [
   "/package/",
   "/static/",
@@ -19,9 +18,6 @@ const mirroredRuntimePaths = [
 
 function shouldMirror(pathname: string) {
   if (pathname === "/favicon.ico") return true;
-  if (mirroredPagePaths.some((path) => pathname === path || pathname.startsWith(`${path}/`))) {
-    return true;
-  }
   return mirroredRuntimePaths.some((path) => pathname.startsWith(path));
 }
 

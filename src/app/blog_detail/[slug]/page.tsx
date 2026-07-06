@@ -3,9 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { BlogHeader, DocshuntFooter } from "@/components/docshunt-blog-shell";
+import { JsonLd } from "@/components/json-ld";
 import { BLOG_CONTENT_HTML } from "@/data/docshunt-blog-content";
 import { BLOG_RECOMMENDATION_IMAGES } from "@/data/docshunt-blog-recommendations";
 import { BLOG_POSTS, decodeBlogSlug, findBlogPost, getRecommendedPosts } from "@/data/docshunt-blogs";
+import { articleJsonLd, breadcrumbJsonLd, buildPageMetadata } from "@/seo/metadata";
 
 const startUrl = "https://app.docshunt.ai";
 
@@ -36,10 +38,13 @@ export async function generateMetadata({ params }: BlogDetailParams): Promise<Me
   const { slug } = await params;
   const post = findBlogPost(slug);
   if (!post) return {};
-  return {
+  return buildPageMetadata({
     title: post.title,
     description: post.description,
-  };
+    path: post.sourceUrl,
+    image: post.heroImage,
+    type: "article",
+  });
 }
 
 export default async function BlogDetailPage({ params }: BlogDetailParams) {
@@ -50,9 +55,8 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
   const contentHtml = BLOG_CONTENT_HTML[post.slug] ?? BLOG_CONTENT_HTML[decodeBlogSlug(post.slug)];
   const recommendedPosts = getRecommendedPosts(post.slug);
   const recommendationImages = BLOG_RECOMMENDATION_IMAGES[post.slug] ?? [];
-  const recommendationCards = (recommendationImages.length
-    ? recommendationImages
-    : recommendedPosts.map((recommended) => recommended.image)
+  const recommendationCards = (
+    recommendationImages.length ? recommendationImages : recommendedPosts.map((recommended) => recommended.image)
   ).map((image, index) => ({
     image,
     href: detailHref(recommendedPosts[index]?.slug ?? recommendedPosts[0]?.slug ?? post.slug),
@@ -60,6 +64,14 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
 
   return (
     <div className="page blog-page blog-detail-page">
+      <JsonLd data={articleJsonLd(post)} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "홈", path: "/" },
+          { name: "블로그", path: "/blog_list" },
+          { name: post.title, path: post.sourceUrl },
+        ])}
+      />
       <BlogHeader />
       <main className="blog-detail-main">
         <article className="blog-detail-article">
@@ -71,11 +83,7 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
               <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
             ) : (
               post.paragraphs.map((line, index) =>
-                isHeading(line) ? (
-                  <h2 key={`${line}-${index}`}>{line}</h2>
-                ) : (
-                  <p key={`${line}-${index}`}>{line}</p>
-                ),
+                isHeading(line) ? <h2 key={`${line}-${index}`}>{line}</h2> : <p key={`${line}-${index}`}>{line}</p>,
               )
             )}
           </div>

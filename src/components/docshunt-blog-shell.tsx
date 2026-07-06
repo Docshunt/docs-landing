@@ -1,19 +1,14 @@
 import Link from "next/link";
 
 const cdn = "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io";
+const assets = "/docshunt-assets";
 const startUrl = "https://app.docshunt.ai";
 
 export function BlogHeader() {
   return (
     <header className="site-header blog-header" aria-label="독스헌트 사이트 내비게이션">
       <Link className="logo-link" href="/" aria-label="독스헌트 홈">
-        <img
-          className="logo"
-          src={`${cdn}/f1777294562574x255613413900380960/DocsHunt%20logo.svg`}
-          alt="DocsHunt"
-          width="160"
-          height="25"
-        />
+        <img className="logo" src={`${cdn}/f1777294562574x255613413900380960/DocsHunt%20logo.svg`} alt="DocsHunt" width="160" height="25" />
       </Link>
       <nav className="header-nav" aria-label="주요 메뉴">
         <Link className="nav-link" href="/blog_list">
@@ -55,7 +50,7 @@ export function DocshuntFooter() {
       </div>
       <div className="footer-bottom">
         <a className="instagram" href="https://www.instagram.com/docshunt_official/" target="_blank" rel="noreferrer">
-          <img src={`${cdn}/f1776963097199x479119601809532300/instagram.png`} alt="" />
+          <img src={`${assets}/instagram-icon.png`} alt="" />
           <span>docshunt_official</span>
         </a>
         <div className="legal-links">
