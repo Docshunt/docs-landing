@@ -4,14 +4,14 @@
   "private": true,
   "description": "DocsHunt landing and blog mirror built with Next.js.",
   "author": "DocsHunt",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ys970605-boop/docs-landing.git"
+    "url": "https://github.com/Docshunt/docs-landing.git"
   },
-  "homepage": "https://github.com/ys970605-boop/docs-landing",
+  "homepage": "https://docshunt.ai",
   "bugs": {
-    "url": "https://github.com/ys970605-boop/docs-landing/issues"
+    "url": "https://github.com/Docshunt/docs-landing/issues"
   },
   "keywords": [
     "docshunt",
