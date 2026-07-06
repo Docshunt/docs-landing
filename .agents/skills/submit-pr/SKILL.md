@@ -65,11 +65,13 @@ description: Docs Landing 변경사항에 대해 precommit/build/Playwright/SEO 
 기본 검증은 항상 실행합니다.
 
 ```bash
+npm run security:scan
 npm run precommit
 npm run build
 ```
 
 `npm run precommit`은 type-check, lint, format check를 모두 포함해야 합니다.
+`npm run security:scan`은 public repo에 push되면 안 되는 `.env`, private key, API token, credentialed URL, DB URL, local cache, private production data를 사전에 차단해야 합니다.
 
 변경 유형별 추가 검증:
 
@@ -98,6 +100,7 @@ npm run build
    - mobile/tablet/desktop overflow, 텍스트 겹침, blank image
    - stale asset filename 또는 broken local asset URL
    - `.env`, local cache, secret, private production data, generated artifact 포함
+   - push 전 `npm run security:scan` 누락 또는 실패
    - 공개 전환 준비 변경 시 license/소유권/재배포 허용 범위 오해
 3. 결과 처리:
    - `P0`/`P1` 발견 → 자동 수정 가능한 범위만 수정하고 재검증
@@ -115,7 +118,15 @@ npm run build
    ```
 
 2. 변경 파일만 명시적으로 stage합니다. mixed worktree에서 `git add -A`를 사용하지 않습니다.
-3. 커밋 메시지는 최근 커밋 패턴을 따르되, Docshunt 규칙처럼 **한글 conventional commit**을 기본으로 합니다.
+3. 이 레포는 public repo이므로 push 전에 반드시 민감정보 스캔을 다시 실행합니다.
+
+   ```bash
+   npm run security:scan
+   ```
+
+   실패하면 push하지 않습니다. `.env`, private key, API token, credentialed URL, DB URL, local cache, private production data가 tracked/staged/untracked publish 범위에 있는지 먼저 제거합니다.
+
+4. 커밋 메시지는 최근 커밋 패턴을 따르되, Docshunt 규칙처럼 **한글 conventional commit**을 기본으로 합니다.
 
    예시:
 
@@ -126,12 +137,12 @@ npm run build
    docs: 공개 전환 라이선스 기준 문서화
    ```
 
-4. 의미가 다른 변경은 커밋을 분리합니다.
+5. 의미가 다른 변경은 커밋을 분리합니다.
    - 기능/SEO 변경
    - agent/workflow 규칙 변경
    - public-readiness/license 변경
-5. 열린 PR이 있으면 history rewrite 없이 follow-up commit을 추가합니다. force-push는 금지합니다.
-6. 푸시합니다.
+6. 열린 PR이 있으면 history rewrite 없이 follow-up commit을 추가합니다. force-push는 금지합니다.
+7. 푸시합니다.
 
    ```bash
    git push -u origin "$(git branch --show-current)"
@@ -209,6 +220,7 @@ npm run build
 
    ## 코드 리뷰 결과
 
+   - ✅ `npm run security:scan` 통과
    - ✅ `npm run precommit` 통과
    - ✅ `npm run build` 통과
    - ✅ Playwright 반응형 QA 통과
@@ -279,6 +291,7 @@ Agent는 여기서 멈춥니다. 다음 내용만 사용자에게 전달합니�
 - force-push 금지
 - `git add -A` 금지
 - `.env`, `.vercel`, `.next`, `test-results`, local task ledger, 개인 설정 파일 커밋 금지
+- public repo이므로 push 전 `npm run security:scan`을 통과하지 못하면 push 금지
 - PR 생성/갱신 전 변경 범위와 검증 결과를 다시 확인
 - 열린 PR이 있으면 기존 PR을 갱신하고 새 PR을 만들지 않음
 - public-readiness 변경은 보안, 라이선스, 자산 출처, agent 지침 노출 리스크를 PR에 명시

@@ -21,6 +21,7 @@
 - Precommit verification: `npm run precommit`
 - Format check: `npm run format:check`
 - Build: `npm run build`
+- Sensitive-info scan: `npm run security:scan`
 - Production smoke: `npm run start -- -p 3011`
 - Dev server: `npm run dev -- -p 3001`
 
@@ -64,14 +65,15 @@ Codex-compatible skill discovery is exposed through `.codex/skills` when the sym
 
 For any PR that changes landing, blog, SEO/GEO, styles, or public assets:
 
-1. `npm run precommit`
-2. `npm run build`
-3. `node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs` when pages, routes, metadata, proxy, blog data, or crawler endpoints change
-4. Playwright screenshots at:
+1. `npm run security:scan`
+2. `npm run precommit`
+3. `npm run build`
+4. `node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs` when pages, routes, metadata, proxy, blog data, or crawler endpoints change
+5. Playwright screenshots at:
    - mobile: `390x844`
    - tablet: `768x1024`
    - desktop: `1440x1000`
-5. Curl smoke for SEO/GEO endpoints when changed:
+6. Curl smoke for SEO/GEO endpoints when changed:
    - `/robots.txt`
    - `/sitemap.xml`
    - `/sitemap-blog_detail.xml`
@@ -84,6 +86,7 @@ PR notes must include which checks ran and where screenshots/artifacts were save
 
 - `.githooks/pre-commit` runs `npm run precommit`.
 - `npm run precommit` must run type-check, lint, and format check.
+- `npm run check` must include `npm run security:scan` because this repository is intended to be public.
 - CI must test the pre-commit hook itself before build.
 - If a file is intentionally excluded from Prettier, record the reason in `.prettierignore`.
 
@@ -91,6 +94,8 @@ PR notes must include which checks ran and where screenshots/artifacts were save
 
 - Never push directly to `main`.
 - Never force-push.
+- Because this is a public repository, run `npm run security:scan` and review the result before every push.
+- Do not push if the sensitive-info scan reports `.env`, private key material, API tokens, credentialed URLs, DB URLs, local cache, or private production data.
 - Codex and other coding agents must never merge PRs into `main`.
 - Do not merge through `gh pr merge`, GitHub REST/GraphQL API, local git merge, auto-merge enablement, or any other automated path.
 - `main` merge is a conservative human release action and must be performed directly by a maintainer in the GitHub web UI after reviewing checks, preview deployment, SEO/GEO impact, and rollout risk.

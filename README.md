@@ -196,6 +196,8 @@ Production과 Preview 모두에 설정하면 preview에서도 실제 analytics t
 npm run check
 ```
 
+`npm run check`는 public repo push 전에 민감정보가 섞이지 않았는지 확인하는 `npm run security:scan`을 먼저 실행합니다.
+
 precommit/CI 규칙이 있는 브랜치에서는 아래도 함께 사용합니다.
 
 ```bash
@@ -207,6 +209,7 @@ npm run precommit
 레포를 public으로 전환하기 전에는 아래를 확인합니다.
 
 - `.env`, private key, API key, DB URL이 tracked file과 git history에 없는지 확인
+- push 전에 `npm run security:scan`을 실행하고, 실패하면 원인을 제거하기 전까지 push하지 않기
 - `LICENSE`가 Docshunt 소유권과 재사용 허가 범위를 정확히 표현하는지 확인
 - `package.json`의 repository, homepage, bugs URL이 `Docshunt/docs-landing` 기준인지 확인
 - `public/docshunt-assets/**`와 blog inline image를 public repo에 게시해도 되는지 확인
