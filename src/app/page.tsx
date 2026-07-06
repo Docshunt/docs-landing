@@ -153,6 +153,9 @@ export default function Home() {
           <a className="nav-link" href="/blog_list">
             블로그
           </a>
+          <a className="nav-link" href="/refund-event">
+            환급이벤트
+          </a>
           <a className="nav-link" href="https://docshunt.channel.io" target="_blank" rel="noreferrer">
             상담받기
           </a>
@@ -177,6 +180,9 @@ export default function Home() {
           <nav className={`mobile-menu ${mobileMenuOpen ? "is-open" : ""}`} id="mobile-menu" aria-label="모바일 메뉴">
             <a className="mobile-menu-link" href="/blog_list">
               블로그
+            </a>
+            <a className="mobile-menu-link" href="/refund-event">
+              환급이벤트
             </a>
             <a className="mobile-menu-link" href="https://docshunt.channel.io" target="_blank" rel="noreferrer">
               상담받기
