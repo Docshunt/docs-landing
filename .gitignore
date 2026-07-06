@@ -90,8 +90,12 @@ src/types/
 # Project agent configuration
 !AGENTS.md
 !CLAUDE.md
+!README.md
+!.claude
+!.claude/
 !.agents/
 !.agents/**
+!.codex
 !.codex/
 !.codex/skills
 !.github/

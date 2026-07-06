@@ -1,0 +1,145 @@
+---
+name: seo-geo-guard
+description: Use whenever a docs-landing page, route, blog data, metadata, sitemap, robots, llms.txt, ai.txt, proxy behavior, or public crawler-facing asset changes. Detects SEO/GEO impact for new pages and existing page edits.
+---
+
+# SEO/GEO Guard Skill
+
+Use this skill before and after changing any public route or crawler-facing behavior in `docs-landing`.
+
+Trigger examples:
+
+- new page under `src/app/**/page.tsx`
+- edits to `src/app/page.tsx`, `src/app/blog_*`, `src/app/layout.tsx`
+- edits to `src/seo/**`
+- edits to `robots`, `sitemap`, `llms.txt`, `ai.txt`
+- edits to `src/data/docshunt-blog*`
+- proxy or mirror behavior changes
+- public asset rename affecting OG/social/blog images
+
+## Phase 1: Scope Detection
+
+Collect changed files:
+
+```bash
+changed_files=$(
+  (
+    git diff --name-only
+    git diff --cached --name-only
+    git ls-files --others --exclude-standard
+  ) | sort -u
+)
+```
+
+Classify impact:
+
+- `src/app/**/page.tsx`: page metadata, canonical, sitemap, JSON-LD, social preview
+- `src/app/**/layout.tsx`: inherited metadata, global JSON-LD, analytics tags
+- `src/app/**/route.ts`: crawler endpoint or dynamic content
+- `src/seo/**`: shared SEO/GEO contract
+- `src/data/docshunt-blog*`: blog slug/title/description/image/date/sitemap contract
+- `src/proxy.ts`, `src/app/mirror/**`: local page vs Bubble mirror behavior
+- `public/docshunt-assets/**`: OG/social/blog/static image behavior
+
+If any public page route is added or changed, continue through every phase below.
+
+## Phase 2: Page-Level SEO/GEO Checklist
+
+For each new or edited page, verify:
+
+- canonical URL is absolute `https://docshunt.ai/...`
+- `openGraph.url` is absolute and matches canonical intent
+- title and description exist and match the visible page purpose
+- `twitter` metadata exists when the page should be shareable
+- image URLs used for OG/social previews are absolute or valid public paths
+- page language remains Korean-facing where applicable
+- JSON-LD is present for landing, blog list, blog detail, or structured content pages
+- page is not accidentally served through Bubble mirror when local metadata is required
+
+Preferred pattern:
+
+- Shared constants/helpers live in `src/seo/metadata.ts`.
+- Page metadata should use shared helpers such as `buildPageMetadata` when available.
+- Blog detail metadata must derive from the same blog post data used for rendering.
+
+## Phase 3: Discovery Surface Checklist
+
+When a route is added, renamed, deleted, or made indexable:
+
+- update sitemap route generation
+- verify `/sitemap.xml` or sitemap index links to the right child sitemap
+- verify `/sitemap-blog_detail.xml` still matches blog slugs when blog data changes
+- update `/llms.txt` and `/ai.txt` together when AI-search guidance changes
+- update `robots.txt` only when crawl allow/disallow or sitemap location changes
+- verify redirects/proxy do not hide the local Next page from crawlers
+
+For non-indexable pages, explicitly record why they are excluded from sitemap/llms/ai surfaces.
+
+## Phase 4: Local Static Guard
+
+Run the bundled guard script:
+
+```bash
+node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs
+```
+
+The script performs repository-level static checks for common drift:
+
+- route files under `src/app`
+- SEO/GEO endpoint presence
+- shared SEO helper presence
+- blog route and proxy collision risk
+- `llms.txt` and `ai.txt` route parity
+- obvious relative or localhost canonical/OG values
+
+Treat `ERROR` output as blocking. Treat `WARN` output as PR notes unless it is relevant to the current change.
+
+## Phase 5: Runtime Smoke
+
+After `npm run build`, start a local production server:
+
+```bash
+npm run start -- -p 3011
+```
+
+Smoke key pages/endpoints. If `curl` is unavailable, use Node `fetch`.
+
+Required for SEO/GEO changes:
+
+- `/`
+- `/blog_list`
+- at least one representative `/blog_detail/[slug]`
+- `/robots.txt`
+- `/sitemap.xml`
+- `/sitemap-blog_detail.xml`
+- `/llms.txt`
+- `/ai.txt`
+
+For each endpoint, record:
+
+- HTTP status
+- response size or meaningful content check
+- canonical/OG presence for HTML pages when relevant
+- absolute `https://docshunt.ai` URLs in XML/text outputs
+
+## Phase 6: PR Notes
+
+PR body must state:
+
+- which pages/routes changed
+- whether each changed route is indexable
+- sitemap impact
+- llms/ai impact
+- JSON-LD impact
+- runtime smoke results
+- any intentionally excluded pages and why
+
+Do not write "SEO unaffected" unless the changed route, metadata, sitemap, and crawler surfaces were checked.
+
+## Gotchas
+
+- Adding a `page.tsx` without metadata can still be indexable through inherited layout metadata, causing duplicate or misleading snippets.
+- Moving a blog page back behind the Bubble mirror sacrifices local metadata and JSON-LD.
+- Updating `/llms.txt` without `/ai.txt` creates AI-search guidance drift.
+- Using `localhost`, relative canonical URLs, or preview deployment URLs in metadata is a release blocker.
+- Image renames can break OG/social previews even when the visible page still renders.

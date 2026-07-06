@@ -30,6 +30,8 @@
 
 - PR 준비/게시: `.agents/skills/submit-pr/SKILL.md`
 - 랜딩, 블로그, 디자인, 정적 자산, SEO/GEO 수정: `.agents/skills/landing-change/SKILL.md`
+- 새 페이지, 기존 페이지, route, metadata, sitemap, robots, llms.txt, ai.txt, proxy 변경의 SEO/GEO 영향 감지: `.agents/skills/seo-geo-guard/SKILL.md`
+- 블로그 글 작성/수정/가져오기 및 post 단위 데이터 관리: `.agents/skills/blog-writing/SKILL.md`
 
 Codex-compatible skill discovery is exposed through `.codex/skills` when the symlink is present.
 
@@ -40,13 +42,15 @@ Codex-compatible skill discovery is exposed through `.codex/skills` when the sym
 - Keep Bubble-era SEO assets unless there is an explicit product decision to replace them.
 - When blog slugs or blog data change, verify `sitemap-blog_detail.xml` still emits all intended blog detail URLs.
 - If adding AI-search documentation, update `/llms.txt` and `/ai.txt` together.
+- When adding or editing a page, run the SEO/GEO guard skill and record whether metadata, sitemap, JSON-LD, robots, llms.txt, and ai.txt are affected.
 
 ## Blog and Design Rules
 
 - Preserve the current editorial landing style: dark hero, bold Korean headline rhythm, large visual product screenshots, compact CTA copy, and blog typography.
 - Blog list/detail pages must continue to render locally through Next.js, not Bubble-mirrored HTML.
 - Do not re-enable `/blog_list` or `/blog_detail` in `src/proxy.ts` unless the PR explicitly says metadata and JSON-LD will be sacrificed.
-- For blog content changes, keep title, description, slug, hero image, and sitemap behavior aligned.
+- Blog post metadata lives one file per post under `src/data/blog-posts/`; do not add new post objects directly to `src/data/docshunt-blogs.ts`.
+- For blog content changes, keep title, description, slug, source URL, hero image, JSON-LD, and sitemap behavior aligned.
 - For visual/layout changes, verify mobile, tablet, and desktop viewports with Playwright screenshots before PR handoff.
 
 ## Static Asset Rules
@@ -62,11 +66,12 @@ For any PR that changes landing, blog, SEO/GEO, styles, or public assets:
 
 1. `npm run precommit`
 2. `npm run build`
-3. Playwright screenshots at:
+3. `node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs` when pages, routes, metadata, proxy, blog data, or crawler endpoints change
+4. Playwright screenshots at:
    - mobile: `390x844`
    - tablet: `768x1024`
    - desktop: `1440x1000`
-4. Curl smoke for SEO/GEO endpoints when changed:
+5. Curl smoke for SEO/GEO endpoints when changed:
    - `/robots.txt`
    - `/sitemap.xml`
    - `/sitemap-blog_detail.xml`
@@ -86,6 +91,11 @@ PR notes must include which checks ran and where screenshots/artifacts were save
 
 - Never push directly to `main`.
 - Never force-push.
+- Codex and other coding agents must never merge PRs into `main`.
+- Do not merge through `gh pr merge`, GitHub REST/GraphQL API, local git merge, auto-merge enablement, or any other automated path.
+- `main` merge is a conservative human release action and must be performed directly by a maintainer in the GitHub web UI after reviewing checks, preview deployment, SEO/GEO impact, and rollout risk.
+- GitHub branch protection for `main` must keep force-push disabled, require `precommit-and-build`, and require conversation resolution before merge.
+- If required checks fail or any PR review thread/comment remains unresolved, the PR must not be merged.
 - Stage only the intended files; do not use `git add -A` in mixed worktrees.
 - Draft PRs are preferred unless the user explicitly asks for ready review.
 - Commit messages should follow the recent history while using Korean Conventional Commit style by default, for example `chore: 랜딩 PR 제출 규칙 정렬`.
