@@ -8,6 +8,9 @@ node_modules/
 out/
 build/
 dist/
+coverage/
+playwright-report/
+test-results/
 
 # Environment
 .env
@@ -38,12 +41,51 @@ next-env.d.ts
 # Vercel
 .vercel
 
-# Local settings (not project config)
+# Local agent/editor settings (not project config)
+.aider*
+.amazonq/
+.augment/
+.claude/
+.clinerules
+.codex/
+.continue/
+.cursor/
+.gemini/
+.github/
+.opencode/
+.windsurf/
+.windsurfrules
 .claude/settings.local.json
 
-# User-specific skills (not part of the template)
-.claude/skills/customize/
-.claude/skills/release/
+# Local orchestration and research artifacts
+.omx/
+docs/
+scripts/download-docshunt-assets.mjs
+scripts/extract-docshunt*.mjs
+scripts/visual-ralph-docshunt-check.mjs
+
+# Template-only scaffolding not used by this app build
+components.json
+.dockerignore
+AGENTS.md
+CHANGELOG.md
+CLAUDE.md
+Dockerfile
+Dockerfile.dev
+GEMINI.md
+README.md
+docker-compose.yml
+docs/INSPECTION_GUIDE.md
+public/images/
+public/seo/
+public/videos/
+scripts/.gitkeep
+scripts/sync-agent-rules.sh
+scripts/sync-skills.mjs
+src/components/ui/
+src/hooks/
+src/lib/
+src/types/
 
 # Local temp files
 temp/

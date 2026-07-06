@@ -1,0 +1,128 @@
+export const BLOG_RECOMMENDATION_IMAGES: Record<string, string[]> = {
+  "2": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1765433211474x962313299285500400/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1766045332566x923328157835448400/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg"
+  ],
+  "3": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1770964740156x326571630589632900/%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C%20%EC%9E%91%EC%84%B1%20%EA%B0%80%EC%9D%B4%EB%93%9C%20%EC%8D%B8%EB%84%A4%EC%9D%BC22.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1772689225762x558606482058463100/%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF%20%281%29.jpg"
+  ],
+  "80": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1761619187818x437768943442022200/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1763715639028x990272212397978600/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg"
+  ],
+  "2026": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1766475261174x771508649058759600/%E3%85%87%E3%85%87%E3%85%87.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1769404542648x240475951842009000/%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C%20%EC%9E%91%EC%84%B1%20%EA%B0%80%EC%9D%B4%EB%93%9C%20%EC%8D%B8%EB%84%A4%EC%9D%BCddddd.png"
+  ],
+  "business-plan-reuse-support-program-guide": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=,f=auto,dpr=1,fit=contain/f1780626860935x895561550659027100/k-startup-support-program-recommendation-guide.png"
+  ],
+  "1780626861627x947397884088036900": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1779333698241x302292114658699650/docshunt-modoo-startup-ai-solution-provider.png",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1781497598591x471698983397004000/business-plan-reuse-support-program-guide.png"
+  ],
+  "docshunt-modoo-startup-ai-solution-provider": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1778552180610x245283943099469540/modoo-startup-application-method-guide-after-login.png",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1780626860935x895561550659027100/k-startup-support-program-recommendation-guide.png"
+  ],
+  "1778551083864x517902503675335550": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1778462881917x126978870096580820/business-plan-template-outline-writing-guide.png",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1779333698241x302292114658699650/docshunt-modoo-startup-ai-solution-provider.png"
+  ],
+  "1778461267147x278620001529366040": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1778217111968x775867270390213600/k-startup-application-guide.png",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1778552180610x245283943099469540/modoo-startup-application-method-guide-after-login.png"
+  ],
+  "k-startup-application-guide": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1778114260954x186295498727207600/startup-support-application-documents-checklist.png",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1778462881917x126978870096580820/business-plan-template-outline-writing-guide.png"
+  ],
+  "startup-support-application-documents-checklist": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1777872631325x542194851120793900/modoo-startup-project-business-plan-guide.png",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1778217111968x775867270390213600/k-startup-application-guide.png"
+  ],
+  "1777862024151x122956064282869310": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1777511330781x284624838421415840/business-plan-template-outline-guide.png",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1778114260954x186295498727207600/startup-support-application-documents-checklist.png"
+  ],
+  "1777511331543x693426580638985500": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1777344139939x687455206118449800/business-plan-writing-guide-evergreen.png",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1777872631325x542194851120793900/modoo-startup-project-business-plan-guide.png"
+  ],
+  "1777343094612x229953857115337000": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1772689225762x558606482058463100/%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF%20%281%29.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1777511330781x284624838421415840/business-plan-template-outline-guide.png"
+  ],
+  "1772689301598x438718639419162600": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1771494169602x990428164798040600/%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C%20%EC%9E%91%EC%84%B1%20%EA%B0%80%EC%9D%B4%EB%93%9C%20%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1777344139939x687455206118449800/business-plan-writing-guide-evergreen.png"
+  ],
+  "1770964843114x761947782936002600": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1770181975014x345255420490808260/%EB%8F%85%EC%8A%A4%ED%97%8C%ED%8A%B8%20%EC%8D%B8%EB%84%A4%EC%9D%BC.png",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1771494169602x990428164798040600/%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C%20%EC%9E%91%EC%84%B1%20%EA%B0%80%EC%9D%B4%EB%93%9C%20%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg"
+  ],
+  "200-1": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1769491686521x696621910486512800/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1770964740156x326571630589632900/%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C%20%EC%9E%91%EC%84%B1%20%EA%B0%80%EC%9D%B4%EB%93%9C%20%EC%8D%B8%EB%84%A4%EC%9D%BC22.jpg"
+  ],
+  "1769491692159x279117165603586050": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1769404542648x240475951842009000/%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C%20%EC%9E%91%EC%84%B1%20%EA%B0%80%EC%9D%B4%EB%93%9C%20%EC%8D%B8%EB%84%A4%EC%9D%BCddddd.png",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1770181975014x345255420490808260/%EB%8F%85%EC%8A%A4%ED%97%8C%ED%8A%B8%20%EC%8D%B8%EB%84%A4%EC%9D%BC.png"
+  ],
+  "2026ai": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1769057384130x866985095094412700/11.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1769491686521x696621910486512800/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg"
+  ],
+  "2026-2": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1766045332566x923328157835448400/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1769057384130x866985095094412700/11.jpg"
+  ],
+  "2026d6023": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1765937129528x253267439733838820/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1766475261174x771508649058759600/%E3%85%87%E3%85%87%E3%85%87.jpg"
+  ],
+  "2026qa-4": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1764565753921x286921523885837570/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1765937129528x253267439733838820/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg"
+  ],
+  "gptvsai-2": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1763715639028x990272212397978600/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1765433211474x962313299285500400/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg"
+  ],
+  "1763715641699x648859363769319400": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1763100561327x224688441750578100/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1764565753921x286921523885837570/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg"
+  ],
+  "2026-4": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1760239060736x690764890363439600/%E1%84%83%E1%85%A2%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%83%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%80%E1%85%AD%E1%84%8B%E1%85%B2%E1%86%A8.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1763100561327x224688441750578100/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg"
+  ],
+  "2-4": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1759293696243x601871577881719400/%E1%84%89%E1%85%A9%E1%84%89%E1%85%A1%E1%86%BC%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%B5%E1%86%AB%20%E1%84%8C%E1%85%B5%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1761619187818x437768943442022200/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg"
+  ],
+  "1759293063517x574903222143811600": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1758607794056x466924935828002750/%E1%84%86%E1%85%AE%E1%86%AB%E1%84%92%E1%85%AA%E1%84%8B%E1%85%A8%E1%84%89%E1%85%AE%E1%86%AF%20%E1%84%8C%E1%85%B5%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8.png",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1760239060736x690764890363439600/%E1%84%83%E1%85%A2%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%83%E1%85%A2%20%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%80%E1%85%AD%E1%84%8B%E1%85%B2%E1%86%A8.jpg"
+  ],
+  "1758606878997x345158186660528100": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1758083254364x791993966549877900/%E1%84%83%E1%85%A9%E1%86%A8%E1%84%89%E1%85%B3%E1%84%92%E1%85%A5%E1%86%AB%E1%84%90%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1759293696243x601871577881719400/%E1%84%89%E1%85%A9%E1%84%89%E1%85%A1%E1%86%BC%E1%84%80%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%B5%E1%86%AB%20%E1%84%8C%E1%85%B5%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg"
+  ],
+  "%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C-ai-%EC%B6%94%EC%B2%9C": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1756363870767x526216164471535100/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%92%E1%85%A1%E1%86%B8%E1%84%80%E1%85%A7%E1%86%A8%20%E1%84%89%E1%85%A1%E1%84%85%E1%85%A8.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1758607794056x466924935828002750/%E1%84%86%E1%85%AE%E1%86%AB%E1%84%92%E1%85%AA%E1%84%8B%E1%85%A8%E1%84%89%E1%85%AE%E1%86%AF%20%E1%84%8C%E1%85%B5%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8.png"
+  ],
+  "3-1": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1755666603963x511116255188281100/%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%AE%E1%84%8C%E1%85%B5%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%20%E1%84%80%E1%85%A9%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%86%E1%85%B5%E1%86%BE%20%E1%84%8C%E1%85%A9%E1%86%BC%E1%84%85%E1%85%B2%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1758083254364x791993966549877900/%E1%84%83%E1%85%A9%E1%86%A8%E1%84%89%E1%85%B3%E1%84%92%E1%85%A5%E1%86%AB%E1%84%90%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg"
+  ],
+  "1755666879059x990557590876586000": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1755658217897x577891067065773000/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%80%E1%85%A1%E1%84%8B%E1%85%B5%E1%84%83%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg",
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1756363870767x526216164471535100/%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%E1%84%80%E1%85%A8%E1%84%92%E1%85%AC%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%92%E1%85%A1%E1%86%B8%E1%84%80%E1%85%A7%E1%86%A8%20%E1%84%89%E1%85%A1%E1%84%85%E1%85%A8.jpg"
+  ],
+  "1755658221110x981594766116126700": [
+    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=,f=auto,dpr=1,fit=contain/f1755666603963x511116255188281100/%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%87%E1%85%AE%E1%84%8C%E1%85%B5%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8%20%E1%84%80%E1%85%A9%E1%86%BC%E1%84%80%E1%85%A9%20%E1%84%86%E1%85%B5%E1%86%BE%20%E1%84%8C%E1%85%A9%E1%86%BC%E1%84%85%E1%85%B2%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg"
+  ]
+};
