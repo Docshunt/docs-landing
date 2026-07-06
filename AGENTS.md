@@ -1,0 +1,82 @@
+# Docs Landing Agent Guide
+
+이 레포는 Docshunt public landing/blog mirror를 운영하는 Next.js 앱이다. 검색엔진, AI 검색/GEO, 공유 미리보기, 정적 자산 이름, 반응형 화면 품질이 제품 표면이다.
+
+## Scope
+
+이 파일은 레포 전체에 적용된다. 더 깊은 `AGENTS.md`가 생기면 해당 디렉터리 규칙이 우선한다.
+
+## Product Surfaces
+
+- Landing: `/`
+- Blog list: `/blog_list`
+- Blog detail: `/blog_detail/[slug]`
+- SEO/GEO endpoints: `/robots.txt`, `/sitemap.xml`, `/sitemap-index.xml`, `/sitemap-blog_list.xml`, `/sitemap-blog_detail.xml`, `/llms.txt`, `/ai.txt`
+- Static assets: `public/docshunt-assets/**`, `public/docshunt-assets/blog-inline/**`
+
+## Repository Commands
+
+- Install: `npm ci`
+- Lint and type-check: `npm run validate`
+- Build: `npm run build`
+- Production smoke: `npm run start -- -p 3011`
+- Dev server: `npm run dev -- -p 3001`
+
+`npm run build` is required before PR handoff. It verifies static page generation and route handlers.
+
+## Skill Routing
+
+- PR 준비/게시: `.agents/skills/submit-pr/SKILL.md`
+- 랜딩, 블로그, 디자인, 정적 자산, SEO/GEO 수정: `.agents/skills/landing-change/SKILL.md`
+
+Codex-compatible skill discovery is exposed through `.codex/skills` when the symlink is present.
+
+## SEO and GEO Rules
+
+- Use `src/seo/metadata.ts` as the source of truth for shared titles, descriptions, URLs, OG image, verification tokens, JSON-LD helpers, and crawler-facing constants.
+- Canonical and `og:url` values must be absolute `https://docshunt.ai/...` URLs, never relative paths or localhost URLs.
+- Keep Bubble-era SEO assets unless there is an explicit product decision to replace them.
+- When blog slugs or blog data change, verify `sitemap-blog_detail.xml` still emits all intended blog detail URLs.
+- If adding AI-search documentation, update `/llms.txt` and `/ai.txt` together.
+
+## Blog and Design Rules
+
+- Preserve the current editorial landing style: dark hero, bold Korean headline rhythm, large visual product screenshots, compact CTA copy, and blog typography.
+- Blog list/detail pages must continue to render locally through Next.js, not Bubble-mirrored HTML.
+- Do not re-enable `/blog_list` or `/blog_detail` in `src/proxy.ts` unless the PR explicitly says metadata and JSON-LD will be sacrificed.
+- For blog content changes, keep title, description, slug, hero image, and sitemap behavior aligned.
+- For visual/layout changes, verify mobile, tablet, and desktop viewports with Playwright screenshots before PR handoff.
+
+## Static Asset Rules
+
+- Do not add generic filenames like `asset-01.png` for new assets.
+- Use descriptive lowercase kebab-case names that describe the image purpose, for example `hero-step-business-info-desktop.png`.
+- When renaming assets, update `public/docshunt-assets/manifest.json` and any source references in the same change.
+- Before deleting or renaming an asset, run `rg "<filename>" .` and verify there are no stale references.
+
+## Required Verification
+
+For any PR that changes landing, blog, SEO/GEO, styles, or public assets:
+
+1. `npm run validate`
+2. `npm run build`
+3. Playwright screenshots at:
+   - mobile: `390x844`
+   - tablet: `768x1024`
+   - desktop: `1440x1000`
+4. Curl smoke for SEO/GEO endpoints when changed:
+   - `/robots.txt`
+   - `/sitemap.xml`
+   - `/sitemap-blog_detail.xml`
+   - `/llms.txt`
+   - `/ai.txt`
+
+PR notes must include which checks ran and where screenshots/artifacts were saved.
+
+## Git and PR Rules
+
+- Never push directly to `main`.
+- Never force-push.
+- Stage only the intended files; do not use `git add -A` in mixed worktrees.
+- Draft PRs are preferred unless the user explicitly asks for ready review.
+- PR body should describe user-visible behavior and QA steps, not only implementation details.

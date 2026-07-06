@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const cdn = "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io";
+const assets = "/docshunt-assets";
 const startUrl = "https://app.docshunt.ai";
 
 export function BlogHeader() {
@@ -55,7 +56,7 @@ export function DocshuntFooter() {
       </div>
       <div className="footer-bottom">
         <a className="instagram" href="https://www.instagram.com/docshunt_official/" target="_blank" rel="noreferrer">
-          <img src={`${cdn}/f1776963097199x479119601809532300/instagram.png`} alt="" />
+          <img src={`${assets}/instagram-icon.png`} alt="" />
           <span>docshunt_official</span>
         </a>
         <div className="legal-links">

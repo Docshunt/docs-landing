@@ -101,7 +101,7 @@ export function organizationJsonLd() {
     name: "독스헌트",
     legalName: "주식회사 사페레아우데",
     url: SITE_URL,
-    logo: `${CDN_URL}/f1777294562574x255613413900380960/DocsHunt%20logo.svg`,
+    logo: `${SITE_URL}/docshunt-assets/docshunt-logo-white.svg`,
     sameAs: ["https://www.instagram.com/docshunt_official/"],
     contactPoint: {
       "@type": "ContactPoint",
