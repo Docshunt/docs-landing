@@ -9,6 +9,15 @@ description: Docs Landing 변경사항에 대해 precommit/build/Playwright/SEO 
 
 이 스킬은 Docshunt child repo의 submit-pr 구조를 따르되, landing/blog/SEO/GEO/static asset/agent workflow 변경에 맞게 검증 명령과 QA 항목을 조정합니다.
 
+## 절대 금지: main 병합
+
+- Codex와 다른 coding agent는 어떤 경우에도 PR을 `main`에 병합하지 않습니다.
+- `gh pr merge`, GitHub REST/GraphQL API, local `git merge`, auto-merge enablement 등 자동화 경로로 `main` 병합을 수행하지 않습니다.
+- `main` 병합은 보수적인 release gate이며, maintainer가 GitHub 웹 UI에서 checks, preview deployment, SEO/GEO 영향, rollout risk를 직접 확인한 뒤 수행해야 합니다.
+- `main` branch protection은 force push 금지, `precommit-and-build` required check, conversation resolution required 상태를 유지해야 합니다.
+- required check가 실패했거나 unresolved review thread/comment가 남아 있으면 절대 병합하지 않습니다.
+- 사용자가 "머지해줘"라고 요청해도 agent는 병합하지 않고, GitHub 웹 UI에서 직접 진행해야 한다고 안내합니다.
+
 ## 실행 흐름
 
 ### Phase 0: 작업 워크트리 검증
@@ -56,11 +65,13 @@ description: Docs Landing 변경사항에 대해 precommit/build/Playwright/SEO 
 기본 검증은 항상 실행합니다.
 
 ```bash
+npm run security:scan
 npm run precommit
 npm run build
 ```
 
 `npm run precommit`은 type-check, lint, format check를 모두 포함해야 합니다.
+`npm run security:scan`은 public repo에 push되면 안 되는 `.env`, private key, API token, credentialed URL, DB URL, local cache, private production data를 사전에 차단해야 합니다.
 
 변경 유형별 추가 검증:
 
@@ -89,6 +100,7 @@ npm run build
    - mobile/tablet/desktop overflow, 텍스트 겹침, blank image
    - stale asset filename 또는 broken local asset URL
    - `.env`, local cache, secret, private production data, generated artifact 포함
+   - push 전 `npm run security:scan` 누락 또는 실패
    - 공개 전환 준비 변경 시 license/소유권/재배포 허용 범위 오해
 3. 결과 처리:
    - `P0`/`P1` 발견 → 자동 수정 가능한 범위만 수정하고 재검증
@@ -106,7 +118,15 @@ npm run build
    ```
 
 2. 변경 파일만 명시적으로 stage합니다. mixed worktree에서 `git add -A`를 사용하지 않습니다.
-3. 커밋 메시지는 최근 커밋 패턴을 따르되, Docshunt 규칙처럼 **한글 conventional commit**을 기본으로 합니다.
+3. 이 레포는 public repo이므로 push 전에 반드시 민감정보 스캔을 다시 실행합니다.
+
+   ```bash
+   npm run security:scan
+   ```
+
+   실패하면 push하지 않습니다. `.env`, private key, API token, credentialed URL, DB URL, local cache, private production data가 tracked/staged/untracked publish 범위에 있는지 먼저 제거합니다.
+
+4. 커밋 메시지는 최근 커밋 패턴을 따르되, Docshunt 규칙처럼 **한글 conventional commit**을 기본으로 합니다.
 
    예시:
 
@@ -117,12 +137,12 @@ npm run build
    docs: 공개 전환 라이선스 기준 문서화
    ```
 
-4. 의미가 다른 변경은 커밋을 분리합니다.
+5. 의미가 다른 변경은 커밋을 분리합니다.
    - 기능/SEO 변경
    - agent/workflow 규칙 변경
    - public-readiness/license 변경
-5. 열린 PR이 있으면 history rewrite 없이 follow-up commit을 추가합니다. force-push는 금지합니다.
-6. 푸시합니다.
+6. 열린 PR이 있으면 history rewrite 없이 follow-up commit을 추가합니다. force-push는 금지합니다.
+7. 푸시합니다.
 
    ```bash
    git push -u origin "$(git branch --show-current)"
@@ -200,6 +220,7 @@ npm run build
 
    ## 코드 리뷰 결과
 
+   - ✅ `npm run security:scan` 통과
    - ✅ `npm run precommit` 통과
    - ✅ `npm run build` 통과
    - ✅ Playwright 반응형 QA 통과
@@ -222,6 +243,18 @@ npm run build
    - 비개발자 QA도 따라 할 수 있게 "무엇을 해서 어떤 결과가 나와야 하는지"로 씁니다.
    - 구현 세부 용어는 필요한 만큼만 사용합니다.
    - 실행하지 않은 검증은 통과했다고 쓰지 말고 Known Issues 또는 미검증 항목에 남깁니다.
+
+### Phase 6: 병합 handoff
+
+Agent는 여기서 멈춥니다. 다음 내용만 사용자에게 전달합니다.
+
+- PR URL
+- 최신 commit
+- CI/check 상태
+- unresolved conversation 여부
+- preview deployment 확인 여부
+- 남은 Known Issues
+- `main` 병합은 GitHub 웹 UI에서 maintainer가 직접 해야 한다는 안내
 
 ## 자동 수정 범위
 
@@ -253,9 +286,12 @@ npm run build
 ## 주의사항
 
 - `main` 직접 push 금지
+- `main` 병합 금지: agent는 CLI/API/local git으로 PR을 병합하지 않는다
+- required check 실패 또는 unresolved comment/thread가 있으면 병합 금지
 - force-push 금지
 - `git add -A` 금지
 - `.env`, `.vercel`, `.next`, `test-results`, local task ledger, 개인 설정 파일 커밋 금지
+- public repo이므로 push 전 `npm run security:scan`을 통과하지 못하면 push 금지
 - PR 생성/갱신 전 변경 범위와 검증 결과를 다시 확인
 - 열린 PR이 있으면 기존 PR을 갱신하고 새 PR을 만들지 않음
 - public-readiness 변경은 보안, 라이선스, 자산 출처, agent 지침 노출 리스크를 PR에 명시

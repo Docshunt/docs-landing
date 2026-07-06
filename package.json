@@ -32,12 +32,13 @@
     "format:check": "prettier --check .",
     "start": "next start -p 3001",
     "lint": "eslint --max-warnings=0 .",
+    "security:scan": "node scripts/scan-sensitive-info.mjs",
     "type-check": "tsc --noEmit --pretty false",
     "typecheck": "npm run type-check",
     "validate": "npm run lint && npm run type-check",
     "precommit": "npm run type-check && npm run lint && npm run format:check",
     "prepare": "node scripts/install-git-hooks.mjs",
-    "check": "npm run precommit && npm run build"
+    "check": "npm run security:scan && npm run precommit && npm run build"
   },
   "dependencies": {
     "next": "16.2.10",
