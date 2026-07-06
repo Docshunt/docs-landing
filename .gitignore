@@ -87,5 +87,16 @@ src/hooks/
 src/lib/
 src/types/
 
+# Project agent configuration
+!AGENTS.md
+!CLAUDE.md
+!.agents/
+!.agents/**
+!.codex/
+!.codex/skills
+!.github/
+!.github/workflows/
+!.github/workflows/ci.yml
+
 # Local temp files
 temp/
