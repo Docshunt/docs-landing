@@ -3,6 +3,9 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import Link from "next/link";
 
+import { JsonLd } from "@/components/json-ld";
+import { softwareApplicationJsonLd } from "@/seo/metadata";
+
 const cdn = "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io";
 const startPath = "https://app.docshunt.ai";
 
@@ -132,6 +135,7 @@ export default function Home() {
 
   return (
     <div className="page landing-page" id="top">
+      <JsonLd data={softwareApplicationJsonLd()} />
       <header className={`site-header ${scrolled ? "scrolled" : ""}`} aria-label="독스헌트 사이트 내비게이션">
         <Link className="logo-link" href="/" aria-label="독스헌트 홈">
           <img

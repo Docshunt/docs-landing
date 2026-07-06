@@ -3,9 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { BlogHeader, DocshuntFooter } from "@/components/docshunt-blog-shell";
+import { JsonLd } from "@/components/json-ld";
 import { BLOG_CONTENT_HTML } from "@/data/docshunt-blog-content";
 import { BLOG_RECOMMENDATION_IMAGES } from "@/data/docshunt-blog-recommendations";
 import { BLOG_POSTS, decodeBlogSlug, findBlogPost, getRecommendedPosts } from "@/data/docshunt-blogs";
+import { articleJsonLd, breadcrumbJsonLd, buildPageMetadata } from "@/seo/metadata";
 
 const startUrl = "https://app.docshunt.ai";
 
@@ -36,10 +38,13 @@ export async function generateMetadata({ params }: BlogDetailParams): Promise<Me
   const { slug } = await params;
   const post = findBlogPost(slug);
   if (!post) return {};
-  return {
+  return buildPageMetadata({
     title: post.title,
     description: post.description,
-  };
+    path: post.sourceUrl,
+    image: post.heroImage,
+    type: "article",
+  });
 }
 
 export default async function BlogDetailPage({ params }: BlogDetailParams) {
@@ -60,6 +65,14 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
 
   return (
     <div className="page blog-page blog-detail-page">
+      <JsonLd data={articleJsonLd(post)} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "홈", path: "/" },
+          { name: "블로그", path: "/blog_list" },
+          { name: post.title, path: post.sourceUrl },
+        ])}
+      />
       <BlogHeader />
       <main className="blog-detail-main">
         <article className="blog-detail-article">
