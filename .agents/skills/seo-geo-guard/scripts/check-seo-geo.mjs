@@ -50,7 +50,7 @@ const requiredCrawlerRoutes = [
 ];
 
 for (const file of requiredCrawlerRoutes) {
-  if (!exists(file)) warnings.push(`Missing crawler-facing route: ${file}`);
+  if (!exists(file)) errors.push(`Missing crawler-facing route: ${file}`);
 }
 
 if (exists("src/app/llms.txt/route.ts") !== exists("src/app/ai.txt/route.ts")) {

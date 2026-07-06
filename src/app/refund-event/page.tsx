@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { Countdown, LazyDemoVideo } from "./client-widgets";
+
 const assets = "/docshunt-assets";
 const refundAssets = `${assets}/refund-event`;
 const appUrl = "https://app.docshunt.ai";
-
-const countdownUnits = ["일", "시간", "분", "초"];
+const earlyBirdEndAt = "2026-12-31T23:59:59+09:00";
+const earlyBirdEndLabel = "~12/31";
 
 const eventNavLinks = [
   { href: "#refund-master-plan", label: "🔥 2026 사업계획서 마스터 플랜 🔥" },
@@ -83,19 +85,6 @@ export const metadata: Metadata = {
   },
 };
 
-function Countdown({ compact = false }: { compact?: boolean }) {
-  return (
-    <div className={`refund-countdown ${compact ? "compact" : ""}`} aria-label="얼리버드 종료 카운트다운">
-      {countdownUnits.map((unit) => (
-        <div className="refund-countdown-box" key={unit}>
-          <strong>0</strong>
-          <span>{unit}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function Chevron() {
   return <span aria-hidden="true">›</span>;
 }
@@ -105,7 +94,7 @@ export default function RefundEventPage() {
     <main className="refund-event-page" id="top">
       <nav className="refund-event-nav" aria-label="2026 마스터 플랜 이벤트 내비게이션">
         <Link className="refund-event-logo" href="/">
-          <img src={`${assets}/docshunt-logo-white.svg`} alt="DocsHunt" />
+          <img src={`${assets}/docshunt-logo-white.svg`} alt="DocsHunt" width="128" height="20" />
         </Link>
         <div className="refund-event-nav-links">
           {eventNavLinks.map((link) => (
@@ -138,15 +127,15 @@ export default function RefundEventPage() {
           <br />
           독스헌트로 전부 해결!
         </h1>
-        <img className="refund-hero-art" src={`${refundAssets}/hero-master-plan.svg`} alt="2026 Master Plan" />
+        <img className="refund-hero-art" src={`${refundAssets}/hero-master-plan.svg`} alt="2026 Master Plan" width="1440" height="351" />
         <a className="refund-button refund-button-light" href="#refund-pricing">
           플랜 자세히 보기 <Chevron />
         </a>
       </section>
 
       <section className="refund-countdown-strip" aria-label="얼리버드 종료 안내">
-        <p>2026 마스터 플랜 얼리버드 종료까지 (~4/14)</p>
-        <Countdown />
+        <p>2026 마스터 플랜 얼리버드 종료까지 ({earlyBirdEndLabel})</p>
+        <Countdown endAt={earlyBirdEndAt} />
       </section>
 
       <section className="refund-dark refund-consulting" aria-labelledby="refund-consulting-title">
@@ -155,18 +144,23 @@ export default function RefundEventPage() {
           <br />
           10년을 쓸 수 있는 서비스
         </h2>
-        <img src={`${refundAssets}/consultant-comparison.svg`} alt="컨설팅 비용과 독스헌트 마스터 플랜 가격 비교" />
+        <img
+          src={`${refundAssets}/consultant-comparison.svg`}
+          alt="컨설팅 비용과 독스헌트 마스터 플랜 가격 비교"
+          width="693"
+          height="454"
+        />
       </section>
 
       <section className="refund-automation" id="refund-automation" aria-labelledby="refund-problem-title">
-        <img className="refund-connector top" src={`${refundAssets}/connector-black-blue.svg`} alt="" />
+        <img className="refund-connector top" src={`${refundAssets}/connector-black-blue.svg`} alt="" width="1440" height="105" />
         <div className="refund-problem">
           <h2 id="refund-problem-title">
             매년 지원사업 사업계획서 쓰는데
             <br />
             시간을 쏟고 계신가요?
           </h2>
-          <img src={`${refundAssets}/problem-flow.png`} alt="사업계획서 작업 흐름 자동화 그래픽" />
+          <img src={`${refundAssets}/problem-flow.png`} alt="사업계획서 작업 흐름 자동화 그래픽" width="768" height="521" />
         </div>
 
         <div className="refund-plan-headline">
@@ -183,14 +177,14 @@ export default function RefundEventPage() {
 
         <div className="refund-demo-stack">
           <article className="refund-demo-card">
-            <video src={`${refundAssets}/plan-generation.mp4`} autoPlay muted loop playsInline />
+            <LazyDemoVideo src={`${refundAssets}/plan-generation.mp4`} title="사업계획서 초안 생성 데모" />
             <div>
               <h3>1. 사업계획서 3분 만에 생성</h3>
               <p>아이템 정보만 입력하면, AI가 사업계획서 초안을 자동으로 빠르게 만들어줍니다.</p>
             </div>
           </article>
           <article className="refund-demo-card">
-            <video src={`${refundAssets}/form-autofill.mp4`} autoPlay muted loop playsInline />
+            <LazyDemoVideo src={`${refundAssets}/form-autofill.mp4`} title="지원사업 양식 자동 완성 데모" />
             <div>
               <h3>2. 지원사업 양식 자동 완성</h3>
               <p>작성한 사업계획서를 기반으로, 지원사업 양식에 맞춰 내용을 자동으로 완성합니다.</p>
@@ -204,7 +198,7 @@ export default function RefundEventPage() {
       </section>
 
       <section className="refund-dark refund-benefit" id="refund-event" aria-labelledby="refund-benefit-title">
-        <img className="refund-connector" src={`${refundAssets}/connector-black.svg`} alt="" />
+        <img className="refund-connector" src={`${refundAssets}/connector-black.svg`} alt="" width="1440" height="105" />
         <div className="refund-pill">독스헌트 환급 이벤트</div>
         <h2 id="refund-benefit-title">
           2026 지원사업 합격하고,
@@ -248,9 +242,9 @@ export default function RefundEventPage() {
                   <span>{interview.company}</span>
                 </div>
                 <p>
-                  <img src={`${refundAssets}/quote-open.svg`} alt="" />
+                  <img src={`${refundAssets}/quote-open.svg`} alt="" width="22" height="25" />
                   {interview.quote}
-                  <img src={`${refundAssets}/quote-close.svg`} alt="" />
+                  <img src={`${refundAssets}/quote-close.svg`} alt="" width="22" height="25" />
                 </p>
               </div>
             </article>
@@ -260,7 +254,7 @@ export default function RefundEventPage() {
 
       <section className="refund-pricing" id="refund-pricing" aria-labelledby="refund-pricing-title">
         <div className="refund-price-alert">
-          <Countdown compact />
+          <Countdown compact endAt={earlyBirdEndAt} />
           <p>
             후에는
             <br />
@@ -274,7 +268,12 @@ export default function RefundEventPage() {
             <br />
             역대급 할인가로 만나보세요
           </h2>
-          <img src={`${refundAssets}/pricing-receipt.svg`} alt="2026 지원사업 마스터 플랜 얼리버드 가격 390,000원" />
+          <img
+            src={`${refundAssets}/pricing-receipt.svg`}
+            alt="2026 지원사업 마스터 플랜 얼리버드 가격 390,000원"
+            width="583"
+            height="617"
+          />
           <a className="refund-button refund-button-blue" href={appUrl}>
             최저가로 구매하기 <Chevron />
           </a>
@@ -286,8 +285,8 @@ export default function RefundEventPage() {
             <br />
             최저가로 시작할 수 있는 타이밍
           </h2>
-          <img src={`${refundAssets}/earlybird-graphic.svg`} alt="2차 얼리버드 390,000원 가격 그래픽" />
-          <p>*얼리버드 혜택은 예고 없이 종료될 수 있습니다.</p>
+          <img src={`${refundAssets}/earlybird-graphic.svg`} alt="2차 얼리버드 390,000원 가격 그래픽" width="607" height="273" />
+          <p>*얼리버드 혜택은 2026년 12월 31일까지 적용됩니다.</p>
           <a className="refund-button refund-button-blue" href={appUrl}>
             최저가로 구매하기 <Chevron />
           </a>
@@ -295,8 +294,8 @@ export default function RefundEventPage() {
       </section>
 
       <section className="refund-countdown-strip final" aria-label="얼리버드 종료 안내">
-        <p>2026 마스터 플랜 얼리버드 종료까지 (~4/14)</p>
-        <Countdown />
+        <p>2026 마스터 플랜 얼리버드 종료까지 ({earlyBirdEndLabel})</p>
+        <Countdown endAt={earlyBirdEndAt} />
         <a className="refund-top-button" href="#top">
           맨 위로 <Chevron />
         </a>
@@ -328,7 +327,7 @@ export default function RefundEventPage() {
         </div>
         <div className="refund-footer-links">
           <a href="https://www.instagram.com/docshunt_official/" target="_blank" rel="noreferrer">
-            <img src={`${assets}/instagram-icon.png`} alt="" />
+            <img src={`${assets}/instagram-icon.png`} alt="" width="32" height="32" />
             docshunt_official
           </a>
           <span>
@@ -347,7 +346,7 @@ export default function RefundEventPage() {
         <a href={appUrl}>최저가로 시작하기</a>
         <div>
           <span>얼리버드 종료까지</span>
-          <Countdown compact />
+          <Countdown compact endAt={earlyBirdEndAt} />
         </div>
         <a href={appUrl}>최저가로 시작하기</a>
       </aside>

@@ -68,4 +68,4 @@ export const BLOG_POSTS = [
   post32,
 ] satisfies BlogPost[];
 
-export const BLOG_PAGE_COUNT = Math.max(...BLOG_POSTS.map((post) => post.page));
+export const BLOG_PAGE_COUNT = new Set(BLOG_POSTS.map((post) => post.page)).size;
