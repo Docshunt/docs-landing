@@ -3,6 +3,10 @@ import Link from "next/link";
 const cdn = "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io";
 const assets = "/docshunt-assets";
 const startUrl = "https://app.docshunt.ai";
+const siteNavLinks = [
+  { href: "/pricing", label: "요금제 / 환급" },
+  { href: "/blog_list", label: "블로그" },
+] as const;
 
 export function BlogHeader() {
   return (
@@ -11,20 +15,28 @@ export function BlogHeader() {
         <img className="logo" src={`${cdn}/f1777294562574x255613413900380960/DocsHunt%20logo.svg`} alt="DocsHunt" width="160" height="25" />
       </Link>
       <nav className="header-nav" aria-label="주요 메뉴">
-        <Link className="nav-link" href="/blog_list">
-          블로그
-        </Link>
-        <a className="nav-link" href="https://docshunt.channel.io" target="_blank" rel="noreferrer">
-          상담받기
-        </a>
+        {siteNavLinks.map((link) => (
+          <Link className="nav-link" href={link.href} key={link.href}>
+            {link.label}
+          </Link>
+        ))}
       </nav>
       <div className="header-actions">
         <a className="header-button primary" href={startUrl}>
           무료로 시작하기
         </a>
-        <button className="menu-button" type="button" aria-label="메뉴 열기">
-          <span />
-        </button>
+        <details className="blog-header-mobile-menu">
+          <summary className="menu-button" aria-label="메뉴 열기">
+            <span />
+          </summary>
+          <nav className="mobile-menu" aria-label="모바일 메뉴">
+            {siteNavLinks.map((link) => (
+              <Link className="mobile-menu-link" href={link.href} key={link.href}>
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </details>
       </div>
     </header>
   );
