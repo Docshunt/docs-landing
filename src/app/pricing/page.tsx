@@ -1,15 +1,18 @@
-import type { Metadata } from "next";
-
 import { PricingPageClient } from "./pricing-page-client";
+import { JsonLd } from "@/components/json-ld";
+import { PRICING_DESCRIPTION, PRICING_TITLE, buildPageMetadata, webPageJsonLd } from "@/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "요금제 | 독스헌트",
-  description: "내 사업의 지원사업 준비 방식에 맞는 독스헌트 플랜을 선택하세요.",
-  alternates: {
-    canonical: "https://docshunt.ai/pricing",
-  },
-};
+export const metadata = buildPageMetadata({
+  title: PRICING_TITLE,
+  description: PRICING_DESCRIPTION,
+  path: "/pricing",
+});
 
 export default function PricingPage() {
-  return <PricingPageClient />;
+  return (
+    <>
+      <JsonLd data={webPageJsonLd({ name: PRICING_TITLE, description: PRICING_DESCRIPTION, path: "/pricing" })} />
+      <PricingPageClient />
+    </>
+  );
 }

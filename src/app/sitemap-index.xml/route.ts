@@ -12,5 +12,10 @@ export function GET() {
       priority: "0.9",
       changefreq: "weekly",
     },
+    {
+      loc: "/pricing",
+      priority: "0.8",
+      changefreq: "monthly",
+    },
   ]);
 }

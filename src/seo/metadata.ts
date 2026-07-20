@@ -8,12 +8,11 @@ export const CHANNEL_URL = "https://docshunt.channel.io";
 export const CDN_URL = "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io";
 
 export const SITE_NAME = "독스헌트 - 지원사업 전 양식 대응 사업계획서 AI";
-export const DEFAULT_TITLE = "독스헌트 - 사업계획서AI, 모든 정부지원사업 한글 양식 완벽 대응";
+export const DEFAULT_TITLE = "독스헌트 | 지원사업 공고 탐색부터 AI 사업계획서 작성까지";
 export const DEFAULT_DESCRIPTION =
-  "아이디어만으로 전문가 수준의 AI 사업계획서를 완성하세요. 까다로운 정부지원사업 한글 양식에 맞춰 즉시 제출 가능한 결과물을 제공합니다. 2~3주 걸리던 서류 준비를 단 몇 분 만에 끝내고 자금을 확보하세요.";
-export const LANDING_OG_DESCRIPTION =
-  "사업계획서 작성이 막막하다면? 이제 2-3주 걸리던 지원사업 준비를 단 몇 분만에 끝낼 수 있어요. 독스헌트에서는 아이디어만 입력해 전문가 수준의 사업계획서를 자동 생성하고, 필수 항목을 체계적으로 구조화해 빠짐없이 완성할 수 있습니다. 다양한 사업계획서 예시를 확인하고, 이제 독스헌트에서 바로 작성하고 제출까지 빠르게 완료하세요.";
-export const TWITTER_TITLE = "독스헌트 - 아이디어만 입력해도 전문가 수준 사업계획서 완성";
+  "정부지원사업 공고를 찾고, 아이디어를 한글 양식에 맞는 사업계획서로 완성하세요. 독스헌트 AI가 공고 탐색부터 초안 작성과 수정까지 지원합니다.";
+export const LANDING_OG_DESCRIPTION = "정부지원사업 공고 탐색부터 한글 양식 사업계획서 작성까지, 독스헌트 AI와 한 번에 준비하세요.";
+export const TWITTER_TITLE = "독스헌트 | 지원사업 공고 탐색부터 AI 사업계획서 작성까지";
 export const SEO_KEYWORDS = ["사업계획서", "사업계획서 예시", "사업계획서 AI", "사업계획서 작성", "창업", "독스헌트", "정부지원사업"];
 export const OG_IMAGE = `${CDN_URL}/cdn-cgi/image/w=,h=,f=auto,dpr=1,fit=contain/f1766369335570x680703495650288900/OGimge.png`;
 export const FAVICON_URL = `${CDN_URL}/f1757483516803x613112797294277800/favicon.ico`;
@@ -25,6 +24,11 @@ export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "946529364
 export const BLOG_LIST_TITLE = "사업계획서 AI 작성 팁 및 정부지원사업 합격 가이드 | 독스헌트 블로그";
 export const BLOG_LIST_DESCRIPTION =
   "사업계획서 AI 활용법부터 최신 정부지원사업 한글 양식 대응 노하우까지, 창업 성공을 위한 모든 인사이트를 독스헌트 블로그에서 확인하세요. 예비 창업자를 위한 합격 예시와 실전 작성 팁을 매주 업데이트합니다.";
+export const PRICING_TITLE = "요금제 | 독스헌트";
+export const PRICING_DESCRIPTION = "내 사업의 지원사업 준비 방식에 맞는 독스헌트 플랜을 선택하세요.";
+export const REFUND_EVENT_TITLE = "2026 지원사업 합격 시 환급 | 독스헌트";
+export const REFUND_EVENT_DESCRIPTION =
+  "연간 Pro 또는 Max 요금제로 지원사업을 준비하고 합격하면, 실제 결제한 구독료의 최대 50%를 환급받으세요.";
 
 export function absoluteUrl(path: string) {
   if (path.startsWith("http://") || path.startsWith("https://")) return path;
@@ -90,6 +94,7 @@ export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
     name: "독스헌트",
     legalName: "주식회사 사페레아우데",
     url: SITE_URL,
@@ -114,6 +119,7 @@ export function websiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
     name: "독스헌트",
     alternateName: "DocsHunt",
     url: SITE_URL,
@@ -126,12 +132,17 @@ export function softwareApplicationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
+    "@id": `${SITE_URL}/#software-application`,
     name: "독스헌트",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     url: SITE_URL,
     image: OG_IMAGE,
     description: DEFAULT_DESCRIPTION,
+    inLanguage: "ko-KR",
+    publisher: {
+      "@id": `${SITE_URL}/#organization`,
+    },
     offers: {
       "@type": "Offer",
       price: "0",
@@ -141,14 +152,37 @@ export function softwareApplicationJsonLd() {
   };
 }
 
+export function webPageJsonLd({ name, description, path }: { name: string; description: string; path: string }) {
+  const url = absoluteUrl(path);
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name,
+    description,
+    inLanguage: "ko-KR",
+    isPartOf: {
+      "@id": `${SITE_URL}/#website`,
+    },
+    publisher: {
+      "@id": `${SITE_URL}/#organization`,
+    },
+  };
+}
+
 export function blogListJsonLd(posts: BlogPost[]) {
   return {
     "@context": "https://schema.org",
     "@type": "Blog",
+    "@id": `${absoluteUrl("/blog_list")}#blog`,
     name: BLOG_LIST_TITLE,
     description: BLOG_LIST_DESCRIPTION,
     url: absoluteUrl("/blog_list"),
     inLanguage: "ko-KR",
+    isPartOf: {
+      "@id": `${SITE_URL}/#website`,
+    },
     blogPost: posts.map((post) => ({
       "@type": "BlogPosting",
       headline: post.title,
@@ -164,6 +198,7 @@ export function articleJsonLd(post: BlogPost) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `${post.sourceUrl}#article`,
     headline: post.title,
     description: post.description,
     url: post.sourceUrl,
@@ -171,8 +206,9 @@ export function articleJsonLd(post: BlogPost) {
     datePublished: dateToIso(post.date),
     dateModified: dateToIso(post.date),
     inLanguage: "ko-KR",
-    author: organizationJsonLd(),
-    publisher: organizationJsonLd(),
+    author: { "@id": `${SITE_URL}/#organization` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    isPartOf: { "@id": `${SITE_URL}/#website` },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": post.sourceUrl,
