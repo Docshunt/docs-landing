@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 import { LandingPageClient } from "../landing-page-client";
+import { buildPageMetadata, DEFAULT_DESCRIPTION, DEFAULT_TITLE, OG_IMAGE } from "@/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "독스헌트 새 랜딩 시안",
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: DEFAULT_TITLE,
+  description: DEFAULT_DESCRIPTION,
+  path: "/new-landing",
+  image: OG_IMAGE,
+});
 
 export default function NewLandingPage() {
   return <LandingPageClient initialDraft />;

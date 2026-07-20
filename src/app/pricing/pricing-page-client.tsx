@@ -13,7 +13,7 @@ type Plan = {
   annualMonthlyPrice: string;
   annualTotal?: string;
   discount?: string;
-  comparisonUsage: string;
+  usageDescription: string;
   storage: string;
   features: string[];
   recommended?: boolean;
@@ -21,8 +21,7 @@ type Plan = {
 };
 
 const appUrl = "https://app.docshunt.ai";
-const refundApplicationUrl =
-  "https://docs.google.com/forms/d/e/1FAIpQLSchF65xynyR3D4XyyIhOAxNg3w5tTR9vwLgmfXKH2QmhxK70Q/viewform?usp=publish-editor";
+const refundApplicationUrl = "https://tally.so/r/XxkVYj";
 
 const plans: Plan[] = [
   {
@@ -30,9 +29,9 @@ const plans: Plan[] = [
     description: "지원사업 준비를 가볍게 시작해보세요",
     monthlyPrice: "0원",
     annualMonthlyPrice: "0원",
-    comparisonUsage: "가볍게 시작",
+    usageDescription: "체험 사용",
     storage: "저장공간 500MB",
-    features: ["지원사업 추천", "사업계획서 생성", "AI 메모리", "가볍게 시작하는 사용량 · 저장공간 500MB"],
+    features: ["체험 사용", "지원사업 추천", "사업계획서 생성", "AI 메모리", "저장공간 500MB"],
   },
   {
     name: "Basic",
@@ -41,15 +40,16 @@ const plans: Plan[] = [
     annualMonthlyPrice: "57,500원",
     annualTotal: "연 690,000원",
     discount: "연간 35.4% 할인",
-    comparisonUsage: "여유 있게",
+    usageDescription: "매일 기본 사용량",
     storage: "저장공간 1GB",
     features: [
-      "한글파일 내보내기",
+      "매일 기본 사용량",
+      "Free의 모든 기능",
+      "한글(hwpx) 내보내기",
       "양식 직접 업로드",
       "근거자료 탐색",
       "에디터 AI 수정",
-      "AI 메모리",
-      "여유 있게 쓰는 사용량 · 저장공간 1GB",
+      "저장공간 1GB",
     ],
   },
   {
@@ -59,9 +59,9 @@ const plans: Plan[] = [
     annualMonthlyPrice: "65,000원",
     annualTotal: "연 780,000원",
     discount: "연간 49.6% 할인",
-    comparisonUsage: "넉넉하게",
+    usageDescription: "Basic보다 2배 더 많은 사용량",
     storage: "저장공간 5GB",
-    features: ["Basic의 모든 기능", "시각자료 생성", "고성능 AI 모델 사용", "합격 시 환급", "넉넉하게 쓰는 사용량 · 저장공간 5GB"],
+    features: ["Basic보다 2배 더 많은 사용량", "Basic의 모든 기능", "시각자료 생성", "고성능 AI 모델 사용", "합격 시 환급", "저장공간 5GB"],
     recommended: true,
     refundEligible: true,
   },
@@ -72,9 +72,9 @@ const plans: Plan[] = [
     annualMonthlyPrice: "82,500원",
     annualTotal: "연 990,000원",
     discount: "연간 56.6% 할인",
-    comparisonUsage: "대량 작업도 가능",
+    usageDescription: "Pro보다 5배 더 많은 사용량",
     storage: "저장공간 20GB",
-    features: ["Pro의 모든 기능", "맞춤 양식 신청", "대량 작업도 가능한 사용량 · 저장공간 20GB"],
+    features: ["Pro보다 5배 더 많은 사용량", "Pro의 모든 기능", "맞춤 양식 신청", "저장공간 20GB"],
     refundEligible: true,
   },
 ];
@@ -83,7 +83,7 @@ const featureRows = [
   ["지원사업 추천", "O", "O", "O", "O"],
   ["사업계획서 생성", "O", "O", "O", "O"],
   ["AI 메모리", "O", "O", "O", "O"],
-  ["한글파일 내보내기", "-", "O", "O", "O"],
+  ["한글(hwpx) 내보내기", "-", "O", "O", "O"],
   ["양식 직접 업로드", "-", "O", "O", "O"],
   ["근거자료 탐색", "-", "O", "O", "O"],
   ["에디터 AI 수정", "-", "O", "O", "O"],
@@ -185,31 +185,91 @@ function RefundCriteriaModal({ onClose }: { onClose: () => void }) {
         </div>
         <div className="pricing2026-refund-modal-body">
           <h3>참여 조건</h3>
-          <ol>
-            <li>해당 공고의 신청 마감일 전까지 연간 Pro 또는 Max 구독이 활성 상태여야 합니다.</li>
-            <li>최종 합격 발표일에도 연간 Pro 또는 Max 구독이 활성 상태여야 합니다.</li>
-          </ol>
-
-          <h3>환급 비율</h3>
+          <p className="pricing2026-refund-modal-intro">
+            독스헌트 지원사업 합격 환급은 중앙정부 또는 중앙정부 산하기관·전문기관이 주관하는 지원사업의 최종 선정 기업을 대상으로 합니다.
+          </p>
           <ul>
-            <li>일반 합격 인증: 연간 구독료의 10%</li>
-            <li>블로그 후기: 연간 구독료의 25%</li>
-            <li>인터뷰 참여 및 자료 활용 동의: 연간 구독료의 50%</li>
+            <li>창업·사업화·R&amp;D·수출 등 기업 성장을 위한 지원사업</li>
+            <li>신청 기업 기준으로 확정된 정부지원금이 1,000만 원 이상인 사업</li>
+            <li>최종 선정 또는 협약 체결 사실을 확인할 수 있는 사업</li>
+            <li>해당 공고의 신청 마감일 전부터 최종 합격 발표일까지 유효한 독스헌트 연간 Pro 또는 Max 구독 고객</li>
           </ul>
 
-          <h3>환급 산정 및 제외 기준</h3>
+          <h3>환급 비율</h3>
+          <p className="pricing2026-refund-modal-intro">인증 방식 하나를 선택해 신청하세요. 환급 유형마다 필요한 제출물이 다릅니다.</p>
+          <div className="pricing2026-refund-criteria" aria-label="환급 인증 방식">
+            <article className="pricing2026-refund-criteria-card">
+              <div className="pricing2026-refund-criteria-card-heading">
+                <span>10%</span>
+                <h4>일반 합격 인증</h4>
+              </div>
+              <p>최종 합격을 확인할 수 있는 안내문 또는 선정 결과 화면을 제출하고, 독스헌트로 준비한 경험을 짧게 남겨주세요.</p>
+              <ul>
+                <li>최종 합격 증빙</li>
+                <li>독스헌트 합격 후기</li>
+              </ul>
+            </article>
+
+            <article className="pricing2026-refund-criteria-card">
+              <div className="pricing2026-refund-criteria-card-heading">
+                <span>30%</span>
+                <h4>블로그 후기 인증</h4>
+              </div>
+              <p>합격 증빙과 함께 독스헌트 사용 경험, 지원사업 준비 과정을 담은 공개 블로그 후기를 작성해 URL을 제출해 주세요.</p>
+              <ul>
+                <li>최종 합격 증빙</li>
+                <li>공개 블로그 후기 URL</li>
+              </ul>
+            </article>
+
+            <article className="pricing2026-refund-criteria-card is-featured">
+              <div className="pricing2026-refund-criteria-card-heading">
+                <span>50%</span>
+                <h4>인터뷰 인증</h4>
+              </div>
+              <p>합격 경험과 독스헌트 사용 과정을 인터뷰로 들려주세요.</p>
+              <ul>
+                <li>최종 합격 증빙</li>
+                <li>인터뷰 가능 시간 제출</li>
+                <li>인터뷰 자료 제출 및 활용 동의</li>
+              </ul>
+              <a
+                className="pricing2026-refund-video-example"
+                href="https://www.youtube.com/watch?v=GmIQijv2EFw"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <img alt="독스헌트 지원사업 합격자 인터뷰 영상 미리보기" src="https://i.ytimg.com/vi/GmIQijv2EFw/hqdefault.jpg" />
+                <span>
+                  <b>합격자 인터뷰 예시</b>
+                  <em>영상 보기 →</em>
+                </span>
+              </a>
+            </article>
+          </div>
+
+          <h3>환급 산정 기준</h3>
           <ul>
             <li>최종 합격 환급금은 본인이 실제 결제한 금액을 기준으로 산정합니다.</li>
             <li>제세공과금 22% 공제 후 지급됩니다.</li>
             <li>월간 요금제, 무료 체험·쿠폰·프로모션 크레딧, 이미 환불된 금액과 합격 발표 이후 결제한 구독은 대상에서 제외됩니다.</li>
-            <li>사업계획서 심사가 없는 단순 융자나 보조금 사업 등 일부 사업은 대상에서 제외됩니다.</li>
+          </ul>
+
+          <h3>환급 대상에서 제외되는 경우</h3>
+          <ul>
+            <li>지자체·대학·민간기업이 단독으로 운영하는 지원사업</li>
+            <li>대출, 보증, 융자, 세제 혜택, 단순 할인 혜택</li>
+            <li>교육·행사·입주·멘토링만 제공하는 비금전성 프로그램</li>
+            <li>상금형 경진대회, 공모전, 채용 지원금</li>
+            <li>기업당 확정 지원금이 1,000만 원 미만인 사업</li>
+            <li>최종 선정 또는 협약 사실을 증빙할 수 없는 경우</li>
           </ul>
 
           <h3>신청 및 검토</h3>
           <ul>
             <li>최종 합격 발표일 또는 협약일로부터 30일 이내에 신청해야 합니다.</li>
-            <li>제출한 증빙 서류와 마케팅 미션 수행 결과는 내부 검토 후 최종 승인 여부를 개별 안내합니다.</li>
-            <li>서류의 진위 여부가 불분명하거나 미션이 기준에 미달하면 환급이 거절되거나 보완을 요청드릴 수 있습니다.</li>
+            <li>제출한 증빙 서류와 인증 항목은 내부 검토 후 최종 승인 여부를 개별 안내합니다.</li>
+            <li>서류의 진위 여부가 불분명하거나 인증 항목이 기준에 미달하면 환급이 거절되거나 보완을 요청드릴 수 있습니다.</li>
           </ul>
 
           <a href={refundApplicationUrl} rel="noreferrer" target="_blank">
@@ -273,11 +333,9 @@ export function PricingPageClient() {
               </thead>
               <tbody>
                 <tr className="pricing2026-usage-row">
-                  <th scope="row">AI 문서 생성 사용량</th>
+                  <th scope="row">크레딧</th>
                   {plans.map((plan) => (
-                    <td key={plan.name}>
-                      <span className="pricing2026-credit-value">{plan.comparisonUsage}</span>
-                    </td>
+                    <td key={plan.name}>{plan.usageDescription}</td>
                   ))}
                 </tr>
                 <tr className="pricing2026-usage-row">
@@ -319,12 +377,12 @@ export function PricingPageClient() {
                   <span>일반 합격 인증</span>
                 </div>
                 <div>
-                  <strong>25%</strong>
-                  <span>블로그 후기</span>
+                  <strong>30%</strong>
+                  <span>블로그 후기 인증</span>
                 </div>
                 <div>
                   <strong>50%</strong>
-                  <span>인터뷰 참여</span>
+                  <span>인터뷰 인증</span>
                 </div>
               </div>
               <div className="pricing2026-refund-links">
