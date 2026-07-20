@@ -7,12 +7,12 @@ export const APP_URL = "https://app.docshunt.ai";
 export const CHANNEL_URL = "https://docshunt.channel.io";
 export const CDN_URL = "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io";
 
-export const SITE_NAME = "독스헌트 - 지원사업 전 양식 대응 사업계획서 AI";
-export const DEFAULT_TITLE = "독스헌트 | 지원사업 공고 탐색부터 AI 사업계획서 작성까지";
+export const SITE_NAME = "독스헌트 | 지원사업 사업계획서 작성 AI";
+export const DEFAULT_TITLE = "공고별 문항과 평가 기준에 맞춘 사업계획서 AI | 독스헌트";
 export const DEFAULT_DESCRIPTION =
-  "정부지원사업 공고를 찾고, 아이디어를 한글 양식에 맞는 사업계획서로 완성하세요. 독스헌트 AI가 공고 탐색부터 초안 작성과 수정까지 지원합니다.";
-export const LANDING_OG_DESCRIPTION = "정부지원사업 공고 탐색부터 한글 양식 사업계획서 작성까지, 독스헌트 AI와 한 번에 준비하세요.";
-export const TWITTER_TITLE = "독스헌트 | 지원사업 공고 탐색부터 AI 사업계획서 작성까지";
+  "공고별 문항과 평가 기준을 분석하고, AI와 묻고 답하며 사업계획서를 완성합니다. 작성할수록 아이템과 사업 정보가 AI 기억에 쌓여 점점 더 빠르고 정교하게 지원사업을 준비할 수 있습니다.";
+export const LANDING_OG_DESCRIPTION = DEFAULT_DESCRIPTION;
+export const TWITTER_TITLE = DEFAULT_TITLE;
 export const SEO_KEYWORDS = ["사업계획서", "사업계획서 예시", "사업계획서 AI", "사업계획서 작성", "창업", "독스헌트", "정부지원사업"];
 export const OG_IMAGE = `${CDN_URL}/cdn-cgi/image/w=,h=,f=auto,dpr=1,fit=contain/f1766369335570x680703495650288900/OGimge.png`;
 export const FAVICON_URL = `${CDN_URL}/f1757483516803x613112797294277800/favicon.ico`;
