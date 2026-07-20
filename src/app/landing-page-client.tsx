@@ -71,7 +71,10 @@ const draftActualGeneratedDocumentFiles = [
 ] as const;
 
 const draftActualDocumentPages = draftActualGeneratedDocumentFiles.map((fileName, index) => ({
-  src: encodeURI(`${assets}/document-viewer-pages/pre-startup-generated/${fileName}`),
+  // The source screenshots were named on macOS, where filenames may use NFD.
+  // Public assets are served from Linux in production, so normalize the URL to
+  // the NFC filenames committed under `public/` before percent-encoding it.
+  src: encodeURI(`${assets}/document-viewer-pages/pre-startup-generated/${fileName.normalize("NFC")}`),
   alt: `독스헌트로 생성한 예비창업패키지 사업계획서 ${index + 1}페이지`,
 }));
 
