@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+
+import { JsonLd } from "@/components/json-ld";
+import { REFUND_EVENT_DESCRIPTION, REFUND_EVENT_TITLE, buildPageMetadata, webPageJsonLd } from "@/seo/metadata";
 
 const assets = "/docshunt-assets";
 const appUrl = "https://app.docshunt.ai";
@@ -75,20 +77,11 @@ const noticeGroups = [
   },
 ];
 
-export const metadata: Metadata = {
-  title: "2026 지원사업 합격 시 환급 | 독스헌트",
-  description: "연간 Pro 또는 Max 요금제로 지원사업을 준비하고 합격하면, 실제 결제한 구독료의 최대 50%를 환급받으세요.",
-  alternates: {
-    canonical: "https://docshunt.ai/refund-event",
-  },
-  openGraph: {
-    title: "2026 지원사업 합격 시 환급",
-    description: "연간 Pro 또는 Max 요금제로 지원사업을 준비하고 합격하면, 실제 결제한 구독료의 최대 50%를 환급받으세요.",
-    url: "https://docshunt.ai/refund-event",
-    type: "website",
-    locale: "ko_KR",
-  },
-};
+export const metadata = buildPageMetadata({
+  title: REFUND_EVENT_TITLE,
+  description: REFUND_EVENT_DESCRIPTION,
+  path: "/refund-event",
+});
 
 function Chevron() {
   return <span aria-hidden="true">›</span>;
@@ -137,6 +130,7 @@ function RefundHeroVisual() {
 export default function RefundEventPage() {
   return (
     <main className="refund-event-page" id="top">
+      <JsonLd data={webPageJsonLd({ name: REFUND_EVENT_TITLE, description: REFUND_EVENT_DESCRIPTION, path: "/refund-event" })} />
       <nav className="refund-event-nav" aria-label="독스헌트 사이트 내비게이션">
         <Link className="refund-event-logo" href="/" aria-label="독스헌트 홈">
           <img src={`${assets}/docshunt-logo-white.svg`} alt="DocsHunt" />
