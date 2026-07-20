@@ -3,8 +3,7 @@ import Link from "next/link";
 
 const assets = "/docshunt-assets";
 const appUrl = "https://app.docshunt.ai";
-const refundApplicationUrl = "https://tally.so/r/EkZ7rX";
-const interviewConsentUrl = "https://tally.so/r/dWvbeq";
+const refundApplicationUrl = "https://tally.so/r/XxkVYj";
 
 const siteNavLinks = [
   { href: "/pricing", label: "요금제 / 환급" },
@@ -37,13 +36,13 @@ const refundTiers = [
     description: "합격 증빙을 제출하면 환급을 신청할 수 있어요.",
   },
   {
-    rate: "25%",
-    title: "블로그 후기",
+    rate: "30%",
+    title: "블로그 후기 인증",
     description: "독스헌트 이용 후기를 블로그에 남기면 더 높은 비율로 환급해드려요.",
   },
   {
     rate: "50%",
-    title: "인터뷰 참여",
+    title: "인터뷰 인증",
     description: "인터뷰 자료 제출과 활용에 동의하면 최대 환급 비율이 적용돼요.",
     featured: true,
   },
@@ -68,7 +67,7 @@ const noticeGroups = [
   {
     title: "○ 합격 시 환급 규정",
     items: [
-      "일반 합격 인증은 10%, 블로그 후기는 25%, 인터뷰 참여는 50% 환급 비율이 적용됩니다.",
+      "일반 합격 인증은 연간 구독료의 10%, 블로그 후기 인증은 연간 구독료의 30%, 인터뷰 인증은 연간 구독료의 50% 환급 비율이 적용됩니다.",
       "무료 체험, 쿠폰 또는 프로모션 크레딧, 이미 환불된 금액은 환급 산정에서 제외됩니다.",
       "합격 증빙 서류 제출과 내부 검토가 완료된 뒤 순차적으로 환급되며, 부정한 방법으로 참여한 경우 혜택이 취소될 수 있습니다.",
       "독스헌트는 지원사업 합격을 보장하지 않으며, 합격 발표 후 시작한 구독은 해당 합격 건의 환급 대상이 아닙니다.",
@@ -281,8 +280,8 @@ export default function RefundEventPage() {
             <article className="refund-application-card refund-consent-card">
               <strong>02</strong>
               <h3>인터뷰 환급을 선택했다면</h3>
-              <p>1번 신청 후, 인터뷰 자료 제출과 활용 동의를 별도 폼에서 진행해 주세요.</p>
-              <a href={interviewConsentUrl} target="_blank" rel="noreferrer">
+              <p>합격 인증과 함께, 인터뷰 자료 제출과 활용 동의도 같은 폼에서 진행해 주세요.</p>
+              <a href={refundApplicationUrl} target="_blank" rel="noreferrer">
                 자료 제출 및 활용 동의하기 <Chevron />
               </a>
             </article>

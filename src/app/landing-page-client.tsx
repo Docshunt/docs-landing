@@ -1,7 +1,9 @@
 "use client";
 
 import {
+  useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   type CSSProperties,
@@ -39,6 +41,7 @@ const heroWorkflowSlides = [
 ] as const;
 
 const heroWorkflowAutoMs = 9000;
+const draftProofAutoMs = 5600;
 const heroWorkflowProgramClickMs = 3200;
 const heroWorkflowChatAutoMs = 6500;
 const heroWorkflowSwipeThreshold = 48;
@@ -50,36 +53,40 @@ const heroProgramRows = [
   { title: "2026 창업도약패키지", dday: "D-10" },
 ] as const;
 
-const draftActualDocumentPages = [
-  {
-    src: `${assets}/document-viewer-pages/page-01-overview.jpg`,
-    alt: "ABC 지원사업 사업계획서 양식 일반현황 페이지",
-  },
-  {
-    src: `${assets}/document-viewer-pages/page-02-summary.jpg`,
-    alt: "창업 아이템 개요 요약 작성 양식 페이지",
-  },
-  {
-    src: `${assets}/document-viewer-pages/page-03-problem.jpg`,
-    alt: "문제 인식 창업 아이템의 필요성 작성 양식 페이지",
-  },
-  {
-    src: `${assets}/document-viewer-pages/page-04-solution.jpg`,
-    alt: "실현 가능성 창업 아이템의 개발 계획 작성 양식 페이지",
-  },
-  {
-    src: `${assets}/document-viewer-pages/page-05-budget.jpg`,
-    alt: "정부지원사업비 집행 계획 작성 양식 페이지",
-  },
-  {
-    src: `${assets}/document-viewer-pages/page-06-scale-up.jpg`,
-    alt: "성장전략 사업화 추진 전략 작성 양식 페이지",
-  },
-  {
-    src: `${assets}/document-viewer-pages/page-07-team.jpg`,
-    alt: "팀 구성 대표자 및 팀원 구성 계획 작성 양식 페이지",
-  },
-];
+const draftActualGeneratedDocumentFiles = [
+  "스크린샷 2026-07-19 오후 6.27.18.webp",
+  "스크린샷 2026-07-19 오후 6.27.29.webp",
+  "스크린샷 2026-07-19 오후 6.27.35.webp",
+  "스크린샷 2026-07-19 오후 6.27.40.webp",
+  "스크린샷 2026-07-19 오후 6.27.45.webp",
+  "스크린샷 2026-07-19 오후 6.27.50.webp",
+  "스크린샷 2026-07-19 오후 6.27.55.webp",
+  "스크린샷 2026-07-19 오후 6.28.01.webp",
+  "스크린샷 2026-07-19 오후 6.28.06.webp",
+  "스크린샷 2026-07-19 오후 6.28.11.webp",
+  "스크린샷 2026-07-19 오후 6.28.15.webp",
+  "스크린샷 2026-07-19 오후 6.28.21.webp",
+  "스크린샷 2026-07-19 오후 6.28.27.webp",
+  "스크린샷 2026-07-19 오후 6.28.31.webp",
+] as const;
+
+const draftActualDocumentPages = draftActualGeneratedDocumentFiles.map((fileName, index) => ({
+  src: encodeURI(`${assets}/document-viewer-pages/pre-startup-generated/${fileName}`),
+  alt: `독스헌트로 생성한 예비창업패키지 사업계획서 ${index + 1}페이지`,
+}));
+
+const draftActualTemplateDocumentPages = [
+  "page-01-pre-startup-package.webp",
+  "page-02-summary.webp",
+  "page-03-problem.webp",
+  "page-04-solution.webp",
+  "page-05-budget.webp",
+  "page-06-scale-up.webp",
+  "page-07-team.webp",
+].map((fileName, index) => ({
+  src: `${assets}/document-viewer-pages/${fileName}`,
+  alt: `예비창업패키지 사업계획서 양식 ${index + 1}페이지`,
+}));
 
 const questionVideo = `${cdn}/f1779716417056x278852230160279800/%E1%84%83%E1%85%A9%E1%86%A8%E1%84%89%E1%85%B3%E1%84%92%E1%85%A5%E1%86%AB%E1%84%90%E1%85%B3_%E1%84%85%E1%85%A2%E1%86%AB%E1%84%83%E1%85%B5%E1%86%BC_%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A1%E1%86%BC.mov`;
 
@@ -105,15 +112,15 @@ const toolColumns = [
     {
       badge: "도큐먼트",
       title: "텍스트 스타일을 커스텀하고\n문서 전체에 반영",
-      image: `${assets}/tool-document-style-desktop.png`,
-      mobileImage: `${assets}/tool-document-style-desktop.png`,
+      image: `${assets}/tool-document-style-desktop.webp`,
+      mobileImage: `${assets}/tool-document-style-desktop.webp`,
       className: "medium document",
     },
     {
       badge: "New",
       title: "우리 기업 프로필을\n사업계획서에 자동 반영",
-      image: `${assets}/tool-company-profile-desktop.png`,
-      mobileImage: `${assets}/tool-company-profile-mobile.png`,
+      image: `${assets}/tool-company-profile-desktop.webp`,
+      mobileImage: `${assets}/tool-company-profile-mobile.webp`,
       className: "medium profile",
     },
   ],
@@ -121,22 +128,22 @@ const toolColumns = [
     {
       badge: "레퍼런스",
       title: "시장부터 경쟁사 조사까지\n근거 자료 찾기",
-      image: `${assets}/tool-reference-research-desktop.png`,
-      mobileImage: `${assets}/tool-reference-research-mobile.png`,
+      image: `${assets}/tool-reference-research-desktop.webp`,
+      mobileImage: `${assets}/tool-reference-research-mobile.webp`,
       className: "medium reference",
     },
     {
       badge: "챗봇",
       title: "생성된 문서를\nAI 에디터와 함께 수정",
-      image: `${assets}/tool-ai-editor-chat-desktop.png`,
-      mobileImage: `${assets}/tool-ai-editor-chat-mobile.png`,
+      image: `${assets}/tool-ai-editor-chat-desktop.webp`,
+      mobileImage: `${assets}/tool-ai-editor-chat-mobile.webp`,
       className: "chat",
     },
     {
       badge: "Coming Soon",
       title: "우리 회사 맞춤\n지원사업 추천",
-      image: `${assets}/tool-support-program-recommendation-desktop.png`,
-      mobileImage: `${assets}/tool-support-program-recommendation-mobile.png`,
+      image: `${assets}/tool-support-program-recommendation-desktop.webp`,
+      mobileImage: `${assets}/tool-support-program-recommendation-mobile.webp`,
       className: "medium recommendation",
     },
   ],
@@ -145,15 +152,17 @@ const toolColumns = [
 const draftProofCards = [
   {
     image: `${assets}/interviews/11111.webp`,
-    alt: "박종현 스피노자 대표 인터뷰",
+    mobileImage: `${assets}/interviews/11111-mobile.webp`,
+    alt: "박중현 스피노자 대표 인터뷰",
     title: "지원사업, 잘 쓰는 것보다\n많이 넣는 싸움",
     quote:
-      "“제가 독스헌트로 하루에 사업계획서 4개까지 해서 접수를 했고요.\n기존에는 못해도 2~3일 정도 걸리던 거를 1~2시간 안에 할 수 있게 됐습니다.\n독스헌트가 없었다면, 저는 사업하느라 바빠서 지원사업을 포기했을 것 같아요.”",
-    author: "박종현, 스피노자 대표",
+      "“제가 독스헌트로 하루에 사업계획서 4개까지 해서 접수를 했고요.\n기존에는 못해도 2~3일 정도 걸리던 거를 1~2시간 안에 할 수 있게 됐습니다.”",
+    author: "박중현, 스피노자 대표",
     href: "https://www.youtube.com/watch?v=9a_QmMnxmOo",
   },
   {
     image: `${assets}/interviews/33334.webp`,
+    mobileImage: `${assets}/interviews/33334-mobile.webp`,
     alt: "하정연 크레센트 서울 대표 인터뷰",
     title: "밤새 쓰던 사업계획서,\n독스헌트로 자동화했어요",
     quote: "“반복적인 작업들은 자동화하고,\n본질적으로 고민해야 되는 부분에 시간을 더 쓸 수 있었습니다.”",
@@ -162,6 +171,7 @@ const draftProofCards = [
   },
   {
     image: `${assets}/interviews/55555.webp`,
+    mobileImage: `${assets}/interviews/55555-mobile.webp`,
     alt: "김나연 지구온어스 대표 인터뷰",
     title: "마감 하루 전에도,\n2~3시간 만에 완성",
     quote: "“독스헌트가 전체 문서를 한 번에 만들어줬고,\n문제 제기와 사업 설명은 80% 이상 그대로 활용했습니다.”",
@@ -170,6 +180,7 @@ const draftProofCards = [
   },
   {
     image: `${assets}/interviews/22222.webp`,
+    mobileImage: `${assets}/interviews/22222-mobile.webp`,
     alt: "공혁진 세르칸 대표 인터뷰",
     title: "일기처럼 쓴 아이디어가\n사업계획서 초안이 됐어요",
     quote: "“일기장에 써놨던 내용을 독스헌트에 한번 넣었죠.\n그랬더니 제가 쓴 거 같은 초안이 하나 나오더라고요.”",
@@ -178,6 +189,7 @@ const draftProofCards = [
   },
   {
     image: `${assets}/interviews/33333.webp`,
+    mobileImage: `${assets}/interviews/33333-mobile.webp`,
     alt: "김지연 음파차트 대표 인터뷰",
     title: "마감 3일 전 시작했는데,\n2500만원 +α 확보했습니다",
     quote: "“첫 도전이다보니 기대도 크지 않았는데,\n막상 합격하니 날아갈 듯이 기뻤습니다.”",
@@ -455,10 +467,12 @@ function isUrgentDeadline(deadline: string) {
 }
 
 type DraftFlowSourceFilter = "전체" | "K-Startup" | "기업마당";
-type DraftFlowMotionPhase = "scan" | "aim" | "click" | "chatZoom" | "editor" | "return";
+type DraftFlowMotionPhase = "scan" | "aim" | "click" | "chatZoom" | "editor";
 
 const draftFlowSourceFilters = ["전체", "K-Startup", "기업마당"] satisfies DraftFlowSourceFilter[];
 const draftFlowVisibleRows = 10;
+// Keep the prior close-up transition available without using it in the default playback.
+const draftFlowEnableChatFocusZoom = false;
 const draftFlowMotionStart = draftFlowPrograms[0]!;
 const draftFlowMotionTarget = draftFlowPrograms[1]!;
 const draftFlowMotionSequence: Array<{
@@ -483,7 +497,7 @@ const draftFlowMotionSequence: Array<{
     title: draftFlowMotionTarget.title,
     isEditorOpen: false,
     pointer: { x: 238, y: 112, isFollowing: true },
-    duration: 1550,
+    duration: 520,
   },
   {
     phase: "click",
@@ -491,7 +505,7 @@ const draftFlowMotionSequence: Array<{
     title: draftFlowMotionTarget.title,
     isEditorOpen: false,
     pointer: { x: 238, y: 112, isFollowing: true },
-    duration: 760,
+    duration: 420,
   },
   {
     phase: "editor",
@@ -501,29 +515,25 @@ const draftFlowMotionSequence: Array<{
     pointer: { x: 238, y: 112, isFollowing: false },
     duration: 1500,
   },
-  {
-    phase: "chatZoom",
-    source: "전체",
-    title: draftFlowMotionTarget.title,
-    isEditorOpen: true,
-    pointer: { x: 238, y: 112, isFollowing: false },
-    duration: 5200,
-  },
+  ...(draftFlowEnableChatFocusZoom
+    ? [
+        {
+          phase: "chatZoom" as const,
+          source: "전체" as const,
+          title: draftFlowMotionTarget.title,
+          isEditorOpen: true,
+          pointer: { x: 238, y: 112, isFollowing: false },
+          duration: 4700,
+        },
+      ]
+    : []),
   {
     phase: "editor",
     source: "전체",
     title: draftFlowMotionTarget.title,
     isEditorOpen: true,
     pointer: { x: 238, y: 112, isFollowing: false },
-    duration: 4200,
-  },
-  {
-    phase: "return",
-    source: "전체",
-    title: draftFlowMotionTarget.title,
-    isEditorOpen: false,
-    pointer: { x: 238, y: 112, isFollowing: true },
-    duration: 1200,
+    duration: 7200,
   },
 ];
 
@@ -658,25 +668,93 @@ const draftActualAutoChatMessages = [
     paragraphs: [
       "「2026년 예비창업패키지」 사업계획서를 시작할게요.",
       "이전에 저장된 사업 메모리를 불러왔어요.",
-      "부족한 정보만 2가지만 확인할게요.",
-      "1. 이번 공고에서 강조할 사업 아이템을 한 문장으로 알려주세요.",
+      "공고와 양식을 기준으로 필요한 정보만 순서대로 확인할게요.",
+      "1. 독스헌트가 누구의 어떤 문제를 해결하는 서비스인지 설명해주세요.",
     ],
   },
   {
     role: "user",
-    text: "독스헌트는 공고별 문항과 평가 기준에 맞춰 사업계획서 초안을 만드는 AI 서비스입니다.",
+    text: "지원사업을 준비하는 예비창업자와 초기 스타트업이 공고와 양식에 맞는 사업계획서를 빠르게 작성하도록 돕는 AI 웹 서비스예요.",
   },
   {
     role: "assistant",
-    paragraphs: ["좋아요.", "2. 주 고객과 그들이 가장 불편해하는 순간은 무엇인가요?"],
+    paragraphs: ["좋아요.", "2. 현재 서비스는 어느 단계인가요?"],
   },
   {
     role: "user",
-    text: "지원사업을 처음 준비하는 예비창업자와 초기 스타트업이 고객이고, 공고마다 양식과 평가 기준이 달라 매번 처음부터 써야 하는 점이 가장 불편해요.",
+    text: "제품 개발을 완료했고, 공고문 분석과 문항별 초안 생성이 가능한 상태에서 초기 사용자와 사용성을 검증하고 있어요.",
   },
   {
     role: "assistant",
-    paragraphs: ["아이템, 고객, 핵심 문제를 사업 메모리에 저장했어요.", "이 정보로 예비창업패키지 문항별 초안을 작성하겠습니다."],
+    paragraphs: ["확인했어요.", "3. 고객이 지원사업을 준비할 때 가장 불편한 순간은 무엇인가요?"],
+  },
+  {
+    role: "user",
+    text: "공고마다 평가 기준과 양식이 달라 요구사항을 해석하고 문서를 처음부터 쓰느라 며칠에서 몇 주를 쓰는 점이에요.",
+  },
+  {
+    role: "assistant",
+    paragraphs: ["문제의 맥락을 이해했어요.", "4. 사용자는 어떤 자료로 사업계획서 작성을 시작하나요?"],
+  },
+  {
+    role: "user",
+    text: "K-Startup과 기업마당 공고를 고르거나 공고문, 양식을 직접 올려요.",
+  },
+  {
+    role: "assistant",
+    paragraphs: ["좋습니다.", "5. 부족한 정보는 어떤 방식으로 확인하나요?"],
+  },
+  {
+    role: "user",
+    text: "기업 프로필과 기존 자료를 먼저 분석하고, 비어 있는 항목만 인터뷰 질문으로 받아요.",
+  },
+  {
+    role: "assistant",
+    paragraphs: ["이해했어요.", "6. 답변을 받은 뒤 초안은 어떤 방식으로 만들어지나요?"],
+  },
+  {
+    role: "user",
+    text: "답변을 공고 평가 관점에 맞게 정리해 한글 양식과 문항 구조에 맞춘 사업계획서 초안으로 작성해요.",
+  },
+  {
+    role: "assistant",
+    paragraphs: ["좋아요.", "7. 일반 생성형 AI나 컨설팅과 비교해 독스헌트의 강점은 무엇인가요?"],
+  },
+  {
+    role: "user",
+    text: "공고와 양식의 요구항목을 먼저 분석하고, 사업 메모리를 쌓아 다음 지원사업에도 반복해서 활용할 수 있어요.",
+  },
+  {
+    role: "assistant",
+    paragraphs: ["정리했어요.", "8. 초기 고객은 어떤 경로로 만날 계획인가요?"],
+  },
+  {
+    role: "user",
+    text: "K-Startup과 기업마당 검색 수요, SEO, SNS 광고, 창업 커뮤니티를 중심으로 예비창업자와 초기 스타트업을 만날 계획이에요.",
+  },
+  {
+    role: "assistant",
+    paragraphs: ["확인했어요.", "9. 협약기간에는 어떤 기능을 고도화할 계획인가요?"],
+  },
+  {
+    role: "user",
+    text: "기업과 아이템에 맞는 지원사업 추천, 카카오톡·이메일 알림, R&D와 조달사업 제안서 작성 기능을 확장할 거예요.",
+  },
+  {
+    role: "assistant",
+    paragraphs: ["마지막으로 확인할게요.", "10. 팀은 어떻게 구성되어 있나요?"],
+  },
+  {
+    role: "user",
+    text: "4년 동안 사업계획서와 AI 문서 자동화에 집중해온 진정성과 실행력, 역량 갖춘 팀이에요.",
+  },
+  {
+    role: "assistant",
+    paragraphs: [
+      "답변을 일반현황, 창업아이템, 문제 인식, 실현 가능성, 성장전략, 팀 구성에 반영했어요.",
+      "초안 준비도: 100%",
+      "이 정보로 예비창업패키지 문항별 초안을 작성하겠습니다.",
+    ],
   },
 ] as const;
 
@@ -685,25 +763,58 @@ type DraftActualChatPhase = {
   pendingUserIndex: number | null;
 };
 
+type DraftActualDocumentPhase = "waiting" | "generating" | "complete";
+
+const draftActualChatZoomInDelay = 460;
+const draftActualAssistantMessageDelay = 105;
+const draftActualUserTypingDelay = 70;
+const draftActualUserMessageDelay = 135;
+const draftActualDocumentGenerateDelay = 700;
+const draftActualChatZoomOutDelay = 420;
+const draftActualDocumentLoadingDuration = 2000;
+const draftActualDocumentLoopPause = 900;
+
 const initialDraftActualChatPhase: DraftActualChatPhase = {
   sentCount: 1,
-  pendingUserIndex: 1,
+  pendingUserIndex: null,
 };
 
 function DraftProofCarousel() {
   const [activeIndex, setActiveIndex] = useState(1);
   const [isTrackTransitioning, setIsTrackTransitioning] = useState(true);
+  const [isInViewport, setIsInViewport] = useState(false);
+  const [isAutoplayPaused, setIsAutoplayPaused] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const isAnimatingRef = useRef(false);
   const loopedProofCards = [draftProofCards[draftProofCards.length - 1]!, ...draftProofCards, draftProofCards[0]!];
   const visibleIndex = (activeIndex - 1 + draftProofCards.length) % draftProofCards.length;
 
-  const moveSlide = (direction: -1 | 1) => {
+  const moveSlide = useCallback((direction: -1 | 1) => {
     if (isAnimatingRef.current) return;
 
     isAnimatingRef.current = true;
     setIsTrackTransitioning(true);
     setActiveIndex((index) => Math.min(Math.max(index + direction, 0), draftProofCards.length + 1));
-  };
+  }, []);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const observer = new IntersectionObserver(([entry]) => setIsInViewport(entry?.isIntersecting ?? false), { threshold: 0.45 });
+
+    observer.observe(carousel);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (isAutoplayPaused || !isInViewport || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const timer = window.setInterval(() => moveSlide(1), draftProofAutoMs);
+    return () => window.clearInterval(timer);
+  }, [isAutoplayPaused, isInViewport, moveSlide]);
 
   const resetTrackPosition = (index: number) => {
     setIsTrackTransitioning(false);
@@ -733,7 +844,16 @@ function DraftProofCarousel() {
   };
 
   return (
-    <div className="draft-proof-carousel" aria-roledescription="carousel" aria-label="독스헌트 대표 인터뷰">
+    <div
+      ref={carouselRef}
+      className="draft-proof-carousel"
+      aria-roledescription="carousel"
+      aria-label="독스헌트 대표 인터뷰"
+      onPointerEnter={() => setIsAutoplayPaused(true)}
+      onPointerLeave={() => setIsAutoplayPaused(false)}
+      onFocusCapture={() => setIsAutoplayPaused(true)}
+      onBlurCapture={() => setIsAutoplayPaused(false)}
+    >
       <button className="draft-proof-arrow previous" type="button" aria-label="이전 인터뷰 보기" onClick={() => moveSlide(-1)}>
         <span aria-hidden="true">‹</span>
       </button>
@@ -748,7 +868,10 @@ function DraftProofCarousel() {
         >
           {loopedProofCards.map((card, index) => (
             <article className="draft-proof-card" key={`${card.image}-${index}`} aria-hidden={index !== activeIndex}>
-              <img src={card.image} alt={card.alt} />
+              <picture>
+                <source media="(max-width: 767px)" srcSet={card.mobileImage} />
+                <img src={card.image} alt={card.alt} />
+              </picture>
               <div className="draft-proof-content">
                 <div className="draft-proof-copy">
                   <h3>{card.title}</h3>
@@ -783,21 +906,42 @@ function DraftProofCarousel() {
 }
 
 function DraftMemoryDemo() {
-  const visibleChatLimit = 10;
-  const initialChatCount = 7;
-  const memoryVisibleLimit = 13;
+  const initialChatCount = 8;
+  const memoryVisibleLimit = 12;
   const memorySlideDuration = 640;
   const [visibleChatCount, setVisibleChatCount] = useState(initialChatCount);
+  const [isCompactMemoryDemo, setIsCompactMemoryDemo] = useState(false);
+  const [mobileMemoryChatCount, setMobileMemoryChatCount] = useState(8);
   const [memoryItems, setMemoryItems] = useState<Array<{ id: number; text: string }>>([]);
   const [nextMemoryItem, setNextMemoryItem] = useState<{ id: number; text: string } | null>(null);
   const [isMemoryRolling, setIsMemoryRolling] = useState(false);
   const [isMemoryResetting, setIsMemoryResetting] = useState(false);
+  const [isMemoryTransferActive, setIsMemoryTransferActive] = useState(false);
   const memoryItemsRef = useRef<Array<{ id: number; text: string }>>([]);
   const memoryNextIndexRef = useRef(0);
   const isMemoryRollingRef = useRef(false);
+  const visibleChatLimit = isCompactMemoryDemo ? 8 : 10;
   const visibleChatStart = Math.max(0, visibleChatCount - visibleChatLimit);
-  const visibleChatMessages = draftMemoryChatMessages.slice(visibleChatStart, visibleChatCount);
+  const visibleChatMessages = isCompactMemoryDemo
+    ? draftMemoryChatMessages.slice(5, 5 + mobileMemoryChatCount)
+    : draftMemoryChatMessages.slice(visibleChatStart, visibleChatCount);
   const visibleMemoryItems = nextMemoryItem ? [...memoryItems, nextMemoryItem] : memoryItems;
+
+  useEffect(() => {
+    const syncCompactLayout = () => {
+      const viewportWidth = window.innerWidth;
+
+      setIsCompactMemoryDemo(viewportWidth <= 767);
+      setMobileMemoryChatCount(viewportWidth >= 448 ? 12 : viewportWidth >= 440 ? 11 : viewportWidth >= 420 ? 9 : 8);
+    };
+
+    syncCompactLayout();
+    window.addEventListener("resize", syncCompactLayout);
+
+    return () => {
+      window.removeEventListener("resize", syncCompactLayout);
+    };
+  }, []);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -810,11 +954,16 @@ function DraftMemoryDemo() {
   useEffect(() => {
     let memoryInterval: number | undefined;
     let rollTimeout: number | undefined;
+    let transferTimeout: number | undefined;
     let resetAnimationFrame: number | undefined;
     let finishResetAnimationFrame: number | undefined;
 
     const addMemoryItem = () => {
       if (isMemoryRollingRef.current) return;
+
+      setIsMemoryTransferActive(true);
+      if (transferTimeout) window.clearTimeout(transferTimeout);
+      transferTimeout = window.setTimeout(() => setIsMemoryTransferActive(false), memorySlideDuration);
 
       const nextItem = {
         id: memoryNextIndexRef.current,
@@ -860,6 +1009,7 @@ function DraftMemoryDemo() {
       window.clearTimeout(firstMemoryTimer);
       if (memoryInterval) window.clearInterval(memoryInterval);
       if (rollTimeout) window.clearTimeout(rollTimeout);
+      if (transferTimeout) window.clearTimeout(transferTimeout);
       if (resetAnimationFrame) window.cancelAnimationFrame(resetAnimationFrame);
       if (finishResetAnimationFrame) window.cancelAnimationFrame(finishResetAnimationFrame);
     };
@@ -872,7 +1022,10 @@ function DraftMemoryDemo() {
     >
       <div className="draft-memory-card-copy">
         <h2 id="draft-refine-title">쓰면 쓸수록 정교해지는 AI</h2>
-        <p>사업계획서를 쓸수록 AI 메모리에 아이템과 사업 정보가 쌓이고, 다음 사업계획서에 다시 활용됩니다.</p>
+        <p>
+          사업계획서를 쓸수록 AI 메모리에 아이템과 사업 정보가 쌓이고,
+          <br className="draft-memory-mobile-break" /> 다음 사업계획서에 재활용됩니다.
+        </p>
       </div>
 
       <section className="draft-memory-chat-stage" aria-label="AI 문서 채팅에서 정보가 정리되는 예시">
@@ -913,8 +1066,9 @@ function DraftMemoryDemo() {
         </div>
       </section>
 
-      <div className="draft-memory-transfer-stream" aria-hidden="true">
+      <div className={`draft-memory-transfer-stream${isMemoryTransferActive ? " is-transferring" : ""}`} aria-hidden="true">
         <span className="stream-line" />
+        <span className="stream-transfer-pulse" />
         {draftMemoryUpdates.slice(0, 3).map((item, index) => (
           <span
             className={`stream-snippet snippet-${index + 1}`}
@@ -1287,22 +1441,49 @@ function DraftWorkflowPreview({ type }: { type: DraftWorkflowPreviewType }) {
 }
 
 function DraftFlowDemo() {
-  const [activeSource, setActiveSource] = useState<DraftFlowSourceFilter>("전체");
-  const [selectedTitle, setSelectedTitle] = useState(draftFlowPrograms[0]!.title);
-  const [isEditorOpen, setIsEditorOpen] = useState(false);
-  const [pointerCue, setPointerCue] = useState({ x: 300, y: 84, isFollowing: false });
-  const [isMotionPaused, setIsMotionPaused] = useState(false);
+  return (
+    <>
+      <div className="draft-flow-mobile-only">
+        <DraftFlowMobileDemo />
+      </div>
+      <div className="draft-flow-desktop-only">
+        <DraftFlowDesktopDemo />
+      </div>
+    </>
+  );
+}
+
+function DraftFlowMobileDemo() {
+  const [playbackCycle, setPlaybackCycle] = useState(0);
+
+  const handleDocumentPresentationComplete = useCallback(() => {
+    setPlaybackCycle((currentCycle) => currentCycle + 1);
+  }, []);
+
+  return (
+    <div className="draft-flow-demo is-mobile-flow is-editor-open">
+      <div className="draft-flow-frame">
+        <section className="draft-flow-editor-stage" aria-label="AI 채팅과 사업계획서 초안 UI" aria-hidden="true" inert>
+          <DraftActualEditorDemo key={playbackCycle} isMobileOnly onDocumentPresentationComplete={handleDocumentPresentationComplete} />
+        </section>
+      </div>
+    </div>
+  );
+}
+
+function DraftFlowDesktopDemo() {
+  const [isMotionFinished, setIsMotionFinished] = useState(false);
   const [motionStep, setMotionStep] = useState(0);
   const currentMotionStep = draftFlowMotionSequence[motionStep] ?? draftFlowMotionSequence[0]!;
   const motionPhase = currentMotionStep.phase;
-  const effectiveActiveSource = isMotionPaused ? activeSource : currentMotionStep.source;
-  const effectiveSelectedTitle = isMotionPaused ? selectedTitle : currentMotionStep.title;
-  const effectiveIsEditorOpen = isMotionPaused ? isEditorOpen : currentMotionStep.isEditorOpen;
-  const effectivePointerCue = isMotionPaused ? pointerCue : currentMotionStep.pointer;
+  const activeSource = currentMotionStep.source;
+  const selectedTitle = currentMotionStep.title;
+  const isEditorOpen = isMotionFinished || currentMotionStep.isEditorOpen;
+  const pointerCue = currentMotionStep.pointer;
 
   const filteredPrograms =
-    effectiveActiveSource === "전체" ? draftFlowPrograms : draftFlowPrograms.filter((program) => program.source === effectiveActiveSource);
-  const selectedProgram = draftFlowPrograms.find((program) => program.title === effectiveSelectedTitle) ?? draftFlowPrograms[0]!;
+    activeSource === "전체" ? draftFlowPrograms : draftFlowPrograms.filter((program) => program.source === activeSource);
+  const selectedProgram = draftFlowPrograms.find((program) => program.title === selectedTitle) ?? draftFlowPrograms[0]!;
   const selectedProgramInFilter = filteredPrograms.find((program) => program.title === selectedProgram.title);
   const visiblePrograms =
     selectedProgramInFilter && !filteredPrograms.slice(0, draftFlowVisibleRows).some((program) => program.title === selectedProgram.title)
@@ -1314,13 +1495,21 @@ function DraftFlowDemo() {
   const emptyProgramRows = Array.from({ length: Math.max(draftFlowVisibleRows - visiblePrograms.length, 0) }, (_, index) => index);
   const selectedDocumentTitle = toBusinessPlanTitle(selectedProgram.title);
   const pointerCueStyle = {
-    "--cursor-x": `${effectivePointerCue.x}px`,
-    "--cursor-y": `${effectivePointerCue.y}px`,
+    "--cursor-x": `${pointerCue.x}px`,
+    "--cursor-y": `${pointerCue.y}px`,
   } as CSSProperties;
-  const motionClassName = isMotionPaused ? " is-motion-paused motion-manual" : ` is-motion-playing motion-${motionPhase}`;
+  const motionClassName = ` is-motion-playing motion-${isMotionFinished ? "editor" : motionPhase}${isMotionFinished ? " is-motion-finished" : ""}`;
+  const handleDocumentComplete = useCallback(() => {
+    setIsMotionFinished(true);
+  }, []);
+
+  const handleDocumentPresentationComplete = useCallback(() => {
+    setIsMotionFinished(false);
+    setMotionStep(0);
+  }, []);
 
   useEffect(() => {
-    if (isMotionPaused) return;
+    if (isMotionFinished) return;
 
     const step = draftFlowMotionSequence[motionStep] ?? draftFlowMotionSequence[0]!;
 
@@ -1329,91 +1518,21 @@ function DraftFlowDemo() {
     }, step.duration);
 
     return () => window.clearTimeout(timeoutId);
-  }, [isMotionPaused, motionStep]);
-
-  const pauseAutoMotion = (event?: PointerEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>) => {
-    if (
-      event?.target instanceof Element &&
-      event.target.closest(".draft-flow-editor-actions button, .draft-flow-template-row, .draft-flow-template-toolbar button")
-    ) {
-      return;
-    }
-
-    if (!isMotionPaused) {
-      setActiveSource(effectiveActiveSource);
-      setSelectedTitle(effectiveSelectedTitle);
-      setIsEditorOpen(effectiveIsEditorOpen);
-      setPointerCue(effectivePointerCue);
-    }
-
-    setIsMotionPaused(true);
-  };
-
-  const selectSource = (source: DraftFlowSourceFilter) => {
-    const nextPrograms = source === "전체" ? draftFlowPrograms : draftFlowPrograms.filter((program) => program.source === source);
-
-    setIsMotionPaused(true);
-    setActiveSource(source);
-    setIsEditorOpen(false);
-    setSelectedTitle((currentTitle) =>
-      nextPrograms.some((program) => program.title === currentTitle) ? currentTitle : (nextPrograms[0]?.title ?? currentTitle),
-    );
-  };
-
-  const openProgramEditor = (title: string) => {
-    setIsMotionPaused(true);
-    setSelectedTitle(title);
-    setPointerCue((current) => ({ ...current, isFollowing: false }));
-    setIsEditorOpen(true);
-  };
-
-  const closeProgramEditor = () => {
-    setIsMotionPaused(true);
-    setPointerCue((current) => ({ ...current, isFollowing: false }));
-    setIsEditorOpen(false);
-  };
-
-  const movePointerCue = (event: PointerEvent<HTMLDivElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-
-    setPointerCue({
-      x: event.clientX - rect.left + event.currentTarget.scrollLeft,
-      y: event.clientY - rect.top + event.currentTarget.scrollTop,
-      isFollowing: true,
-    });
-  };
+  }, [isMotionFinished, motionStep]);
 
   return (
     <div
-      className={`draft-flow-demo${effectiveIsEditorOpen ? " is-editor-open" : ""}${motionClassName}`}
+      className={`draft-flow-demo${isEditorOpen ? " is-editor-open" : ""}${motionClassName}`}
       aria-label="AI 문서 채팅과 사업계획서 초안 UI"
-      onPointerDownCapture={pauseAutoMotion}
-      onKeyDownCapture={pauseAutoMotion}
     >
-      <div className="draft-flow-editor-actions" aria-label="지원사업 목록 이동">
-        <button
-          className={!effectiveIsEditorOpen ? "is-active" : ""}
-          type="button"
-          onClick={closeProgramEditor}
-          aria-label="지원사업 목록으로 돌아가기"
-          aria-pressed={!effectiveIsEditorOpen}
-        >
-          1
-        </button>
-        <button
-          className={effectiveIsEditorOpen ? "is-active" : ""}
-          type="button"
-          onClick={() => openProgramEditor(selectedProgram.title)}
-          aria-label="채팅과 문서 뷰어 보기"
-          aria-pressed={effectiveIsEditorOpen}
-        >
-          2
-        </button>
-      </div>
       <div className="draft-flow-frame">
-        {effectiveIsEditorOpen ? (
+        {isEditorOpen ? (
           <section className="draft-flow-editor-stage" aria-label={`${selectedDocumentTitle} AI 채팅과 문서 뷰어`}>
-            <DraftActualEditorDemo isMotionChatZoom={!isMotionPaused && motionPhase === "chatZoom"} />
+            <DraftActualEditorDemo
+              isMotionChatZoom={draftFlowEnableChatFocusZoom && !isMotionFinished && motionPhase === "chatZoom"}
+              onDocumentComplete={handleDocumentComplete}
+              onDocumentPresentationComplete={handleDocumentPresentationComplete}
+            />
           </section>
         ) : (
           <section className="draft-flow-template-page" aria-labelledby="draft-flow-template-title">
@@ -1431,11 +1550,11 @@ function DraftFlowDemo() {
                   <div className="draft-flow-template-filter-bar" aria-label="지원사업 필터">
                     {draftFlowSourceFilters.map((source) => (
                       <button
-                        className={effectiveActiveSource === source ? "is-active" : ""}
+                        className={activeSource === source ? "is-active" : ""}
                         type="button"
                         key={source}
-                        aria-pressed={effectiveActiveSource === source}
-                        onClick={() => selectSource(source)}
+                        aria-pressed={activeSource === source}
+                        tabIndex={-1}
                       >
                         {source}
                       </button>
@@ -1444,15 +1563,9 @@ function DraftFlowDemo() {
                 </div>
               </div>
 
-              <div
-                className="draft-flow-template-table"
-                role="table"
-                aria-label="지원사업 목록"
-                onPointerMove={movePointerCue}
-                onPointerLeave={() => setPointerCue((current) => ({ ...current, isFollowing: false }))}
-              >
+              <div className="draft-flow-template-table" role="table" aria-label="지원사업 목록">
                 <div
-                  className={`draft-flow-pointer-cue${effectivePointerCue.isFollowing ? " is-following" : ""}`}
+                  className={`draft-flow-pointer-cue${pointerCue.isFollowing ? " is-following" : ""}`}
                   style={pointerCueStyle}
                   aria-hidden="true"
                 >
@@ -1475,9 +1588,7 @@ function DraftFlowDemo() {
                     key={program.title}
                     aria-label={`${program.title} 선택 후 사업계획서 작성 화면 열기`}
                     aria-pressed={program.title === selectedProgram.title}
-                    onClick={() => openProgramEditor(program.title)}
-                    onFocus={() => setSelectedTitle(program.title)}
-                    onPointerEnter={() => setSelectedTitle(program.title)}
+                    tabIndex={-1}
                   >
                     <strong>
                       <small>{program.source}</small>
@@ -1522,22 +1633,58 @@ function DraftFlowDemo() {
   );
 }
 
-function DraftActualEditorDemo({ isMotionChatZoom = false }: { isMotionChatZoom?: boolean }) {
+function DraftActualEditorDemo({
+  isMotionChatZoom = false,
+  isMobileOnly = false,
+  onDocumentComplete,
+  onDocumentPresentationComplete,
+}: {
+  isMotionChatZoom?: boolean;
+  isMobileOnly?: boolean;
+  onDocumentComplete?: () => void;
+  onDocumentPresentationComplete?: () => void;
+}) {
   const [chatPhase, setChatPhase] = useState<DraftActualChatPhase>(initialDraftActualChatPhase);
+  const [isChatPlaybackReady, setIsChatPlaybackReady] = useState(false);
+  const hasSeenChatZoomRef = useRef(false);
+  const [isDocumentGenerating, setIsDocumentGenerating] = useState(false);
+  const [isDocumentComplete, setIsDocumentComplete] = useState(false);
   const chatScrollRef = useRef<HTMLDivElement>(null);
+  const mobileChatScrollRef = useRef<HTMLDivElement>(null);
+
+  const handleDocumentPresentationComplete = useCallback(() => {
+    onDocumentPresentationComplete?.();
+  }, [onDocumentPresentationComplete]);
 
   useEffect(() => {
-    const delay = isMotionChatZoom
-      ? chatPhase.pendingUserIndex !== null
-        ? 460
-        : chatPhase.sentCount >= draftActualAutoChatMessages.length
-          ? 1400
-          : 520
-      : chatPhase.pendingUserIndex !== null
-        ? 1450
-        : chatPhase.sentCount >= draftActualAutoChatMessages.length
-          ? 2300
-          : 1050;
+    if (isMotionChatZoom) {
+      hasSeenChatZoomRef.current = true;
+    }
+  }, [isMotionChatZoom]);
+
+  useEffect(() => {
+    if (isChatPlaybackReady) return;
+
+    const timeoutId = window.setTimeout(
+      () => {
+        setIsChatPlaybackReady(true);
+      },
+      isMotionChatZoom ? draftActualChatZoomInDelay : 0,
+    );
+
+    return () => window.clearTimeout(timeoutId);
+  }, [isChatPlaybackReady, isMotionChatZoom]);
+
+  useEffect(() => {
+    if (!isChatPlaybackReady || chatPhase.sentCount >= draftActualAutoChatMessages.length) return;
+
+    const nextMessage = draftActualAutoChatMessages[chatPhase.sentCount];
+    const delay =
+      chatPhase.pendingUserIndex !== null
+        ? draftActualUserMessageDelay
+        : nextMessage?.role === "user"
+          ? draftActualUserTypingDelay
+          : draftActualAssistantMessageDelay;
 
     const timeoutId = window.setTimeout(() => {
       setChatPhase((phase) => {
@@ -1569,69 +1716,93 @@ function DraftActualEditorDemo({ isMotionChatZoom = false }: { isMotionChatZoom?
     }, delay);
 
     return () => window.clearTimeout(timeoutId);
-  }, [chatPhase.pendingUserIndex, chatPhase.sentCount, isMotionChatZoom]);
+  }, [chatPhase.pendingUserIndex, chatPhase.sentCount, isChatPlaybackReady]);
 
-  useEffect(() => {
-    const chatScroll = chatScrollRef.current;
-    if (!chatScroll) return;
-
-    const frameId = window.requestAnimationFrame(() => {
-      chatScroll.scrollTo({
-        top: chatScroll.scrollHeight,
-        behavior: "smooth",
+  useLayoutEffect(() => {
+    const scrollToLatestMessage = () => {
+      [chatScrollRef.current, mobileChatScrollRef.current].forEach((chatScroll) => {
+        if (chatScroll) {
+          chatScroll.scrollTo({
+            top: Math.max(chatScroll.scrollHeight - chatScroll.clientHeight, 0),
+            behavior: "smooth",
+          });
+        }
       });
+    };
+
+    let settleFrameId: number | undefined;
+    const frameId = window.requestAnimationFrame(() => {
+      scrollToLatestMessage();
+      settleFrameId = window.requestAnimationFrame(scrollToLatestMessage);
     });
 
-    return () => window.cancelAnimationFrame(frameId);
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      if (settleFrameId !== undefined) {
+        window.cancelAnimationFrame(settleFrameId);
+      }
+    };
   }, [chatPhase.sentCount]);
+
+  const isFinalChatMessageVisible = chatPhase.sentCount >= draftActualAutoChatMessages.length;
+  const documentPhase: DraftActualDocumentPhase = isDocumentComplete ? "complete" : isDocumentGenerating ? "generating" : "waiting";
+
+  useEffect(() => {
+    if (!isFinalChatMessageVisible || isMotionChatZoom || isDocumentGenerating || isDocumentComplete) return;
+
+    const timeoutId = window.setTimeout(
+      () => {
+        setIsDocumentGenerating(true);
+      },
+      hasSeenChatZoomRef.current ? draftActualChatZoomOutDelay : draftActualDocumentGenerateDelay,
+    );
+
+    return () => window.clearTimeout(timeoutId);
+  }, [isDocumentComplete, isDocumentGenerating, isFinalChatMessageVisible, isMotionChatZoom]);
+
+  useEffect(() => {
+    if (!isDocumentGenerating || isDocumentComplete) return;
+
+    const timeoutId = window.setTimeout(() => {
+      setIsDocumentComplete(true);
+      onDocumentComplete?.();
+    }, draftActualDocumentLoadingDuration);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [isDocumentComplete, isDocumentGenerating, onDocumentComplete]);
 
   return (
     <div
       className={`draft-actual-editor-demo${isMotionChatZoom ? " is-chat-motion-focus" : ""}`}
       aria-label="독스헌트 실제 AI 문서 채팅과 사업계획서 뷰어 UI"
     >
-      <div className="draft-actual-mobile-demo" aria-hidden="true">
-        <section className="draft-actual-mobile-chat">
-          <header className="draft-actual-mobile-chat-head">
-            <span>AI 문서 채팅</span>
-            <strong>2026년 예비창업패키지</strong>
-          </header>
-          <div className="draft-actual-mobile-chat-body">
-            {draftActualAutoChatMessages.slice(0, chatPhase.sentCount).map((message, index) => (
-              <div className={`draft-actual-mobile-bubble is-${message.role}`} key={`mobile-${message.role}-${index}`}>
-                {message.role === "user" ? message.text : message.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="draft-actual-mobile-document">
-          <header>
-            <span>2026년 예비창업패키지</span>
-            <div aria-hidden="true">
-              <i />
-              <i />
-              <i />
+      <div className={`draft-actual-mobile-demo is-${documentPhase}`} aria-hidden={isMobileOnly ? undefined : true}>
+        {documentPhase === "waiting" ? (
+          <section className="draft-actual-chat" aria-label="AI 문서 채팅">
+            <div className="draft-actual-chat-scroll" ref={mobileChatScrollRef}>
+              {draftActualAutoChatMessages.slice(0, chatPhase.sentCount).map((message, index) => (
+                <div className={`draft-actual-${message.role}-message`} key={`mobile-${message.role}-${index}`}>
+                  {message.role === "user" ? (
+                    <div className="draft-actual-user-message-content">{message.text}</div>
+                  ) : (
+                    <div className="draft-actual-assistant-message-content">
+                      {message.paragraphs.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
-          </header>
-          <article>
-            <strong>초안 완성</strong>
-            <h3>2026년 예비창업패키지 사업계획서 초안</h3>
-            <p>주식회사 사페레아우데는 AI 기반 전략 문서 자동화 플랫폼 독스헌트를 운영합니다.</p>
-            <dl>
-              <div>
-                <dt>기업명</dt>
-                <dd>주식회사 사페레아우데</dd>
-              </div>
-              <div>
-                <dt>주요 제품</dt>
-                <dd>독스헌트AI</dd>
-              </div>
-            </dl>
-            <h4>1. 문제 인식</h4>
-            <p>지원사업 신청서와 사업계획서를 작성할 때 양식 해석과 반복 서술에 많은 시간이 소요됩니다.</p>
-          </article>
-        </section>
+          </section>
+        ) : (
+          <section className="draft-actual-document" aria-label="사업계획서 문서 미리보기">
+            <DraftActualDocumentViewer
+              phase={documentPhase}
+              {...(isMobileOnly ? { onAutoScrollComplete: handleDocumentPresentationComplete } : {})}
+            />
+          </section>
+        )}
       </div>
 
       <div className="draft-actual-main">
@@ -1656,16 +1827,117 @@ function DraftActualEditorDemo({ isMotionChatZoom = false }: { isMotionChatZoom?
         <div className="draft-actual-resize-handle" aria-hidden="true" />
 
         <section className="draft-actual-document" aria-label="사업계획서 문서 미리보기">
-          <div className="draft-actual-document-content">
-            <div className="draft-actual-page-stack" aria-label="사업계획서 양식 페이지 목록">
-              {draftActualDocumentPages.map((page, index) => (
-                <article className="draft-actual-paper" aria-label={`사업계획서 양식 ${index + 1}페이지`} key={page.src}>
-                  <img src={page.src} alt={page.alt} loading={index === 0 ? "eager" : "lazy"} />
-                </article>
-              ))}
-            </div>
-          </div>
+          <DraftActualDocumentViewer
+            phase={documentPhase}
+            {...(!isMobileOnly ? { onAutoScrollComplete: handleDocumentPresentationComplete } : {})}
+          />
         </section>
+      </div>
+    </div>
+  );
+}
+
+function DraftActualDocumentViewer({
+  phase,
+  compact = false,
+  onAutoScrollComplete,
+}: {
+  phase: DraftActualDocumentPhase;
+  compact?: boolean;
+  onAutoScrollComplete?: () => void;
+}) {
+  const documentScrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const documentScroll = documentScrollRef.current;
+
+    if (phase !== "complete" || !documentScroll) return;
+
+    let animationFrameId = 0;
+    let completionTimeoutId: number | undefined;
+    let startTime = 0;
+    let hasUserTakenOver = false;
+    let removeInteractionListeners = () => {};
+
+    const startDelay = window.setTimeout(() => {
+      const maximumScroll = documentScroll.scrollHeight - documentScroll.clientHeight;
+
+      if (maximumScroll <= 0) return;
+
+      documentScroll.scrollTop = 0;
+
+      const duration = Math.min(16000, Math.max(9000, maximumScroll * 0.9));
+
+      const stopAutoScroll = () => {
+        hasUserTakenOver = true;
+        window.cancelAnimationFrame(animationFrameId);
+      };
+
+      const scrollDocument = (timestamp: number) => {
+        if (hasUserTakenOver) return;
+
+        if (!startTime) startTime = timestamp;
+
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        documentScroll.scrollTop = maximumScroll * progress;
+
+        if (progress < 1) {
+          animationFrameId = window.requestAnimationFrame(scrollDocument);
+        } else if (onAutoScrollComplete) {
+          completionTimeoutId = window.setTimeout(onAutoScrollComplete, draftActualDocumentLoopPause);
+        }
+      };
+
+      documentScroll.addEventListener("wheel", stopAutoScroll, { passive: true, once: true });
+      documentScroll.addEventListener("touchstart", stopAutoScroll, { passive: true, once: true });
+      documentScroll.addEventListener("pointerdown", stopAutoScroll, { passive: true, once: true });
+      documentScroll.addEventListener("keydown", stopAutoScroll, { once: true });
+      removeInteractionListeners = () => {
+        documentScroll.removeEventListener("wheel", stopAutoScroll);
+        documentScroll.removeEventListener("touchstart", stopAutoScroll);
+        documentScroll.removeEventListener("pointerdown", stopAutoScroll);
+        documentScroll.removeEventListener("keydown", stopAutoScroll);
+      };
+      animationFrameId = window.requestAnimationFrame(scrollDocument);
+    }, 700);
+
+    return () => {
+      window.clearTimeout(startDelay);
+      if (completionTimeoutId !== undefined) {
+        window.clearTimeout(completionTimeoutId);
+      }
+      window.cancelAnimationFrame(animationFrameId);
+      removeInteractionListeners();
+    };
+  }, [onAutoScrollComplete, phase]);
+
+  if (phase === "generating") {
+    return (
+      <div className={`draft-actual-document-status is-generating${compact ? " is-compact" : ""}`}>
+        <div className="draft-actual-document-status-card">
+          <span className="draft-actual-document-spinner" aria-hidden="true" />
+          <strong>문항별 초안을 작성하고 있어요</strong>
+          <p>공고 양식에 맞춰 사업계획서를 구성하는 중입니다.</p>
+        </div>
+      </div>
+    );
+  }
+
+  const pages = phase === "complete" ? draftActualDocumentPages : draftActualTemplateDocumentPages;
+  const pageLabel = phase === "complete" ? "사업계획서" : "예비창업패키지 양식";
+
+  return (
+    <div className="draft-actual-document-content" ref={documentScrollRef} tabIndex={0}>
+      <div className="draft-actual-page-stack" aria-label={`${pageLabel} 페이지 목록`}>
+        {pages.map((page, index) => (
+          <article className="draft-actual-paper" aria-label={`${pageLabel} ${index + 1}페이지`} key={page.src}>
+            <img src={page.src} alt={page.alt} loading="eager" />
+            <span className="draft-actual-paper-page" aria-hidden="true">
+              {index + 1} / {pages.length}
+            </span>
+          </article>
+        ))}
       </div>
     </div>
   );
@@ -2037,6 +2309,9 @@ function HeroWorkflowPreview({
                 매번 처음부터 써야 할 때예요.
               </span>
             </div>
+            <div className="hero-ai-message hero-ai-message-assistant hero-ai-stream-question hero-ai-stream-final">
+              <p>좋아요. 말씀해주신 내용을 바탕으로 사업계획서를 작성할게요.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -2325,7 +2600,11 @@ function DraftLandingMain({ onStart }: { onStart: StartHandler }) {
       <section className="hero" aria-labelledby="draft-hero-title">
         <div className="hero-copy">
           <h1 className="hero-title" id="draft-hero-title">
-            모든 지원사업, 사업계획서를 작성하는 AI
+            <span className="draft-hero-title-desktop">모든 지원사업, 사업계획서를 작성하는 AI</span>
+            <span className="draft-hero-title-mobile">
+              <span>모든 지원사업</span>
+              <span>사업계획서를 작성하는 AI</span>
+            </span>
           </h1>
           <p className="hero-subtitle">쓰면 쓸수록 더 잘 써주는 독스헌트, 지금 바로 만나보세요</p>
           <a className="cta-button" href={startPath} onClick={onStart}>
@@ -2347,7 +2626,7 @@ function DraftLandingMain({ onStart }: { onStart: StartHandler }) {
         <figure className="draft-program-visual">
           <img
             className="draft-program-visual-image"
-            src={`${assets}/draft-landing-program-selection.webp`}
+            src={`${assets}/draft-landing-program-selection-background.webp`}
             alt="지원사업 공고를 확인하는 대표"
             width="2644"
             height="1184"
@@ -2372,10 +2651,16 @@ function DraftLandingMain({ onStart }: { onStart: StartHandler }) {
             똑똑한 대표들은 이미 독스헌트로
             <br />더 빠르게 결과를 내고 있습니다
           </h2>
-          <p>
-            독스헌트로 첫 지원사업에 합격한 대표부터, 독스헌트로 하루에 사업계획서 5개를
-            <br />
-            작성하는 대표까지, 직접 사용해보며 그 진가를 확인해 보세요.
+          <p className="draft-proof-intro">
+            <span className="draft-proof-intro-desktop">
+              하루에 사업계획서 5개를 작성하는 대표부터, 첫 지원사업에 합격한 대표까지
+              <br />
+              직접 사용해보며 그 진가를 확인해 보세요.
+            </span>
+            <span className="draft-proof-intro-mobile">
+              <span>하루에 사업계획서 5개를 작성하는 대표부터, 첫 지원사업에 합격한 대표까지</span>
+              <span>직접 사용해보며 그 진가를 확인해 보세요.</span>
+            </span>
           </p>
         </div>
         <DraftProofCarousel />
@@ -2408,8 +2693,14 @@ function DraftLandingMain({ onStart }: { onStart: StartHandler }) {
       </section>
 
       <section className="security-section draft-security-lite" aria-label="보안 안내">
-        <h2 className="draft-security-title">사업계획서는 오직 사용자만의 것입니다</h2>
-        <img className="security-image" src={`${assets}/trust-security-desktop.png`} alt="보안 잠금 이미지" />
+        <h2 className="draft-security-title">
+          사업계획서는
+          <span className="mobile-break">
+            <br />
+          </span>{" "}
+          오직 사용자만의 것입니다
+        </h2>
+        <img className="security-image" src={`${assets}/trust-security-desktop.webp`} alt="보안 잠금 이미지" />
         <p className="security-copy">
           <span className="desktop-only">
             사업계획서 생성 과정에서의 모든 입출력 데이터는, 전송 및 저장 시 암호화되어 안전하게 보호됩니다.
@@ -2417,17 +2708,27 @@ function DraftLandingMain({ onStart }: { onStart: StartHandler }) {
             외부 유출 및 AI 모델 학습에 절대 이용되지 않습니다.
           </span>
           <span className="mobile-only">
-            입력하신 모든 데이터는 전송 및 저장 시 암호화되어 안전하게 보호됩니다. 외부 유출 및 AI 모델 학습에 절대 이용되지 않습니다.
+            입력하신 모든 데이터는 전송 및 저장 시 암호화되어 안전하게
+            <br />
+            보호됩니다. 외부 유출 및 AI 모델 학습에 절대 이용되지 않습니다.
           </span>
         </p>
       </section>
 
       <section className="draft-final-cta" aria-labelledby="draft-final-title">
         <h2 id="draft-final-title">
-          <span className="draft-final-title-gradient">사업계획서에 쓰던 시간</span>,<br />
-          이제 사업에 쓰세요
+          <span className="draft-final-title-gradient">
+            작성 시간은 1/10로
+            <br />
+            자금 확보 기회는 10배로
+          </span>
         </h2>
-        <p>독스헌트와 함께 지원사업을 쉽고 빠르게</p>
+        <p>
+          “낚싯대를 1개 드리우는 것과 100개 드리우는 것의 확률은 다릅니다.
+          <br />
+          독스헌트를 활용해서 지원사업을 최대한 많이 신청하는 게 최고의 전략입니다.”
+          <span className="final-quote-author">박중현, 스피노자 대표</span>
+        </p>
         <a className="draft-cta dark" href={startPath} onClick={onStart}>
           무료로 시작하기
         </a>
@@ -2448,7 +2749,10 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
   const logoTapTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 1080);
+    const onScroll = () => {
+      const threshold = window.matchMedia("(max-width: 767px)").matches ? 780 : 1080;
+      setScrolled(window.scrollY > threshold);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -2639,7 +2943,7 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
                 <a className="cta-button small" href={startPath} onClick={handleStart}>
                   무료 체험하기
                 </a>
-                <img className="feature-card-image" src={`${assets}/feature-question-answer-mobile.png`} alt="" />
+                <img className="feature-card-image" src={`${assets}/feature-question-answer-mobile.webp`} alt="" />
               </article>
               <article className="wide-card two">
                 <h3>
@@ -2656,7 +2960,7 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
                 <a className="cta-button small" href={startPath} onClick={handleStart}>
                   무료 체험하기
                 </a>
-                <img className="feature-card-image" src={`${assets}/feature-hwp-template-mobile.png`} alt="" />
+                <img className="feature-card-image" src={`${assets}/feature-hwp-template-mobile.webp`} alt="" />
               </article>
             </div>
           </section>
@@ -2743,7 +3047,7 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
               <img src={`${assets}/hero-ownership-headline-prefix.svg`} alt="사업계획서는" />
               <img src={`${assets}/hero-ownership-headline-suffix.svg`} alt="오직 사용자만의 것입니다" />
             </div>
-            <img className="security-image" src={`${assets}/trust-security-desktop.png`} alt="보안 잠금 이미지" />
+            <img className="security-image" src={`${assets}/trust-security-desktop.webp`} alt="보안 잠금 이미지" />
             <p className="security-copy">
               <span className="desktop-only">
                 사업계획서 생성 과정에서의 모든 입출력 데이터는, 전송 및 저장 시 암호화되어 안전하게 보호됩니다.
@@ -2760,13 +3064,18 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
 
           <section className="final-cta" aria-labelledby="final-title">
             <h2 className="final-title" id="final-title">
-              사업계획서에 쓰던 시간,
-              <span className="mobile-break">
+              <span className="draft-final-title-gradient">
+                작성 시간은 1/10로
                 <br />
-              </span>{" "}
-              이제 사업에 쓰세요
+                자금 확보 기회는 10배로
+              </span>
             </h2>
-            <p className="final-subtitle">독스헌트와 함께 지원사업을 쉽고 빠르게</p>
+            <p className="final-subtitle">
+              “낚싯대를 1개 드리우는 것과 100개 드리우는 것의 확률은 다릅니다.
+              <br />
+              독스헌트를 활용해서 지원사업을 최대한 많이 신청하는 게 최고의 전략입니다.”
+              <span className="final-quote-author">박중현, 스피노자 대표</span>
+            </p>
             <a className="cta-button dark" href={startPath} onClick={handleStart}>
               무료로 시작하기
             </a>
@@ -2792,7 +3101,7 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
         </div>
         <div className="footer-bottom">
           <a className="instagram" href="https://www.instagram.com/docshunt_official/" target="_blank" rel="noreferrer">
-            <img src={`${assets}/instagram-icon.png`} alt="" />
+            <img src={`${assets}/instagram-icon.webp`} alt="" />
             <span>docshunt_official</span>
           </a>
           <div className="legal-links">
