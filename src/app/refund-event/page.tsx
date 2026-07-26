@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { AccessibleMobileMenu } from "@/components/accessible-mobile-menu";
 import { JsonLd } from "@/components/json-ld";
 import { REFUND_EVENT_DESCRIPTION, REFUND_EVENT_TITLE, buildPageMetadata, webPageJsonLd } from "@/seo/metadata";
 
@@ -145,10 +146,7 @@ export default function RefundEventPage() {
         <a className="refund-event-nav-cta" href={appUrl}>
           무료로 시작하기
         </a>
-        <details className="refund-event-mobile-menu">
-          <summary aria-label="메뉴 열기">
-            <span />
-          </summary>
+        <AccessibleMobileMenu className="refund-event-mobile-menu">
           <div>
             {siteNavLinks.map((link) => (
               <Link href={link.href} key={link.href}>
@@ -156,7 +154,7 @@ export default function RefundEventPage() {
               </Link>
             ))}
           </div>
-        </details>
+        </AccessibleMobileMenu>
       </nav>
 
       <section className="refund-hero" id="refund-package" aria-labelledby="refund-hero-title">

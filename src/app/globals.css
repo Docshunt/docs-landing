@@ -15,8 +15,7 @@
   font-family: "PyeojinGothic";
   font-style: normal;
   font-weight: 300;
-  src: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/f1753323377503x332717426843718300/PyeojinGothic-Light.woff2")
-    format("woff2");
+  src: url("/docshunt-assets/fonts/pyeojin-gothic-light.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -24,8 +23,7 @@
   font-family: "PyeojinGothic";
   font-style: normal;
   font-weight: 400;
-  src: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/f1753323857666x671404442325534600/PyeojinGothic-Regular.woff2")
-    format("woff2");
+  src: url("/docshunt-assets/fonts/pyeojin-gothic-regular.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -33,8 +31,7 @@
   font-family: "PyeojinGothic";
   font-style: normal;
   font-weight: 500;
-  src: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/f1753324022823x588940610947392500/PyeojinGothic-Medium.woff2")
-    format("woff2");
+  src: url("/docshunt-assets/fonts/pyeojin-gothic-medium.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -42,8 +39,7 @@
   font-family: "PyeojinGothic";
   font-style: normal;
   font-weight: 600;
-  src: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/f1753324057654x631850469589738600/PyeojinGothic-SemiBold.woff2")
-    format("woff2");
+  src: url("/docshunt-assets/fonts/pyeojin-gothic-semibold.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -51,8 +47,7 @@
   font-family: "PyeojinGothic";
   font-style: normal;
   font-weight: 700;
-  src: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/f1753324080278x555310701911267300/PyeojinGothic-Bold.woff2")
-    format("woff2");
+  src: url("/docshunt-assets/fonts/pyeojin-gothic-bold.woff2") format("woff2");
   font-display: swap;
 }
 
@@ -1542,7 +1537,7 @@ img {
   flex-direction: column;
   align-items: center;
   background-color: #000000;
-  background-image: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1536,h=,f=auto,dpr=2,fit=contain/f1777292161939x233860949699775230/Background%20Image.png");
+  background-image: url("/docshunt-assets/landing/hero-background-desktop.png");
   background-position: center;
   background-repeat: repeat-x;
   background-size: cover;
@@ -2285,11 +2280,11 @@ img {
 }
 
 .wide-card.one {
-  background-image: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=563,f=auto,dpr=1,fit=cover/f1779418714943x889154905099539300/feature%201%28new%29.jpg");
+  background-image: url("/docshunt-assets/landing/feature-question-answer-background-desktop.jpg");
 }
 
 .wide-card.two {
-  background-image: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=563,f=auto,dpr=1,fit=cover/f1777294284283x831874460261899600/feature%202.jpg");
+  background-image: url("/docshunt-assets/landing/feature-document-background-desktop.jpg");
 }
 
 .wide-card h3,
@@ -2554,7 +2549,7 @@ img {
   min-height: 545px;
   margin: 0 40px;
   border-radius: 40px;
-  background-image: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/f1776844781495x333903443501042800/%E1%84%87%E1%85%A9%E1%84%8B%E1%85%A1%E1%86%AB%20section%20background.svg");
+  background-image: url("/docshunt-assets/landing/security-section-background.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -8671,7 +8666,7 @@ img {
   margin: 0 40px;
   border-radius: 40px;
   padding: 80px 0;
-  background-image: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/f1776844781495x333903443501042800/%E1%84%87%E1%85%A9%E1%84%8B%E1%85%A1%E1%86%AB%20section%20background.svg");
+  background-image: url("/docshunt-assets/landing/security-section-background.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -9587,6 +9582,33 @@ img {
   margin-top: 22px;
 }
 
+.blog-topic-hubs {
+  margin: 56px 0;
+  border-radius: 12px;
+  padding: 24px;
+  background: #f7f8f7;
+}
+
+.blog-topic-hubs h2 {
+  margin: 0 0 12px;
+  color: #1a1a1a;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.blog-topic-hubs ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.blog-topic-hubs a {
+  color: #245fae;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .blog-recommended > h2 {
   margin: 0 0 12px;
   color: #1a1a1a;
@@ -9610,6 +9632,15 @@ img {
   height: auto;
   border-radius: 4px;
   object-fit: contain;
+}
+
+.recommended-card span {
+  display: block;
+  margin-top: 10px;
+  color: #1a1a1a;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
 }
 
 .blog-home-link {
@@ -10267,7 +10298,7 @@ img {
 
   .hero {
     min-height: calc(var(--hero-slide-height) + 394px);
-    background-image: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=512,h=,f=auto,dpr=1,fit=contain/f1777292776851x405997685151087800/Background%20Image%20%28moblie%203%29.png");
+    background-image: url("/docshunt-assets/landing/hero-background-mobile.png");
     background-size: cover;
   }
 
@@ -10427,11 +10458,11 @@ img {
   }
 
   .wide-card.one {
-    background-image: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=435,f=auto,dpr=1,fit=cover/f1776959264948x906086996308887600/feature%201%20bg%20%28mobile%29.jpg");
+    background-image: url("/docshunt-assets/landing/feature-question-answer-background-mobile.jpg");
   }
 
   .wide-card.two {
-    background-image: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=435,f=auto,dpr=1,fit=cover/f1776999417712x353488811352962600/feature%202%20bg%20%28mobile%29.jpg");
+    background-image: url("/docshunt-assets/landing/feature-document-background-mobile.jpg");
   }
 
   .wide-card h3,
@@ -10855,11 +10886,11 @@ img {
   }
 
   .wide-card.one {
-    background-image: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=435,f=auto,dpr=1,fit=cover/f1776959264948x906086996308887600/feature%201%20bg%20%28mobile%29.jpg");
+    background-image: url("/docshunt-assets/landing/feature-question-answer-background-mobile.jpg");
   }
 
   .wide-card.two {
-    background-image: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=435,f=auto,dpr=1,fit=cover/f1776999417712x353488811352962600/feature%202%20bg%20%28mobile%29.jpg");
+    background-image: url("/docshunt-assets/landing/feature-document-background-mobile.jpg");
   }
 
   .wide-card h3 {
@@ -11170,11 +11201,11 @@ img {
   }
 
   .wide-card.one {
-    background-image: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=435,f=auto,dpr=1,fit=cover/f1776959264948x906086996308887600/feature%201%20bg%20%28mobile%29.jpg");
+    background-image: url("/docshunt-assets/landing/feature-question-answer-background-mobile.jpg");
   }
 
   .wide-card.two {
-    background-image: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=435,f=auto,dpr=1,fit=cover/f1776999417712x353488811352962600/feature%202%20bg%20%28mobile%29.jpg");
+    background-image: url("/docshunt-assets/landing/feature-document-background-mobile.jpg");
   }
 
   .wide-card h3 {
@@ -11467,11 +11498,11 @@ img {
   }
 
   .wide-card.one {
-    background-image: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=435,f=auto,dpr=1,fit=cover/f1776959264948x906086996308887600/feature%201%20bg%20%28mobile%29.jpg");
+    background-image: url("/docshunt-assets/landing/feature-question-answer-background-mobile.jpg");
   }
 
   .wide-card.two {
-    background-image: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=435,f=auto,dpr=1,fit=cover/f1776999417712x353488811352962600/feature%202%20bg%20%28mobile%29.jpg");
+    background-image: url("/docshunt-assets/landing/feature-document-background-mobile.jpg");
   }
 
   .wide-card h3 {

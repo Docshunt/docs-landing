@@ -18,7 +18,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { JsonLd } from "@/components/json-ld";
 import { softwareApplicationJsonLd } from "@/seo/metadata";
 
-const cdn = "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io";
 const assets = "/docshunt-assets";
 const startPath = "https://app.docshunt.ai";
 
@@ -91,7 +90,7 @@ const draftActualTemplateDocumentPages = [
   alt: `예비창업패키지 사업계획서 양식 ${index + 1}페이지`,
 }));
 
-const questionVideo = `${cdn}/f1779716417056x278852230160279800/%E1%84%83%E1%85%A9%E1%86%A8%E1%84%89%E1%85%B3%E1%84%92%E1%85%A5%E1%86%AB%E1%84%90%E1%85%B3_%E1%84%85%E1%85%A2%E1%86%AB%E1%84%83%E1%85%B5%E1%86%BC_%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A1%E1%86%BC.mov`;
+const questionVideo = `${assets}/landing/question-answer-demo.m4v`;
 
 const interviewVideos = [
   { id: "eHCOCuoaI5M", title: "지원사업은 잘 쓰는 싸움이 아니라 많이 넣는 싸움입니다", className: "large" },
@@ -2836,7 +2835,7 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
         <Link className="logo-link" href="/" aria-label="독스헌트 홈" onClick={handleLogoClick}>
           <img
             className="logo"
-            src={scrolled ? `${cdn}/f1777294562574x255613413900380960/DocsHunt%20logo.svg` : `${assets}/docshunt-logo-white.svg`}
+            src={scrolled ? `${assets}/docshunt-logo.svg` : `${assets}/docshunt-logo-white.svg`}
             alt="DocsHunt"
             width="160"
             height="25"
@@ -2857,7 +2856,7 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
           <button
             className="menu-button"
             type="button"
-            aria-label="메뉴 열기"
+            aria-label={mobileMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
             aria-controls="mobile-menu"
             aria-expanded={mobileMenuOpen}
             onClick={(event) => {

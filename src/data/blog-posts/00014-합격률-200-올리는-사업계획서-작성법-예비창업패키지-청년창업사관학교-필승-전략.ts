@@ -9,10 +9,8 @@ export const post14 = {
   description:
     "왜 내 사업계획서는 떨어질까? AI 시대에 맞는 새로운 사업계획서 작성법이 필요합니다. 독스헌트 대표가 전하는 심사위원의 마음을 움직이는 3가지 핵심 전략! 지금 바로 읽고 예창패·청창사 합격에 도전하세요!",
   date: "2026.02.04",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1770181975014x345255420490808260/%EB%8F%85%EC%8A%A4%ED%97%8C%ED%8A%B8%20%EC%8D%B8%EB%84%A4%EC%9D%BC.png",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1770181975014x345255420490808260/%EB%8F%85%EC%8A%A4%ED%97%8C%ED%8A%B8%20%EC%8D%B8%EB%84%A4%EC%9D%BC.png",
+  image: "/docshunt-assets/blog-covers/00014-합격률-200-올리는-사업계획서-작성법-예비창업패키지-청년창업사관학교-필승-전략-list.png",
+  heroImage: "/docshunt-assets/blog-covers/00014-합격률-200-올리는-사업계획서-작성법-예비창업패키지-청년창업사관학교-필승-전략-hero.png",
   paragraphs: [
     "안녕하세요, 독스헌트(DOCSHUNT) 대표입니다. ✨",
     "예비창업패키지와 청년창업사관학교를 준비하는 대표님들의 가장 큰 고민은 역시 사업계획서 작성법일 것입니다.",

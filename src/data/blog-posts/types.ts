@@ -6,6 +6,7 @@ export type BlogPost = {
   title: string;
   description: string;
   date: string;
+  modifiedDate?: string;
   image: string;
   heroImage: string;
   paragraphs: string[];

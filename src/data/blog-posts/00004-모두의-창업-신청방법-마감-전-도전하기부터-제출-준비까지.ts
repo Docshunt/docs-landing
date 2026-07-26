@@ -8,10 +8,8 @@ export const post04 = {
   title: "모두의 창업 신청방법: 마감 전 도전하기부터 제출 준비까지",
   description: "모두의 창업 신청방법과 실제 작성 화면, 독스헌트 모두의창업 초안 만들기 활용법을 정리했습니다.",
   date: "2026.05.12",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1778552180610x245283943099469540/modoo-startup-application-method-guide-after-login.png",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1778552180610x245283943099469540/modoo-startup-application-method-guide-after-login.png",
+  image: "/docshunt-assets/blog-covers/00004-모두의-창업-신청방법-마감-전-도전하기부터-제출-준비까지-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00004-모두의-창업-신청방법-마감-전-도전하기부터-제출-준비까지-hero.jpg",
   paragraphs: [
     "모두의 창업 프로젝트는 일반적인 창업지원사업처럼 사업계획서 파일을 올리는 방식과 다르게, 공식 플랫폼에서 아이디어를 직접 작성하고 분야와 멘토 기관을 선택한 뒤 제출하는 흐름입니다.",
     "2026년 1기 신청 접수는 2026년 3월 26일 06시부터 2026년 5월 15일 16시까지입니다. 마감일 자정이 아니라 오후 4시 마감이므로, 로그인 이후 작성 화면에서 시간을 쓰기 전에 아이디어 문장을 먼저 준비해두는 편이 안전합니다.",

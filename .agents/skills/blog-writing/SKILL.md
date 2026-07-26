@@ -44,6 +44,7 @@ export const postNN = {
   title: "제목",
   description: "검색 결과와 공유 미리보기에 들어갈 설명",
   date: "2026.07.06",
+  modifiedDate: "2026.07.23",
   image: "https://...",
   heroImage: "https://...",
   paragraphs: ["본문 문단"],
@@ -63,9 +64,10 @@ Do not put new post objects directly into `src/data/docshunt-blogs.ts`; that fil
 3. Add the post import and ordered entry to `src/data/blog-posts/index.ts`.
 4. Set `sourceUrl` to `https://docshunt.ai/blog_detail/<slug>`.
 5. Ensure `title`, `description`, `date`, `image`, and `heroImage` are complete.
+   - Set optional `modifiedDate` only when the published body was actually updated.
 6. Put plain fallback copy in `paragraphs`.
 7. If rich HTML is needed, add the keyed entry to `src/data/docshunt-blog-content.ts` using the same slug.
-8. If custom recommendation images are needed, add them to `src/data/docshunt-blog-recommendations.ts`.
+8. Recommendation cards use the linked post's own title and list image.
 
 ## SEO/GEO Checklist
 
@@ -92,9 +94,12 @@ node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs
 - Keep the title concrete and search-friendly.
 - The first paragraph should state the problem clearly.
 - Use headings that match actual search intent.
+- Put a direct answer in the first two or three sentences.
+- For practical guides, include the intended reader, a checklist or table, an example, and frequently asked questions when they help the reader.
 - Include a practical next step or Docshunt CTA when appropriate.
 - Do not invent policy dates, program names, funding amounts, or eligibility rules. Verify current facts before writing time-sensitive public guidance.
 - Cite source links in body copy when referring to external programs or public notices.
+- For time-sensitive support-program posts, state the verification date, distinguish confirmed notice facts from prior-year references and Docshunt guidance, and remind readers to check the final official notice.
 
 ## QA
 

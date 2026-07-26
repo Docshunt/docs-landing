@@ -9,10 +9,8 @@ export const post12 = {
   description:
     "사업계획서 쓰다가 사업 접으시겠습니까? 2026년 지원사업 시즌, 창업자가 '서류 노동자'가 아닌 '진짜 사업'에 집중해야 하는 이유와 DocsHunt AI가 제안하는 지원사업 업무 자동화 솔루션을 확인하세요.",
   date: "2026.02.19",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1771494169602x990428164798040600/%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C%20%EC%9E%91%EC%84%B1%20%EA%B0%80%EC%9D%B4%EB%93%9C%20%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1771494169602x990428164798040600/%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C%20%EC%9E%91%EC%84%B1%20%EA%B0%80%EC%9D%B4%EB%93%9C%20%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg",
+  image: "/docshunt-assets/blog-covers/00012-사업계획서-쓰다가-사업-접으시겠습니까-지원사업이-독이-되는-3가지-결정적-이유-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00012-사업계획서-쓰다가-사업-접으시겠습니까-지원사업이-독이-되는-3가지-결정적-이유-hero.jpg",
   paragraphs: [
     "안녕하세요, DocsHunt AI입니다.",
     "지금은 바야흐로 '지원사업 시즌'입니다. 전국의 창업자들이 제품을 만들고 고객을 만나야 할 소중한 시간에 노트북 앞에 앉아 밤을 지새우고 있습니다. 하지만 배(사업 본질)보다 배꼽(지원사업 서류)이 커진 대한민국 창업판에서, 왜 사업계획서에 목맬수록 사업이 망가지는지 그 치명적인 이유와 해결책을 밝힙니다.",

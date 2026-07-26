@@ -5,7 +5,7 @@ import type { BlogPost } from "@/data/docshunt-blogs";
 export const SITE_URL = "https://docshunt.ai";
 export const APP_URL = "https://app.docshunt.ai";
 export const CHANNEL_URL = "https://docshunt.channel.io";
-export const CDN_URL = "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io";
+export const STATIC_ASSET_URL = "https://docs-landing-six.vercel.app";
 
 export const SITE_NAME = "독스헌트 | 지원사업 사업계획서 작성 AI";
 export const DEFAULT_TITLE = "작성 시간은 1/10로, 자금 확보 기회는 10배로 | 독스헌트";
@@ -14,8 +14,8 @@ export const DEFAULT_DESCRIPTION =
 export const LANDING_OG_DESCRIPTION = DEFAULT_DESCRIPTION;
 export const TWITTER_TITLE = DEFAULT_TITLE;
 export const SEO_KEYWORDS = ["사업계획서", "사업계획서 예시", "사업계획서 AI", "사업계획서 작성", "창업", "독스헌트", "정부지원사업"];
-export const OG_IMAGE = "https://docs-landing-six.vercel.app/docshunt-assets/og-new-landing.jpg";
-export const FAVICON_URL = `${CDN_URL}/f1757483516803x613112797294277800/favicon.ico`;
+export const OG_IMAGE = `${STATIC_ASSET_URL}/docshunt-assets/og-new-landing.jpg`;
+export const FAVICON_URL = "/favicon.ico";
 export const NAVER_SITE_VERIFICATION = "8b95bd75264aba5160dbc5493c948c6059c20628";
 export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-KGH2N9HZ";
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-71LW9PVQGN";
@@ -49,6 +49,7 @@ export function buildPageMetadata({
   type?: "website" | "article";
 }): Metadata {
   const url = absoluteUrl(path);
+  const absoluteImage = absoluteUrl(image);
   return {
     title,
     description,
@@ -65,7 +66,7 @@ export function buildPageMetadata({
       locale: "ko_KR",
       images: [
         {
-          url: image,
+          url: absoluteImage,
           alt: title,
         },
       ],
@@ -74,7 +75,7 @@ export function buildPageMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [image],
+      images: [absoluteImage],
     },
     verification: {
       other: {
@@ -189,7 +190,8 @@ export function blogListJsonLd(posts: BlogPost[]) {
       description: post.description,
       url: post.sourceUrl,
       datePublished: dateToIso(post.date),
-      image: post.heroImage,
+      ...(post.modifiedDate ? { dateModified: dateToIso(post.modifiedDate) } : {}),
+      image: absoluteUrl(post.heroImage),
     })),
   };
 }
@@ -202,9 +204,9 @@ export function articleJsonLd(post: BlogPost) {
     headline: post.title,
     description: post.description,
     url: post.sourceUrl,
-    image: post.heroImage,
+    image: absoluteUrl(post.heroImage),
     datePublished: dateToIso(post.date),
-    dateModified: dateToIso(post.date),
+    ...(post.modifiedDate ? { dateModified: dateToIso(post.modifiedDate) } : {}),
     inLanguage: "ko-KR",
     author: { "@id": `${SITE_URL}/#organization` },
     publisher: { "@id": `${SITE_URL}/#organization` },

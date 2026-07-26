@@ -9,10 +9,8 @@ export const post18 = {
   description:
     "출시 기념 역대급 할인 이벤트 진행 중! 예비창업패키지부터 그 외 지원사업까지, 사업계획서를 무제한으로 생성하고 수정하며 계속 도전할 수 있습니다. 독스헌트 마스터 플랜으로 2026년 한 해 동안 모든 지원사업 기회를 놓치지 말고, 지원사업 합격 시 최대 100% 환급 혜택까지 함께 확인해보세요.",
   date: "2025.12.23",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1766475261174x771508649058759600/%E3%85%87%E3%85%87%E3%85%87.jpg",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1766475261174x771508649058759600/%E3%85%87%E3%85%87%E3%85%87.jpg",
+  image: "/docshunt-assets/blog-covers/00018-2026-지원사업-마스터-플랜-사업계획서-때문에-창업-지원사업-포기하시나요-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00018-2026-지원사업-마스터-플랜-사업계획서-때문에-창업-지원사업-포기하시나요-hero.jpg",
   paragraphs: [
     "2026년 창업자를 위한 독스헌트 마스터 플랜 가이드",
     "많은 창업자들이 지원사업을 떠올리면 가장 먼저 생각하는 것이 있습니다.",

@@ -9,9 +9,9 @@ export const post17 = {
   description: "번거로운 한글 사업계획서 양식, 아직도 일일이 수정하시나요? 지금부터 독스헌트AI에 맡기고 본업에 집중하세요!",
   date: "2026.01.22",
   image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1769057384130x866985095094412700/11.jpg",
+    "/docshunt-assets/blog-covers/00017-2026-정부-지원사업-합격-전략-번거로운-한글-사업계획서-양식-아직도-일일이-수정하시나요-list.jpg",
   heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1769057384130x866985095094412700/11.jpg",
+    "/docshunt-assets/blog-covers/00017-2026-정부-지원사업-합격-전략-번거로운-한글-사업계획서-양식-아직도-일일이-수정하시나요-hero.jpg",
   paragraphs: [
     "번거로운 한글 사업계획서 양식, 아직도 일일이 수정하시나요?",
     "안녕하세요, 창업자 여러분! 새해를 맞아 각종 지원사업 공고가 쏟아지고 있습니다.",

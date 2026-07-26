@@ -9,10 +9,8 @@ export const post29 = {
   description:
     "사업계획서, 어디서부터 시작해야 할지 막막하지 않으신가요? 아이디어는 있는데 문서화 과정이 버겁고 시간만 잡아먹는 경우가 많습니다. 독스헌트는 최소한의 입력으로 구조화된 사업계획서를 3분 만에 완성해, 창업자와 대표님의 고민을 덜어드립니다. 실제 후기와 함께 사업계획서 AI 추천 이유를 지금 확인해보세요.",
   date: "2025.09.17",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1758083254364x791993966549877900/%E1%84%83%E1%85%A9%E1%86%A8%E1%84%89%E1%85%B3%E1%84%92%E1%85%A5%E1%86%AB%E1%84%90%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1758083254364x791993966549877900/%E1%84%83%E1%85%A9%E1%86%A8%E1%84%89%E1%85%B3%E1%84%92%E1%85%A5%E1%86%AB%E1%84%90%E1%85%B3%20%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF.jpg",
+  image: "/docshunt-assets/blog-covers/00029-독스헌트-후기-사업계획서-AI-독스헌트-얼마나-도움이-될까-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00029-독스헌트-후기-사업계획서-AI-독스헌트-얼마나-도움이-될까-hero.jpg",
   paragraphs: [
     "사업계획서 AI 독스헌트 추천",
     "진짜 도움이 될까? 도움이 됩니다!",

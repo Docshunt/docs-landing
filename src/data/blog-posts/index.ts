@@ -33,7 +33,7 @@ import { post32 } from "./00032-2026-지원사업-사업계획서-목차-작성-
 
 import type { BlogPost } from "./types";
 
-export const BLOG_POSTS = [
+export const BLOG_POSTS: BlogPost[] = [
   post01,
   post02,
   post03,
@@ -66,6 +66,6 @@ export const BLOG_POSTS = [
   post30,
   post31,
   post32,
-] satisfies BlogPost[];
+];
 
 export const BLOG_PAGE_COUNT = new Set(BLOG_POSTS.map((post) => post.page)).size;

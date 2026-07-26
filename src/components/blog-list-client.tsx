@@ -26,7 +26,7 @@ export function BlogListClient() {
               <p>{post.description}</p>
               <time>{post.date}</time>
             </article>
-            <img className="blog-list-thumb" src={post.image} alt="" loading="lazy" />
+            <img className="blog-list-thumb" src={post.image} alt={`${post.title} 대표 이미지`} loading="lazy" />
           </Link>
         ))}
       </div>

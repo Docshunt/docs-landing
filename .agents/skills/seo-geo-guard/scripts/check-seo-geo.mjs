@@ -111,6 +111,22 @@ if (exists("src/data/blog-posts/index.ts") && exists("src/app/sitemap-blog_detai
   warnings.push("Legacy single-file blog data detected; prefer one post file per entry under src/data/blog-posts/.");
 }
 
+const bubbleRuntimeReferences = walk("src").filter((file) => read(file).includes("bubble.io"));
+for (const file of bubbleRuntimeReferences) {
+  errors.push(`Bubble runtime dependency detected in ${file}; use a local public asset instead.`);
+}
+
+for (const file of walk("src/data/blog-posts").filter((entry) => /^\d{5}-.+\.ts$/.test(path.basename(entry)))) {
+  const source = read(file);
+  for (const [, field, assetPath] of source.matchAll(/\b(image|heroImage):\s*"([^"]+)"/g)) {
+    if (!assetPath.startsWith("/docshunt-assets/")) {
+      errors.push(`${file} ${field} must use a local /docshunt-assets/ path.`);
+    } else if (!exists(path.join("public", assetPath))) {
+      errors.push(`${file} ${field} points to missing asset ${assetPath}.`);
+    }
+  }
+}
+
 console.log("SEO/GEO guard route inventory:");
 for (const route of routes) console.log(`- ${route}`);
 

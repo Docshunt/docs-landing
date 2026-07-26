@@ -9,10 +9,8 @@ export const post09 = {
   description:
     "사업계획서 양식을 받았지만 어디서부터 써야 할지 막막하다면, 목차별 작성법과 예시, 정부지원사업 사업계획서에서 심사위원이 보는 기준을 먼저 확인하세요.",
   date: "2026.04.30",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1777511330781x284624838421415840/business-plan-template-outline-guide.png",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1777511330781x284624838421415840/business-plan-template-outline-guide.png",
+  image: "/docshunt-assets/blog-covers/00009-사업계획서-양식-작성법-목차-예시-정부지원사업-기준-정리-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00009-사업계획서-양식-작성법-목차-예시-정부지원사업-기준-정리-hero.jpg",
   paragraphs: [
     "사업계획서 양식을 다운로드했는데, 막상 열어보면 손이 멈추는 경우가 많습니다.",
     "문제는 양식이 부족해서가 아닙니다. 각 항목이 무엇을 묻는지 해석하지 못한 상태에서 빈칸부터 채우려고 하기 때문입니다.",

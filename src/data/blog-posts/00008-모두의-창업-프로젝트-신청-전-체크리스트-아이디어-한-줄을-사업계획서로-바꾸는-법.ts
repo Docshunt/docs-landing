@@ -9,10 +9,8 @@ export const post08 = {
   description:
     "모두의 창업 프로젝트 신청을 앞두고 일정, 지원 대상, 준비할 문장을 한 번에 점검합니다. 아이디어를 고객 문제와 실행 계획으로 정리하는 방법까지 담았습니다.",
   date: "2026.05.04",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1777872631325x542194851120793900/modoo-startup-project-business-plan-guide.png",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1777872631325x542194851120793900/modoo-startup-project-business-plan-guide.png",
+  image: "/docshunt-assets/blog-covers/00008-모두의-창업-프로젝트-신청-전-체크리스트-아이디어-한-줄을-사업계획서로-바꾸는-법-list.png",
+  heroImage: "/docshunt-assets/blog-covers/00008-모두의-창업-프로젝트-신청-전-체크리스트-아이디어-한-줄을-사업계획서로-바꾸는-법-hero.png",
   paragraphs: [
     "모두의 창업 프로젝트를 검색하는 사람이 빠르게 늘고 있습니다.",
     "중소벤처기업부 공고 기준으로 2026년 1차 신청은 2026년 3월 26일부터 5월 15일 16시까지입니다. 2026년 5월 1일 보도 기준으로는 신청자가 2만명을 넘어섰고, 5천명 선발을 앞두고 경쟁도 빠르게 올라가고 있습니다.",

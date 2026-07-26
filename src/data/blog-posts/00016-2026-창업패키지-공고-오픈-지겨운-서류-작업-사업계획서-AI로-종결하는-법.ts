@@ -9,10 +9,8 @@ export const post16 = {
   description:
     "2026 초기창업패키지·창업도약패키지 공고 오픈! 반복되는 서류 작성에 지치셨나요? 사업계획서 AI 독스헌트로 지겨운 양식 채우기를 10분 만에 끝내세요. 기존 서류를 최신 양식에 맞춰 자동 변환하고 사업의 본질에 집중하여 합격률을 높이는 스마트한 사업계획서 쓰는 법을 공개합니다.",
   date: "2026.01.26",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1769404542648x240475951842009000/%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C%20%EC%9E%91%EC%84%B1%20%EA%B0%80%EC%9D%B4%EB%93%9C%20%EC%8D%B8%EB%84%A4%EC%9D%BCddddd.png",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1769404542648x240475951842009000/%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C%20%EC%9E%91%EC%84%B1%20%EA%B0%80%EC%9D%B4%EB%93%9C%20%EC%8D%B8%EB%84%A4%EC%9D%BCddddd.png",
+  image: "/docshunt-assets/blog-covers/00016-2026-창업패키지-공고-오픈-지겨운-서류-작업-사업계획서-AI로-종결하는-법-list.png",
+  heroImage: "/docshunt-assets/blog-covers/00016-2026-창업패키지-공고-오픈-지겨운-서류-작업-사업계획서-AI로-종결하는-법-hero.png",
   paragraphs: [
     "2026년도 초기창업패키지 & 창업도약패키지 모집이 드디어 시작되었습니다! 📢",
     "바로 어제까지도 다른 지원사업 서류 작성하시느라 고생 많으셨죠? 그런데 아쉽게도 이제부터 다시 작성하셔야 합니다.",

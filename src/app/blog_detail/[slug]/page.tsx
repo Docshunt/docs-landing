@@ -5,9 +5,8 @@ import { notFound } from "next/navigation";
 import { BlogHeader, DocshuntFooter } from "@/components/docshunt-blog-shell";
 import { JsonLd } from "@/components/json-ld";
 import { BLOG_CONTENT_HTML } from "@/data/docshunt-blog-content";
-import { BLOG_RECOMMENDATION_IMAGES } from "@/data/docshunt-blog-recommendations";
-import { BLOG_POSTS, decodeBlogSlug, findBlogPost, getRecommendedPosts } from "@/data/docshunt-blogs";
-import { articleJsonLd, breadcrumbJsonLd, buildPageMetadata } from "@/seo/metadata";
+import { BLOG_POSTS, BLOG_TOPIC_HUBS, decodeBlogSlug, findBlogPost, getRecommendedPosts } from "@/data/docshunt-blogs";
+import { articleJsonLd, breadcrumbJsonLd, buildPageMetadata, dateToIso } from "@/seo/metadata";
 
 const startUrl = "https://app.docshunt.ai";
 
@@ -54,13 +53,12 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
 
   const contentHtml = BLOG_CONTENT_HTML[post.slug] ?? BLOG_CONTENT_HTML[decodeBlogSlug(post.slug)];
   const recommendedPosts = getRecommendedPosts(post.slug);
-  const recommendationImages = BLOG_RECOMMENDATION_IMAGES[post.slug] ?? [];
-  const recommendationCards = (
-    recommendationImages.length ? recommendationImages : recommendedPosts.map((recommended) => recommended.image)
-  ).map((image, index) => ({
-    image,
-    href: detailHref(recommendedPosts[index]?.slug ?? recommendedPosts[0]?.slug ?? post.slug),
+  const recommendationCards = recommendedPosts.map((recommended) => ({
+    image: recommended.image,
+    title: recommended.title,
+    href: detailHref(recommended.slug),
   }));
+  const topicHubs = BLOG_TOPIC_HUBS.filter((hub) => hub.slug !== post.slug);
 
   return (
     <div className="page blog-page blog-detail-page">
@@ -76,8 +74,11 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
       <main className="blog-detail-main">
         <article className="blog-detail-article">
           <h1>{post.title}</h1>
-          <time>{post.date}</time>
-          <img className="blog-detail-hero" src={post.heroImage} alt="" />
+          <time dateTime={dateToIso(post.date)}>{post.date}</time>
+          {post.modifiedDate && post.modifiedDate !== post.date ? (
+            <time dateTime={dateToIso(post.modifiedDate)}>최종 수정 {post.modifiedDate}</time>
+          ) : null}
+          <img className="blog-detail-hero" src={post.heroImage} alt={`${post.title} 대표 이미지`} />
           <div className="blog-detail-body">
             {contentHtml ? (
               <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
@@ -87,6 +88,16 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
               )
             )}
           </div>
+          <nav className="blog-topic-hubs" aria-labelledby="topic-hubs-title">
+            <h2 id="topic-hubs-title">주제별 핵심 가이드</h2>
+            <ul>
+              {topicHubs.map((hub) => (
+                <li key={hub.slug}>
+                  <Link href={detailHref(hub.slug)}>{hub.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <section className="blog-detail-cta" aria-label="독스헌트 시작하기">
             <p>단 몇 분만에, 전문가가 쓴 듯한 사업계획서를 만들어보세요.</p>
             <a href={startUrl}>무료 생성하기</a>
@@ -94,9 +105,10 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
           <section className="blog-recommended" aria-labelledby="recommended-title">
             <h2 id="recommended-title">추천 포스트</h2>
             <div className="recommended-grid">
-              {recommendationCards.map((recommended, index) => (
-                <Link className="recommended-card" href={recommended.href} key={`${recommended.image}-${index}`}>
-                  <img src={recommended.image} alt="" loading="lazy" />
+              {recommendationCards.map((recommended) => (
+                <Link className="recommended-card" href={recommended.href} key={recommended.href}>
+                  <img src={recommended.image} alt={`${recommended.title} 대표 이미지`} loading="lazy" />
+                  <span>{recommended.title}</span>
                 </Link>
               ))}
             </div>

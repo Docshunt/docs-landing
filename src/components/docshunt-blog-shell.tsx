@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-const cdn = "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io";
+import { AccessibleMobileMenu } from "@/components/accessible-mobile-menu";
+
 const assets = "/docshunt-assets";
 const startUrl = "https://app.docshunt.ai";
 const siteNavLinks = [
@@ -12,7 +13,7 @@ export function BlogHeader() {
   return (
     <header className="site-header blog-header" aria-label="독스헌트 사이트 내비게이션">
       <Link className="logo-link" href="/" aria-label="독스헌트 홈">
-        <img className="logo" src={`${cdn}/f1777294562574x255613413900380960/DocsHunt%20logo.svg`} alt="DocsHunt" width="160" height="25" />
+        <img className="logo" src={`${assets}/docshunt-logo.svg`} alt="DocsHunt" width="160" height="25" />
       </Link>
       <nav className="header-nav" aria-label="주요 메뉴">
         {siteNavLinks.map((link) => (
@@ -25,10 +26,7 @@ export function BlogHeader() {
         <a className="header-button primary" href={startUrl}>
           무료로 시작하기
         </a>
-        <details className="blog-header-mobile-menu">
-          <summary className="menu-button" aria-label="메뉴 열기">
-            <span />
-          </summary>
+        <AccessibleMobileMenu className="blog-header-mobile-menu" summaryClassName="menu-button">
           <nav className="mobile-menu" aria-label="모바일 메뉴">
             {siteNavLinks.map((link) => (
               <Link className="mobile-menu-link" href={link.href} key={link.href}>
@@ -36,7 +34,7 @@ export function BlogHeader() {
               </Link>
             ))}
           </nav>
-        </details>
+        </AccessibleMobileMenu>
       </div>
     </header>
   );

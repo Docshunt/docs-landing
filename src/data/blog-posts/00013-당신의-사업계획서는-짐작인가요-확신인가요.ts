@@ -9,10 +9,8 @@ export const post13 = {
   description:
     "사업계획서 합격, 화려한 솔루션보다 날카로운 '문제 정의'에 답이 있습니다. 🎯 독스헌트 대표가 직접 알려주는 짐작이 아닌 '확신'을 담는 법! 단 1페이지로 심사위원을 설득하는 비결을 지금 확인하세요. 🔥",
   date: "2026.02.13",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1770964740156x326571630589632900/%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C%20%EC%9E%91%EC%84%B1%20%EA%B0%80%EC%9D%B4%EB%93%9C%20%EC%8D%B8%EB%84%A4%EC%9D%BC22.jpg",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1770964740156x326571630589632900/%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C%20%EC%9E%91%EC%84%B1%20%EA%B0%80%EC%9D%B4%EB%93%9C%20%EC%8D%B8%EB%84%A4%EC%9D%BC22.jpg",
+  image: "/docshunt-assets/blog-covers/00013-당신의-사업계획서는-짐작인가요-확신인가요-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00013-당신의-사업계획서는-짐작인가요-확신인가요-hero.jpg",
   paragraphs: [
     "(합격을 결정짓는 단 1페이지의 차이 📄✨)",
     "사업계획서를 쓸 때 가장 먼저 마주하는 거대한 장벽, 바로 '문제 정의(Problem)'입니다. 💡",

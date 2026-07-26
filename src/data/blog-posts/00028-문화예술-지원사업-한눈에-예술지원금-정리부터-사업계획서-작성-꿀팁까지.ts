@@ -9,10 +9,8 @@ export const post28 = {
   description:
     "문화예술 지원사업 정보 총정리! 정부·지자체·재단에서 제공하는 예술지원금과 문화예술 지원금의 종류, 신청 링크를 한눈에. 성공적인 문화예술 사업계획서 작성법과 합격을 위한 꿀팁까지 담았습니다. 예술가·기획자를 위한 필수 가이드로 지원사업 도전해보세요.",
   date: "2025.09.23",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1758607794056x466924935828002750/%E1%84%86%E1%85%AE%E1%86%AB%E1%84%92%E1%85%AA%E1%84%8B%E1%85%A8%E1%84%89%E1%85%AE%E1%86%AF%20%E1%84%8C%E1%85%B5%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8.png",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1758607794056x466924935828002750/%E1%84%86%E1%85%AE%E1%86%AB%E1%84%92%E1%85%AA%E1%84%8B%E1%85%A8%E1%84%89%E1%85%AE%E1%86%AF%20%E1%84%8C%E1%85%B5%E1%84%8B%E1%85%AF%E1%86%AB%E1%84%89%E1%85%A1%E1%84%8B%E1%85%A5%E1%86%B8.png",
+  image: "/docshunt-assets/blog-covers/00028-문화예술-지원사업-한눈에-예술지원금-정리부터-사업계획서-작성-꿀팁까지-list.png",
+  heroImage: "/docshunt-assets/blog-covers/00028-문화예술-지원사업-한눈에-예술지원금-정리부터-사업계획서-작성-꿀팁까지-hero.png",
   paragraphs: [
     "문화예술 지원사업 완전 가이드:",
     "예술지원금부터 사업계획서 작성까지",
