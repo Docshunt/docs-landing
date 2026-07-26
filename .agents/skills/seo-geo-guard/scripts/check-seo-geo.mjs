@@ -79,8 +79,9 @@ for (const file of pageFiles) {
   const isRoot = route === "/";
   const isBlogDetail = route.includes("/blog_detail/");
   const isMirror = route.includes("/mirror/");
+  const isRedirect = /\bredirect\s*\(/.test(source);
 
-  if (!hasMetadata && !isRoot && !isBlogDetail && !isMirror) {
+  if (!hasMetadata && !isRoot && !isBlogDetail && !isMirror && !isRedirect) {
     warnings.push(`${file} (${route}) has no page-level metadata export; verify inherited metadata is intentional.`);
   }
   if (/canonical\s*:\s*["'`]\//.test(source) || /openGraph:[\s\S]*url\s*:\s*["'`]\//.test(source)) {
@@ -109,6 +110,100 @@ if (exists("src/data/blog-posts/index.ts") && exists("src/app/sitemap-blog_detai
   }
 } else if (exists("src/data/docshunt-blogs.ts") && exists("src/app/sitemap-blog_detail.xml/route.ts")) {
   warnings.push("Legacy single-file blog data detected; prefer one post file per entry under src/data/blog-posts/.");
+}
+
+const postFiles = walk("src/data/blog-posts").filter((entry) => /^\d{5}-.+\.ts$/.test(path.basename(entry)));
+const seenBlogFields = new Map();
+
+function quotedField(source, field) {
+  return source.match(new RegExp(`\\b${field}:\\s*"((?:\\\\.|[^"\\\\])*)"`))?.[1];
+}
+
+for (const file of postFiles) {
+  const source = read(file);
+  const slug = quotedField(source, "slug");
+  const sourceUrl = quotedField(source, "sourceUrl");
+
+  for (const field of ["slug", "sourceUrl", "title", "description"]) {
+    const value = quotedField(source, field);
+    if (!value) {
+      errors.push(`${file} is missing a string ${field}.`);
+      continue;
+    }
+    if (field === "title" || field === "description") {
+      const key = `${field}:${value}`;
+      if (seenBlogFields.has(key)) {
+        errors.push(`${file} duplicates ${field} from ${seenBlogFields.get(key)}.`);
+      } else {
+        seenBlogFields.set(key, file);
+      }
+    }
+  }
+
+  if (slug && sourceUrl !== `https://docshunt.ai/blog_detail/${slug}`) {
+    errors.push(`${file} sourceUrl does not match its slug.`);
+  }
+  if (/\bverification:\s*\{/.test(source) && !/\bmodifiedDate:\s*"/.test(source)) {
+    errors.push(`${file} has verification sources without modifiedDate.`);
+  }
+}
+
+if (exists("src/components/blog-list-client.tsx")) {
+  const blogList = read("src/components/blog-list-client.tsx");
+  if (!/Link[\s\S]*\/blog_list\?page=/.test(blogList)) {
+    errors.push("Blog pagination must expose crawlable /blog_list?page= URLs through Next Link.");
+  }
+}
+
+if (exists("src/app/new-landing/page.tsx")) {
+  const draftLanding = read("src/app/new-landing/page.tsx");
+  if (!/\bredirect\s*\(\s*["']\/["']\s*\)/.test(draftLanding) && !/\bnoindex\b/.test(draftLanding)) {
+    errors.push("/new-landing must redirect to / or explicitly use noindex.");
+  }
+}
+
+if (
+  !exists("src/app/about/page.tsx") ||
+  !exists("src/seo/metadata.ts") ||
+  !read("src/seo/metadata.ts").includes('BLOG_AUTHOR_NAME = "독스헌트 마케팅팀"') ||
+  !read("src/seo/metadata.ts").includes('"@id": BLOG_AUTHOR_URL') ||
+  !read("src/app/about/page.tsx").includes("authorProfileJsonLd") ||
+  !read("src/app/blog_detail/[slug]/page.tsx").includes("BLOG_AUTHOR_PATH")
+) {
+  errors.push("Visible blog authorship, JSON-LD author, and /about editorial policy must stay aligned.");
+}
+
+if (!read("src/app/blog_detail/[slug]/page.tsx").includes("hasContentCta")) {
+  errors.push("Blog detail must avoid rendering its generic CTA when rich content already includes one.");
+}
+
+if (!read("src/app/blog_detail/[slug]/page.tsx").includes('rawContentHtml?.includes("dh-seo-post-legacy")')) {
+  errors.push("Blog detail must strip unscoped legacy style blocks before rendering imported HTML.");
+}
+
+const blogContentSource = read("src/data/docshunt-blog-content.ts");
+for (const [imageTag] of blogContentSource.matchAll(/<img\b[^>]*>/g)) {
+  if (!/\balt=/.test(imageTag)) errors.push(`Inline blog image is missing alt text: ${imageTag}`);
+}
+
+if (!read("src/app/sitemap-index.xml/route.ts").includes('loc: "/about"')) {
+  errors.push("/about must be included in the main sitemap.");
+}
+
+const bubbleRuntimeReferences = walk("src").filter((file) => read(file).includes("bubble.io"));
+for (const file of bubbleRuntimeReferences) {
+  errors.push(`Bubble runtime dependency detected in ${file}; use a local public asset instead.`);
+}
+
+for (const file of postFiles) {
+  const source = read(file);
+  for (const [, field, assetPath] of source.matchAll(/\b(image|heroImage):\s*"([^"]+)"/g)) {
+    if (!assetPath.startsWith("/docshunt-assets/")) {
+      errors.push(`${file} ${field} must use a local /docshunt-assets/ path.`);
+    } else if (!exists(path.join("public", assetPath))) {
+      errors.push(`${file} ${field} points to missing asset ${assetPath}.`);
+    }
+  }
 }
 
 console.log("SEO/GEO guard route inventory:");

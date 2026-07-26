@@ -9,10 +9,19 @@ export const post05 = {
   description:
     "사업계획서 양식만 내려받고 막히는 분들을 위해 정부지원사업 평가항목에 맞춘 목차 구성, 작성 순서, 예산계획 정리법을 설명합니다.",
   date: "2026.05.11",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1778462881917x126978870096580820/business-plan-template-outline-writing-guide.png",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1778462881917x126978870096580820/business-plan-template-outline-writing-guide.png",
+  modifiedDate: "2026.07.26",
+  verification: {
+    date: "2026.07.26",
+    note: "본문의 사업 수와 예산은 2026년 창업지원사업 통합공고 기준의 고정 수치입니다. 개별 사업의 평가지표와 양식은 각 공고를 확인하세요.",
+    sources: [
+      {
+        label: "중소벤처기업부 2026년 창업지원사업 통합공고",
+        url: "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1064201&cbIdx=86&parentSeq=1064201",
+      },
+    ],
+  },
+  image: "/docshunt-assets/blog-covers/00005-사업계획서-양식과-목차-작성법-정부지원사업-평가항목에-맞게-채우기-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00005-사업계획서-양식과-목차-작성법-정부지원사업-평가항목에-맞게-채우기-hero.jpg",
   paragraphs: [
     "사업계획서 양식을 내려받았는데도 막히는 이유는 대부분 같습니다.",
     "칸은 보이지만 무엇을 먼저 써야 하는지, 어떤 수준까지 구체화해야 하는지, 평가위원이 실제로 보는 기준이 무엇인지가 흐릿하기 때문입니다. 그래서 사업계획서 작성법은 문장을 잘 쓰는 기술보다 목차를 평가항목에 맞게 해석하는 일에 가깝습니다.",

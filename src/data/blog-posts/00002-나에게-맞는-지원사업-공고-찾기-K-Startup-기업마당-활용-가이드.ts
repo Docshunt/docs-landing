@@ -9,10 +9,17 @@ export const post02 = {
   description:
     "K-Startup과 기업마당에 올라온 수많은 지원사업 공고 중 내 조건에 맞는 공고를 추천받고, 요약된 지원대상·제출서류·평가 기준을 바탕으로 독스헌트에서 사업계획서 작성까지 이어가는 방법을 정리했습니다.",
   date: "2026.06.05",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1780626860935x895561550659027100/k-startup-support-program-recommendation-guide.png",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1780626860935x895561550659027100/k-startup-support-program-recommendation-guide.png",
+  modifiedDate: "2026.07.26",
+  verification: {
+    date: "2026.07.26",
+    note: "공고 탐색 방법을 다루는 일반 가이드입니다. 지원 대상·서류·마감은 각 공고 원문을 최종 기준으로 확인하세요.",
+    sources: [
+      { label: "K-Startup 창업지원포털", url: "https://www.k-startup.go.kr/web" },
+      { label: "기업마당 지원사업 공고", url: "https://www.bizinfo.go.kr/web/index.do" },
+    ],
+  },
+  image: "/docshunt-assets/blog-covers/00002-나에게-맞는-지원사업-공고-찾기-K-Startup-기업마당-활용-가이드-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00002-나에게-맞는-지원사업-공고-찾기-K-Startup-기업마당-활용-가이드-hero.jpg",
   paragraphs: [
     "K-Startup과 기업마당에는 창업자와 중소기업을 위한 지원사업 공고가 계속 올라옵니다.",
     "하지만 공고마다 대상, 지역, 마감일이 달라서 목록을 훑는 것만으로도 시간이 많이 듭니다. 조건이 맞지 않는 공고를 계속 읽다 보면 불필요한 시간을 쓰게 되고, 도중에 포기하게 되기도 합니다.",

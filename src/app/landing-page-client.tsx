@@ -18,7 +18,6 @@ import { usePathname, useRouter } from "next/navigation";
 import { JsonLd } from "@/components/json-ld";
 import { softwareApplicationJsonLd } from "@/seo/metadata";
 
-const cdn = "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io";
 const assets = "/docshunt-assets";
 const startPath = "https://app.docshunt.ai";
 
@@ -91,7 +90,7 @@ const draftActualTemplateDocumentPages = [
   alt: `예비창업패키지 사업계획서 양식 ${index + 1}페이지`,
 }));
 
-const questionVideo = `${cdn}/f1779716417056x278852230160279800/%E1%84%83%E1%85%A9%E1%86%A8%E1%84%89%E1%85%B3%E1%84%92%E1%85%A5%E1%86%AB%E1%84%90%E1%85%B3_%E1%84%85%E1%85%A2%E1%86%AB%E1%84%83%E1%85%B5%E1%86%BC_%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A1%E1%86%BC.mov`;
+const questionVideo = `${assets}/landing/question-answer-demo.m4v`;
 
 const interviewVideos = [
   { id: "eHCOCuoaI5M", title: "지원사업은 잘 쓰는 싸움이 아니라 많이 넣는 싸움입니다", className: "large" },
@@ -2603,11 +2602,8 @@ function DraftLandingMain({ onStart }: { onStart: StartHandler }) {
       <section className="hero" aria-labelledby="draft-hero-title">
         <div className="hero-copy">
           <h1 className="hero-title" id="draft-hero-title">
-            <span className="draft-hero-title-desktop">모든 지원사업, 사업계획서를 작성하는 AI</span>
-            <span className="draft-hero-title-mobile">
-              <span>모든 지원사업</span>
-              <span>사업계획서를 작성하는 AI</span>
-            </span>
+            모든 지원사업,
+            <br className="draft-hero-title-break" /> 사업계획서를 작성하는 AI
           </h1>
           <p className="hero-subtitle">쓰면 쓸수록 더 잘 써주는 독스헌트, 지금 바로 만나보세요</p>
           <a className="cta-button" href={startPath} onClick={onStart}>
@@ -2836,7 +2832,7 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
         <Link className="logo-link" href="/" aria-label="독스헌트 홈" onClick={handleLogoClick}>
           <img
             className="logo"
-            src={scrolled ? `${cdn}/f1777294562574x255613413900380960/DocsHunt%20logo.svg` : `${assets}/docshunt-logo-white.svg`}
+            src={scrolled ? `${assets}/docshunt-logo.svg` : `${assets}/docshunt-logo-white.svg`}
             alt="DocsHunt"
             width="160"
             height="25"
@@ -2857,7 +2853,7 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
           <button
             className="menu-button"
             type="button"
-            aria-label="메뉴 열기"
+            aria-label={mobileMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
             aria-controls="mobile-menu"
             aria-expanded={mobileMenuOpen}
             onClick={(event) => {
@@ -3090,7 +3086,7 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
         <div className="company-name">주식회사 사페레아우데</div>
         <div className="footer-details desktop-details">
           <span>대표 : 김성우</span>
-          <span>고객지원 : yes-reply@docshunt.ai</span>
+          <span>고객지원 : documents@docshunt.ai</span>
           <span>주소 : 서울시 동작구 상도로 55길 8, 챌린지스테이션 302호</span>
           <span>사업자등록번호 : 575-86-03204 | 통신판매업신고번호 : 제 2024-서울동작-0430 호</span>
         </div>
@@ -3103,11 +3099,13 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
           <span>통신판매업신고번호 : 제 2024-서울동작-0430 호</span>
         </div>
         <div className="footer-bottom">
-          <a className="instagram" href="https://www.instagram.com/docshunt_official/" target="_blank" rel="noreferrer">
+          <a className="instagram" href="https://www.instagram.com/docshunt.ai/" target="_blank" rel="noreferrer">
             <img src={`${assets}/instagram-icon.webp`} alt="" />
-            <span>docshunt_official</span>
+            <span>docshunt.ai</span>
           </a>
           <div className="legal-links">
+            <Link href="/about">작성자·회사 소개</Link>
+            <span>|</span>
             <a href="https://docshunt.ai/privacy_policy">개인정보 처리방침</a>
             <span>|</span>
             <a href="https://docshunt.ai/terms">이용약관</a>

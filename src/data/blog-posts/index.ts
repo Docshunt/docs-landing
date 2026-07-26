@@ -30,10 +30,14 @@ import { post29 } from "./00029-독스헌트-후기-사업계획서-AI-독스헌
 import { post30 } from "./00030-지원사업-합격-사례-3일-만에-완성한-사업계획서-합격-비법-공개";
 import { post31 } from "./00031-창업-입문자를-위한-정부-지원사업-안내서-정부-지원사업-종류와-공고-꿀팁까지";
 import { post32 } from "./00032-2026-지원사업-사업계획서-목차-작성-가이드-처음-써도-빠뜨릴-걱정-없는-완벽-가이드";
+import { post33 } from "./00033-좋은-사업계획서는-기술보다-문제정의에서-시작됩니다";
+import { post34 } from "./00034-GPT-사업계획서-그대로-제출하면-왜-티가-날까요";
 
 import type { BlogPost } from "./types";
 
-export const BLOG_POSTS = [
+const BLOG_POST_SOURCE = [
+  post34,
+  post33,
   post01,
   post02,
   post03,
@@ -66,6 +70,12 @@ export const BLOG_POSTS = [
   post30,
   post31,
   post32,
-] satisfies BlogPost[];
+];
+
+export const BLOG_POSTS: BlogPost[] = BLOG_POST_SOURCE.map((post, position) => ({
+  ...post,
+  page: Math.floor(position / 10) + 1,
+  index: (position % 10) + 1,
+}));
 
 export const BLOG_PAGE_COUNT = new Set(BLOG_POSTS.map((post) => post.page)).size;

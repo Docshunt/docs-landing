@@ -9,10 +9,17 @@ export const post03 = {
   description:
     "독스헌트가 2026년 모두의 창업 프로젝트 AI 솔루션 공급기업으로 선정됐습니다. 사업계획서 작성이 막히는 창업자가 기존 독스헌트 서비스에서 초안을 빠르게 만들 수 있도록 돕겠습니다.",
   date: "2026.05.21",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1779333698241x302292114658699650/docshunt-modoo-startup-ai-solution-provider.png",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1779333698241x302292114658699650/docshunt-modoo-startup-ai-solution-provider.png",
+  modifiedDate: "2026.07.26",
+  verification: {
+    date: "2026.07.26",
+    note: "독스헌트의 공급기업 선정 사실을 알리는 자사 발표입니다. 프로그램 구조와 독스헌트 솔루션 정보는 모두의 창업 공식 페이지에서 확인할 수 있습니다.",
+    sources: [
+      { label: "모두의 창업 공식 홈페이지", url: "https://www.modoo.or.kr/" },
+      { label: "모두의 창업 독스헌트 AI 솔루션", url: "https://www.modoo.or.kr/ai-solution/organization/835" },
+    ],
+  },
+  image: "/docshunt-assets/blog-covers/00003-독스헌트-중기부-모두의-창업-AI-솔루션-공급기업-선정-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00003-독스헌트-중기부-모두의-창업-AI-솔루션-공급기업-선정-hero.jpg",
   paragraphs: [
     "독스헌트가 2026년 모두의 창업 프로젝트 AI 솔루션 공급기업으로 선정됐습니다.",
     "선정 확인",

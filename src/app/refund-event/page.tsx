@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { AccessibleMobileMenu } from "@/components/accessible-mobile-menu";
 import { JsonLd } from "@/components/json-ld";
 import { REFUND_EVENT_DESCRIPTION, REFUND_EVENT_TITLE, buildPageMetadata, webPageJsonLd } from "@/seo/metadata";
 
@@ -145,10 +146,7 @@ export default function RefundEventPage() {
         <a className="refund-event-nav-cta" href={appUrl}>
           무료로 시작하기
         </a>
-        <details className="refund-event-mobile-menu">
-          <summary aria-label="메뉴 열기">
-            <span />
-          </summary>
+        <AccessibleMobileMenu className="refund-event-mobile-menu">
           <div>
             {siteNavLinks.map((link) => (
               <Link href={link.href} key={link.href}>
@@ -156,7 +154,7 @@ export default function RefundEventPage() {
               </Link>
             ))}
           </div>
-        </details>
+        </AccessibleMobileMenu>
       </nav>
 
       <section className="refund-hero" id="refund-package" aria-labelledby="refund-hero-title">
@@ -303,12 +301,12 @@ export default function RefundEventPage() {
         <div>
           <strong>주식회사 사페레아우데</strong>
           <p>대표 : 김성우</p>
-          <p>고객지원 : yes-reply@docshunt.ai</p>
+          <p>고객지원 : documents@docshunt.ai</p>
           <p>주소 : 서울시 동작구 상도로 55길 8, 챌린지스테이션 302호</p>
           <p>사업자등록번호 : 575-86-03204 | 통신판매업신고번호 : 제 2024-서울동작-0430 호</p>
         </div>
         <div className="refund-footer-links">
-          <a href="https://www.instagram.com/docshunt_official/" target="_blank" rel="noreferrer">
+          <a href="https://www.instagram.com/docshunt.ai/" target="_blank" rel="noreferrer">
             <img src={`${assets}/instagram-icon.png`} alt="" />
             docshunt_official
           </a>

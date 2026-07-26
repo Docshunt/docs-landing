@@ -9,10 +9,8 @@ export const post01 = {
   description:
     "예창패·청창사 시즌이 끝난 뒤 작성한 사업계획서를 방치하지 마세요. 기존 사업계획서를 다음 지원사업 공고에 맞게 다시 활용해야 하는 이유와 준비 방법을 정리했습니다.",
   date: "2026.06.15",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1781497598591x471698983397004000/business-plan-reuse-support-program-guide.png",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1781497598591x471698983397004000/business-plan-reuse-support-program-guide.png",
+  image: "/docshunt-assets/blog-covers/00001-예창패-청창사-끝났다고-사업계획서-방치하시나요-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00001-예창패-청창사-끝났다고-사업계획서-방치하시나요-hero.jpg",
   paragraphs: [
     "예창패(예비창업패키지), 청창사(청년창업사관학교) 같은 메이저 지원사업의 공고 시즌이 끝나면, 많은 창업자분들이 공들여 작성한 사업계획서를 다시 꺼내보지 않는 경우가 많습니다. 영혼을 갈아 넣어 작성한 사업계획서인 만큼, 마감 후 찾아오는 번아웃이 크기 때문일 텐데요.",
     "하지만 지금이 바로 그 사업계획서를 다시 꺼내야 할 때입니다.",

@@ -5,9 +5,8 @@ import { notFound } from "next/navigation";
 import { BlogHeader, DocshuntFooter } from "@/components/docshunt-blog-shell";
 import { JsonLd } from "@/components/json-ld";
 import { BLOG_CONTENT_HTML } from "@/data/docshunt-blog-content";
-import { BLOG_RECOMMENDATION_IMAGES } from "@/data/docshunt-blog-recommendations";
-import { BLOG_POSTS, decodeBlogSlug, findBlogPost, getRecommendedPosts } from "@/data/docshunt-blogs";
-import { articleJsonLd, breadcrumbJsonLd, buildPageMetadata } from "@/seo/metadata";
+import { BLOG_POSTS, BLOG_TOPIC_GROUPS, decodeBlogSlug, findBlogPost, getRecommendedPosts } from "@/data/docshunt-blogs";
+import { articleJsonLd, BLOG_AUTHOR_NAME, BLOG_AUTHOR_PATH, breadcrumbJsonLd, buildPageMetadata, dateToIso } from "@/seo/metadata";
 
 const startUrl = "https://app.docshunt.ai";
 
@@ -52,15 +51,18 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
   const post = findBlogPost(slug);
   if (!post) notFound();
 
-  const contentHtml = BLOG_CONTENT_HTML[post.slug] ?? BLOG_CONTENT_HTML[decodeBlogSlug(post.slug)];
+  const rawContentHtml = post.contentHtml ?? BLOG_CONTENT_HTML[post.slug] ?? BLOG_CONTENT_HTML[decodeBlogSlug(post.slug)];
+  const contentHtml = rawContentHtml?.includes("dh-seo-post-legacy")
+    ? rawContentHtml.replace(/<style>[\s\S]*?<\/style>/, "")
+    : rawContentHtml;
+  const hasContentCta = contentHtml?.includes('class="dh-cta-button"') ?? false;
   const recommendedPosts = getRecommendedPosts(post.slug);
-  const recommendationImages = BLOG_RECOMMENDATION_IMAGES[post.slug] ?? [];
-  const recommendationCards = (
-    recommendationImages.length ? recommendationImages : recommendedPosts.map((recommended) => recommended.image)
-  ).map((image, index) => ({
-    image,
-    href: detailHref(recommendedPosts[index]?.slug ?? recommendedPosts[0]?.slug ?? post.slug),
+  const recommendationCards = recommendedPosts.map((recommended) => ({
+    image: recommended.image,
+    title: recommended.title,
+    href: detailHref(recommended.slug),
   }));
+  const topicHubs = BLOG_TOPIC_GROUPS.filter(({ hub }) => hub.slug !== post.slug);
 
   return (
     <div className="page blog-page blog-detail-page">
@@ -76,8 +78,16 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
       <main className="blog-detail-main">
         <article className="blog-detail-article">
           <h1>{post.title}</h1>
-          <time>{post.date}</time>
-          <img className="blog-detail-hero" src={post.heroImage} alt="" />
+          <div className="blog-post-meta">
+            <span>
+              작성·검수 <Link href={BLOG_AUTHOR_PATH}>{BLOG_AUTHOR_NAME}</Link>
+            </span>
+            <time dateTime={dateToIso(post.date)}>게시 {post.date}</time>
+            {post.modifiedDate && post.modifiedDate !== post.date ? (
+              <time dateTime={dateToIso(post.modifiedDate)}>수정 {post.modifiedDate}</time>
+            ) : null}
+          </div>
+          <img className="blog-detail-hero" src={post.heroImage} alt={`${post.title} 대표 이미지`} />
           <div className="blog-detail-body">
             {contentHtml ? (
               <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
@@ -87,16 +97,47 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
               )
             )}
           </div>
-          <section className="blog-detail-cta" aria-label="독스헌트 시작하기">
-            <p>단 몇 분만에, 전문가가 쓴 듯한 사업계획서를 만들어보세요.</p>
-            <a href={startUrl}>무료 생성하기</a>
-          </section>
+          {post.verification ? (
+            <details className="blog-verification">
+              <summary>작성 기준 및 출처 · {post.verification.date}</summary>
+              <p>{post.verification.note}</p>
+              <ul>
+                {post.verification.sources.map((source) => (
+                  <li key={source.url}>
+                    <a href={source.url} target="_blank" rel="noopener noreferrer">
+                      {source.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ) : null}
+          <nav className="blog-topic-hubs" aria-labelledby="topic-hubs-title">
+            <h2 id="topic-hubs-title">주제별 핵심 가이드</h2>
+            <ul>
+              {topicHubs.map((topic) => (
+                <li key={topic.name}>
+                  <Link href={detailHref(topic.hub.slug)}>
+                    <strong>{topic.name}</strong>
+                    <span>{topic.hub.title}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          {!hasContentCta ? (
+            <section className="blog-detail-cta" aria-label="독스헌트 시작하기">
+              <p>단 몇 분만에, 전문가가 쓴 듯한 사업계획서를 만들어보세요.</p>
+              <a href={startUrl}>무료 생성하기</a>
+            </section>
+          ) : null}
           <section className="blog-recommended" aria-labelledby="recommended-title">
             <h2 id="recommended-title">추천 포스트</h2>
             <div className="recommended-grid">
-              {recommendationCards.map((recommended, index) => (
-                <Link className="recommended-card" href={recommended.href} key={`${recommended.image}-${index}`}>
-                  <img src={recommended.image} alt="" loading="lazy" />
+              {recommendationCards.map((recommended) => (
+                <Link className="recommended-card" href={recommended.href} key={recommended.href}>
+                  <img src={recommended.image} alt={`${recommended.title} 대표 이미지`} loading="lazy" />
+                  <span>{recommended.title}</span>
                 </Link>
               ))}
             </div>

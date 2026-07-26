@@ -9,10 +9,17 @@ export const post07 = {
   description:
     "창업지원사업 신청 전에 확인해야 할 제출서류와 증빙자료를 정리했습니다. K-Startup 공고문에서 자격, 사업계획서, 가점 증빙, 파일 제출 조건을 빠르게 점검하는 방법입니다.",
   date: "2026.05.07",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1778114260954x186295498727207600/startup-support-application-documents-checklist.png",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1778114260954x186295498727207600/startup-support-application-documents-checklist.png",
+  modifiedDate: "2026.07.26",
+  verification: {
+    date: "2026.07.26",
+    note: "이 글은 일반 제출서류 체크리스트입니다. 실제 필수·선택 서류는 사업별 공고와 첨부 양식을 최종 기준으로 확인하세요.",
+    sources: [
+      { label: "K-Startup 창업지원포털", url: "https://www.k-startup.go.kr/web" },
+      { label: "기업마당 지원사업 공고", url: "https://www.bizinfo.go.kr/web/index.do" },
+    ],
+  },
+  image: "/docshunt-assets/blog-covers/00007-창업지원사업-제출서류-체크리스트-신청-전-빠뜨리기-쉬운-8가지-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00007-창업지원사업-제출서류-체크리스트-신청-전-빠뜨리기-쉬운-8가지-hero.jpg",
   paragraphs: [
     "창업지원사업은 사업계획서보다 제출서류에서 먼저 막히는 경우가 많습니다. 실제 신청 단계에서는 신청 자격, 증빙자료, 가점서류, 파일 형식 때문에 시간이 더 많이 걸릴 수 있습니다.",
     "특히 마감일이 가까워질수록 문제는 글의 완성도보다 제출 누락에서 생깁니다. 사업계획서는 준비했는데 사업자등록증, 사실증명, 매출 증빙, 가점 증빙을 늦게 확인하면 제출 직전에 다시 공고문을 뒤지게 됩니다.",

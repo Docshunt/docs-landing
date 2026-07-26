@@ -17,5 +17,10 @@ export function GET() {
       priority: "0.8",
       changefreq: "monthly",
     },
+    {
+      loc: "/about",
+      priority: "0.7",
+      changefreq: "monthly",
+    },
   ]);
 }

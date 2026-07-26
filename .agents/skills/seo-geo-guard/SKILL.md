@@ -55,6 +55,7 @@ For each new or edited page, verify:
 - image URLs used for OG/social previews are absolute or valid public paths
 - page language remains Korean-facing where applicable
 - JSON-LD is present for landing, blog list, blog detail, or structured content pages
+- visible authorship matches JSON-LD author and links to a crawlable editorial-policy page
 - page is not accidentally served through Bubble mirror when local metadata is required
 
 Preferred pattern:
@@ -73,6 +74,8 @@ When a route is added, renamed, deleted, or made indexable:
 - update `/llms.txt` and `/ai.txt` together when AI-search guidance changes
 - update `robots.txt` only when crawl allow/disallow or sitemap location changes
 - verify redirects/proxy do not hide the local Next page from crawlers
+- verify duplicate draft or preview routes redirect to the canonical public route or use `noindex`
+- verify paginated blog content uses crawlable `<a href>` URLs; JavaScript-only buttons are not sufficient discovery links
 
 For non-indexable pages, explicitly record why they are excluded from sitemap/llms/ai surfaces.
 
@@ -109,7 +112,9 @@ Required for SEO/GEO changes:
 
 - `/`
 - `/blog_list`
+- `/blog_list?page=2` when more than one blog page exists
 - at least one representative `/blog_detail/[slug]`
+- `/about`
 - `/robots.txt`
 - `/sitemap.xml`
 - `/sitemap-blog_detail.xml`

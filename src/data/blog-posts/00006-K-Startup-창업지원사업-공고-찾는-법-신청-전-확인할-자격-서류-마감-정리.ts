@@ -9,10 +9,20 @@ export const post06 = {
   description:
     "K-Startup에서 창업지원사업 공고를 찾을 때 먼저 봐야 할 지원 대상, 마감, 제출서류, 평가 기준을 정리했습니다. 공고문을 사업계획서 준비 순서로 바꾸는 방법까지 확인하세요.",
   date: "2026.05.08",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1778217111968x775867270390213600/k-startup-application-guide.png",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1778217111968x775867270390213600/k-startup-application-guide.png",
+  modifiedDate: "2026.07.26",
+  verification: {
+    date: "2026.07.26",
+    note: "본문의 사업 수와 예산은 2026년 통합공고 기준이며 실시간 수치가 아닙니다. 신청 자격·서류·마감은 선택한 공고 원문을 확인하세요.",
+    sources: [
+      {
+        label: "중소벤처기업부 2026년 창업지원사업 통합공고",
+        url: "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1064201&cbIdx=86&parentSeq=1064201",
+      },
+      { label: "K-Startup 창업지원포털", url: "https://www.k-startup.go.kr/web" },
+    ],
+  },
+  image: "/docshunt-assets/blog-covers/00006-K-Startup-창업지원사업-공고-찾는-법-신청-전-확인할-자격-서류-마감-정리-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00006-K-Startup-창업지원사업-공고-찾는-법-신청-전-확인할-자격-서류-마감-정리-hero.jpg",
   paragraphs: [
     "K-Startup에서 창업지원사업 공고를 찾으면 생각보다 목록이 많습니다.",
     "공고 제목만 보면 “이거 신청해도 되나?” 싶지만, 막상 들어가면 지원 대상, 업력 기준, 지역 조건, 제출서류, 사업계획서 양식, 평가 기준이 모두 다릅니다.",

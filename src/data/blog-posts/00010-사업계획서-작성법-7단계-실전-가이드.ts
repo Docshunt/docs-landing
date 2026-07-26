@@ -9,10 +9,8 @@ export const post10 = {
   description:
     "사업계획서 작성, 어디서부터 시작해야 할지 막막하신가요? 이 글에서는 예비창업자와 초기 창업자를 위해 사업계획서 양식 해석법부터 문제 정의, 시장 분석, 실행 계획, 자금 계획까지 심사위원 관점으로 정리했습니다.",
   date: "2026.04.28",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1777344139939x687455206118449800/business-plan-writing-guide-evergreen.png",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1777344139939x687455206118449800/business-plan-writing-guide-evergreen.png",
+  image: "/docshunt-assets/blog-covers/00010-사업계획서-작성법-7단계-실전-가이드-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00010-사업계획서-작성법-7단계-실전-가이드-hero.jpg",
   paragraphs: [
     "사업계획서를 쓰려고 빈 문서를 열었는데, 첫 문장부터 막히는 경우가 많습니다.",
     "아이디어가 없어서가 아닙니다.",

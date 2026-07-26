@@ -9,10 +9,8 @@ export const post11 = {
   description:
     "AI 시대의 린 스타트업은 빠른 배포보다 정교한 가설 검증과 데이터 기반의 학습이 본질입니다. 무분별한 실행 대신 독스헌트와 함께 리소스 낭비를 줄이고 실패를 자산화하는 진짜 MVP 전략을 확인해 보세요. AI를 활용해 시장을 저렴하고 정확하게 검증하며 승리하는 창업 여정을 시작하는 법을 제안합니다.",
   date: "2026.03.05",
-  image:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=384,h=241,f=auto,dpr=1,fit=contain/f1772689225762x558606482058463100/%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF%20%281%29.jpg",
-  heroImage:
-    "https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/cdn-cgi/image/w=1024,h=641,f=auto,dpr=1,fit=contain/f1772689225762x558606482058463100/%E1%84%8A%E1%85%A5%E1%86%B7%E1%84%82%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%AF%20%281%29.jpg",
+  image: "/docshunt-assets/blog-covers/00011-바이브-코딩은-린-스타트업이-아닙니다-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00011-바이브-코딩은-린-스타트업이-아닙니다-hero.jpg",
   paragraphs: [
     "AI 시대, 당신의 배포는 '학습'인가요 아니면 '빠른 쓰레기'인가요?",
     "안녕하세요! 창업자의 가장 든든한 페이스메이커 독스헌트입니다. 🐕‍🦺",

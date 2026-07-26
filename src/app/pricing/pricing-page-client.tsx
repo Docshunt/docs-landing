@@ -296,10 +296,20 @@ export function PricingPageClient() {
           <p className="pricing2026-intro">공고 탐색부터 사업계획서 완성까지, 필요한 만큼 독스헌트를 이용하세요.</p>
 
           <div className="pricing2026-billing" aria-label="결제 주기">
-            <button className={billingCycle === "monthly" ? "is-active" : ""} type="button" onClick={() => setBillingCycle("monthly")}>
+            <button
+              className={billingCycle === "monthly" ? "is-active" : ""}
+              type="button"
+              aria-pressed={billingCycle === "monthly"}
+              onClick={() => setBillingCycle("monthly")}
+            >
               월간
             </button>
-            <button className={billingCycle === "annual" ? "is-active" : ""} type="button" onClick={() => setBillingCycle("annual")}>
+            <button
+              className={billingCycle === "annual" ? "is-active" : ""}
+              type="button"
+              aria-pressed={billingCycle === "annual"}
+              onClick={() => setBillingCycle("annual")}
+            >
               연간
               <span>최대 56.6% 할인</span>
             </button>

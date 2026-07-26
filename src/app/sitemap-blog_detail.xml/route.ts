@@ -5,7 +5,7 @@ import { sitemapUrlSet } from "@/seo/sitemap-xml";
 export function GET() {
   return sitemapUrlSet(
     BLOG_POSTS.map((post) => {
-      const lastmod = dateToIso(post.date);
+      const lastmod = dateToIso(post.modifiedDate ?? post.date);
       return {
         loc: post.sourceUrl,
         ...(lastmod ? { lastmod } : {}),
