@@ -70,6 +70,36 @@ if (!exists("src/seo/metadata.ts")) {
   if (/localhost|127\.0\.0\.1|192\.168\./.test(metadata)) {
     errors.push("Localhost/LAN URL detected in src/seo/metadata.ts.");
   }
+  if (!/DEFAULT_TITLE\s*=\s*"[^"]+\?/.test(metadata)) {
+    errors.push("Landing DEFAULT_TITLE must lead with the target search question.");
+  }
+  if (!/DEFAULT_DESCRIPTION\s*=\s*\n?\s*"독스헌트는/.test(metadata)) {
+    errors.push("Landing DEFAULT_DESCRIPTION must begin with a direct answer.");
+  }
+  if (!metadata.includes('"@context": "https://schema.org"')) {
+    errors.push("JSON-LD must use the canonical https://schema.org context.");
+  }
+  if (/schema\.org\/version\/|schemaorg-current/.test(metadata)) {
+    errors.push("JSON-LD must reference https://schema.org, not a versioned schema dump.");
+  }
+  if (!/export function articleJsonLd[\s\S]*?"@type": "BlogPosting"/.test(metadata)) {
+    errors.push("Blog detail JSON-LD must use BlogPosting.");
+  }
+}
+
+if (!read("src/app/landing-page-client.tsx").includes("softwareApplicationJsonLd")) {
+  errors.push("Landing page must expose SoftwareApplication JSON-LD.");
+}
+
+for (const file of walk("src")) {
+  const source = read(file);
+  if (
+    /(?:user-agent|userAgent)[\s\S]{0,500}(?:Googlebot|bingbot|GPTBot|OAI-SearchBot|ClaudeBot)|(?:Googlebot|bingbot|GPTBot|OAI-SearchBot|ClaudeBot)[\s\S]{0,500}(?:user-agent|userAgent)/i.test(
+      source,
+    )
+  ) {
+    errors.push(`${file} appears to serve bot-specific content; keep crawler and user content equivalent.`);
+  }
 }
 
 for (const file of pageFiles) {
