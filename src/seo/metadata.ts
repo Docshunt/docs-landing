@@ -11,9 +11,9 @@ export const SITE_NAME = "독스헌트 | 지원사업 사업계획서 작성 AI"
 export const BLOG_AUTHOR_NAME = "독스헌트 마케팅팀";
 export const BLOG_AUTHOR_PATH = "/about#editorial-policy";
 export const BLOG_AUTHOR_URL = `${SITE_URL}${BLOG_AUTHOR_PATH}`;
-export const DEFAULT_TITLE = "작성 시간은 1/10로, 자금 확보 기회는 10배로 | 독스헌트";
+export const DEFAULT_TITLE = "지원사업 사업계획서, AI로 어떻게 작성할까요? | 독스헌트";
 export const DEFAULT_DESCRIPTION =
-  "공고별 문항과 평가 기준을 분석하고, AI와 묻고 답하며 사업계획서를 완성합니다. 작성할수록 아이템과 사업 정보가 AI 기억에 쌓여 점점 더 빠르고 정교하게 지원사업을 준비할 수 있습니다.";
+  "독스헌트는 공고별 문항과 평가 기준을 분석하고, AI가 필요한 질문을 한 뒤 지원사업 사업계획서 초안을 작성하는 서비스입니다. 작성할수록 아이템과 사업 정보가 AI 기억에 쌓여 다음 지원사업을 더 빠르게 준비할 수 있습니다.";
 export const LANDING_OG_DESCRIPTION = DEFAULT_DESCRIPTION;
 export const TWITTER_TITLE = DEFAULT_TITLE;
 export const SEO_KEYWORDS = ["사업계획서", "사업계획서 예시", "사업계획서 AI", "사업계획서 작성", "창업", "독스헌트", "정부지원사업"];
@@ -24,9 +24,9 @@ export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-KGH2N9HZ";
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-71LW9PVQGN";
 export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "946529364431115";
 
-export const BLOG_LIST_TITLE = "사업계획서 AI 작성 팁 및 정부지원사업 합격 가이드 | 독스헌트 블로그";
+export const BLOG_LIST_TITLE = "사업계획서 AI, 정부지원사업에 어떻게 활용할까요? | 독스헌트";
 export const BLOG_LIST_DESCRIPTION =
-  "사업계획서 AI 활용법부터 최신 정부지원사업 한글 양식 대응 노하우까지, 창업 성공을 위한 모든 인사이트를 독스헌트 블로그에서 확인하세요. 예비 창업자를 위한 합격 예시와 실전 작성 팁을 매주 업데이트합니다.";
+  "독스헌트 블로그는 사업계획서 AI 활용법과 정부지원사업 준비 방법을 안내합니다. 한글 양식 작성, 합격 예시, 공고별 실전 팁을 확인하세요.";
 export const ABOUT_TITLE = "독스헌트 마케팅팀 | 블로그 작성자 소개";
 export const ABOUT_DESCRIPTION =
   "정부지원사업과 사업계획서 작성 정보를 전하는 독스헌트 마케팅팀을 소개합니다. 글을 만드는 기준과 독스헌트의 공개 이력을 확인하세요.";
@@ -235,7 +235,7 @@ export function blogListJsonLd(posts: BlogPost[], page = 1) {
 export function articleJsonLd(post: BlogPost) {
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     "@id": `${post.sourceUrl}#article`,
     headline: post.title,
     description: post.description,
