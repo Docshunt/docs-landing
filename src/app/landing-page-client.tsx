@@ -2602,11 +2602,8 @@ function DraftLandingMain({ onStart }: { onStart: StartHandler }) {
       <section className="hero" aria-labelledby="draft-hero-title">
         <div className="hero-copy">
           <h1 className="hero-title" id="draft-hero-title">
-            <span className="draft-hero-title-desktop">모든 지원사업, 사업계획서를 작성하는 AI</span>
-            <span className="draft-hero-title-mobile">
-              <span>모든 지원사업</span>
-              <span>사업계획서를 작성하는 AI</span>
-            </span>
+            모든 지원사업,
+            <br className="draft-hero-title-break" /> 사업계획서를 작성하는 AI
           </h1>
           <p className="hero-subtitle">쓰면 쓸수록 더 잘 써주는 독스헌트, 지금 바로 만나보세요</p>
           <a className="cta-button" href={startPath} onClick={onStart}>

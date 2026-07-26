@@ -2700,7 +2700,7 @@ img {
   letter-spacing: -1.5px;
 }
 
-.draft-hero-title-mobile {
+.draft-hero-title-break {
   display: none;
 }
 
@@ -2725,14 +2725,8 @@ img {
     white-space: normal;
   }
 
-  .draft-hero-title-desktop {
-    display: none;
-  }
-
-  .draft-hero-title-mobile {
-    display: grid;
-    gap: 4px;
-    justify-items: center;
+  .draft-hero-title-break {
+    display: block;
   }
 }
 

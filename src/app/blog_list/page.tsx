@@ -22,7 +22,10 @@ export async function generateMetadata({ searchParams }: BlogListPageProps): Pro
   const page = readPage((await searchParams).page) ?? 1;
   return buildPageMetadata({
     title: page === 1 ? BLOG_LIST_TITLE : `${BLOG_LIST_TITLE} - ${page}페이지`,
-    description: BLOG_LIST_DESCRIPTION,
+    description:
+      page === 1
+        ? BLOG_LIST_DESCRIPTION
+        : `사업계획서 AI 활용법과 정부지원사업 합격 가이드 ${page}페이지입니다. 예비 창업자를 위한 실전 작성 팁과 지원사업 준비 자료를 확인하세요.`,
     path: page === 1 ? "/blog_list" : `/blog_list?page=${page}`,
   });
 }
