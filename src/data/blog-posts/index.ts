@@ -32,10 +32,12 @@ import { post31 } from "./00031-창업-입문자를-위한-정부-지원사업-�
 import { post32 } from "./00032-2026-지원사업-사업계획서-목차-작성-가이드-처음-써도-빠뜨릴-걱정-없는-완벽-가이드";
 import { post33 } from "./00033-좋은-사업계획서는-기술보다-문제정의에서-시작됩니다";
 import { post34 } from "./00034-GPT-사업계획서-그대로-제출하면-왜-티가-날까요";
+import { post35 } from "./00035-사업계획서-시장규모-작성법-TAM-SAM-SOM을-실제-숫자로-만드는-법";
 
 import type { BlogPost } from "./types";
 
 const BLOG_POST_SOURCE = [
+  post35,
   post34,
   post33,
   post01,
