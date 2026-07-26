@@ -3089,7 +3089,7 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
         <div className="company-name">주식회사 사페레아우데</div>
         <div className="footer-details desktop-details">
           <span>대표 : 김성우</span>
-          <span>고객지원 : yes-reply@docshunt.ai</span>
+          <span>고객지원 : documents@docshunt.ai</span>
           <span>주소 : 서울시 동작구 상도로 55길 8, 챌린지스테이션 302호</span>
           <span>사업자등록번호 : 575-86-03204 | 통신판매업신고번호 : 제 2024-서울동작-0430 호</span>
         </div>
@@ -3102,11 +3102,13 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
           <span>통신판매업신고번호 : 제 2024-서울동작-0430 호</span>
         </div>
         <div className="footer-bottom">
-          <a className="instagram" href="https://www.instagram.com/docshunt_official/" target="_blank" rel="noreferrer">
+          <a className="instagram" href="https://www.instagram.com/docshunt.ai/" target="_blank" rel="noreferrer">
             <img src={`${assets}/instagram-icon.webp`} alt="" />
-            <span>docshunt_official</span>
+            <span>docshunt.ai</span>
           </a>
           <div className="legal-links">
+            <Link href="/about">작성자·회사 소개</Link>
+            <span>|</span>
             <a href="https://docshunt.ai/privacy_policy">개인정보 처리방침</a>
             <span>|</span>
             <a href="https://docshunt.ai/terms">이용약관</a>

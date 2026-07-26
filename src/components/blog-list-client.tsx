@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { useMemo, useState } from "react";
 
 import { BLOG_PAGE_COUNT, BLOG_POSTS } from "@/data/docshunt-blogs";
 
@@ -9,9 +6,12 @@ function blogHref(slug: string) {
   return `/blog_detail/${slug}`;
 }
 
-export function BlogListClient() {
-  const [page, setPage] = useState(1);
-  const posts = useMemo(() => BLOG_POSTS.filter((post) => post.page === page), [page]);
+function pageHref(page: number) {
+  return page === 1 ? "/blog_list" : `/blog_list?page=${page}`;
+}
+
+export function BlogListClient({ page }: { page: number }) {
+  const posts = BLOG_POSTS.filter((post) => post.page === page);
 
   return (
     <section className="blog-list-section" aria-labelledby="blog-list-title">
@@ -31,28 +31,34 @@ export function BlogListClient() {
         ))}
       </div>
       <nav className="blog-pagination" aria-label="블로그 페이지">
-        <button type="button" aria-label="이전 페이지" disabled={page === 1} onClick={() => setPage((value) => Math.max(1, value - 1))}>
-          &lt;
-        </button>
+        {page === 1 ? (
+          <span className="is-disabled" aria-hidden="true">
+            &lt;
+          </span>
+        ) : (
+          <Link href={pageHref(page - 1)} aria-label="이전 페이지">
+            &lt;
+          </Link>
+        )}
         {Array.from({ length: BLOG_PAGE_COUNT }, (_, index) => index + 1).map((pageNumber) => (
-          <button
+          <Link
             className={pageNumber === page ? "is-active" : ""}
-            type="button"
             aria-current={pageNumber === page ? "page" : undefined}
+            href={pageHref(pageNumber)}
             key={pageNumber}
-            onClick={() => setPage(pageNumber)}
           >
             {pageNumber}
-          </button>
+          </Link>
         ))}
-        <button
-          type="button"
-          aria-label="다음 페이지"
-          disabled={page === BLOG_PAGE_COUNT}
-          onClick={() => setPage((value) => Math.min(BLOG_PAGE_COUNT, value + 1))}
-        >
-          &gt;
-        </button>
+        {page === BLOG_PAGE_COUNT ? (
+          <span className="is-disabled" aria-hidden="true">
+            &gt;
+          </span>
+        ) : (
+          <Link href={pageHref(page + 1)} aria-label="다음 페이지">
+            &gt;
+          </Link>
+        )}
       </nav>
     </section>
   );

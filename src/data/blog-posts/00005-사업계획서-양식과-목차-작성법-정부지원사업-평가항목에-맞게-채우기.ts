@@ -9,6 +9,17 @@ export const post05 = {
   description:
     "사업계획서 양식만 내려받고 막히는 분들을 위해 정부지원사업 평가항목에 맞춘 목차 구성, 작성 순서, 예산계획 정리법을 설명합니다.",
   date: "2026.05.11",
+  modifiedDate: "2026.07.26",
+  verification: {
+    date: "2026.07.26",
+    note: "본문의 사업 수와 예산은 2026년 창업지원사업 통합공고 기준의 고정 수치입니다. 개별 사업의 평가지표와 양식은 각 공고를 확인하세요.",
+    sources: [
+      {
+        label: "중소벤처기업부 2026년 창업지원사업 통합공고",
+        url: "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1064201&cbIdx=86&parentSeq=1064201",
+      },
+    ],
+  },
   image: "/docshunt-assets/blog-covers/00005-사업계획서-양식과-목차-작성법-정부지원사업-평가항목에-맞게-채우기-list.jpg",
   heroImage: "/docshunt-assets/blog-covers/00005-사업계획서-양식과-목차-작성법-정부지원사업-평가항목에-맞게-채우기-hero.jpg",
   paragraphs: [

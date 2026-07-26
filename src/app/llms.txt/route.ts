@@ -1,8 +1,10 @@
 import { APP_URL, CHANNEL_URL, DEFAULT_DESCRIPTION, SITE_URL } from "@/seo/metadata";
-import { BLOG_TOPIC_HUBS } from "@/data/docshunt-blogs";
+import { BLOG_TOPIC_GROUPS } from "@/data/docshunt-blogs";
 
 export function GET() {
-  const topicGuides = BLOG_TOPIC_HUBS.map((post) => `- ${post.title}: ${post.sourceUrl}`).join("\n");
+  const topicGuides = BLOG_TOPIC_GROUPS.map(
+    ({ name, summary, posts }) => `### ${name}\n\n${summary}\n\n${posts.map((post) => `- ${post.title}: ${post.sourceUrl}`).join("\n")}`,
+  ).join("\n\n");
   const body = `# 독스헌트
 
 > 독스헌트는 정부지원사업 공고 탐색부터 한글 양식 사업계획서 작성까지 돕는 사업계획서 AI 서비스입니다.
@@ -13,6 +15,7 @@ export function GET() {
 - 요금제와 기능 비교: ${SITE_URL}/pricing
 - 2026 지원사업 합격 환급 조건: ${SITE_URL}/refund-event
 - 사업계획서·지원사업 가이드: ${SITE_URL}/blog_list
+- 회사와 콘텐츠 작성·검수 원칙: ${SITE_URL}/about
 
 ## 서비스 요약
 

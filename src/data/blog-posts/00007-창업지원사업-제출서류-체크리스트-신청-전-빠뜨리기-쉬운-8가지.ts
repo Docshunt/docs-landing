@@ -9,6 +9,15 @@ export const post07 = {
   description:
     "창업지원사업 신청 전에 확인해야 할 제출서류와 증빙자료를 정리했습니다. K-Startup 공고문에서 자격, 사업계획서, 가점 증빙, 파일 제출 조건을 빠르게 점검하는 방법입니다.",
   date: "2026.05.07",
+  modifiedDate: "2026.07.26",
+  verification: {
+    date: "2026.07.26",
+    note: "이 글은 일반 제출서류 체크리스트입니다. 실제 필수·선택 서류는 사업별 공고와 첨부 양식을 최종 기준으로 확인하세요.",
+    sources: [
+      { label: "K-Startup 창업지원포털", url: "https://www.k-startup.go.kr/web" },
+      { label: "기업마당 지원사업 공고", url: "https://www.bizinfo.go.kr/web/index.do" },
+    ],
+  },
   image: "/docshunt-assets/blog-covers/00007-창업지원사업-제출서류-체크리스트-신청-전-빠뜨리기-쉬운-8가지-list.jpg",
   heroImage: "/docshunt-assets/blog-covers/00007-창업지원사업-제출서류-체크리스트-신청-전-빠뜨리기-쉬운-8가지-hero.jpg",
   paragraphs: [

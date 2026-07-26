@@ -9,6 +9,15 @@ export const post02 = {
   description:
     "K-Startup과 기업마당에 올라온 수많은 지원사업 공고 중 내 조건에 맞는 공고를 추천받고, 요약된 지원대상·제출서류·평가 기준을 바탕으로 독스헌트에서 사업계획서 작성까지 이어가는 방법을 정리했습니다.",
   date: "2026.06.05",
+  modifiedDate: "2026.07.26",
+  verification: {
+    date: "2026.07.26",
+    note: "공고 탐색 방법을 다루는 일반 가이드입니다. 지원 대상·서류·마감은 각 공고 원문을 최종 기준으로 확인하세요.",
+    sources: [
+      { label: "K-Startup 창업지원포털", url: "https://www.k-startup.go.kr/web" },
+      { label: "기업마당 지원사업 공고", url: "https://www.bizinfo.go.kr/web/index.do" },
+    ],
+  },
   image: "/docshunt-assets/blog-covers/00002-나에게-맞는-지원사업-공고-찾기-K-Startup-기업마당-활용-가이드-list.jpg",
   heroImage: "/docshunt-assets/blog-covers/00002-나에게-맞는-지원사업-공고-찾기-K-Startup-기업마당-활용-가이드-hero.jpg",
   paragraphs: [

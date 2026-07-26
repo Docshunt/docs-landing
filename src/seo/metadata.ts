@@ -8,6 +8,9 @@ export const CHANNEL_URL = "https://docshunt.channel.io";
 export const STATIC_ASSET_URL = "https://docs-landing-six.vercel.app";
 
 export const SITE_NAME = "독스헌트 | 지원사업 사업계획서 작성 AI";
+export const BLOG_AUTHOR_NAME = "독스헌트 마케팅팀";
+export const BLOG_AUTHOR_PATH = "/about#editorial-policy";
+export const BLOG_AUTHOR_URL = `${SITE_URL}${BLOG_AUTHOR_PATH}`;
 export const DEFAULT_TITLE = "작성 시간은 1/10로, 자금 확보 기회는 10배로 | 독스헌트";
 export const DEFAULT_DESCRIPTION =
   "공고별 문항과 평가 기준을 분석하고, AI와 묻고 답하며 사업계획서를 완성합니다. 작성할수록 아이템과 사업 정보가 AI 기억에 쌓여 점점 더 빠르고 정교하게 지원사업을 준비할 수 있습니다.";
@@ -24,6 +27,9 @@ export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "946529364
 export const BLOG_LIST_TITLE = "사업계획서 AI 작성 팁 및 정부지원사업 합격 가이드 | 독스헌트 블로그";
 export const BLOG_LIST_DESCRIPTION =
   "사업계획서 AI 활용법부터 최신 정부지원사업 한글 양식 대응 노하우까지, 창업 성공을 위한 모든 인사이트를 독스헌트 블로그에서 확인하세요. 예비 창업자를 위한 합격 예시와 실전 작성 팁을 매주 업데이트합니다.";
+export const ABOUT_TITLE = "독스헌트 마케팅팀 | 블로그 작성자 소개";
+export const ABOUT_DESCRIPTION =
+  "정부지원사업과 사업계획서 작성 정보를 전하는 독스헌트 마케팅팀을 소개합니다. 글을 만드는 기준과 독스헌트의 공개 이력을 확인하세요.";
 export const PRICING_TITLE = "요금제 | 독스헌트";
 export const PRICING_DESCRIPTION = "내 사업의 지원사업 준비 방식에 맞는 독스헌트 플랜을 선택하세요.";
 export const REFUND_EVENT_TITLE = "2026 지원사업 합격 시 환급 | 독스헌트";
@@ -103,7 +109,7 @@ export function organizationJsonLd() {
     sameAs: ["https://www.instagram.com/docshunt.ai/"],
     contactPoint: {
       "@type": "ContactPoint",
-      email: "yes-reply@docshunt.ai",
+      email: "documents@docshunt.ai",
       contactType: "customer support",
       availableLanguage: ["ko"],
     },
@@ -153,11 +159,21 @@ export function softwareApplicationJsonLd() {
   };
 }
 
-export function webPageJsonLd({ name, description, path }: { name: string; description: string; path: string }) {
+export function webPageJsonLd({
+  name,
+  description,
+  path,
+  type = "WebPage",
+}: {
+  name: string;
+  description: string;
+  path: string;
+  type?: "WebPage" | "AboutPage" | "ProfilePage";
+}) {
   const url = absoluteUrl(path);
   return {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": type,
     "@id": `${url}#webpage`,
     url,
     name,
@@ -172,14 +188,34 @@ export function webPageJsonLd({ name, description, path }: { name: string; descr
   };
 }
 
-export function blogListJsonLd(posts: BlogPost[]) {
+export function authorProfileJsonLd() {
+  return {
+    ...webPageJsonLd({
+      name: ABOUT_TITLE,
+      description: ABOUT_DESCRIPTION,
+      path: "/about",
+      type: "ProfilePage",
+    }),
+    mainEntity: {
+      "@type": "Organization",
+      "@id": BLOG_AUTHOR_URL,
+      name: BLOG_AUTHOR_NAME,
+      url: BLOG_AUTHOR_URL,
+      description: ABOUT_DESCRIPTION,
+      parentOrganization: { "@id": `${SITE_URL}/#organization` },
+    },
+  };
+}
+
+export function blogListJsonLd(posts: BlogPost[], page = 1) {
+  const url = absoluteUrl(page === 1 ? "/blog_list" : `/blog_list?page=${page}`);
   return {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "@id": `${absoluteUrl("/blog_list")}#blog`,
+    "@id": `${url}#blog`,
     name: BLOG_LIST_TITLE,
     description: BLOG_LIST_DESCRIPTION,
-    url: absoluteUrl("/blog_list"),
+    url,
     inLanguage: "ko-KR",
     isPartOf: {
       "@id": `${SITE_URL}/#website`,
@@ -207,8 +243,15 @@ export function articleJsonLd(post: BlogPost) {
     image: absoluteUrl(post.heroImage),
     datePublished: dateToIso(post.date),
     ...(post.modifiedDate ? { dateModified: dateToIso(post.modifiedDate) } : {}),
+    ...(post.verification ? { citation: post.verification.sources.map(({ url }) => url) } : {}),
     inLanguage: "ko-KR",
-    author: { "@id": `${SITE_URL}/#organization` },
+    author: {
+      "@type": "Organization",
+      "@id": BLOG_AUTHOR_URL,
+      name: BLOG_AUTHOR_NAME,
+      url: BLOG_AUTHOR_URL,
+      parentOrganization: { "@id": `${SITE_URL}/#organization` },
+    },
     publisher: { "@id": `${SITE_URL}/#organization` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     mainEntityOfPage: {

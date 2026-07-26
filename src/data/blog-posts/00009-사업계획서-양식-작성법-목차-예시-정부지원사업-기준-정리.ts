@@ -9,6 +9,18 @@ export const post09 = {
   description:
     "사업계획서 양식을 받았지만 어디서부터 써야 할지 막막하다면, 목차별 작성법과 예시, 정부지원사업 사업계획서에서 심사위원이 보는 기준을 먼저 확인하세요.",
   date: "2026.04.30",
+  modifiedDate: "2026.07.26",
+  verification: {
+    date: "2026.07.26",
+    note: "이 글은 일반 작성 가이드입니다. 평가항목과 제출 양식은 사업별 공식 공고와 첨부파일을 최종 기준으로 확인하세요.",
+    sources: [
+      { label: "K-Startup 창업지원포털", url: "https://www.k-startup.go.kr/" },
+      {
+        label: "중소벤처기업부 2026년 창업지원사업 통합공고",
+        url: "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1065929&cbIdx=310",
+      },
+    ],
+  },
   image: "/docshunt-assets/blog-covers/00009-사업계획서-양식-작성법-목차-예시-정부지원사업-기준-정리-list.jpg",
   heroImage: "/docshunt-assets/blog-covers/00009-사업계획서-양식-작성법-목차-예시-정부지원사업-기준-정리-hero.jpg",
   paragraphs: [
