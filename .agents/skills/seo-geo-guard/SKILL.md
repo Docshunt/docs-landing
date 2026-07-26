@@ -98,6 +98,16 @@ The script performs repository-level static checks for common drift:
 
 Treat `ERROR` output as blocking. Treat `WARN` output as PR notes unless it is relevant to the current change.
 
+## Phase 4.5: External Structured Data Validation
+
+After deployment, validate representative public URLs:
+
+1. Paste the rendered URL into [Schema.org Validator](https://validator.schema.org/) and resolve all errors.
+2. Run [Google Rich Results Test](https://search.google.com/test/rich-results) to check Google-supported result eligibility separately.
+3. Confirm that rendered JSON-LD uses `"@context": "https://schema.org"`; do not use the versioned schema vocabulary dump as `@context`.
+
+Record the tested URLs and results in the PR notes. External validators require a reachable deployment and are not a substitute for the local guard.
+
 ## Phase 5: Runtime Smoke
 
 After `npm run build`, start a local production server:
@@ -149,3 +159,13 @@ Do not write "SEO unaffected" unless the changed route, metadata, sitemap, and c
 - Updating `/llms.txt` without `/ai.txt` creates AI-search guidance drift.
 - Using `localhost`, relative canonical URLs, or preview deployment URLs in metadata is a release blocker.
 - Image renames can break OG/social previews even when the visible page still renders.
+- Serving different substantive content by crawler `User-Agent` risks cloaking. Keep public page content equivalent and use `robots.txt`, `/llms.txt`, and `/ai.txt` for crawler guidance.
+
+## Search Console Submission
+
+After the production deployment:
+
+1. Verify the site property in Google Search Console and submit `https://docshunt.ai/sitemap.xml`.
+2. Use URL Inspection only for newly published or materially updated priority pages.
+3. Import the verified property into Bing Webmaster Tools when available, then submit the same sitemap.
+4. Record submission dates and coverage errors; sitemap submission is a discovery signal, not an indexing guarantee.
