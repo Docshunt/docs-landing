@@ -15,6 +15,7 @@ export function GET() {
 - 서비스 소개 및 시작: ${SITE_URL}/
 - 요금제와 기능 비교: ${SITE_URL}/pricing
 - 2026 지원사업 합격 환급 조건: ${SITE_URL}/refund-event
+- 사업계획서 예시 샘플: ${SITE_URL}/sample
 - 사업계획서·지원사업 가이드: ${SITE_URL}/blog_list
 - 회사와 콘텐츠 작성·검수 원칙: ${SITE_URL}/about
 

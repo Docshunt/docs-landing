@@ -22,5 +22,20 @@ export function GET() {
       priority: "0.7",
       changefreq: "monthly",
     },
+    {
+      loc: "/sample",
+      priority: "0.7",
+      changefreq: "monthly",
+    },
+    {
+      loc: "/privacy_policy",
+      priority: "0.3",
+      changefreq: "yearly",
+    },
+    {
+      loc: "/terms",
+      priority: "0.3",
+      changefreq: "yearly",
+    },
   ]);
 }

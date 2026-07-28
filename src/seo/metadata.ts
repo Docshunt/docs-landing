@@ -41,6 +41,13 @@ export const PRICING_DESCRIPTION = "내 사업의 지원사업 준비 방식에 
 export const REFUND_EVENT_TITLE = "2026 지원사업 합격 시 환급 | 독스헌트";
 export const REFUND_EVENT_DESCRIPTION =
   "연간 Pro 또는 Max 요금제로 지원사업을 준비하고 합격하면, 실제 결제한 구독료의 최대 50%를 환급받으세요.";
+export const PRIVACY_POLICY_TITLE = "개인정보 처리방침 | 독스헌트";
+export const PRIVACY_POLICY_DESCRIPTION = "독스헌트 서비스의 개인정보 수집, 이용, 보관, 파기 및 정보주체의 권리를 안내합니다.";
+export const TERMS_TITLE = "서비스 이용약관 | 독스헌트";
+export const TERMS_DESCRIPTION = "독스헌트 서비스의 이용 조건, 회원의 권리와 의무, 결제 및 콘텐츠 관리 기준을 안내합니다.";
+export const SAMPLE_TITLE = "사업계획서 예시 샘플 | 독스헌트";
+export const SAMPLE_DESCRIPTION =
+  "독스헌트가 생성한 실제 사업계획서 예시를 확인하세요. 독스헌트와 숙박 공유 플랫폼 사업 모델을 바탕으로 만든 참고용 샘플입니다.";
 
 export function absoluteUrl(path: string) {
   if (path.startsWith("http://") || path.startsWith("https://")) {
