@@ -21867,6 +21867,10 @@ img {
   align-items: center;
 }
 
+.legal-main:has(> .sample-page) {
+  padding: 0;
+}
+
 .sample-section {
   width: min(870px, 100%);
   margin: 0 auto;

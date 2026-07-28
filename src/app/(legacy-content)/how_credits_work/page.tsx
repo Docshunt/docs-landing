@@ -66,7 +66,7 @@ export default function CreditsGuidePage() {
           </ul>
         </section>
         <section>
-          <h2>5. Do credits expire?</h2>
+          <h2>4. Do credits expire?</h2>
           <ul>
             <li>Credits included with the Free/Pro plan are reset monthly and do not roll over.</li>
             <li>Additional credits you purchase do not expire and are permanently retained.</li>

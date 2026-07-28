@@ -1,4 +1,3 @@
-import { BlogHeader, DocshuntFooter } from "@/components/docshunt-blog-shell";
 import { JsonLd } from "@/components/json-ld";
 import { SAMPLE_DESCRIPTION, SAMPLE_TITLE, buildPageMetadata, webPageJsonLd } from "@/seo/metadata";
 
@@ -23,10 +22,9 @@ export const metadata = buildPageMetadata({
 
 export default function SamplePage() {
   return (
-    <div className="page blog-page sample-page">
+    <>
       <JsonLd data={webPageJsonLd({ name: SAMPLE_TITLE, description: SAMPLE_DESCRIPTION, path: "/sample" })} />
-      <BlogHeader />
-      <main className="sample-main">
+      <div className="sample-page sample-main">
         <section className="sample-section" aria-labelledby="sample-title">
           <h1 id="sample-title">Sample Business Plan</h1>
           <p className="sample-intro">독스헌트가 생성한 실제 사업계획서 예시를 확인해 보세요.</p>
@@ -42,8 +40,7 @@ export default function SamplePage() {
             ))}
           </div>
         </section>
-      </main>
-      <DocshuntFooter />
-    </div>
+      </div>
+    </>
   );
 }
