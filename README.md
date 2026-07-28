@@ -187,6 +187,8 @@ Analytics 값은 Vercel Project의 Preview와 Production 환경에 각각 설정
 NEXT_PUBLIC_GTM_ID
 NEXT_PUBLIC_GA_ID
 NEXT_PUBLIC_META_PIXEL_ID
+NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN
+NEXT_PUBLIC_POSTHOG_HOST
 ```
 
 공개 origin과 Vercel project ID는 secret이 아니므로 GitHub Environment variables를 사용합니다.
