@@ -1,14 +1,15 @@
 name: Vercel
 
 on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
   push:
-    tags:
-      - "v*"
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "배포할 v* 릴리즈 태그"
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -25,6 +26,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && format('refs/tags/{0}', inputs.release_tag) || github.sha }}
           persist-credentials: false
 
       - name: Setup Node
@@ -41,10 +43,9 @@ jobs:
 
   deploy:
     needs: validate
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.event_name == 'pull_request' && 'dev' || 'prod' }}
+      name: ${{ github.event_name == 'push' && 'dev' || 'prod' }}
       url: ${{ steps.deploy.outputs.url }}
     env:
       VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
@@ -57,18 +58,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && format('refs/tags/{0}', inputs.release_tag) || github.sha }}
           fetch-depth: 0
           persist-credentials: false
 
       - name: Select target
         id: target
         shell: bash
+        env:
+          RELEASE_TAG: ${{ inputs.release_tag }}
         run: |
-          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+          if [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
             echo "environment=preview" >> "$GITHUB_OUTPUT"
           else
+            [[ "$RELEASE_TAG" == v* ]]
             git fetch origin main
-            git merge-base --is-ancestor "$GITHUB_SHA" origin/main
+            tag_sha=$(git rev-list -n 1 "refs/tags/$RELEASE_TAG")
+            test "$(git rev-parse HEAD)" = "$tag_sha"
+            git merge-base --is-ancestor "$tag_sha" origin/main
             echo "environment=production" >> "$GITHUB_OUTPUT"
           fi
 
@@ -77,11 +84,9 @@ jobs:
         run: |
           test -n "$VERCEL_ORG_ID"
           test -n "$VERCEL_PROJECT_ID"
+          [[ "$NEXT_PUBLIC_SITE_ORIGIN" == https://* ]]
           test -n "$NEXT_PUBLIC_APP_ORIGIN"
           test -n "$NEXT_PUBLIC_CHANNEL_ORIGIN"
-          if [[ "$GITHUB_EVENT_NAME" != "pull_request" ]]; then
-            test -n "$NEXT_PUBLIC_SITE_ORIGIN"
-          fi
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -106,19 +111,23 @@ jobs:
           args=(
             --yes
             --token="$VERCEL_TOKEN"
+            --build-env NEXT_PUBLIC_SITE_ORIGIN="$NEXT_PUBLIC_SITE_ORIGIN"
             --build-env NEXT_PUBLIC_APP_ORIGIN="$NEXT_PUBLIC_APP_ORIGIN"
             --build-env NEXT_PUBLIC_CHANNEL_ORIGIN="$NEXT_PUBLIC_CHANNEL_ORIGIN"
+            --env NEXT_PUBLIC_SITE_ORIGIN="$NEXT_PUBLIC_SITE_ORIGIN"
             --env NEXT_PUBLIC_APP_ORIGIN="$NEXT_PUBLIC_APP_ORIGIN"
             --env NEXT_PUBLIC_CHANNEL_ORIGIN="$NEXT_PUBLIC_CHANNEL_ORIGIN"
           )
-          if [[ "$GITHUB_EVENT_NAME" != "pull_request" ]]; then
-            args+=(
-              --prod
-              --build-env NEXT_PUBLIC_SITE_ORIGIN="$NEXT_PUBLIC_SITE_ORIGIN"
-              --env NEXT_PUBLIC_SITE_ORIGIN="$NEXT_PUBLIC_SITE_ORIGIN"
-            )
+          if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+            args+=(--prod)
           fi
           deployment_url=$(vercel deploy "${args[@]}")
-          echo "url=$deployment_url" >> "$GITHUB_OUTPUT"
+          if [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
+            vercel alias set "$deployment_url" "${NEXT_PUBLIC_SITE_ORIGIN#https://}" --token="$VERCEL_TOKEN"
+            public_url="$NEXT_PUBLIC_SITE_ORIGIN"
+          else
+            public_url="$deployment_url"
+          fi
+          echo "url=$public_url" >> "$GITHUB_OUTPUT"
           echo "### Vercel ${{ steps.target.outputs.environment }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "$deployment_url" >> "$GITHUB_STEP_SUMMARY"
+          echo "$public_url" >> "$GITHUB_STEP_SUMMARY"

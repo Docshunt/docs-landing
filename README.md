@@ -130,8 +130,8 @@ When writing or editing blog posts, follow:
 
 권장 운영 방식:
 
-- Pull Request: Preview Deployment
-- `main` commit에 `v*` 릴리즈 태그 push: Production Deployment
+- `main` merge: GitHub `dev` Environment 변수로 Preview Deployment
+- GitHub Actions에서 `v*` 릴리즈 태그를 지정해 수동 실행: Production Deployment
 - Production domain: `docshunt.ai`
 
 Vercel Project 설정:
@@ -148,10 +148,11 @@ Vercel Project 설정:
 
 Vercel 배포는 `.github/workflows/vercel.yml`에서 수행합니다.
 
-- PR 생성·업데이트: GitHub `dev` Environment 변수로 Vercel Preview 배포
-- `v*` 릴리즈 태그 push: 태그가 `main` commit을 가리키는지 확인한 뒤 GitHub `prod` Environment 변수로 Vercel Production 배포
+- `main` push: GitHub `dev` Environment 변수로 Vercel Preview를 배포하고 main 고정 alias를 갱신
+- 수동 실행: 입력한 `v*` 릴리즈 태그가 `main` commit을 가리키는지 확인한 뒤 GitHub `prod` Environment 변수로 Vercel Production 배포
+- `v*` 릴리즈 태그 push만으로는 Production을 자동 배포하지 않음
 
-`vercel.json`은 Vercel Git Integration의 자동 배포를 비활성화합니다. 따라서 `main` 병합만으로 production deployment가 생성되지 않습니다.
+`vercel.json`은 Vercel Git Integration의 자동 배포를 비활성화합니다. 따라서 `main` 병합은 dev Preview만 갱신하며 production deployment를 생성하지 않습니다.
 
 `main` 병합은 매우 보수적으로 진행합니다. Codex나 다른 coding agent는 CLI/API/local git으로 PR을 merge하지 않습니다. Maintainer가 GitHub 웹 UI에서 checks, preview deployment, SEO/GEO 영향, rollout risk를 직접 확인한 뒤 merge합니다.
 
