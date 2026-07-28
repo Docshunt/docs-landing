@@ -28,6 +28,21 @@ export function GET() {
       changefreq: "monthly",
     },
     {
+      loc: "/review",
+      priority: "0.7",
+      changefreq: "monthly",
+    },
+    {
+      loc: "/how_credits_work",
+      priority: "0.6",
+      changefreq: "monthly",
+    },
+    {
+      loc: "/how_to_convert_hwpx",
+      priority: "0.6",
+      changefreq: "yearly",
+    },
+    {
       loc: "/privacy_policy",
       priority: "0.3",
       changefreq: "yearly",
@@ -35,6 +50,21 @@ export function GET() {
     {
       loc: "/terms",
       priority: "0.3",
+      changefreq: "yearly",
+    },
+    {
+      loc: "/payment_policy",
+      priority: "0.2",
+      changefreq: "yearly",
+    },
+    {
+      loc: "/marketing_consent",
+      priority: "0.2",
+      changefreq: "yearly",
+    },
+    {
+      loc: "/marketing_consent_en_",
+      priority: "0.2",
       changefreq: "yearly",
     },
   ]);

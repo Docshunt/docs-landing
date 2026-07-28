@@ -21778,6 +21778,89 @@ img {
   font-size: 20px;
 }
 
+.legacy-definition-list {
+  margin: 0;
+}
+
+.legacy-definition-list > div {
+  padding: 22px 0;
+  border-bottom: 1px solid #e4e7ec;
+}
+
+.legacy-definition-list dt {
+  color: #17191f;
+  font-weight: 700;
+}
+
+.legacy-definition-list dd {
+  margin: 6px 0 0;
+}
+
+.legacy-notice {
+  margin-top: 32px !important;
+  border-radius: 10px;
+  padding: 18px 20px;
+  background: #f2f4f7;
+  color: #475467;
+}
+
+.legacy-table-wrap {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.legacy-table-wrap table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+}
+
+.legacy-table-wrap th,
+.legacy-table-wrap td {
+  border: 1px solid #d0d5dd;
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.legacy-table-wrap th {
+  background: #f2f4f7;
+}
+
+.legacy-review-document {
+  width: min(1080px, 100%);
+}
+
+.legacy-review-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.legacy-review-card {
+  margin: 0;
+  border: 1px solid #e4e7ec;
+  border-radius: 14px;
+  padding: 24px;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(16, 24, 40, 0.05);
+}
+
+.legacy-review-card blockquote {
+  margin: 0;
+}
+
+.legacy-review-card figcaption {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  color: #667085;
+  font-size: 14px;
+}
+
+.legacy-review-card strong {
+  color: #344054;
+}
+
 .sample-main {
   display: flex;
   min-height: 650px;
@@ -21877,6 +21960,14 @@ img {
   .legal-document .legal-chapter {
     margin-top: 48px;
     font-size: 18px;
+  }
+
+  .legacy-review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .legacy-review-card {
+    padding: 20px;
   }
 
   .sample-main {
