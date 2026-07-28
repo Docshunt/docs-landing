@@ -131,7 +131,7 @@ When writing or editing blog posts, follow:
 권장 운영 방식:
 
 - Pull Request: Preview Deployment
-- GitHub web UI에서 maintainer가 `main`으로 merge: Production Deployment
+- `main` commit에 `v*` 릴리즈 태그 push: Production Deployment
 - Production domain: `docshunt.ai`
 
 Vercel Project 설정:

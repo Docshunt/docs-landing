@@ -18,8 +18,35 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify
+        run: npm run security:scan && npm run precommit
+
   deploy:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    needs: validate
+    if: >-
+      github.event_name != 'pull_request' ||
+      (
+        github.event.pull_request.head.repo.full_name == github.repository &&
+        contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.pull_request.author_association)
+      )
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.event_name == 'pull_request' && 'dev' || 'prod' }}
@@ -30,13 +57,13 @@ jobs:
       NEXT_PUBLIC_SITE_ORIGIN: ${{ vars.NEXT_PUBLIC_SITE_ORIGIN }}
       NEXT_PUBLIC_APP_ORIGIN: ${{ vars.NEXT_PUBLIC_APP_ORIGIN }}
       NEXT_PUBLIC_CHANNEL_ORIGIN: ${{ vars.NEXT_PUBLIC_CHANNEL_ORIGIN }}
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Select target
         id: target
@@ -57,7 +84,6 @@ jobs:
           test -n "$VERCEL_PROJECT_ID"
           test -n "$NEXT_PUBLIC_APP_ORIGIN"
           test -n "$NEXT_PUBLIC_CHANNEL_ORIGIN"
-          test -n "$VERCEL_TOKEN"
           if [[ "$GITHUB_EVENT_NAME" != "pull_request" ]]; then
             test -n "$NEXT_PUBLIC_SITE_ORIGIN"
           fi
@@ -66,24 +92,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Verify
-        run: npm run security:scan && npm run precommit
 
       - name: Install Vercel CLI
         run: npm install --global vercel@58.0.0
 
       - name: Pull Vercel configuration
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: vercel pull --yes --environment=${{ steps.target.outputs.environment }} --token="$VERCEL_TOKEN"
 
       - name: Deploy
         id: deploy
         shell: bash
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
+          test -n "$VERCEL_TOKEN"
           args=(
             --yes
             --token="$VERCEL_TOKEN"
