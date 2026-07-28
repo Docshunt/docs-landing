@@ -1,9 +1,10 @@
-import { APP_URL, CHANNEL_URL, DEFAULT_DESCRIPTION, SITE_URL } from "@/seo/metadata";
+import { APP_URL, CHANNEL_URL, DEFAULT_DESCRIPTION, SITE_URL, absoluteUrl } from "@/seo/metadata";
 import { BLOG_TOPIC_GROUPS } from "@/data/docshunt-blogs";
 
 export function GET() {
   const topicGuides = BLOG_TOPIC_GROUPS.map(
-    ({ name, summary, posts }) => `### ${name}\n\n${summary}\n\n${posts.map((post) => `- ${post.title}: ${post.sourceUrl}`).join("\n")}`,
+    ({ name, summary, posts }) =>
+      `### ${name}\n\n${summary}\n\n${posts.map((post) => `- ${post.title}: ${absoluteUrl(post.sourceUrl)}`).join("\n")}`,
   ).join("\n\n");
   const body = `# 독스헌트
 

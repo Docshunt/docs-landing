@@ -56,7 +56,9 @@ indexSource = indexSource
   .replace(importMarker, `\nimport { ${exportName} } from "${modulePath}";${importMarker}`)
   .replace(arrayMarker, `${arrayMarker}  ${exportName},\n`);
 
-const source = `import type { BlogPost } from "./types";
+const source = `import { APP_URL } from "@/seo/metadata";
+
+import type { BlogPost } from "./types";
 
 export const ${exportName} = {
   page: 1,
@@ -75,7 +77,7 @@ export const ${exportName} = {
   <p>TODO: 근거, 예시, 다음 행동을 작성하세요.</p>
   <div class="dh-cta">
     <p>TODO: 독스헌트로 이어지는 구체적인 다음 행동</p>
-    <a class="dh-cta-button" href="https://app.docshunt.ai/f">무료로 시작하기</a>
+    <a class="dh-cta-button" href="\${APP_URL}/f">무료로 시작하기</a>
   </div>
 </div>\`,
 } satisfies BlogPost;

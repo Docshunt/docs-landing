@@ -6,9 +6,7 @@ import { BlogHeader, DocshuntFooter } from "@/components/docshunt-blog-shell";
 import { JsonLd } from "@/components/json-ld";
 import { BLOG_CONTENT_HTML } from "@/data/docshunt-blog-content";
 import { BLOG_POSTS, BLOG_TOPIC_GROUPS, decodeBlogSlug, findBlogPost, getRecommendedPosts } from "@/data/docshunt-blogs";
-import { articleJsonLd, BLOG_AUTHOR_NAME, BLOG_AUTHOR_PATH, breadcrumbJsonLd, buildPageMetadata, dateToIso } from "@/seo/metadata";
-
-const startUrl = "https://app.docshunt.ai";
+import { APP_URL, articleJsonLd, BLOG_AUTHOR_NAME, BLOG_AUTHOR_PATH, breadcrumbJsonLd, buildPageMetadata, dateToIso } from "@/seo/metadata";
 
 type BlogDetailParams = {
   params: Promise<{
@@ -128,7 +126,7 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
           {!hasContentCta ? (
             <section className="blog-detail-cta" aria-label="독스헌트 시작하기">
               <p>단 몇 분만에, 전문가가 쓴 듯한 사업계획서를 만들어보세요.</p>
-              <a href={startUrl}>무료 생성하기</a>
+              <a href={APP_URL}>무료 생성하기</a>
             </section>
           ) : null}
           <section className="blog-recommended" aria-labelledby="recommended-title">

@@ -2,10 +2,9 @@ import Link from "next/link";
 
 import { AccessibleMobileMenu } from "@/components/accessible-mobile-menu";
 import { JsonLd } from "@/components/json-ld";
-import { REFUND_EVENT_DESCRIPTION, REFUND_EVENT_TITLE, buildPageMetadata, webPageJsonLd } from "@/seo/metadata";
+import { APP_URL, REFUND_EVENT_DESCRIPTION, REFUND_EVENT_TITLE, SITE_URL, buildPageMetadata, webPageJsonLd } from "@/seo/metadata";
 
 const assets = "/docshunt-assets";
-const appUrl = "https://app.docshunt.ai";
 const refundApplicationUrl = "https://tally.so/r/XxkVYj";
 
 const siteNavLinks = [
@@ -143,7 +142,7 @@ export default function RefundEventPage() {
             </Link>
           ))}
         </div>
-        <a className="refund-event-nav-cta" href={appUrl}>
+        <a className="refund-event-nav-cta" href={APP_URL}>
           무료로 시작하기
         </a>
         <AccessibleMobileMenu className="refund-event-mobile-menu">
@@ -196,7 +195,7 @@ export default function RefundEventPage() {
             <strong>제세공과금 22% 공제 후</strong>
           </div>
         </div>
-        <a className="refund-button refund-button-outline-light" href={appUrl}>
+        <a className="refund-button refund-button-outline-light" href={APP_URL}>
           요금제 시작하기 <Chevron />
         </a>
         <ul className="refund-benefit-notes">
@@ -311,9 +310,9 @@ export default function RefundEventPage() {
             docshunt_official
           </a>
           <span>
-            <a href="https://docshunt.ai/privacy_policy">개인정보 처리방침</a>
+            <a href={`${SITE_URL}/privacy_policy`}>개인정보 처리방침</a>
             <b>|</b>
-            <a href="https://docshunt.ai/terms">이용약관</a>
+            <a href={`${SITE_URL}/terms`}>이용약관</a>
             <b>|</b>
             <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5758603204" target="_blank" rel="noreferrer">
               사업자 정보 확인
@@ -323,7 +322,7 @@ export default function RefundEventPage() {
       </footer>
 
       <aside className="refund-bottom-bar" aria-label="합격 시 환급 고정 안내">
-        <a href={appUrl}>요금제 시작하기</a>
+        <a href={APP_URL}>요금제 시작하기</a>
         <a href="#refund-eligibility">환급 조건 보기</a>
       </aside>
     </main>

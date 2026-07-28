@@ -1,3 +1,5 @@
+import { APP_URL } from "@/seo/metadata";
+
 export const BLOG_CONTENT_HTML: Record<string, string> = {
   "2": `<div class="dh-seo-post dh-seo-post-legacy"><style>
 body {
@@ -195,7 +197,7 @@ body {
   <p style="margin:0 0 20px;">이미 수많은 밤을 새우며 고생해 써둔 귀한 사업계획서입니다. 아깝게 방치하지 말고, 올 한 해 쏟아질 수많은 지원사업 합격을 위한 발판으로 다시 활용해보시길 바랍니다.</p>
 
   <div class="dh-cta-row">
-    <a class="dh-cta-button" href="https://app.docshunt.ai/f?utm_source=docshunt_blog&amp;utm_medium=owned&amp;utm_campaign=business_plan_reuse&amp;utm_content=blog_cta" target="_blank" rel="noopener">독스헌트로 사업계획서 다시 활용하기</a>
+    <a class="dh-cta-button" href="${APP_URL}/f?utm_source=docshunt_blog&amp;utm_medium=owned&amp;utm_campaign=business_plan_reuse&amp;utm_content=blog_cta" target="_blank" rel="noopener">독스헌트로 사업계획서 다시 활용하기</a>
   </div>
 
   <p class="dh-source">참고: <a href="https://www.k-startup.go.kr/web" target="_blank" rel="noopener">K-Startup 창업지원포털</a>, <a href="https://start.kosmes.or.kr/" target="_blank" rel="noopener">청년창업사관학교</a></p>
@@ -336,7 +338,7 @@ body {
   <p style="margin:0 0 20px;">지원사업 준비는 내 상황에 맞는 공고를 빠르게 찾는 데서 시작됩니다. 공고를 찾는 데 쓰는 시간을 줄이고, 선택한 공고에 맞춰 사업계획서 작성에 더 집중해보세요.</p>
 
   <div class="dh-cta-row final">
-    <a class="dh-cta-button" href="https://app.docshunt.ai/f?utm_source=docshunt_blog&amp;utm_medium=owned&amp;utm_campaign=kstartup_recommendation&amp;utm_content=blog_cta" target="_blank" rel="noopener">내 조건에 맞는 지원사업 추천받기</a>
+    <a class="dh-cta-button" href="${APP_URL}/f?utm_source=docshunt_blog&amp;utm_medium=owned&amp;utm_campaign=kstartup_recommendation&amp;utm_content=blog_cta" target="_blank" rel="noopener">내 조건에 맞는 지원사업 추천받기</a>
   </div>
 
   <p class="dh-source">출처: <a href="https://www.korea.kr/news/policyNewsView.do?newsId=148956820" target="_blank" rel="noopener">정책브리핑 2026년 창업지원 통합공고</a>, <a href="https://www.k-startup.go.kr/web" target="_blank" rel="noopener">K-Startup 창업지원포털</a>, <a href="https://bizinfo.go.kr/" target="_blank" rel="noopener">기업마당</a></p>
@@ -404,7 +406,7 @@ body {
   <p style="margin:0 0 20px;">핵심은 모두의 창업 참가자가 문서 작업에 시간을 빼앗기지 않고, 아이디어 검증과 실행 준비에 더 집중할 수 있게 만드는 것입니다. 독스헌트는 기존 서비스 안에서 아이디어 정리와 사업계획서 초안 작성을 자연스럽게 이어갈 수 있도록 돕겠습니다.</p>
 
   <div class="dh-cta-row">
-    <a class="dh-cta-button" href="https://app.docshunt.ai/f" target="_blank" rel="noopener">모두의 창업 사업계획서 초안 무료로 만들기</a>
+    <a class="dh-cta-button" href="${APP_URL}/f" target="_blank" rel="noopener">모두의 창업 사업계획서 초안 무료로 만들기</a>
   </div>
 
   <p style="margin:36px 0 0; color:#6E7687; font-size:15px; line-height:1.7;">참고: 모두의 창업 세부 지원 내용과 일정은 <a href="https://www.modoo.or.kr/" target="_blank" rel="noopener">모두의 창업 공식 홈페이지</a>에서 확인할 수 있습니다.</p>
@@ -560,7 +562,7 @@ body {
 
   <div class="dh-callout">창업 아이디어를 입력하면 고객 문제, 해결 방법, 실행 계획, 사업계획서 초안으로 이어지는 구조를 빠르게 잡을 수 있습니다. 작성 화면에 들어가기 전에 초안을 먼저 만들고, 제출 뒤에는 알림톡과 홈페이지에서 최종 접수 상태까지 확인하세요.</div>
   <div class="dh-cta-row">
-    <a class="dh-cta-button" href="https://app.docshunt.ai/f" target="_blank" rel="noopener">사업계획서 AI 무료로 사용하기</a>
+    <a class="dh-cta-button" href="${APP_URL}/f" target="_blank" rel="noopener">사업계획서 AI 무료로 사용하기</a>
   </div>
 
   <p style="margin:44px 0 0; color:#6E7687; font-size:15px; line-height:1.7;">참고: 화면과 접수 현황은 모두의 창업 운영 상황에 따라 바뀔 수 있습니다. 제출한 도전신청서는 접수 마감 전까지 수정 후 재제출할 수 있지만, 모집 종료 후에는 수정 및 삭제가 제한됩니다. 최종 제출 전에는 <a href="https://www.modoo.or.kr/" target="_blank" rel="noopener">모두의 창업 홈페이지</a>, <a href="https://www.modoo.or.kr/intro" target="_blank" rel="noopener">프로젝트 소개</a>, <a href="https://www.modoo.or.kr/apply/status" target="_blank" rel="noopener">접수 현황</a>, <a href="https://www.modoo.or.kr/notice/list" target="_blank" rel="noopener">공지사항</a>을 함께 확인하세요.</p>
