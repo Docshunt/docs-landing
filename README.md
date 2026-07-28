@@ -182,7 +182,7 @@ Vercel CLI 인증값만 Environment secret으로 설정합니다.
 VERCEL_TOKEN
 ```
 
-PostHog 값은 GitHub `dev`, `prod` Environment variables에 각각 설정하고 workflow에서 Vercel로 전달합니다.
+PostHog 값은 GitHub `prod` Environment variables에만 설정하고 Production 수동 배포에서만 Vercel로 전달합니다. dev Preview는 PostHog 변수를 빈 값으로 덮어써 analytics를 로드하지 않습니다.
 
 ```text
 NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN

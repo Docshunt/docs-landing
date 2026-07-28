@@ -89,8 +89,10 @@ jobs:
           [[ "$NEXT_PUBLIC_SITE_ORIGIN" == https://* ]]
           test -n "$NEXT_PUBLIC_APP_ORIGIN"
           test -n "$NEXT_PUBLIC_CHANNEL_ORIGIN"
-          test -n "$NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN"
-          [[ "$NEXT_PUBLIC_POSTHOG_HOST" == https://* ]]
+          if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+            test -n "$NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN"
+            [[ "$NEXT_PUBLIC_POSTHOG_HOST" == https://* ]]
+          fi
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -118,16 +120,25 @@ jobs:
             --build-env NEXT_PUBLIC_SITE_ORIGIN="$NEXT_PUBLIC_SITE_ORIGIN"
             --build-env NEXT_PUBLIC_APP_ORIGIN="$NEXT_PUBLIC_APP_ORIGIN"
             --build-env NEXT_PUBLIC_CHANNEL_ORIGIN="$NEXT_PUBLIC_CHANNEL_ORIGIN"
-            --build-env NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN="$NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN"
-            --build-env NEXT_PUBLIC_POSTHOG_HOST="$NEXT_PUBLIC_POSTHOG_HOST"
             --env NEXT_PUBLIC_SITE_ORIGIN="$NEXT_PUBLIC_SITE_ORIGIN"
             --env NEXT_PUBLIC_APP_ORIGIN="$NEXT_PUBLIC_APP_ORIGIN"
             --env NEXT_PUBLIC_CHANNEL_ORIGIN="$NEXT_PUBLIC_CHANNEL_ORIGIN"
-            --env NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN="$NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN"
-            --env NEXT_PUBLIC_POSTHOG_HOST="$NEXT_PUBLIC_POSTHOG_HOST"
           )
           if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
-            args+=(--prod)
+            args+=(
+              --prod
+              --build-env NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN="$NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN"
+              --build-env NEXT_PUBLIC_POSTHOG_HOST="$NEXT_PUBLIC_POSTHOG_HOST"
+              --env NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN="$NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN"
+              --env NEXT_PUBLIC_POSTHOG_HOST="$NEXT_PUBLIC_POSTHOG_HOST"
+            )
+          else
+            args+=(
+              --build-env NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN=
+              --build-env NEXT_PUBLIC_POSTHOG_HOST=
+              --env NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN=
+              --env NEXT_PUBLIC_POSTHOG_HOST=
+            )
           fi
           deployment_url=$(vercel deploy "${args[@]}")
           if [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
