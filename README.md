@@ -174,7 +174,7 @@ NEXT_PUBLIC_APP_ORIGIN
 NEXT_PUBLIC_CHANNEL_ORIGIN
 ```
 
-`NEXT_PUBLIC_SITE_ORIGIN=https://docshunt.ai`는 `prod` Environment에만 설정합니다. PR Preview는 Vercel이 빌드 시 제공하는 고유 `NEXT_PUBLIC_VERCEL_URL`을 사용합니다.
+`NEXT_PUBLIC_SITE_ORIGIN`은 `dev`에서 main 고정 Vercel alias를, `prod`에서 `https://docshunt.ai`를 사용합니다.
 
 Vercel CLI 인증값만 Environment secret으로 설정합니다.
 
@@ -182,14 +182,19 @@ Vercel CLI 인증값만 Environment secret으로 설정합니다.
 VERCEL_TOKEN
 ```
 
-Analytics 값은 Vercel Project의 Preview와 Production 환경에 각각 설정합니다.
+PostHog 값은 GitHub `dev`, `prod` Environment variables에 각각 설정하고 workflow에서 Vercel로 전달합니다.
+
+```text
+NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN
+NEXT_PUBLIC_POSTHOG_HOST
+```
+
+GTM, GA, Meta Pixel 기본값을 재정의할 때는 Vercel Project의 Preview와 Production 환경에 각각 설정합니다.
 
 ```text
 NEXT_PUBLIC_GTM_ID
 NEXT_PUBLIC_GA_ID
 NEXT_PUBLIC_META_PIXEL_ID
-NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN
-NEXT_PUBLIC_POSTHOG_HOST
 ```
 
 공개 origin과 Vercel project ID는 secret이 아니므로 GitHub Environment variables를 사용합니다.
@@ -201,7 +206,7 @@ NEXT_PUBLIC_POSTHOG_HOST
 3. Vercel Project > Domains에 `docshunt.ai` 추가
 4. 필요하면 `www.docshunt.ai`도 추가
 5. Vercel이 안내하는 DNS record로 변경
-6. 병합 commit에 `v*` 릴리즈 태그를 push하여 Production 배포
+6. 병합 commit에 `v*` 릴리즈 태그를 만든 뒤 GitHub Actions에서 해당 태그를 입력해 Production 수동 배포
 7. Search Console과 Naver Search Advisor에 sitemap 제출
 
 ## Git And PR Rules

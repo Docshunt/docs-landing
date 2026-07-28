@@ -53,6 +53,8 @@ jobs:
       NEXT_PUBLIC_SITE_ORIGIN: ${{ vars.NEXT_PUBLIC_SITE_ORIGIN }}
       NEXT_PUBLIC_APP_ORIGIN: ${{ vars.NEXT_PUBLIC_APP_ORIGIN }}
       NEXT_PUBLIC_CHANNEL_ORIGIN: ${{ vars.NEXT_PUBLIC_CHANNEL_ORIGIN }}
+      NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN: ${{ vars.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN }}
+      NEXT_PUBLIC_POSTHOG_HOST: ${{ vars.NEXT_PUBLIC_POSTHOG_HOST }}
 
     steps:
       - name: Checkout
@@ -87,6 +89,8 @@ jobs:
           [[ "$NEXT_PUBLIC_SITE_ORIGIN" == https://* ]]
           test -n "$NEXT_PUBLIC_APP_ORIGIN"
           test -n "$NEXT_PUBLIC_CHANNEL_ORIGIN"
+          test -n "$NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN"
+          [[ "$NEXT_PUBLIC_POSTHOG_HOST" == https://* ]]
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -114,9 +118,13 @@ jobs:
             --build-env NEXT_PUBLIC_SITE_ORIGIN="$NEXT_PUBLIC_SITE_ORIGIN"
             --build-env NEXT_PUBLIC_APP_ORIGIN="$NEXT_PUBLIC_APP_ORIGIN"
             --build-env NEXT_PUBLIC_CHANNEL_ORIGIN="$NEXT_PUBLIC_CHANNEL_ORIGIN"
+            --build-env NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN="$NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN"
+            --build-env NEXT_PUBLIC_POSTHOG_HOST="$NEXT_PUBLIC_POSTHOG_HOST"
             --env NEXT_PUBLIC_SITE_ORIGIN="$NEXT_PUBLIC_SITE_ORIGIN"
             --env NEXT_PUBLIC_APP_ORIGIN="$NEXT_PUBLIC_APP_ORIGIN"
             --env NEXT_PUBLIC_CHANNEL_ORIGIN="$NEXT_PUBLIC_CHANNEL_ORIGIN"
+            --env NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN="$NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN"
+            --env NEXT_PUBLIC_POSTHOG_HOST="$NEXT_PUBLIC_POSTHOG_HOST"
           )
           if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
             args+=(--prod)
