@@ -16,10 +16,10 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 import { JsonLd } from "@/components/json-ld";
-import { softwareApplicationJsonLd } from "@/seo/metadata";
+import { APP_URL, SITE_URL, softwareApplicationJsonLd } from "@/seo/metadata";
 
 const assets = "/docshunt-assets";
-const startPath = "https://app.docshunt.ai";
+const startPath = APP_URL;
 
 const heroWorkflowSlides = [
   {
@@ -3106,9 +3106,9 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
           <div className="legal-links">
             <Link href="/about">작성자·회사 소개</Link>
             <span>|</span>
-            <a href="https://docshunt.ai/privacy_policy">개인정보 처리방침</a>
+            <a href={`${SITE_URL}/privacy_policy`}>개인정보 처리방침</a>
             <span>|</span>
-            <a href="https://docshunt.ai/terms">이용약관</a>
+            <a href={`${SITE_URL}/terms`}>이용약관</a>
             <span>|</span>
             <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5758603204" target="_blank" rel="noreferrer">
               사업자 정보 확인

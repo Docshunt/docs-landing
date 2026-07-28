@@ -1,3 +1,5 @@
+import { APP_URL } from "@/seo/metadata";
+
 import type { BlogPost } from "./types";
 
 export const post34 = {
@@ -120,7 +122,7 @@ export const post34 = {
 
   <div class="dh-cta">
     <p>GPT로 만든 초안에 실제 공고와 회사 자료를 반영하고 싶다면, 독스헌트에서 빠진 근거를 확인하며 다시 작성해보세요.</p>
-    <a class="dh-cta-button" href="https://app.docshunt.ai/f?utm_source=blog&amp;utm_medium=owned&amp;utm_campaign=gpt-business-plan-rejection&amp;utm_content=blog_cta" target="_blank" rel="noopener noreferrer">독스헌트에서 이어서 작성하기</a>
+    <a class="dh-cta-button" href="${APP_URL}/f?utm_source=blog&amp;utm_medium=owned&amp;utm_campaign=gpt-business-plan-rejection&amp;utm_content=blog_cta" target="_blank" rel="noopener noreferrer">독스헌트에서 이어서 작성하기</a>
   </div>
 
   <section class="dh-sources">

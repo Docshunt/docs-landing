@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { BlogHeader, DocshuntFooter } from "@/components/docshunt-blog-shell";
+import { APP_URL } from "@/seo/metadata";
 
 type BillingCycle = "monthly" | "annual";
 
@@ -20,7 +21,6 @@ type Plan = {
   refundEligible?: boolean;
 };
 
-const appUrl = "https://app.docshunt.ai";
 const refundApplicationUrl = "https://tally.so/r/XxkVYj";
 
 const plans: Plan[] = [
@@ -134,7 +134,7 @@ function PriceCard({
           </button>
         ) : null}
       </div>
-      <a className="pricing2026-card-cta" href={appUrl}>
+      <a className="pricing2026-card-cta" href={APP_URL}>
         {buttonLabel}
       </a>
       <ul className="pricing2026-feature-list">

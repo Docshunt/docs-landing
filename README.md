@@ -130,8 +130,8 @@ When writing or editing blog posts, follow:
 
 권장 운영 방식:
 
-- Pull Request: Preview Deployment
-- GitHub web UI에서 maintainer가 `main`으로 merge: Production Deployment
+- `main` merge: GitHub `dev` Environment 변수로 Preview Deployment
+- GitHub Actions에서 `v*` 릴리즈 태그를 지정해 수동 실행: Production Deployment
 - Production domain: `docshunt.ai`
 
 Vercel Project 설정:
@@ -146,7 +146,13 @@ Vercel Project 설정:
 | Production Branch | `main`          |
 | Node.js Version   | `24.x`          |
 
-Vercel Git Integration을 연결하면 PR마다 preview URL이 생성되고, `main`에 병합되는 commit이 production deployment가 됩니다.
+Vercel 배포는 `.github/workflows/vercel.yml`에서 수행합니다.
+
+- `main` push: GitHub `dev` Environment 변수로 Vercel Preview를 배포하고 main 고정 alias를 갱신
+- 수동 실행: 입력한 `v*` 릴리즈 태그가 `main` commit을 가리키는지 확인한 뒤 GitHub `prod` Environment 변수로 Vercel Production 배포
+- `v*` 릴리즈 태그 push만으로는 Production을 자동 배포하지 않음
+
+`vercel.json`은 Vercel Git Integration의 자동 배포를 비활성화합니다. 따라서 `main` 병합은 dev Preview만 갱신하며 production deployment를 생성하지 않습니다.
 
 `main` 병합은 매우 보수적으로 진행합니다. Codex나 다른 coding agent는 CLI/API/local git으로 PR을 merge하지 않습니다. Maintainer가 GitHub 웹 UI에서 checks, preview deployment, SEO/GEO 영향, rollout risk를 직접 확인한 뒤 merge합니다.
 
@@ -159,7 +165,31 @@ Vercel Git Integration을 연결하면 PR마다 preview URL이 생성되고, `ma
 
 ### Environment Variables
 
-현재 코드는 기본값 fallback을 갖고 있지만, Vercel Project에는 아래 값을 명시하는 것을 권장합니다.
+GitHub의 `dev`, `prod` Environment에 아래 값을 Environment variables로 설정합니다.
+
+```text
+VERCEL_ORG_ID
+VERCEL_PROJECT_ID
+NEXT_PUBLIC_APP_ORIGIN
+NEXT_PUBLIC_CHANNEL_ORIGIN
+```
+
+`NEXT_PUBLIC_SITE_ORIGIN`은 `dev`에서 main 고정 Vercel alias를, `prod`에서 `https://docshunt.ai`를 사용합니다.
+
+Vercel CLI 인증값만 Environment secret으로 설정합니다.
+
+```text
+VERCEL_TOKEN
+```
+
+PostHog 값은 GitHub `prod` Environment variables에만 설정하고 Production 수동 배포에서만 Vercel로 전달합니다. dev Preview는 PostHog 변수를 빈 값으로 덮어써 analytics를 로드하지 않습니다.
+
+```text
+NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN
+NEXT_PUBLIC_POSTHOG_HOST
+```
+
+GTM, GA, Meta Pixel 기본값을 재정의할 때는 Vercel Project의 Preview와 Production 환경에 각각 설정합니다.
 
 ```text
 NEXT_PUBLIC_GTM_ID
@@ -167,16 +197,17 @@ NEXT_PUBLIC_GA_ID
 NEXT_PUBLIC_META_PIXEL_ID
 ```
 
-Production과 Preview 모두에 설정하면 preview에서도 실제 analytics tag 동작을 확인할 수 있습니다.
+공개 origin과 Vercel project ID는 secret이 아니므로 GitHub Environment variables를 사용합니다.
 
 ### Domain Cutover
 
-1. Vercel preview deployment에서 PR 화면 확인
-2. PR merge 후 `main` production deployment 확인
+1. PR의 Vercel Preview deployment에서 화면 확인
+2. PR을 `main`에 병합
 3. Vercel Project > Domains에 `docshunt.ai` 추가
 4. 필요하면 `www.docshunt.ai`도 추가
 5. Vercel이 안내하는 DNS record로 변경
-6. Search Console과 Naver Search Advisor에 sitemap 제출
+6. 병합 commit에 `v*` 릴리즈 태그를 만든 뒤 GitHub Actions에서 해당 태그를 입력해 Production 수동 배포
+7. Search Console과 Naver Search Advisor에 sitemap 제출
 
 ## Git And PR Rules
 

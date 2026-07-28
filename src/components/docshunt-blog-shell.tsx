@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 import { AccessibleMobileMenu } from "@/components/accessible-mobile-menu";
+import { APP_URL, SITE_URL } from "@/seo/metadata";
 
 const assets = "/docshunt-assets";
-const startUrl = "https://app.docshunt.ai";
 const siteNavLinks = [
   { href: "/pricing", label: "요금제 / 환급" },
   { href: "/blog_list", label: "블로그" },
@@ -23,7 +23,7 @@ export function BlogHeader() {
         ))}
       </nav>
       <div className="header-actions">
-        <a className="header-button primary" href={startUrl}>
+        <a className="header-button primary" href={APP_URL}>
           무료로 시작하기
         </a>
         <AccessibleMobileMenu className="blog-header-mobile-menu" summaryClassName="menu-button">
@@ -66,9 +66,9 @@ export function DocshuntFooter() {
         <div className="legal-links">
           <Link href="/about">작성자·회사 소개</Link>
           <span>|</span>
-          <a href="https://docshunt.ai/privacy_policy">개인정보 처리방침</a>
+          <a href={`${SITE_URL}/privacy_policy`}>개인정보 처리방침</a>
           <span>|</span>
-          <a href="https://docshunt.ai/terms">이용약관</a>
+          <a href={`${SITE_URL}/terms`}>이용약관</a>
           <span>|</span>
           <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5758603204" target="_blank" rel="noreferrer">
             사업자 정보 확인

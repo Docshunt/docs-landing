@@ -2,10 +2,14 @@ import type { Metadata } from "next";
 
 import type { BlogPost } from "@/data/docshunt-blogs";
 
-export const SITE_URL = "https://docshunt.ai";
-export const APP_URL = "https://app.docshunt.ai";
-export const CHANNEL_URL = "https://docshunt.channel.io";
-export const STATIC_ASSET_URL = "https://docs-landing-six.vercel.app";
+const DEFAULT_SITE_ORIGIN = "https://docshunt.ai";
+
+export const SITE_URL = new URL(
+  process.env.NEXT_PUBLIC_SITE_ORIGIN ??
+    (process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : DEFAULT_SITE_ORIGIN),
+).origin;
+export const APP_URL = new URL(process.env.NEXT_PUBLIC_APP_ORIGIN ?? "https://app.docshunt.ai").origin;
+export const CHANNEL_URL = new URL(process.env.NEXT_PUBLIC_CHANNEL_ORIGIN ?? "https://docshunt.channel.io").origin;
 
 export const SITE_NAME = "독스헌트 | 지원사업 사업계획서 작성 AI";
 export const BLOG_AUTHOR_NAME = "독스헌트 마케팅팀";
@@ -17,12 +21,14 @@ export const DEFAULT_DESCRIPTION =
 export const LANDING_OG_DESCRIPTION = DEFAULT_DESCRIPTION;
 export const TWITTER_TITLE = DEFAULT_TITLE;
 export const SEO_KEYWORDS = ["사업계획서", "사업계획서 예시", "사업계획서 AI", "사업계획서 작성", "창업", "독스헌트", "정부지원사업"];
-export const OG_IMAGE = `${STATIC_ASSET_URL}/docshunt-assets/og-new-landing.jpg`;
+export const OG_IMAGE = `${SITE_URL}/docshunt-assets/og-new-landing.jpg`;
 export const FAVICON_URL = "/favicon.ico";
 export const NAVER_SITE_VERIFICATION = "8b95bd75264aba5160dbc5493c948c6059c20628";
 export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-KGH2N9HZ";
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-71LW9PVQGN";
 export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "946529364431115";
+export const POSTHOG_PROJECT_TOKEN = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
+export const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST ? new URL(process.env.NEXT_PUBLIC_POSTHOG_HOST).origin : undefined;
 
 export const BLOG_LIST_TITLE = "사업계획서 AI, 정부지원사업에 어떻게 활용할까요? | 독스헌트";
 export const BLOG_LIST_DESCRIPTION =
@@ -37,7 +43,10 @@ export const REFUND_EVENT_DESCRIPTION =
   "연간 Pro 또는 Max 요금제로 지원사업을 준비하고 합격하면, 실제 결제한 구독료의 최대 50%를 환급받으세요.";
 
 export function absoluteUrl(path: string) {
-  if (path.startsWith("http://") || path.startsWith("https://")) return path;
+  if (path.startsWith("http://") || path.startsWith("https://")) {
+    const url = new URL(path);
+    return url.origin === DEFAULT_SITE_ORIGIN ? `${SITE_URL}${url.pathname}${url.search}${url.hash}` : path;
+  }
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
@@ -224,7 +233,7 @@ export function blogListJsonLd(posts: BlogPost[], page = 1) {
       "@type": "BlogPosting",
       headline: post.title,
       description: post.description,
-      url: post.sourceUrl,
+      url: absoluteUrl(post.sourceUrl),
       datePublished: dateToIso(post.date),
       ...(post.modifiedDate ? { dateModified: dateToIso(post.modifiedDate) } : {}),
       image: absoluteUrl(post.heroImage),
@@ -233,13 +242,14 @@ export function blogListJsonLd(posts: BlogPost[], page = 1) {
 }
 
 export function articleJsonLd(post: BlogPost) {
+  const url = absoluteUrl(post.sourceUrl);
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "@id": `${post.sourceUrl}#article`,
+    "@id": `${url}#article`,
     headline: post.title,
     description: post.description,
-    url: post.sourceUrl,
+    url,
     image: absoluteUrl(post.heroImage),
     datePublished: dateToIso(post.date),
     ...(post.modifiedDate ? { dateModified: dateToIso(post.modifiedDate) } : {}),
@@ -256,7 +266,7 @@ export function articleJsonLd(post: BlogPost) {
     isPartOf: { "@id": `${SITE_URL}/#website` },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": post.sourceUrl,
+      "@id": url,
     },
   };
 }

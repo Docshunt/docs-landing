@@ -64,6 +64,14 @@ if (!exists("src/seo/metadata.ts")) {
   if (!metadata.includes("https://docshunt.ai")) {
     errors.push("src/seo/metadata.ts does not contain the production SITE_URL https://docshunt.ai.");
   }
+  for (const envName of ["NEXT_PUBLIC_SITE_ORIGIN", "NEXT_PUBLIC_APP_ORIGIN", "NEXT_PUBLIC_CHANNEL_ORIGIN"]) {
+    if (!metadata.includes(`process.env.${envName}`)) {
+      errors.push(`src/seo/metadata.ts must read ${envName}.`);
+    }
+  }
+  if (/STATIC_ASSET_URL|vercel\.app/.test(metadata)) {
+    errors.push("OG assets must use SITE_URL instead of the Vercel deployment origin.");
+  }
   if (/canonical\s*:\s*["'`]\//.test(metadata) || /openGraph:[\s\S]*url\s*:\s*["'`]\//.test(metadata)) {
     errors.push("Relative canonical or openGraph.url detected in src/seo/metadata.ts.");
   }
