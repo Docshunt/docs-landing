@@ -1,4 +1,5 @@
 import { JsonLd } from "@/components/json-ld";
+import { PrivacyPolicyVersionSelect } from "@/components/privacy-policy-version-select";
 import { PRIVACY_POLICY_DESCRIPTION, PRIVACY_POLICY_TITLE, buildPageMetadata, webPageJsonLd } from "@/seo/metadata";
 
 export const metadata = buildPageMetadata({
@@ -7,7 +8,10 @@ export const metadata = buildPageMetadata({
   path: "/privacy_policy",
 });
 
-export default function PrivacyPolicyPage() {
+export default async function PrivacyPolicyPage({ searchParams }: { searchParams: Promise<{ version?: string }> }) {
+  const version = (await searchParams).version === "20250801" ? "20250801" : "20260318";
+  const isCurrent = version === "20260318";
+
   return (
     <>
       <JsonLd
@@ -20,7 +24,7 @@ export default function PrivacyPolicyPage() {
       <article className="legal-document">
         <header className="legal-title">
           <h1>독스헌트AI 개인정보 처리방침</h1>
-          <p>시행일 2026.03.18.</p>
+          <PrivacyPolicyVersionSelect version={version} />
         </header>
 
         <p>
@@ -34,7 +38,10 @@ export default function PrivacyPolicyPage() {
           <p>회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다:</p>
           <ul>
             <li>회원가입 및 서비스 제공: 본인 인증, 회원 관리, 서비스 부정이용 방지</li>
-            <li>독스헌트AI 서비스 제공: AI 기반 문서 생성 및 첨삭, 맞춤형 정부 지원사업 및 정책 자금 추천</li>
+            <li>
+              독스헌트AI 서비스 제공:{" "}
+              {isCurrent ? "AI 기반 문서 생성 및 첨삭, 맞춤형 정부 지원사업 및 정책 자금 추천" : "AI 기반 문서 생성, 첨삭, 개인화 서비스"}
+            </li>
             <li>결제 처리: 유료 서비스 이용 시 결제 및 정산</li>
             <li>고객 지원: 문의 응답, 기술 지원, 공지사항 전달</li>
           </ul>
@@ -57,13 +64,16 @@ export default function PrivacyPolicyPage() {
           <h3>1. 회원가입 시 수집하는 정보</h3>
           <ul>
             <li>
-              필수항목: 이메일 주소, 비밀번호, 휴대폰 번호(본인인증 및 알림 서비스용), 사업자등록번호(개인사업자의 경우 개인정보로 취급)
+              필수항목:{" "}
+              {isCurrent
+                ? "이메일 주소, 비밀번호, 휴대폰 번호(본인인증 및 알림 서비스용), 사업자등록번호(개인사업자의 경우 개인정보로 취급)"
+                : "이메일 주소, 비밀번호"}
             </li>
-            <li>선택항목: 닉네임, 회사명, 대표자명</li>
+            <li>선택항목: {isCurrent ? "닉네임, 회사명, 대표자명" : "닉네임, 회사명"}</li>
           </ul>
           <h3>2. 서비스 이용 중 수집하는 정보</h3>
           <ul>
-            <li>자동 수집: IP주소, 쿠키, 접속 기록, 서비스 이용 로그</li>
+            <li>자동 수집: IP주소, 쿠키, 접속 기록{isCurrent ? ", 서비스 이용 로그" : ""}</li>
             <li>사용자 업로드: 문서 및 파일</li>
             <li>서비스 생성: AI가 생성한 문서 및 콘텐츠</li>
             <li>결제 시: 결제 정보 (결제 대행업체를 통해 처리)</li>
@@ -106,7 +116,7 @@ export default function PrivacyPolicyPage() {
             <li>법령에 의해 요구되는 경우</li>
             <li>결제 처리를 위한 경우 (결제 대행업체)</li>
             <li>서비스 제공을 위한 경우 (클라우드 인프라)</li>
-            <li>외부 전문기관을 통한 기업 정보 조회 및 연동을 위해 사업자등록번호 등을 제공하는 경우</li>
+            {isCurrent ? <li>외부 전문기관을 통한 기업 정보 조회 및 연동을 위해 사업자등록번호 등을 제공하는 경우</li> : null}
           </ul>
         </section>
 
@@ -118,7 +128,7 @@ export default function PrivacyPolicyPage() {
             <li>Paddle: 결제 처리</li>
             <li>OpenAI: AI 서비스 제공</li>
             <li>Google (Gemini): AI 서비스 제공</li>
-            <li>제휴된 외부 전문기관: 기업 정보 조회 및 연동 서비스 제공</li>
+            {isCurrent ? <li>제휴된 외부 전문기관: 기업 정보 조회 및 연동 서비스 제공</li> : null}
           </ul>
           <p>모든 위탁업체는 개인정보 보호에 관한 법적 의무를 준수하며, 위탁업무 범위를 초과하여 개인정보를 처리하지 않습니다.</p>
         </section>
@@ -143,10 +153,16 @@ export default function PrivacyPolicyPage() {
             <li>처리 정지: 개인정보 처리 정지를 요청할 수 있습니다</li>
             <li>회원 탈퇴: 언제든지 서비스에서 탈퇴할 수 있습니다</li>
           </ul>
-          <p>
-            연락 방법: 웹사이트 내 &apos;채널톡&apos; 실시간 상담을 이용하시거나, 고객지원 메일(
-            <a href="mailto:support@docshunt.ai">support@docshunt.ai</a>)로 문의해 주시기 바랍니다.
-          </p>
+          {isCurrent ? (
+            <p>
+              연락 방법: 웹사이트 내 &apos;채널톡&apos; 실시간 상담을 이용하시거나, 고객지원 메일(
+              <a href="mailto:support@docshunt.ai">support@docshunt.ai</a>)로 문의해 주시기 바랍니다.
+            </p>
+          ) : (
+            <p>
+              연락 방법: 웹사이트 내 설정에서 직접 수정하거나 <a href="mailto:support@docshunt.ai">support@docshunt.ai</a>로 문의하세요.
+            </p>
+          )}
         </section>
 
         <section>
@@ -179,7 +195,7 @@ export default function PrivacyPolicyPage() {
 
         <section>
           <h2>제11조 (개인정보 처리방침 변경)</h2>
-          <p>이 개인정보 처리방침은 2026년 3월 18일부터 시행됩니다.</p>
+          <p>이 개인정보 처리방침은 {isCurrent ? "2026년 3월 18일" : "2025년 8월 1일"}부터 시행됩니다.</p>
           <p>변경이 있을 경우 웹사이트 공지사항을 통해 7일 전에 안내드리며, 중요한 변경사항은 30일 전에 미리 알려드립니다.</p>
           <ul>
             <li>웹사이트 공지: 독스헌트AI 웹사이트 공지사항</li>

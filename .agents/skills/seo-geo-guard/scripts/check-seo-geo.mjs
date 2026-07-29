@@ -42,12 +42,15 @@ if (!pageFiles.length) {
 }
 
 const requiredCrawlerRoutes = [
-  "src/app/robots.ts",
   "src/app/sitemap.xml/route.ts",
   "src/app/sitemap-blog_detail.xml/route.ts",
   "src/app/llms.txt/route.ts",
   "src/app/ai.txt/route.ts",
 ];
+
+if (!exists("src/app/robots.ts") && !exists("src/app/robots.txt/route.ts")) {
+  errors.push("Missing crawler-facing route: src/app/robots.ts or src/app/robots.txt/route.ts");
+}
 
 for (const file of requiredCrawlerRoutes) {
   if (!exists(file)) errors.push(`Missing crawler-facing route: ${file}`);

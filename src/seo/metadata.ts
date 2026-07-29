@@ -43,6 +43,8 @@ export const REFUND_EVENT_DESCRIPTION =
   "연간 Pro 또는 Max 요금제로 지원사업을 준비하고 합격하면, 실제 결제한 구독료의 최대 50%를 환급받으세요.";
 export const PRIVACY_POLICY_TITLE = "개인정보 처리방침 | 독스헌트";
 export const PRIVACY_POLICY_DESCRIPTION = "독스헌트 서비스의 개인정보 수집, 이용, 보관, 파기 및 정보주체의 권리를 안내합니다.";
+export const BUSINESS_INFO_TITLE = "사업자 정보 확인 | 독스헌트";
+export const BUSINESS_INFO_DESCRIPTION = "주식회사 사페레아우데의 사업자등록 및 통신판매업 신고 정보를 안내합니다.";
 export const TERMS_TITLE = "서비스 이용약관 | 독스헌트";
 export const TERMS_DESCRIPTION = "독스헌트 서비스의 이용 조건, 회원의 권리와 의무, 결제 및 콘텐츠 관리 기준을 안내합니다.";
 export const SAMPLE_TITLE = "사업계획서 예시 샘플 | 독스헌트";

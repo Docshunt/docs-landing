@@ -21728,6 +21728,71 @@ img {
   font-size: 14px;
 }
 
+.legal-version-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  color: #667085;
+  font-size: 14px;
+}
+
+.legal-version-picker select {
+  min-width: 150px;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  padding: 9px 34px 9px 12px;
+  background: #ffffff;
+  color: #17191f;
+  font: inherit;
+}
+
+.business-info-document {
+  width: min(1200px, 100%);
+}
+
+.business-info-table-wrap {
+  overflow-x: auto;
+}
+
+.business-info-table-wrap table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
+
+.business-info-table-wrap th,
+.business-info-table-wrap td {
+  border: 1px solid #d0d5dd;
+  padding: 15px 16px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.business-info-table-wrap th {
+  width: 19%;
+  background: #eef1f4;
+  color: #17191f;
+  font-weight: 700;
+}
+
+.business-info-table-wrap td {
+  width: 31%;
+  background: #ffffff;
+}
+
+.business-info-notice {
+  margin-top: 22px;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  padding: 24px 28px;
+  background: #ffffff;
+}
+
+.business-info-notice p:first-child {
+  margin-top: 0;
+}
+
 .legal-document section {
   margin-top: 48px;
 }

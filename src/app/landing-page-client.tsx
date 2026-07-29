@@ -16,7 +16,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 import { JsonLd } from "@/components/json-ld";
-import { APP_URL, SITE_URL, softwareApplicationJsonLd } from "@/seo/metadata";
+import { APP_URL, softwareApplicationJsonLd } from "@/seo/metadata";
 
 const assets = "/docshunt-assets";
 const startPath = APP_URL;
@@ -3106,13 +3106,11 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
           <div className="legal-links">
             <Link href="/about">작성자·회사 소개</Link>
             <span>|</span>
-            <a href={`${SITE_URL}/privacy_policy`}>개인정보 처리방침</a>
+            <Link href="/privacy_policy">개인정보 처리방침</Link>
             <span>|</span>
-            <a href={`${SITE_URL}/terms`}>이용약관</a>
+            <Link href="/terms">이용약관</Link>
             <span>|</span>
-            <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5758603204" target="_blank" rel="noreferrer">
-              사업자 정보 확인
-            </a>
+            <Link href="/business_info">사업자 정보 확인</Link>
           </div>
         </div>
       </footer>
