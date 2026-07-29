@@ -43,6 +43,8 @@ if (!pageFiles.length) {
 
 const requiredCrawlerRoutes = [
   "src/app/sitemap.xml/route.ts",
+  "src/app/sitemap-index.xml/route.ts",
+  "src/app/sitemap-blog_list.xml/route.ts",
   "src/app/sitemap-blog_detail.xml/route.ts",
   "src/app/llms.txt/route.ts",
   "src/app/ai.txt/route.ts",

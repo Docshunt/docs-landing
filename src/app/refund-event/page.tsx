@@ -301,7 +301,7 @@ export default function RefundEventPage() {
           <strong>주식회사 사페레아우데</strong>
           <p>대표 : 김성우</p>
           <p>고객지원 : documents@docshunt.ai</p>
-          <p>주소 : 서울시 동작구 상도로 55길 8, 챌린지스테이션 302호</p>
+          <p>주소 : 서울시 동작구 상도로 55길 8, 창의키움관 302호</p>
           <p>사업자등록번호 : 575-86-03204 | 통신판매업신고번호 : 제 2024-서울동작-0430 호</p>
         </div>
         <div className="refund-footer-links">

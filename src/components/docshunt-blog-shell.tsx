@@ -47,12 +47,12 @@ export function DocshuntFooter() {
       <div className="footer-details desktop-details">
         <span>대표 : 김성우</span>
         <span>고객지원 : documents@docshunt.ai</span>
-        <span>주소 : 서울시 동작구 상도로 55길 8, 챌린지스테이션 302호</span>
+        <span>주소 : 서울시 동작구 상도로 55길 8, 창의키움관 302호</span>
         <span>사업자등록번호 : 575-86-03204 | 통신판매업신고번호 : 제 2024-서울동작-0430 호</span>
       </div>
       <div className="footer-details mobile-details mobile-only">
         <span>대표 : 김성우</span>
-        <span>주소 : 서울시 동작구 상도로 55길 8, 챌린지스테이션 302호</span>
+        <span>주소 : 서울시 동작구 상도로 55길 8, 창의키움관 302호</span>
         <span>고객센터 : 0507-0177-2162</span>
         <span>이메일: documents@docshunt.ai</span>
         <span>사업자등록번호 : 575-86-03204</span>

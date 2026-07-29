@@ -150,7 +150,7 @@ export function organizationJsonLd() {
       "@type": "PostalAddress",
       addressCountry: "KR",
       addressRegion: "서울특별시",
-      streetAddress: "동작구 상도로 55길 8, 챌린지스테이션 302호",
+      streetAddress: "동작구 상도로 55길 8, 창의키움관 302호",
     },
   };
 }
