@@ -16,7 +16,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 import { JsonLd } from "@/components/json-ld";
-import { APP_URL, SITE_URL, softwareApplicationJsonLd } from "@/seo/metadata";
+import { APP_URL, softwareApplicationJsonLd } from "@/seo/metadata";
 
 const assets = "/docshunt-assets";
 const startPath = APP_URL;
@@ -3087,12 +3087,12 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
         <div className="footer-details desktop-details">
           <span>대표 : 김성우</span>
           <span>고객지원 : documents@docshunt.ai</span>
-          <span>주소 : 서울시 동작구 상도로 55길 8, 챌린지스테이션 302호</span>
+          <span>주소 : 서울시 동작구 상도로 55길 8, 창의키움관 302호</span>
           <span>사업자등록번호 : 575-86-03204 | 통신판매업신고번호 : 제 2024-서울동작-0430 호</span>
         </div>
         <div className="footer-details mobile-details mobile-only">
           <span>대표 : 김성우</span>
-          <span>주소 : 서울시 동작구 상도로 55길 8, 챌린지스테이션 302호</span>
+          <span>주소 : 서울시 동작구 상도로 55길 8, 창의키움관 302호</span>
           <span>고객센터 : 0507-0177-2162</span>
           <span>이메일: documents@docshunt.ai</span>
           <span>사업자등록번호 : 575-86-03204</span>
@@ -3106,13 +3106,11 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
           <div className="legal-links">
             <Link href="/about">작성자·회사 소개</Link>
             <span>|</span>
-            <a href={`${SITE_URL}/privacy_policy`}>개인정보 처리방침</a>
+            <Link href="/privacy_policy">개인정보 처리방침</Link>
             <span>|</span>
-            <a href={`${SITE_URL}/terms`}>이용약관</a>
+            <Link href="/terms">이용약관</Link>
             <span>|</span>
-            <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5758603204" target="_blank" rel="noreferrer">
-              사업자 정보 확인
-            </a>
+            <Link href="/business_info">사업자 정보 확인</Link>
           </div>
         </div>
       </footer>

@@ -1,7 +1,13 @@
-import { APP_URL, CHANNEL_URL, DEFAULT_DESCRIPTION, SITE_URL, absoluteUrl } from "@/seo/metadata";
+import { APP_URL, CHANNEL_URL, DEFAULT_DESCRIPTION } from "@/seo/metadata";
+import { requestOrigin } from "@/seo/request-origin";
 import { BLOG_TOPIC_GROUPS } from "@/data/docshunt-blogs";
 
-export function GET() {
+export function GET(request: Request) {
+  const origin = requestOrigin(request);
+  const absoluteUrl = (path: string) => {
+    const url = new URL(path, origin);
+    return new URL(`${url.pathname}${url.search}${url.hash}`, origin).href;
+  };
   const topicGuides = BLOG_TOPIC_GROUPS.map(
     ({ name, summary, posts }) =>
       `### ${name}\n\n${summary}\n\n${posts.map((post) => `- ${post.title}: ${absoluteUrl(post.sourceUrl)}`).join("\n")}`,
@@ -12,15 +18,16 @@ export function GET() {
 
 ## 대표 페이지
 
-- 서비스 소개 및 시작: ${SITE_URL}/
-- 요금제와 기능 비교: ${SITE_URL}/pricing
-- 2026 지원사업 합격 환급 조건: ${SITE_URL}/refund-event
-- 사업계획서 예시 샘플: ${SITE_URL}/sample
-- 독스헌트 크레딧 안내: ${SITE_URL}/how_credits_work
-- HWP를 HWPX로 변환하는 방법: ${SITE_URL}/how_to_convert_hwpx
-- 독스헌트 사용자 후기: ${SITE_URL}/review
-- 사업계획서·지원사업 가이드: ${SITE_URL}/blog_list
-- 회사와 콘텐츠 작성·검수 원칙: ${SITE_URL}/about
+- 서비스 소개 및 시작: ${origin}/
+- 요금제와 기능 비교: ${origin}/pricing
+- 2026 지원사업 합격 환급 조건: ${origin}/refund-event
+- 사업계획서 예시 샘플: ${origin}/sample
+- 독스헌트 크레딧 안내: ${origin}/how_credits_work
+- HWP를 HWPX로 변환하는 방법: ${origin}/how_to_convert_hwpx
+- 독스헌트 사용자 후기: ${origin}/review
+- 사업계획서·지원사업 가이드: ${origin}/blog_list
+- 회사와 콘텐츠 작성·검수 원칙: ${origin}/about
+- 사업자등록 및 통신판매업 신고 정보: ${origin}/business_info
 
 ## 서비스 요약
 
@@ -54,14 +61,14 @@ ${topicGuides}
 
 ## 크롤링
 
-- Sitemap: ${SITE_URL}/sitemap.xml
-- Robots: ${SITE_URL}/robots.txt
+- Sitemap: ${origin}/sitemap.xml
+- Robots: ${origin}/robots.txt
 `;
 
   return new Response(body, {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "public, max-age=86400",
+      "Cache-Control": "private, no-store",
     },
   });
 }

@@ -1,8 +1,10 @@
 import { BLOG_PAGE_COUNT } from "@/data/docshunt-blogs";
+import { requestOrigin } from "@/seo/request-origin";
 import { sitemapUrlSet } from "@/seo/sitemap-xml";
 
-export function GET() {
+export function GET(request: Request) {
   return sitemapUrlSet(
+    requestOrigin(request),
     Array.from({ length: BLOG_PAGE_COUNT }, (_, index) => {
       const page = index + 1;
       return {

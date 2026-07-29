@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { AccessibleMobileMenu } from "@/components/accessible-mobile-menu";
 import { JsonLd } from "@/components/json-ld";
-import { APP_URL, REFUND_EVENT_DESCRIPTION, REFUND_EVENT_TITLE, SITE_URL, buildPageMetadata, webPageJsonLd } from "@/seo/metadata";
+import { APP_URL, REFUND_EVENT_DESCRIPTION, REFUND_EVENT_TITLE, buildPageMetadata, webPageJsonLd } from "@/seo/metadata";
 
 const assets = "/docshunt-assets";
 const refundApplicationUrl = "https://tally.so/r/XxkVYj";
@@ -301,7 +301,7 @@ export default function RefundEventPage() {
           <strong>주식회사 사페레아우데</strong>
           <p>대표 : 김성우</p>
           <p>고객지원 : documents@docshunt.ai</p>
-          <p>주소 : 서울시 동작구 상도로 55길 8, 챌린지스테이션 302호</p>
+          <p>주소 : 서울시 동작구 상도로 55길 8, 창의키움관 302호</p>
           <p>사업자등록번호 : 575-86-03204 | 통신판매업신고번호 : 제 2024-서울동작-0430 호</p>
         </div>
         <div className="refund-footer-links">
@@ -310,13 +310,11 @@ export default function RefundEventPage() {
             docshunt_official
           </a>
           <span>
-            <a href={`${SITE_URL}/privacy_policy`}>개인정보 처리방침</a>
+            <Link href="/privacy_policy">개인정보 처리방침</Link>
             <b>|</b>
-            <a href={`${SITE_URL}/terms`}>이용약관</a>
+            <Link href="/terms">이용약관</Link>
             <b>|</b>
-            <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5758603204" target="_blank" rel="noreferrer">
-              사업자 정보 확인
-            </a>
+            <Link href="/business_info">사업자 정보 확인</Link>
           </span>
         </div>
       </footer>

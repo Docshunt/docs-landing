@@ -1,7 +1,8 @@
 import { sitemapUrlSet } from "@/seo/sitemap-xml";
+import { requestOrigin } from "@/seo/request-origin";
 
-export function GET() {
-  return sitemapUrlSet([
+export function GET(request: Request) {
+  return sitemapUrlSet(requestOrigin(request), [
     {
       loc: "/",
       priority: "1.0",
@@ -44,6 +45,11 @@ export function GET() {
     },
     {
       loc: "/privacy_policy",
+      priority: "0.3",
+      changefreq: "yearly",
+    },
+    {
+      loc: "/business_info",
       priority: "0.3",
       changefreq: "yearly",
     },

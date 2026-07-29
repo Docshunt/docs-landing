@@ -130,8 +130,8 @@ When writing or editing blog posts, follow:
 
 권장 운영 방식:
 
-- `main` merge: GitHub `dev` Environment 변수로 Preview Deployment
-- GitHub Actions에서 `v*` 릴리즈 태그를 지정해 수동 실행: Production Deployment
+- PR 생성 및 업데이트: GitHub `dev` Environment 변수로 Preview Deployment
+- `v*` GitHub Release 발행: GitHub `prod` Environment 변수로 Production Deployment
 - Production domain: `docshunt.ai`
 
 Vercel Project 설정:
@@ -148,11 +148,11 @@ Vercel Project 설정:
 
 Vercel 배포는 `.github/workflows/vercel.yml`에서 수행합니다.
 
-- `main` push: GitHub `dev` Environment 변수로 Vercel Preview를 배포하고 main 고정 alias를 갱신
-- 수동 실행: 입력한 `v*` 릴리즈 태그가 `main` commit을 가리키는지 확인한 뒤 GitHub `prod` Environment 변수로 Vercel Production 배포
-- `v*` 릴리즈 태그 push만으로는 Production을 자동 배포하지 않음
+- PR 생성, 새 commit push, 재오픈: 동일 저장소 PR에 Vercel Preview를 배포하고 고유 URL을 제공
+- `v*` GitHub Release 발행: 태그가 `main` commit을 가리키는지 확인한 뒤 Vercel Production 배포
+- 외부 fork PR과 GitHub prerelease는 배포하지 않음
 
-`vercel.json`은 Vercel Git Integration의 자동 배포를 비활성화합니다. 따라서 `main` 병합은 dev Preview만 갱신하며 production deployment를 생성하지 않습니다.
+`vercel.json`은 Vercel Git Integration의 자동 배포를 비활성화합니다. 따라서 PR Preview와 Production 배포는 GitHub Actions만 수행합니다.
 
 `main` 병합은 매우 보수적으로 진행합니다. Codex나 다른 coding agent는 CLI/API/local git으로 PR을 merge하지 않습니다. Maintainer가 GitHub 웹 UI에서 checks, preview deployment, SEO/GEO 영향, rollout risk를 직접 확인한 뒤 merge합니다.
 
@@ -176,13 +176,16 @@ NEXT_PUBLIC_CHANNEL_ORIGIN
 
 `NEXT_PUBLIC_SITE_ORIGIN`은 `dev`에서 main 고정 Vercel alias를, `prod`에서 `https://docshunt.ai`를 사용합니다.
 
-Vercel CLI 인증값만 Environment secret으로 설정합니다.
+Vercel CLI 인증값은 각 GitHub Environment 안에 같은 secret 이름으로 설정합니다. 각 배포 잡은 지정된 Environment의 값만 읽습니다.
 
 ```text
-VERCEL_TOKEN
+dev  Environment secret: VERCEL_TOKEN
+prod Environment secret: VERCEL_TOKEN
 ```
 
-PostHog 값은 GitHub `prod` Environment variables에만 설정하고 Production 수동 배포에서만 Vercel로 전달합니다. dev Preview는 PostHog 변수를 빈 값으로 덮어써 analytics를 로드하지 않습니다.
+`prod` Environment에는 required reviewer와 `v*` tag deployment restriction을 설정해 PR workflow가 Production Environment에 접근하지 못하게 합니다. 현재 두 Environment의 Vercel 토큰 값은 같으며, 별도 최소 권한 Preview 토큰을 발급하면 `dev`의 값만 교체합니다.
+
+PostHog 값은 GitHub `prod` Environment variables에만 설정하고 Production Release 배포에서만 Vercel로 전달합니다. Preview 잡은 PostHog 값이 비어 있는지 검증하고 build/runtime 변수에 빈 값을 명시해 analytics를 로드하지 않습니다. Production 잡은 두 값이 유효한지 검증한 뒤 build/runtime에 전달합니다.
 
 ```text
 NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN
@@ -206,7 +209,7 @@ NEXT_PUBLIC_META_PIXEL_ID
 3. Vercel Project > Domains에 `docshunt.ai` 추가
 4. 필요하면 `www.docshunt.ai`도 추가
 5. Vercel이 안내하는 DNS record로 변경
-6. 병합 commit에 `v*` 릴리즈 태그를 만든 뒤 GitHub Actions에서 해당 태그를 입력해 Production 수동 배포
+6. 병합 commit에 `v*` 릴리즈 태그로 GitHub Release를 발행해 Production 배포
 7. Search Console과 Naver Search Advisor에 sitemap 제출
 
 ## Git And PR Rules
