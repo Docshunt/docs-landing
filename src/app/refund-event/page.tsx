@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { AccessibleMobileMenu } from "@/components/accessible-mobile-menu";
 import { JsonLd } from "@/components/json-ld";
-import { APP_URL, REFUND_EVENT_DESCRIPTION, REFUND_EVENT_TITLE, SITE_URL, buildPageMetadata, webPageJsonLd } from "@/seo/metadata";
+import { APP_URL, REFUND_EVENT_DESCRIPTION, REFUND_EVENT_TITLE, buildPageMetadata, webPageJsonLd } from "@/seo/metadata";
 
 const assets = "/docshunt-assets";
 const refundApplicationUrl = "https://tally.so/r/XxkVYj";
@@ -310,9 +310,9 @@ export default function RefundEventPage() {
             docshunt_official
           </a>
           <span>
-            <a href={`${SITE_URL}/privacy_policy`}>개인정보 처리방침</a>
+            <Link href="/privacy_policy">개인정보 처리방침</Link>
             <b>|</b>
-            <a href={`${SITE_URL}/terms`}>이용약관</a>
+            <Link href="/terms">이용약관</Link>
             <b>|</b>
             <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5758603204" target="_blank" rel="noreferrer">
               사업자 정보 확인
