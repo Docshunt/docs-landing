@@ -1,15 +1,10 @@
 name: Vercel
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
-    inputs:
-      release_tag:
-        description: "배포할 v* 릴리즈 태그"
-        required: true
-        type: string
+  pull_request:
+    types: [opened, synchronize, reopened]
+  release:
+    types: [published]
 
 permissions:
   contents: read
@@ -20,13 +15,13 @@ concurrency:
 
 jobs:
   validate:
+    if: github.event_name != 'release' || github.event.release.prerelease == false
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event_name == 'workflow_dispatch' && format('refs/tags/{0}', inputs.release_tag) || github.sha }}
           persist-credentials: false
 
       - name: Setup Node
@@ -43,9 +38,10 @@ jobs:
 
   deploy:
     needs: validate
+    if: github.event_name == 'release' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     environment:
-      name: ${{ github.event_name == 'push' && 'dev' || 'prod' }}
+      name: ${{ github.event_name == 'release' && 'prod' || 'dev' }}
       url: ${{ steps.deploy.outputs.url }}
     env:
       VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
@@ -60,7 +56,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event_name == 'workflow_dispatch' && format('refs/tags/{0}', inputs.release_tag) || github.sha }}
           fetch-depth: 0
           persist-credentials: false
 
@@ -68,9 +63,9 @@ jobs:
         id: target
         shell: bash
         env:
-          RELEASE_TAG: ${{ inputs.release_tag }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
-          if [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
             echo "environment=preview" >> "$GITHUB_OUTPUT"
           else
             [[ "$RELEASE_TAG" == v* ]]
@@ -89,7 +84,7 @@ jobs:
           [[ "$NEXT_PUBLIC_SITE_ORIGIN" == https://* ]]
           test -n "$NEXT_PUBLIC_APP_ORIGIN"
           test -n "$NEXT_PUBLIC_CHANNEL_ORIGIN"
-          if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+          if [[ "$GITHUB_EVENT_NAME" == "release" ]]; then
             test -n "$NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN"
             [[ "$NEXT_PUBLIC_POSTHOG_HOST" == https://* ]]
           fi
@@ -124,7 +119,7 @@ jobs:
             --env NEXT_PUBLIC_APP_ORIGIN="$NEXT_PUBLIC_APP_ORIGIN"
             --env NEXT_PUBLIC_CHANNEL_ORIGIN="$NEXT_PUBLIC_CHANNEL_ORIGIN"
           )
-          if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+          if [[ "$GITHUB_EVENT_NAME" == "release" ]]; then
             args+=(
               --prod
               --build-env NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN="$NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN"
@@ -141,12 +136,6 @@ jobs:
             )
           fi
           deployment_url=$(vercel deploy "${args[@]}")
-          if [[ "$GITHUB_EVENT_NAME" == "push" ]]; then
-            vercel alias set "$deployment_url" "${NEXT_PUBLIC_SITE_ORIGIN#https://}" --token="$VERCEL_TOKEN"
-            public_url="$NEXT_PUBLIC_SITE_ORIGIN"
-          else
-            public_url="$deployment_url"
-          fi
-          echo "url=$public_url" >> "$GITHUB_OUTPUT"
+          echo "url=$deployment_url" >> "$GITHUB_OUTPUT"
           echo "### Vercel ${{ steps.target.outputs.environment }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "$public_url" >> "$GITHUB_STEP_SUMMARY"
+          echo "$deployment_url" >> "$GITHUB_STEP_SUMMARY"
