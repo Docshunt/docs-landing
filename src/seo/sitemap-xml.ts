@@ -1,5 +1,3 @@
-import { absoluteUrl } from "@/seo/metadata";
-
 type SitemapUrl = {
   loc: string;
   lastmod?: string;
@@ -11,18 +9,23 @@ function escapeXml(value: string) {
   return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
 }
 
-function renderUrl(url: SitemapUrl) {
+function urlForOrigin(origin: string, value: string) {
+  const url = new URL(value, origin);
+  return new URL(`${url.pathname}${url.search}${url.hash}`, origin).href;
+}
+
+function renderUrl(origin: string, url: SitemapUrl) {
   return `  <url>
-    <loc>${escapeXml(absoluteUrl(url.loc))}</loc>${url.lastmod ? `\n    <lastmod>${escapeXml(url.lastmod)}</lastmod>` : ""}${
+    <loc>${escapeXml(urlForOrigin(origin, url.loc))}</loc>${url.lastmod ? `\n    <lastmod>${escapeXml(url.lastmod)}</lastmod>` : ""}${
       url.changefreq ? `\n    <changefreq>${url.changefreq}</changefreq>` : ""
     }${url.priority ? `\n    <priority>${url.priority}</priority>` : ""}
   </url>`;
 }
 
-export function sitemapUrlSet(urls: SitemapUrl[]) {
+export function sitemapUrlSet(origin: string, urls: SitemapUrl[]) {
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(renderUrl).join("\n")}
+${urls.map((url) => renderUrl(origin, url)).join("\n")}
 </urlset>`;
 
   return new Response(body, {
