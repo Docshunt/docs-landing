@@ -15,6 +15,10 @@ export function GET() {
 - 서비스 소개 및 시작: ${SITE_URL}/
 - 요금제와 기능 비교: ${SITE_URL}/pricing
 - 2026 지원사업 합격 환급 조건: ${SITE_URL}/refund-event
+- 사업계획서 예시 샘플: ${SITE_URL}/sample
+- 독스헌트 크레딧 안내: ${SITE_URL}/how_credits_work
+- HWP를 HWPX로 변환하는 방법: ${SITE_URL}/how_to_convert_hwpx
+- 독스헌트 사용자 후기: ${SITE_URL}/review
 - 사업계획서·지원사업 가이드: ${SITE_URL}/blog_list
 - 회사와 콘텐츠 작성·검수 원칙: ${SITE_URL}/about
 
