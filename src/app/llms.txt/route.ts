@@ -27,6 +27,7 @@ export function GET(request: Request) {
 - 독스헌트 사용자 후기: ${origin}/review
 - 사업계획서·지원사업 가이드: ${origin}/blog_list
 - 회사와 콘텐츠 작성·검수 원칙: ${origin}/about
+- 사업자등록 및 통신판매업 신고 정보: ${origin}/business_info
 
 ## 서비스 요약
 

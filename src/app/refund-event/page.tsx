@@ -314,9 +314,7 @@ export default function RefundEventPage() {
             <b>|</b>
             <Link href="/terms">이용약관</Link>
             <b>|</b>
-            <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=5758603204" target="_blank" rel="noreferrer">
-              사업자 정보 확인
-            </a>
+            <Link href="/business_info">사업자 정보 확인</Link>
           </span>
         </div>
       </footer>

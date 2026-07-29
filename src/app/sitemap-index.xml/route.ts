@@ -49,6 +49,11 @@ export function GET(request: Request) {
       changefreq: "yearly",
     },
     {
+      loc: "/business_info",
+      priority: "0.3",
+      changefreq: "yearly",
+    },
+    {
       loc: "/terms",
       priority: "0.3",
       changefreq: "yearly",
