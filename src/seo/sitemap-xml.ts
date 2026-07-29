@@ -31,7 +31,7 @@ ${urls.map((url) => renderUrl(origin, url)).join("\n")}
   return new Response(body, {
     headers: {
       "Content-Type": "application/xml; charset=utf-8",
-      "Cache-Control": "public, max-age=86400",
+      "Cache-Control": "private, no-store",
     },
   });
 }
