@@ -176,13 +176,16 @@ NEXT_PUBLIC_CHANNEL_ORIGIN
 
 `NEXT_PUBLIC_SITE_ORIGIN`은 `dev`에서 main 고정 Vercel alias를, `prod`에서 `https://docshunt.ai`를 사용합니다.
 
-Vercel CLI 인증값만 Environment secret으로 설정합니다.
+Vercel CLI 인증값은 Preview와 Production에 서로 다른 토큰을 사용합니다. 같은 토큰을 두 Environment에 재사용하지 않습니다.
 
 ```text
-VERCEL_TOKEN
+dev  Environment secret: VERCEL_PREVIEW_TOKEN
+prod Environment secret: VERCEL_PRODUCTION_TOKEN
 ```
 
-PostHog 값은 GitHub `prod` Environment variables에만 설정하고 Production Release 배포에서만 Vercel로 전달합니다. dev Preview는 PostHog 변수를 빈 값으로 덮어써 analytics를 로드하지 않습니다.
+`prod` Environment에는 required reviewer와 `v*` tag deployment restriction을 설정해 PR workflow가 Production secret에 접근하지 못하게 합니다. Preview 토큰은 별도 Vercel 계정 또는 역할로 발급하고 필요한 Team·Project 범위만 허용합니다.
+
+PostHog 값은 GitHub `prod` Environment variables에만 설정하고 Production Release 배포에서만 Vercel로 전달합니다. Preview 잡은 PostHog 값이 비어 있는지 검증하고 build/runtime 변수에 빈 값을 명시해 analytics를 로드하지 않습니다. Production 잡은 두 값이 유효한지 검증한 뒤 build/runtime에 전달합니다.
 
 ```text
 NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN
