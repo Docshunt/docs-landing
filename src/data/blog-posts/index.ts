@@ -33,9 +33,11 @@ import { post32 } from "./00032-2026-지원사업-사업계획서-목차-작성-
 import { post33 } from "./00033-좋은-사업계획서는-기술보다-문제정의에서-시작됩니다";
 import { post34 } from "./00034-GPT-사업계획서-그대로-제출하면-왜-티가-날까요";
 
+import { post35 } from "./00035-탈락한-사업계획서-문장부터-고치면-원인을-놓칩니다";
 import type { BlogPost } from "./types";
 
 const BLOG_POST_SOURCE = [
+  post35,
   post34,
   post33,
   post01,
