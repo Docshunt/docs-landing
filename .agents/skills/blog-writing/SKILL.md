@@ -5,6 +5,8 @@ description: Use when creating, editing, importing, or reviewing docs-landing bl
 
 # Blog Writing Skill
 
+For a new Korean SEO article, substantial rewrite, title/hook review, anti-AI language pass, fact-checking, or cover production, read `.agents/skills/docshunt-blog-editor/SKILL.md` before this skill. `docshunt-blog-editor` owns editorial quality and visual direction; this skill owns the repository data model, rendering integration, and publication QA.
+
 Use this skill for any `docs-landing` blog work:
 
 - creating a new blog post

@@ -32,6 +32,7 @@
 - PR 준비/게시: `.agents/skills/submit-pr/SKILL.md`
 - 랜딩, 블로그, 디자인, 정적 자산, SEO/GEO 수정: `.agents/skills/landing-change/SKILL.md`
 - 새 페이지, 기존 페이지, route, metadata, sitemap, robots, llms.txt, ai.txt, proxy 변경의 SEO/GEO 영향 감지: `.agents/skills/seo-geo-guard/SKILL.md`
+- 한국어 블로그 주제·키워드·후킹 제목·자연스러운 본문·사실검증·대표 이미지 제작·외부 문장 검수: `.agents/skills/docshunt-blog-editor/SKILL.md`
 - 블로그 글 작성/수정/가져오기 및 post 단위 데이터 관리: `.agents/skills/blog-writing/SKILL.md`
 
 Codex-compatible skill discovery is exposed through `.codex/skills` when the symlink is present.
