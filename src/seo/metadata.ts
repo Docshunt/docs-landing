@@ -57,8 +57,6 @@ export const MARKETING_CONSENT_EN_DESCRIPTION =
   "Learn how DocsHunt collects and uses optional marketing information and how to withdraw your consent.";
 export const PAYMENT_POLICY_TITLE = "결제 및 청약철회 정책 | 독스헌트";
 export const PAYMENT_POLICY_DESCRIPTION = "독스헌트 유료서비스의 결제, 자동결제 중단 및 청약철회 기준을 안내합니다.";
-export const CREDITS_GUIDE_TITLE = "독스헌트 크레딧 안내";
-export const CREDITS_GUIDE_DESCRIPTION = "독스헌트 요금제별 크레딧 제공량, 사용 기준, 추가 구매와 유효기간을 안내합니다.";
 export const HWPX_GUIDE_TITLE = "HWP를 HWPX로 변환하는 방법 | 독스헌트";
 export const HWPX_GUIDE_DESCRIPTION = "한컴오피스와 온라인 변환 도구를 이용해 HWP 파일을 HWPX로 변환하는 방법을 안내합니다.";
 export const REVIEW_TITLE = "독스헌트 사용 후기";

@@ -22,7 +22,6 @@ export function GET(request: Request) {
 - 요금제와 기능 비교: ${origin}/pricing
 - 2026 지원사업 합격 환급 조건: ${origin}/refund-event
 - 사업계획서 예시 샘플: ${origin}/sample
-- 독스헌트 크레딧 안내: ${origin}/how_credits_work
 - HWP를 HWPX로 변환하는 방법: ${origin}/how_to_convert_hwpx
 - 독스헌트 사용자 후기: ${origin}/review
 - 사업계획서·지원사업 가이드: ${origin}/blog_list
