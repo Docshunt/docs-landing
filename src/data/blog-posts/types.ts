@@ -4,7 +4,9 @@ export type BlogPost = {
   slug: string;
   sourceUrl: string;
   title: string;
+  titleLines?: [string, string];
   description: string;
+  author?: string;
   date: string;
   modifiedDate?: string;
   verification?: {

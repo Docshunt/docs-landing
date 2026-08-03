@@ -1,0 +1,4 @@
+interface:
+  display_name: "Notion Blog Publishing"
+  short_description: "Notion 수정본을 독스헌트 블로그와 GitHub에 안전하게 반영"
+  default_prompt: "Use $notion-blog-publishing to sync the latest Notion article into the DocsHunt blog, verify SEO and layout, and publish a draft PR."

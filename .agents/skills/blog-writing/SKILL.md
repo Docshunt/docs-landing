@@ -81,7 +81,7 @@ Do not put new post objects directly into `src/data/docshunt-blogs.ts`; that fil
 6. Put plain fallback copy in `paragraphs`.
 7. Select an editorial pattern from [references/editorial-patterns.md](references/editorial-patterns.md) and keep only the blocks the article needs.
 8. Recommendation cards use the linked post's own title and list image.
-9. Assign visible authorship to `독스헌트 마케팅팀` and keep the author link aligned with `/about#editorial-policy`.
+9. Use the article's approved author value, defaulting to `독스헌트 마케팅팀` only when none is provided. Keep the visible author, JSON-LD author, and `/about#editorial-policy` link aligned; preserve an explicit `독스헌트` request exactly.
 10. Add the post to an appropriate `BLOG_TOPIC_GROUP_CONFIG` group when it belongs to an existing search-intent cluster.
 
 `BLOG_POSTS` derives pagination from aggregate order. Put a new post at the top of `BLOG_POST_SOURCE`; do not renumber existing post files or hand-edit their historical `page` and `index` fields.

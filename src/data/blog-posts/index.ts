@@ -32,13 +32,14 @@ import { post31 } from "./00031-창업-입문자를-위한-정부-지원사업-�
 import { post32 } from "./00032-2026-지원사업-사업계획서-목차-작성-가이드-처음-써도-빠뜨릴-걱정-없는-완벽-가이드";
 import { post33 } from "./00033-좋은-사업계획서는-기술보다-문제정의에서-시작됩니다";
 import { post34 } from "./00034-GPT-사업계획서-그대로-제출하면-왜-티가-날까요";
-
 import { post35 } from "./00035-탈락한-사업계획서-문장부터-고치면-원인을-놓칩니다";
 import { post36 } from "./00036-사업계획서-근거-수요가-높습니다-한-줄이-위험한-이유";
 import { post37 } from "./00037-사업계획서-첫-페이지-이것부터-쓰고-있다면-순서를-바꾸세요";
+import { post38 } from "./00038-심사위원은-아이디어보다-먼저-무엇을-볼까-좋은-사업계획서의-조건";
 import type { BlogPost } from "./types";
 
 const BLOG_POST_SOURCE = [
+  post38,
   post37,
   post36,
   post35,

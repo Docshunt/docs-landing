@@ -1,12 +1,15 @@
-import { BLOG_POSTS } from "@/data/docshunt-blogs";
+import { getAllBlogPosts } from "@/data/notion-blog";
 import { dateToIso } from "@/seo/metadata";
 import { requestOrigin } from "@/seo/request-origin";
 import { sitemapUrlSet } from "@/seo/sitemap-xml";
 
-export function GET(request: Request) {
+export const revalidate = 60;
+
+export async function GET(request: Request) {
+  const posts = await getAllBlogPosts();
   return sitemapUrlSet(
     requestOrigin(request),
-    BLOG_POSTS.map((post) => {
+    posts.map((post) => {
       const lastmod = dateToIso(post.modifiedDate ?? post.date);
       return {
         loc: post.sourceUrl,

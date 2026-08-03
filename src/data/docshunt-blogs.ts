@@ -11,6 +11,7 @@ const BLOG_TOPIC_GROUP_CONFIG = [
     slugs: [
       "1783933805576x494076817525278100",
       "business-plan-first-page",
+      "business-plan-evaluation-criteria-interview",
       "1777343094612x229953857115337000",
       "1778461267147x278620001529366040",
       "1769491692159x279117165603586050",

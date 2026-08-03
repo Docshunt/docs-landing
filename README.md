@@ -110,6 +110,35 @@ When writing or editing blog posts, follow:
 .agents/skills/blog-writing/SKILL.md
 ```
 
+### Notion Blog CMS
+
+`NOTION_API_KEY`와 `NOTION_BLOG_DATA_SOURCE_ID`가 모두 설정되면 `상태`가 `게시`인 Notion 글이 정적 블로그 데이터를 덮어씁니다. 새 글도 목록, 상세 페이지, 블로그 sitemap에 포함됩니다. Notion 응답은 60초 동안 캐시되며, 설정 누락이나 API 오류가 있으면 저장소의 정적 글로 자동 폴백합니다.
+
+Notion 데이터베이스에는 다음 속성이 필요합니다.
+
+| 속성        | 타입                              |
+| ----------- | --------------------------------- |
+| 제목        | Title                             |
+| Slug        | Rich text                         |
+| 상태        | Select (`초안`, `검토중`, `게시`) |
+| 설명        | Rich text                         |
+| 게시일      | Date                              |
+| 목록 이미지 | URL                               |
+| 대표 이미지 | URL                               |
+| 작성자      | Rich text                         |
+| SEO 검수    | Checkbox                          |
+| 정렬        | Number                            |
+| 마지막 수정 | Last edited time                  |
+
+연결 순서:
+
+1. Notion에서 내부 Integration을 만들고 읽기 권한을 부여합니다.
+2. 블로그 데이터베이스 우측 상단 `•••` → `연결 추가`에서 해당 Integration을 공유합니다.
+3. GitHub `dev`, `prod` Environment에 `NOTION_BLOG_DATA_SOURCE_ID`를 variable로, `NOTION_API_KEY`를 secret으로 등록합니다.
+4. 로컬 개발에서는 셸 환경변수로 같은 값을 전달한 뒤 `npm run dev`를 실행합니다.
+
+API 키나 실제 환경 파일은 저장소에 커밋하지 않습니다.
+
 ## Responsive QA
 
 랜딩, 블로그, 디자인, 정적 자산을 변경하면 Playwright로 최소 아래 viewport를 확인합니다.

@@ -5,8 +5,11 @@ import { notFound } from "next/navigation";
 import { BlogHeader, DocshuntFooter } from "@/components/docshunt-blog-shell";
 import { JsonLd } from "@/components/json-ld";
 import { BLOG_CONTENT_HTML } from "@/data/docshunt-blog-content";
-import { BLOG_POSTS, BLOG_TOPIC_GROUPS, decodeBlogSlug, findBlogPost, getRecommendedPosts } from "@/data/docshunt-blogs";
+import { BLOG_POSTS, BLOG_TOPIC_GROUPS, decodeBlogSlug, getRecommendedPosts } from "@/data/docshunt-blogs";
+import { getBlogPost } from "@/data/notion-blog";
 import { APP_URL, articleJsonLd, BLOG_AUTHOR_NAME, BLOG_AUTHOR_PATH, breadcrumbJsonLd, buildPageMetadata, dateToIso } from "@/seo/metadata";
+
+export const revalidate = 60;
 
 type BlogDetailParams = {
   params: Promise<{
@@ -33,7 +36,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: BlogDetailParams): Promise<Metadata> {
   const { slug } = await params;
-  const post = findBlogPost(slug);
+  const post = await getBlogPost(slug);
   if (!post) return {};
   return buildPageMetadata({
     title: post.title,
@@ -46,7 +49,7 @@ export async function generateMetadata({ params }: BlogDetailParams): Promise<Me
 
 export default async function BlogDetailPage({ params }: BlogDetailParams) {
   const { slug } = await params;
-  const post = findBlogPost(slug);
+  const post = await getBlogPost(slug);
   if (!post) notFound();
 
   const rawContentHtml = post.contentHtml ?? BLOG_CONTENT_HTML[post.slug] ?? BLOG_CONTENT_HTML[decodeBlogSlug(post.slug)];
@@ -75,10 +78,19 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
       <BlogHeader />
       <main className="blog-detail-main">
         <article className="blog-detail-article">
-          <h1>{post.title}</h1>
+          <h1>
+            {post.titleLines ? (
+              <>
+                {post.titleLines[0]}
+                <br className="blog-title-desktop-break" /> {post.titleLines[1]}
+              </>
+            ) : (
+              post.title
+            )}
+          </h1>
           <div className="blog-post-meta">
             <span>
-              작성·검수 <Link href={BLOG_AUTHOR_PATH}>{BLOG_AUTHOR_NAME}</Link>
+              작성·검수 <Link href={BLOG_AUTHOR_PATH}>{post.author ?? BLOG_AUTHOR_NAME}</Link>
             </span>
             <time dateTime={dateToIso(post.date)}>게시 {post.date}</time>
             {post.modifiedDate && post.modifiedDate !== post.date ? (

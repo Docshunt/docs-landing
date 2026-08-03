@@ -4,22 +4,25 @@ import { notFound } from "next/navigation";
 import { BlogListClient } from "@/components/blog-list-client";
 import { BlogHeader, DocshuntFooter } from "@/components/docshunt-blog-shell";
 import { JsonLd } from "@/components/json-ld";
-import { BLOG_PAGE_COUNT, BLOG_POSTS } from "@/data/docshunt-blogs";
+import { getAllBlogPosts, getBlogPageCount } from "@/data/notion-blog";
 import { BLOG_LIST_DESCRIPTION, BLOG_LIST_TITLE, blogListJsonLd, buildPageMetadata } from "@/seo/metadata";
+
+export const revalidate = 60;
 
 type BlogListPageProps = {
   searchParams: Promise<{ page?: string | string[] }>;
 };
 
-function readPage(value?: string | string[]) {
+function readPage(value: string | string[] | undefined, pageCount: number) {
   const raw = Array.isArray(value) ? value[0] : value;
   if (!raw) return 1;
   const page = Number(raw);
-  return Number.isInteger(page) && page >= 1 && page <= BLOG_PAGE_COUNT ? page : undefined;
+  return Number.isInteger(page) && page >= 1 && page <= pageCount ? page : undefined;
 }
 
 export async function generateMetadata({ searchParams }: BlogListPageProps): Promise<Metadata> {
-  const page = readPage((await searchParams).page) ?? 1;
+  const pageCount = getBlogPageCount(await getAllBlogPosts());
+  const page = readPage((await searchParams).page, pageCount) ?? 1;
   return buildPageMetadata({
     title: page === 1 ? BLOG_LIST_TITLE : `${BLOG_LIST_TITLE} - ${page}페이지`,
     description:
@@ -31,16 +34,18 @@ export async function generateMetadata({ searchParams }: BlogListPageProps): Pro
 }
 
 export default async function BlogListPage({ searchParams }: BlogListPageProps) {
-  const page = readPage((await searchParams).page);
+  const allPosts = await getAllBlogPosts();
+  const pageCount = getBlogPageCount(allPosts);
+  const page = readPage((await searchParams).page, pageCount);
   if (!page) notFound();
-  const posts = BLOG_POSTS.filter((post) => post.page === page);
+  const posts = allPosts.filter((post) => post.page === page);
 
   return (
     <div className="page blog-page">
       <JsonLd data={blogListJsonLd(posts, page)} />
       <BlogHeader />
       <main className="blog-main">
-        <BlogListClient page={page} />
+        <BlogListClient page={page} pageCount={pageCount} posts={posts} />
       </main>
       <DocshuntFooter />
     </div>
