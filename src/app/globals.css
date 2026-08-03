@@ -10066,6 +10066,11 @@ img {
   color: #ffffff;
 }
 
+.legal-links a:first-child,
+.legal-links a:first-child + span {
+  color: transparent;
+}
+
 .legal-links a {
   overflow-wrap: anywhere;
 }
