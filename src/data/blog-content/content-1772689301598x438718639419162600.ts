@@ -1,0 +1,30 @@
+export default `<div class="dh-seo-post dh-seo-post-legacy"><style>
+body {
+    font-family: 'PyeojinGothic'; line-height: 1.2;
+  }
+  h1 { font-size: 40px; font-weight: 650; line-height: 1.1;}
+  h2 { font-size: 28px; font-weight: 600; line-height: 1.4; margin-bottom: 0.25em;}
+  h3 { font-size: 20px; font-weight: 700; margin: 0.6em 0 0.3em; line-height: 1.4;}
+  h4 {  font-size: 17px; font-weight: 650; margin-top:  1.2em; margin-bottom: 0.26em }
+  p { font-size: 17px; line-height: 1.3; margin-bottom: 0.7em;}
+ strong, a { font-size: 17px; font-weight: 610;}
+ li
+ ul, ol { margin: 0.25em 0;}
+ #text { font-size: 17px; line-height: 1.7; }
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+ h2 {
+    font-size: 24px;
+  }
+ p{
+    font-size: 16px;
+ }
+}
+
+</style>
+<div>
+<h2>AI 시대, 당신의 배포는 '학습'인가요 아니면 '빠른 쓰레기'인가요?</h2><p>안녕하세요! 창업자의 가장 든든한 페이스메이커 독스헌트입니다. 🐕‍🦺</p><p>AI의 발전으로 이제 누구나 하루 만에 서비스를 뚝딱 뽑아낼 수 있는 시대가 되었습니다. 하지만 빛나는 속도 뒤에 가려진 '린 스타트업의 함정'에 빠져 계시진 않나요?</p><p>오늘 독스헌트에서는 많은 창업자가 착각하는 '가짜 린(Lean)'과 진짜 성공을 위한 '학습'에 대해 이야기해보고자 합니다.</p><p><br></p><h2><strong>❌ 대충 빨리 만들고 버리는 것이 '린'이라는 착각</strong></h2><p>많은 분이 "일단 가볍게 만들고 반응 없으면 버리면 되지, 이것이 린(Lean) 아닌가?"라고 묻습니다. 하지만 목적 없는 배포는 학습이 아니라 단순한 노동에 가깝습니다. 린 스타트업의 본질은 제작의 속도가 아니라 '가설의 깊이'에 있음을 명심해야 합니다.</p><h4><strong>가설 없는 실행은 다음과 같은 치명적인 결과를 초래합니다.</strong></h4><ul><li><strong>가설 없는 실행</strong>: 무엇을 검증할지 모른 채 구현만 하다가, 실패 후 '왜' 실패했는지 분석 없이 폐기합니다.</li><li><strong>데이터 없는 판단</strong>: 지표를 측정하지 않으니 짐작에 의존하게 되고, 결국 사업을 '운'에 맡기는 도박을 반복합니다.</li><li><strong>팀의 무력감</strong>: 의미 없는 배포가 반복되면 팀원들은 성취감을 잃고 깊은 <strong>번아웃</strong>에 빠지게 됩니다.</li></ul><p><br></p><h2><strong>✅ 린(Lean)의 진짜 목적은 '낭비 제거'에 있습니다</strong></h2><p>린 스타트업이란 완벽한 제품을 만들기보다 최소 기능 제품(MVP)을 빠르게 출시해 고객의 반응을 살피는 방법론입니다. 하지만 단순히 '만들기'에 매몰되어서는 안 됩니다.</p><p><strong>AI 시대일수록 더 정교한 가설 설계가 필요한 이유입니다.</strong></p><ul><li><strong>코드 전 가설부터 설정하세요</strong> 📝</li><li class="ql-indent-1">"A를 내놓으면 유저는 B 반응을 보일 것이다"라는 가설이 있어야만 비로소 '측정'과 '학습'이 가능해집니다.</li><li><strong>AI를 '학습의 도구'로 활용하세요</strong> 🤖</li><li class="ql-indent-1">결과물 자체가 목적이 아닙니다. 가설을 가장 저렴하게 증명하기 위한 수단으로 AI를 사용해야 합니다.</li><li><strong>실패를 자산화하세요</strong> 📈</li><li class="ql-indent-1">"왜 안 되었는가?"에 대한 배움이 남아야 다음 가설이 날카로워집니다. 그 기록이 쌓여야 비로소 진짜 사업이 됩니다.</li></ul><p><br></p><h3><strong>💡 결론: 바이브 코딩은 린 스타트업이 아닙니다</strong></h3><p>느낌으로만 서비스를 만드는 '바이브 코딩'은 진정한 린 스타트업이 될 수 없습니다. 린 스타트업의 본질은 '만들기-측정-배우기'의 반복을 통해 수집한 데이터를 바탕으로 사업 방향을 유지하거나 과감히 수정(Pivot)하는 데 있습니다.</p><p>불확실한 시장에서 시간과 비용 낭비를 최소화하고, 고객이 진짜 원하는 서비스에 집중하세요. 학습 없는 배포는 '빠른 쓰레기'일 뿐입니다.</p><p>창업의 여정, 독스헌트AI가 함께하겠습니다. 여러분의 가설이 데이터가 되고, 그 데이터가 성공이 될 때까지 독스헌트는 가장 든든한 조력자로 곁에 있겠습니다.</p><p><br></p><p><br></p><p>👉 <strong>지금 바로 독스헌트에서 더 정교한 사업 기획을 시작해 보세요!</strong></p>
+</div></div>`;

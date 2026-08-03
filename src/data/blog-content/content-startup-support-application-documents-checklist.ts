@@ -1,0 +1,103 @@
+export default `<div class="dh-seo-post" style="font-size:18px; line-height:1.88; color:#25262C; word-break:keep-all; letter-spacing:0;">
+  <style>
+    .dh-seo-post strong { font-weight:850; }
+    .dh-seo-post a { color:#2C81FC; font-weight:750; text-decoration:none; }
+    .dh-seo-post table tr:last-child td { border-bottom:0 !important; }
+    .dh-seo-post .dh-callout { margin:28px 0 34px; padding:22px 24px; border:1px solid #ABCDFF; border-radius:12px; background:#EAF3FF; color:#002F74; font-weight:750; line-height:1.75; }
+    .dh-seo-post .dh-note { margin:30px 0 38px; padding:24px; border:1px solid #E3E4E8; border-radius:12px; background:#FAFAFC; }
+    @media (max-width:720px) {
+      .dh-seo-post { font-size:17px !important; line-height:1.82 !important; }
+      .dh-seo-post h2 { font-size:26px !important; margin-top:48px !important; }
+      .dh-seo-post h3 { font-size:21px !important; }
+      .dh-seo-post table { width:100% !important; min-width:0 !important; table-layout:fixed !important; font-size:12px !important; }
+      .dh-seo-post th, .dh-seo-post td { padding:10px 8px !important; font-size:12px !important; line-height:1.45 !important; overflow-wrap:anywhere !important; word-break:keep-all !important; }
+    }
+  </style>
+
+  <p style="margin:0 0 20px;">창업지원사업은 사업계획서보다 제출서류에서 먼저 막히는 경우가 많습니다. 실제 신청 단계에서는 신청 자격, 증빙자료, 가점서류, 파일 형식 때문에 시간이 더 많이 걸릴 수 있습니다.</p>
+  <p style="margin:0 0 20px;">특히 마감일이 가까워질수록 문제는 글의 완성도보다 제출 누락에서 생깁니다. 사업계획서는 준비했는데 사업자등록증, 사실증명, 매출 증빙, 가점 증빙을 늦게 확인하면 제출 직전에 다시 공고문을 뒤지게 됩니다.</p>
+  <p style="margin:0 0 20px;">이 글은 창업지원사업 제출서류를 처음 챙기는 예비창업자와 초기창업자를 위한 체크리스트입니다. 공고문을 읽을 때 어디를 먼저 봐야 하는지, 어떤 서류를 미리 준비해야 하는지 순서대로 정리했습니다.</p>
+
+  <div class="dh-callout">사업마다 제출서류는 다릅니다. 최종 기준은 항상 K-Startup과 주관기관 공고문입니다. 이 글은 제출 전에 빠지는 항목을 줄이기 위한 점검표로 보면 됩니다.</div>
+
+  <h2 style="margin:58px 0 18px; font-size:30px; line-height:1.38; font-weight:850; color:#25262C; letter-spacing:0;">창업지원사업 제출서류는 네 묶음으로 나누면 쉽습니다</h2>
+  <p style="margin:0 0 20px;">공고문마다 양식은 다르지만, 실제로 준비해야 하는 서류는 대체로 네 묶음으로 나뉩니다.</p>
+
+  <div style="width:100%; overflow-x:auto; margin:30px 0 38px;">
+    <table style="width:100%; min-width:0; table-layout:fixed; border-collapse:separate; border-spacing:0; border:1px solid #E3E4E8; border-radius:12px; overflow:hidden; font-size:16px; line-height:1.6; color:#25262C; background:#fff;">
+      <thead>
+        <tr>
+          <th style="padding:15px 16px; border-bottom:1px solid #E3E4E8; background:#F1F1F4; font-weight:850; text-align:left;">구분</th>
+          <th style="padding:15px 16px; border-bottom:1px solid #E3E4E8; background:#F1F1F4; font-weight:850; text-align:left;">확인할 내용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:15px 16px; border-bottom:1px solid #E3E4E8;">자격 확인 서류</td>
+          <td style="padding:15px 16px; border-bottom:1px solid #E3E4E8;">예비창업자 여부, 업력, 대표자 조건, 지역 조건, 제외 업종</td>
+        </tr>
+        <tr>
+          <td style="padding:15px 16px; border-bottom:1px solid #E3E4E8;">신청서와 사업계획서</td>
+          <td style="padding:15px 16px; border-bottom:1px solid #E3E4E8;">지정 양식, 문항 누락, 분량, 파일명, PDF 변환 여부</td>
+        </tr>
+        <tr>
+          <td style="padding:15px 16px; border-bottom:1px solid #E3E4E8;">증빙자료</td>
+          <td style="padding:15px 16px; border-bottom:1px solid #E3E4E8;">매출, 고용, 지식재산권, 교육 이수, 수상, 협약 관련 자료</td>
+        </tr>
+        <tr>
+          <td style="padding:15px 16px; border-bottom:1px solid #E3E4E8;">제출 조건</td>
+          <td style="padding:15px 16px; border-bottom:1px solid #E3E4E8;">마감 시간, 온라인 제출 경로, 파일 용량, 압축파일 허용 여부</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 style="margin:58px 0 18px; font-size:30px; line-height:1.38; font-weight:850; color:#25262C; letter-spacing:0;">신청 전 빠뜨리기 쉬운 8가지</h2>
+  <p style="margin:0 0 20px;">아래 항목은 창업지원사업 신청자가 제출 직전에 자주 다시 확인하는 부분입니다.</p>
+
+  <h3 style="margin:34px 0 12px; font-size:23px; line-height:1.45; font-weight:850; color:#25262C;">1. 예비창업자 기준</h3>
+  <p style="margin:0 0 20px;">예비창업자 사업은 사업자등록 여부와 창업 예정 업종을 함께 봅니다. 과거 사업자등록 이력이나 폐업 이력이 있으면 공고문 기준을 먼저 확인해야 합니다.</p>
+
+  <h3 style="margin:34px 0 12px; font-size:23px; line-height:1.45; font-weight:850; color:#25262C;">2. 업력 산정일</h3>
+  <p style="margin:0 0 20px;">초기창업 사업은 보통 업력 기준이 있습니다. 공고일 기준인지, 접수 마감일 기준인지에 따라 신청 가능 여부가 달라질 수 있습니다.</p>
+
+  <h3 style="margin:34px 0 12px; font-size:23px; line-height:1.45; font-weight:850; color:#25262C;">3. 제외 업종과 중복 수혜</h3>
+  <p style="margin:0 0 20px;">지원 대상처럼 보여도 제외 업종이나 중복 수혜 제한에 걸릴 수 있습니다. 같은 아이템으로 이미 받은 지원사업이 있다면 별도 확인이 필요합니다.</p>
+
+  <h3 style="margin:34px 0 12px; font-size:23px; line-height:1.45; font-weight:850; color:#25262C;">4. 사업계획서 지정 양식</h3>
+  <p style="margin:0 0 20px;">비슷해 보이는 사업계획서라도 사업마다 문항과 분량이 다릅니다. 이전에 쓰던 파일을 그대로 재활용하면 문항 순서가 맞지 않을 수 있습니다.</p>
+
+  <h3 style="margin:34px 0 12px; font-size:23px; line-height:1.45; font-weight:850; color:#25262C;">5. 가점 증빙자료</h3>
+  <p style="margin:0 0 20px;">가점은 “해당합니다”라고 쓰는 것만으로 인정되지 않습니다. 수상, 교육, 특허, 지역, 고용 관련 항목은 증빙 파일이 있어야 합니다.</p>
+
+  <h3 style="margin:34px 0 12px; font-size:23px; line-height:1.45; font-weight:850; color:#25262C;">6. 대표자와 기업 정보 일치</h3>
+  <p style="margin:0 0 20px;">신청서, 사업계획서, 증빙자료의 대표자명, 사업자명, 연락처, 이메일이 서로 다르면 보완 요청이 생길 수 있습니다.</p>
+
+  <h3 style="margin:34px 0 12px; font-size:23px; line-height:1.45; font-weight:850; color:#25262C;">7. 파일명과 파일 용량</h3>
+  <p style="margin:0 0 20px;">온라인 접수 시스템은 파일명, 확장자, 용량 제한이 있는 경우가 많습니다. 마감 직전에 변환하면 표가 깨지거나 이미지가 흐려질 수 있습니다.</p>
+
+  <h3 style="margin:34px 0 12px; font-size:23px; line-height:1.45; font-weight:850; color:#25262C;">8. 제출 완료 화면</h3>
+  <p style="margin:0 0 20px;">파일을 업로드한 것과 최종 제출은 다를 수 있습니다. 접수번호, 제출 완료 화면, 확인 메일 중 어떤 방식으로 접수 확인이 되는지 남겨두는 편이 좋습니다.</p>
+
+  <h2 style="margin:58px 0 18px; font-size:30px; line-height:1.38; font-weight:850; color:#25262C; letter-spacing:0;">마감 24시간 전에는 이 순서로 봅니다</h2>
+  <ol style="margin:0 0 28px; padding-left:28px; font-size:18px; line-height:1.85; color:#25262C;">
+    <li style="margin:8px 0;">공고문에서 제출서류 목록을 다시 확인합니다.</li>
+    <li style="margin:8px 0;">사업계획서가 최신 양식인지 확인합니다.</li>
+    <li style="margin:8px 0;">자격 증빙과 가점 증빙을 한 폴더에 모읍니다.</li>
+    <li style="margin:8px 0;">파일명, 확장자, 용량 제한을 맞춥니다.</li>
+    <li style="margin:8px 0;">온라인 접수 화면에서 필수 입력값을 먼저 채웁니다.</li>
+    <li style="margin:8px 0;">제출 완료 증빙을 캡처하거나 저장합니다.</li>
+  </ol>
+
+  <div class="dh-note">
+    <p style="margin:0 0 12px;"><strong>제출서류를 먼저 정리하면 사업계획서 수정 방향도 분명해집니다.</strong></p>
+    <p style="margin:0;">공고문이 요구하는 증빙과 평가 기준을 알면, 사업계획서에서 어떤 실행 계획을 강조해야 할지도 더 빨리 결정할 수 있습니다.</p>
+  </div>
+
+  <h2 style="margin:58px 0 18px; font-size:30px; line-height:1.38; font-weight:850; color:#25262C; letter-spacing:0;">독스헌트로 사업계획서 초안까지 이어서 준비하세요</h2>
+  <p style="margin:0 0 20px;">제출서류를 확인했다면 다음은 사업계획서 초안입니다. 독스헌트는 아이디어를 바탕으로 창업지원사업 문항에 맞는 초안을 빠르게 구조화해주는 AI 문서 작성 도구입니다.</p>
+  <p style="margin:0 0 20px;">신청 자격, 고객 문제, 해결 방식, 실행 계획을 먼저 정리하고 공고문 양식에 맞춰 사업계획서 초안을 만들 수 있습니다.</p>
+  <p style="margin:0 0 20px;"><strong>창업지원사업 제출을 준비 중이라면, 서류 체크 후 독스헌트에서 사업계획서 초안까지 한 번에 정리해보세요.</strong></p>
+
+  <p style="margin:44px 0 0; color:#6E7687; font-size:15px; line-height:1.7;">참고: 창업지원사업 신청 조건과 제출서류는 사업별로 다릅니다. 신청 전에는 <a href="https://www.k-startup.go.kr/" target="_blank" rel="noopener">K-Startup 창업지원포털</a>과 주관기관 공고문을 다시 확인해야 합니다.</p>
+</div>`;
