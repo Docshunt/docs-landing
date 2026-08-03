@@ -5,11 +5,8 @@ import { notFound } from "next/navigation";
 import { BlogHeader, DocshuntFooter } from "@/components/docshunt-blog-shell";
 import { JsonLd } from "@/components/json-ld";
 import { BLOG_CONTENT_HTML } from "@/data/docshunt-blog-content";
-import { BLOG_POSTS, BLOG_TOPIC_GROUPS, decodeBlogSlug, getRecommendedPosts } from "@/data/docshunt-blogs";
-import { getBlogPost } from "@/data/notion-blog";
+import { BLOG_POSTS, BLOG_TOPIC_GROUPS, decodeBlogSlug, findBlogPost, getRecommendedPosts } from "@/data/docshunt-blogs";
 import { APP_URL, articleJsonLd, BLOG_AUTHOR_NAME, BLOG_AUTHOR_PATH, breadcrumbJsonLd, buildPageMetadata, dateToIso } from "@/seo/metadata";
-
-export const revalidate = 60;
 
 type BlogDetailParams = {
   params: Promise<{
@@ -36,7 +33,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: BlogDetailParams): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getBlogPost(slug);
+  const post = findBlogPost(slug);
   if (!post) return {};
   return buildPageMetadata({
     title: post.title,
@@ -49,7 +46,7 @@ export async function generateMetadata({ params }: BlogDetailParams): Promise<Me
 
 export default async function BlogDetailPage({ params }: BlogDetailParams) {
   const { slug } = await params;
-  const post = await getBlogPost(slug);
+  const post = findBlogPost(slug);
   if (!post) notFound();
 
   const rawContentHtml = post.contentHtml ?? BLOG_CONTENT_HTML[post.slug] ?? BLOG_CONTENT_HTML[decodeBlogSlug(post.slug)];

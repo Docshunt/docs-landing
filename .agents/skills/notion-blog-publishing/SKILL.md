@@ -1,11 +1,11 @@
 ---
 name: notion-blog-publishing
-description: Synchronize a DocsHunt blog article from its latest Notion CMS page into the docs-landing Next.js repository, preserving Notion text and image placement while aligning static fallback content, authorship, responsive title layout, SEO/GEO metadata, local assets, QA, and GitHub draft-PR publication. Use for requests such as “노션 수정본 반영해줘”, “사진 순서를 노션처럼 맞춰줘”, “작성·검수를 독스헌트로 바꿔줘”, “SEO 업로드해줘”, or “깃허브에 올려줘” after blog edits.
+description: Import a DocsHunt blog article from Notion through the Codex connector into the static docs-landing repository, preserving text and image placement while aligning authorship, responsive title layout, SEO/GEO metadata, local assets, QA, and GitHub draft-PR publication. Use for requests such as “노션 수정본 반영해줘”, “사진 순서를 노션처럼 맞춰줘”, “작성·검수를 독스헌트로 바꿔줘”, “SEO 업로드해줘”, or “깃허브에 올려줘” after blog edits.
 ---
 
 # Notion Blog Publishing
 
-Treat Notion as the editorial source of truth and the repository as the deployable, reviewable source. Complete the requested scope end to end unless a missing permission or materially ambiguous content decision blocks it.
+Use Notion as an editorial reference through the Codex connector and the repository as the only deployable source. Never add a runtime Notion dependency or require Notion credentials during build or deployment.
 
 ## 1. Establish scope
 
@@ -20,7 +20,7 @@ Treat Notion as the editorial source of truth and the repository as the deployab
 
 ## 2. Fetch the latest Notion article
 
-1. Prefer the connected Notion app for editorial reads and writes. Use direct Notion API access only when the repository's configured integration is the available authorized path.
+1. Use the connected Codex Notion connector for editorial reads. Do not add direct Notion API access to the application or deployment workflow.
 2. Resolve the page from the supplied link, known slug, title, or data-source record. Do not assume a stale page snapshot is current.
 3. Fetch page properties and all child blocks recursively after every user-reported Notion edit.
 4. Preserve the current Notion sequence exactly, including:
@@ -33,8 +33,8 @@ Treat Notion as the editorial source of truth and the repository as the deployab
 
 ## 3. Sync the deployable blog source
 
-1. Update the matching post file under `src/data/blog-posts/` as the static fallback. Keep its `title`, `description`, `slug`, `sourceUrl`, `date`, `author`, images, `paragraphs`, and `contentHtml` aligned with Notion.
-2. Keep `src/data/notion-blog.ts` compatible with the Notion data-source properties and block types used by the article. Preserve graceful fallback to `BLOG_POSTS` when Notion credentials or content are unavailable.
+1. Update the matching post file under `src/data/blog-posts/` as the deployable static source. Keep its `title`, `description`, `slug`, `sourceUrl`, `date`, `author`, images, `paragraphs`, and `contentHtml` aligned with the approved Notion reference.
+2. Do not add `src/data/notion-blog.ts`, runtime Notion reads, or deployment environment variables. The site must build and render without Notion credentials.
 3. Add a new post to `src/data/blog-posts/index.ts`; do not duplicate post objects in `src/data/docshunt-blogs.ts`.
 4. Store uploaded editorial images under:
    - list and hero images: `public/docshunt-assets/blog-covers/`
@@ -53,7 +53,7 @@ Treat Notion as the editorial source of truth and the repository as the deployab
    - canonical and `og:url`: `https://docshunt.ai/blog_detail/<slug>`
    - unique search description
    - list image, hero/OG image, visible title, JSON-LD, and sitemap URL
-   - Notion-backed and static-fallback content
+   - imported static content and its SEO metadata
 6. Keep every inline image's `alt` descriptive and ensure the article remains reachable through crawlable pagination or contextual links.
 
 ## 5. Validate content and layout
@@ -101,7 +101,7 @@ Save screenshots under a gitignored test-results path and record their paths for
 ## Guardrails
 
 - Never infer that a Notion change is reflected without refetching it.
-- Never treat runtime Notion rendering as a substitute for a correct static fallback.
+- Never add runtime Notion rendering as a substitute for a correct static post.
 - Never move photos to aesthetically convenient positions when Notion defines their order.
 - Never alter a stable slug or published canonical URL as part of a copy-only edit.
 - Never publish secrets, credentialed URLs, local caches, or private production data.
