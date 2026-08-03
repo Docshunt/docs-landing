@@ -34,11 +34,6 @@ export function GET(request: Request) {
       changefreq: "monthly",
     },
     {
-      loc: "/how_credits_work",
-      priority: "0.6",
-      changefreq: "monthly",
-    },
-    {
       loc: "/how_to_convert_hwpx",
       priority: "0.6",
       changefreq: "yearly",
