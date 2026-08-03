@@ -40,15 +40,8 @@ import { post39 } from "./00039-사업계획서-고객-인터뷰-작성법-답�
 import { post40 } from "./00040-사업계획서-심사위원은-무엇부터-볼까-허공회-교수-인터뷰";
 import type { BlogPost } from "./types";
 
+// Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
-  post40,
-  post39,
-  post38,
-  post37,
-  post36,
-  post35,
-  post34,
-  post33,
   post01,
   post02,
   post03,
@@ -81,12 +74,22 @@ const BLOG_POST_SOURCE = [
   post30,
   post31,
   post32,
+  post33,
+  post34,
+  post35,
+  post36,
+  post37,
+  post38,
+  post39,
+  post40,
 ];
 
-export const BLOG_POSTS: BlogPost[] = BLOG_POST_SOURCE.map((post, position) => ({
-  ...post,
-  page: Math.floor(position / 10) + 1,
-  index: (position % 10) + 1,
-}));
+export const BLOG_POSTS: BlogPost[] = BLOG_POST_SOURCE.map((post, sourcePosition) => ({ post, sourcePosition }))
+  .sort((left, right) => right.post.date.localeCompare(left.post.date) || left.sourcePosition - right.sourcePosition)
+  .map(({ post }, position) => ({
+    ...post,
+    page: Math.floor(position / 10) + 1,
+    index: (position % 10) + 1,
+  }));
 
 export const BLOG_PAGE_COUNT = new Set(BLOG_POSTS.map((post) => post.page)).size;
