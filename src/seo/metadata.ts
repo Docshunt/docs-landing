@@ -282,7 +282,7 @@ export function articleJsonLd(post: BlogPost) {
     author: {
       "@type": "Organization",
       "@id": BLOG_AUTHOR_URL,
-      name: BLOG_AUTHOR_NAME,
+      name: post.author ?? BLOG_AUTHOR_NAME,
       url: BLOG_AUTHOR_URL,
       parentOrganization: { "@id": `${SITE_URL}/#organization` },
     },

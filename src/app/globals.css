@@ -9456,6 +9456,10 @@ img {
   word-break: keep-all;
 }
 
+.blog-title-desktop-break {
+  display: inline;
+}
+
 .blog-post-meta {
   display: flex;
   flex-wrap: wrap;
@@ -14435,6 +14439,10 @@ img {
 }
 
 @media (max-width: 900px) {
+  .blog-title-desktop-break {
+    display: none;
+  }
+
   .about-main {
     padding: 104px 24px 96px;
   }

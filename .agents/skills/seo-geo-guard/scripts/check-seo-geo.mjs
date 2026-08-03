@@ -145,8 +145,10 @@ if (exists("src/proxy.ts")) {
 if (exists("src/data/blog-posts/index.ts") && exists("src/app/sitemap-blog_detail.xml/route.ts")) {
   const blogs = read("src/data/blog-posts/index.ts");
   const sitemap = read("src/app/sitemap-blog_detail.xml/route.ts");
-  if (!/BLOG_POSTS/.test(sitemap)) {
-    warnings.push("Blog detail sitemap route does not visibly reference BLOG_POSTS; verify sitemap stays aligned with blog data.");
+  if (!/(?:BLOG_POSTS|getAllBlogPosts)/.test(sitemap)) {
+    warnings.push(
+      "Blog detail sitemap route does not visibly reference BLOG_POSTS or getAllBlogPosts; verify sitemap stays aligned with blog data.",
+    );
   }
   if (!/post\d+/.test(blogs)) {
     warnings.push("Blog post index does not visibly aggregate per-post files; verify blog route generation manually.");

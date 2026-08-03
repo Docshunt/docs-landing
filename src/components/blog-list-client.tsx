@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { BLOG_PAGE_COUNT, BLOG_POSTS } from "@/data/docshunt-blogs";
+import type { BlogPost } from "@/data/docshunt-blogs";
 
 function blogHref(slug: string) {
   return `/blog_detail/${slug}`;
@@ -10,9 +10,7 @@ function pageHref(page: number) {
   return page === 1 ? "/blog_list" : `/blog_list?page=${page}`;
 }
 
-export function BlogListClient({ page }: { page: number }) {
-  const posts = BLOG_POSTS.filter((post) => post.page === page);
-
+export function BlogListClient({ page, pageCount, posts }: { page: number; pageCount: number; posts: BlogPost[] }) {
   return (
     <section className="blog-list-section" aria-labelledby="blog-list-title">
       <h1 className="blog-list-title" id="blog-list-title">
@@ -40,7 +38,7 @@ export function BlogListClient({ page }: { page: number }) {
             &lt;
           </Link>
         )}
-        {Array.from({ length: BLOG_PAGE_COUNT }, (_, index) => index + 1).map((pageNumber) => (
+        {Array.from({ length: pageCount }, (_, index) => index + 1).map((pageNumber) => (
           <Link
             className={pageNumber === page ? "is-active" : ""}
             aria-current={pageNumber === page ? "page" : undefined}
@@ -50,7 +48,7 @@ export function BlogListClient({ page }: { page: number }) {
             {pageNumber}
           </Link>
         ))}
-        {page === BLOG_PAGE_COUNT ? (
+        {page === pageCount ? (
           <span className="is-disabled" aria-hidden="true">
             &gt;
           </span>
