@@ -2741,8 +2741,6 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [pcDialogOpen, setPcDialogOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
   const [draftLanding, setDraftLanding] = useState(initialDraft);
   const logoTapCountRef = useRef(0);
   const logoTapTimerRef = useRef<number | null>(null);
@@ -2756,11 +2754,6 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    document.body.classList.toggle("modal-open", pcDialogOpen);
-    return () => document.body.classList.remove("modal-open");
-  }, [pcDialogOpen]);
 
   useEffect(() => {
     return () => {
@@ -2780,22 +2773,7 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
 
   const handleStart = (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     event.preventDefault();
-    if (window.matchMedia("(max-width: 900px)").matches) {
-      setPcDialogOpen(true);
-      return;
-    }
     window.location.assign(buildAppUrl());
-  };
-
-  const copyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(buildAppUrl());
-      setPcDialogOpen(false);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2000);
-    } catch {
-      setCopied(true);
-    }
   };
 
   const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
@@ -2847,9 +2825,9 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
           </a>
         </nav>
         <div className="header-actions">
-          <button className="header-button primary" type="button" onClick={handleStart}>
+          <a className="header-button primary" href={startPath} onClick={handleStart}>
             <span className="desktop-label">무료로 시작하기</span>
-          </button>
+          </a>
           <button
             className="menu-button"
             type="button"
@@ -3114,27 +3092,6 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
           </div>
         </div>
       </footer>
-
-      {pcDialogOpen && (
-        <dialog className="pc-dialog" open>
-          <form className="pc-dialog-card" method="dialog">
-            <button className="dialog-close" type="button" aria-label="닫기" onClick={() => setPcDialogOpen(false)}>
-              &times;
-            </button>
-            <h2>PC에서만 이용 가능합니다</h2>
-            <p>독스헌트는 PC 환경에 최적화 되어 있습니다. 아래 버튼을 눌러 링크를 복사하고, PC에서 열어주세요.</p>
-            <button className="header-button primary copy-link-button" type="button" onClick={copyLink}>
-              독스헌트 PC 링크 복사하기
-            </button>
-            <p className="copy-status" aria-live="polite">
-              {copied ? "독스헌트 PC 링크 복사됨" : ""}
-            </p>
-          </form>
-        </dialog>
-      )}
-      <p className={`copy-toast ${copied ? "is-visible" : ""}`} aria-live="polite">
-        독스헌트 PC 링크 복사됨
-      </p>
     </div>
   );
 }
