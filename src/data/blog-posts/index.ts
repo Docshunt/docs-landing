@@ -36,9 +36,13 @@ import { post35 } from "./00035-탈락한-사업계획서-문장부터-고치면
 import { post36 } from "./00036-사업계획서-근거-수요가-높습니다-한-줄이-위험한-이유";
 import { post37 } from "./00037-사업계획서-첫-페이지-이것부터-쓰고-있다면-순서를-바꾸세요";
 import { post38 } from "./00038-심사위원은-아이디어보다-먼저-무엇을-볼까-좋은-사업계획서의-조건";
+import { post39 } from "./00039-사업계획서-고객-인터뷰-작성법-답변을-근거-문장으로-바꾸는-법";
+import { post40 } from "./00040-사업계획서-심사위원은-무엇부터-볼까-허공회-교수-인터뷰";
 import type { BlogPost } from "./types";
 
 const BLOG_POST_SOURCE = [
+  post40,
+  post39,
   post38,
   post37,
   post36,
