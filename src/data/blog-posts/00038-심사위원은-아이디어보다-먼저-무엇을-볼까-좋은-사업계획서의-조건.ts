@@ -12,7 +12,7 @@ export const post38 = {
   description:
     "지원사업 심사위원은 아이디어보다 문서의 형식과 논리, 고객·시장·팀의 실행 근거를 먼저 확인합니다. 김종배 숭실대학교 창업지원단 교수 인터뷰로 좋은 사업계획서의 조건을 들어봅니다.",
   author: "독스헌트",
-  date: "2026.08.03",
+  date: "2026.08.01",
   image: "/docshunt-assets/blog-covers/00035-business-plan-evaluation-interview-list.jpg",
   heroImage: "/docshunt-assets/blog-covers/00035-business-plan-evaluation-interview-hero.jpg",
   paragraphs: [
