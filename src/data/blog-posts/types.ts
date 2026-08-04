@@ -16,6 +16,8 @@ export type BlogPost = {
   };
   image: string;
   heroImage: string;
+  videoEmbedUrl?: string;
+  videoTitle?: string;
   paragraphs: string[];
   contentHtml?: string;
 };

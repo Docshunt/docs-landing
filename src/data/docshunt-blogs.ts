@@ -55,6 +55,7 @@ const BLOG_TOPIC_GROUP_CONFIG = [
       "2",
       "1770964843114x761947782936002600",
       "2026-2",
+      "support-program-business-plan-application-strategy",
     ],
   },
   {
