@@ -6,6 +6,12 @@ const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   {
+    files: ["src/data/blog-content/*.ts"],
+    rules: {
+      "import/no-anonymous-default-export": "off",
+    },
+  },
+  {
     linterOptions: {
       reportUnusedDisableDirectives: "error",
     },

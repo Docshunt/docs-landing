@@ -10,6 +10,8 @@ const BLOG_TOPIC_GROUP_CONFIG = [
     summary: "문제 정의부터 실행·재무 계획까지 사업계획서를 순서대로 작성하는 방법",
     slugs: [
       "1783933805576x494076817525278100",
+      "business-plan-review-criteria-professor-interview",
+      "customer-interview-evidence-business-plan",
       "business-plan-first-page",
       "business-plan-evaluation-criteria-interview",
       "1777343094612x229953857115337000",
