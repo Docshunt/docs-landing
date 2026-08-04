@@ -94,7 +94,19 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
               <time dateTime={dateToIso(post.modifiedDate)}>수정 {post.modifiedDate}</time>
             ) : null}
           </div>
-          <img className="blog-detail-hero" src={post.heroImage} alt={`${post.title} 대표 이미지`} />
+          {post.videoEmbedUrl ? (
+            <div className="blog-detail-video">
+              <iframe
+                src={post.videoEmbedUrl}
+                title={post.videoTitle ?? `${post.title} 인터뷰 영상`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          ) : (
+            <img className="blog-detail-hero" src={post.heroImage} alt={`${post.title} 대표 이미지`} />
+          )}
           <div className="blog-detail-body">
             {contentHtml ? (
               <div dangerouslySetInnerHTML={{ __html: contentHtml }} />

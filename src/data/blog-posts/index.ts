@@ -38,6 +38,7 @@ import { post37 } from "./00037-사업계획서-첫-페이지-이것부터-쓰�
 import { post38 } from "./00038-심사위원은-아이디어보다-먼저-무엇을-볼까-좋은-사업계획서의-조건";
 import { post39 } from "./00039-사업계획서-고객-인터뷰-작성법-답변을-근거-문장으로-바꾸는-법";
 import { post40 } from "./00040-사업계획서-심사위원은-무엇부터-볼까-허공회-교수-인터뷰";
+import { post41 } from "./00041-지원사업-사업계획서-한-편에-올인하면-왜-기회를-놓칠까요";
 import type { BlogPost } from "./types";
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
@@ -82,6 +83,7 @@ const BLOG_POST_SOURCE = [
   post38,
   post39,
   post40,
+  post41,
 ];
 
 export const BLOG_POSTS: BlogPost[] = BLOG_POST_SOURCE.map((post, sourcePosition) => ({ post, sourcePosition }))
