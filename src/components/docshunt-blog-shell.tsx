@@ -64,13 +64,15 @@ export function DocshuntFooter() {
           <span>docshunt.ai</span>
         </a>
         <div className="legal-links">
-          <Link href="/about">작성자·회사 소개</Link>
-          <span>|</span>
           <Link href="/privacy_policy">개인정보 처리방침</Link>
           <span>|</span>
           <Link href="/terms">이용약관</Link>
           <span>|</span>
           <Link href="/business_info">사업자 정보 확인</Link>
+          <span className="footer-about-link">|</span>
+          <Link className="footer-about-link" href="/about">
+            작성자·회사 소개
+          </Link>
         </div>
       </div>
     </footer>

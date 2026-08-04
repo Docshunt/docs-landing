@@ -157,8 +157,8 @@ const draftProofCards = [
     mobileImage: `${assets}/interviews/11111-mobile.webp`,
     alt: "박중현 스피노자 대표 인터뷰",
     title: "지원사업, 잘 쓰는 것보다\n많이 넣는 싸움",
-    quote:
-      "“제가 독스헌트로 하루에 사업계획서 4개까지 해서 접수를 했고요.\n기존에는 못해도 2~3일 정도 걸리던 거를 1~2시간 안에 할 수 있게 됐습니다.”",
+    quote: "“독스헌트로 하루에 사업계획서 4개까지 접수했고요.\n기존엔 2~3일 걸리던 것을 1시간 안에 할 수 있게 됐습니다.”",
+    mobileQuote: "“독스헌트로 하루에 사업계획서 4개까지 접수했고요.\n기존엔 2~3일 걸리던 것을 1시간 안에 할 수 있게 됐습니다.”",
     author: "박중현, 스피노자 대표",
     href: "https://www.youtube.com/watch?v=9a_QmMnxmOo",
   },
@@ -167,7 +167,7 @@ const draftProofCards = [
     mobileImage: `${assets}/interviews/33334-mobile.webp`,
     alt: "하정연 크레센트 서울 대표 인터뷰",
     title: "밤새 쓰던 사업계획서,\n독스헌트로 자동화했어요",
-    quote: "“반복적인 작업들은 자동화하고,\n본질적으로 고민해야 되는 부분에 시간을 더 쓸 수 있었습니다.”",
+    quote: "“반복적인 작업들은 자동화하고,\n본질에 시간을 더 쓸 수 있었습니다.”",
     author: "하정연, 크레센트 서울 대표",
     href: "https://www.youtube.com/watch?v=OWhe63kWoBk",
   },
@@ -877,7 +877,16 @@ function DraftProofCarousel() {
               <div className="draft-proof-content">
                 <div className="draft-proof-copy">
                   <h3>{card.title}</h3>
-                  <p className="draft-proof-quote">{card.quote}</p>
+                  <p className="draft-proof-quote">
+                    {card.mobileQuote ? (
+                      <>
+                        <span className="desktop-only">{card.quote}</span>
+                        <span className="mobile-only">{card.mobileQuote}</span>
+                      </>
+                    ) : (
+                      card.quote
+                    )}
+                  </p>
                   <p className="draft-proof-author">{card.author}</p>
                   <a
                     className="draft-proof-cta"
@@ -2292,13 +2301,13 @@ function HeroWorkflowPreview({
         <div className="hero-ai-chat-window hero-ai-chat-stream-window">
           <div className="hero-ai-chat-body">
             <div className="hero-ai-message hero-ai-message-assistant hero-ai-stream-question hero-ai-stream-question-1">
-              <p>이번 공고에서 강조할 사업 아이템은 무엇인가요?</p>
+              <p>사업아이템을 알려주세요.</p>
             </div>
             <div className="hero-ai-message hero-ai-message-user hero-ai-stream-reply hero-ai-stream-reply-1">
               <span>
                 사업계획서 작성 AI예요.
                 <br />
-                예비창업자가 고객입니다.
+                창업자가 고객입니다.
               </span>
             </div>
             <div className="hero-ai-message hero-ai-message-assistant hero-ai-stream-question hero-ai-stream-question-2">
@@ -2635,9 +2644,13 @@ function DraftLandingMain({ onStart }: { onStart: StartHandler }) {
         </figure>
         <div className="draft-centered-copy narrow">
           <h2>
-            지원사업 선택하고, AI와 대화하면
+            지원사업 선택하고,
+            <span className="mobile-break">
+              <br />
+            </span>{" "}
+            AI와 대화하면
             <br />
-            어느새 사업계획서 자동 완성
+            어느새 사업계획서 완성
           </h2>
           <p>아이템 정보를 모아두고, 사업계획서를 지원사업마다 더 정교하게</p>
         </div>
@@ -2657,7 +2670,8 @@ function DraftLandingMain({ onStart }: { onStart: StartHandler }) {
               직접 사용해보며 그 진가를 확인해 보세요.
             </span>
             <span className="draft-proof-intro-mobile">
-              <span>하루에 사업계획서 5개를 작성하는 대표부터, 첫 지원사업에 합격한 대표까지</span>
+              <span>하루에 사업계획서 5개를 작성하는 대표부터,</span>
+              <span>첫 지원사업에 합격한 대표까지</span>
               <span>직접 사용해보며 그 진가를 확인해 보세요.</span>
             </span>
           </p>
@@ -2671,7 +2685,7 @@ function DraftLandingMain({ onStart }: { onStart: StartHandler }) {
 
       <section className="draft-dark-workflow" aria-labelledby="draft-workflow-title">
         <div className="draft-centered-copy inverted">
-          <h2 id="draft-workflow-title">사업계획서에 필요한 작업까지 한 번에</h2>
+          <h2 id="draft-workflow-title">사업계획서 완성까지, 독스헌트에서 전부</h2>
           <p>
             시각 자료 생성, 시장·경쟁사 조사, 문서 스타일 자동 정리까지
             <br />
@@ -2702,14 +2716,14 @@ function DraftLandingMain({ onStart }: { onStart: StartHandler }) {
         <img className="security-image" src={`${assets}/trust-security-desktop.webp`} alt="보안 잠금 이미지" />
         <p className="security-copy">
           <span className="desktop-only">
-            사업계획서 생성 과정에서의 모든 입출력 데이터는, 전송 및 저장 시 암호화되어 안전하게 보호됩니다.
+            모든 데이터는, 암호화되어 안전하게 보호됩니다.
             <br />
-            외부 유출 및 AI 모델 학습에 절대 이용되지 않습니다.
+            외부 유출 및 AI 모델 학습에 이용되지 않습니다.
           </span>
           <span className="mobile-only">
-            입력하신 모든 데이터는 전송 및 저장 시 암호화되어 안전하게
+            모든 데이터는, 암호화되어 안전하게 보호됩니다.
             <br />
-            보호됩니다. 외부 유출 및 AI 모델 학습에 절대 이용되지 않습니다.
+            외부 유출 및 AI 모델 학습에 이용되지 않습니다.
           </span>
         </p>
       </section>
@@ -2723,9 +2737,21 @@ function DraftLandingMain({ onStart }: { onStart: StartHandler }) {
           </span>
         </h2>
         <p>
-          “낚싯대를 1개 드리우는 것과 100개 드리우는 것의 확률은 다릅니다.
-          <br />
-          독스헌트를 활용해서 지원사업을 최대한 많이 신청하는 게 최고의 전략입니다.”
+          <span className="desktop-only">
+            “낚싯대를 1개 드리우는 것과 100개 드리우는 것의 확률은 다릅니다.
+            <br />
+            독스헌트를 활용해서 지원사업을 최대한 많이 신청하는 게 최고의 전략입니다.”
+          </span>
+          <span className="mobile-only">
+            “낚싯대를 1개 드리우는 것과
+            <br />
+            100개 드리우는 것의 확률은 다릅니다.
+            <br />
+            <br />
+            독스헌트를 활용해서 지원사업을 최대한 많이
+            <br />
+            신청하는 게 최고의 전략입니다.”
+          </span>
           <span className="final-quote-author">박중현, 스피노자 대표</span>
         </p>
         <a className="draft-cta dark" href={startPath} onClick={onStart}>
@@ -3027,12 +3053,14 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
             <img className="security-image" src={`${assets}/trust-security-desktop.webp`} alt="보안 잠금 이미지" />
             <p className="security-copy">
               <span className="desktop-only">
-                사업계획서 생성 과정에서의 모든 입출력 데이터는, 전송 및 저장 시 암호화되어 안전하게 보호됩니다.
+                모든 데이터는, 암호화되어 안전하게 보호됩니다.
                 <br />
-                외부 유출 및 AI 모델 학습에 절대 이용되지 않습니다.
+                외부 유출 및 AI 모델 학습에 이용되지 않습니다.
               </span>
               <span className="mobile-only">
-                입력하신 모든 데이터는 전송 및 저장 시 암호화되어 안전하게 보호됩니다. 외부 유출 및 AI 모델 학습에 절대 이용되지 않습니다.
+                모든 데이터는, 암호화되어 안전하게 보호됩니다.
+                <br />
+                외부 유출 및 AI 모델 학습에 이용되지 않습니다.
               </span>
             </p>
           </section>
@@ -3048,9 +3076,21 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
               </span>
             </h2>
             <p className="final-subtitle">
-              “낚싯대를 1개 드리우는 것과 100개 드리우는 것의 확률은 다릅니다.
-              <br />
-              독스헌트를 활용해서 지원사업을 최대한 많이 신청하는 게 최고의 전략입니다.”
+              <span className="desktop-only">
+                “낚싯대를 1개 드리우는 것과 100개 드리우는 것의 확률은 다릅니다.
+                <br />
+                독스헌트를 활용해서 지원사업을 최대한 많이 신청하는 게 최고의 전략입니다.”
+              </span>
+              <span className="mobile-only">
+                “낚싯대를 1개 드리우는 것과
+                <br />
+                100개 드리우는 것의 확률은 다릅니다.
+                <br />
+                <br />
+                독스헌트를 활용해서 지원사업을 최대한 많이
+                <br />
+                신청하는 게 최고의 전략입니다.”
+              </span>
               <span className="final-quote-author">박중현, 스피노자 대표</span>
             </p>
             <a className="cta-button dark" href={startPath} onClick={handleStart}>
@@ -3082,13 +3122,15 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
             <span>docshunt.ai</span>
           </a>
           <div className="legal-links">
-            <Link href="/about">작성자·회사 소개</Link>
-            <span>|</span>
             <Link href="/privacy_policy">개인정보 처리방침</Link>
             <span>|</span>
             <Link href="/terms">이용약관</Link>
             <span>|</span>
             <Link href="/business_info">사업자 정보 확인</Link>
+            <span className="footer-about-link">|</span>
+            <Link className="footer-about-link" href="/about">
+              작성자·회사 소개
+            </Link>
           </div>
         </div>
       </footer>
