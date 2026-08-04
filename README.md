@@ -1,6 +1,8 @@
 # Docs Landing
 
-Docshunt의 랜딩과 정적 블로그를 운영하는 Next.js 앱입니다.
+Docshunt의 랜딩페이지와 블로그를 운영합니다.
+
+<img width="1911" height="1016" alt="image" src="https://github.com/user-attachments/assets/d1a69b4b-69ab-4a91-b4ea-1df7897b1422" />
 
 ## 시작하기
 
