@@ -39,10 +39,16 @@ import { post38 } from "./00038-심사위원은-아이디어보다-먼저-무엇
 import { post39 } from "./00039-사업계획서-고객-인터뷰-작성법-답변을-근거-문장으로-바꾸는-법";
 import { post40 } from "./00040-사업계획서-심사위원은-무엇부터-볼까-허공회-교수-인터뷰";
 import { post41 } from "./00041-지원사업-사업계획서-한-편에-올인하면-왜-기회를-놓칠까요";
+import { post42 } from "./00042-사업계획서-경쟁사-분석-경쟁사가-없습니다-가-위험한-이유";
+import { post43 } from "./00043-지원사업-사업계획서-첫-문장을-이렇게-시작하면-핵심이-묻힙니다";
+import { post44 } from "./00044-지원사업-공고-신청-자격만-맞으면-지원해도-될까요";
 import type { BlogPost } from "./types";
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post42,
+  post43,
+  post44,
   post01,
   post02,
   post03,
