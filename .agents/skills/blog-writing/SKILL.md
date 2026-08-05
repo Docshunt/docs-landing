@@ -27,7 +27,8 @@ src/data/blog-posts/00001-내용을-설명하는-제목.ts
 
 Filename rules:
 
-- Prefix with a five-digit order number matching the aggregate order: `00001`, `00002`, ...
+- Prefix with a five-digit stable creation number: `00001`, `00002`, ...
+- Keep prefixes contiguous from `00001` through the current post count; never skip a number or reuse a prefix.
 - Follow the number with a short Korean or English description derived from the title.
 - Use hyphens, not spaces.
 - Keep the filename meaningful even when the legacy slug is numeric or percent-encoded.
@@ -61,6 +62,8 @@ export const postNN = {
 
 `src/data/blog-posts/index.ts` is the ordered aggregate. Blog list, blog detail, sitemap, and JSON-LD read from `BLOG_POSTS`.
 
+Run `npm run blog:check-numbers` before adding a post. It fails when filenames are missing from the sequence or when `index.ts` imports a missing post. Repair an existing gap before creating another post; do not let the generator advance past a gap.
+
 Do not put new post objects directly into `src/data/docshunt-blogs.ts`; that file is a compatibility facade only.
 
 ## Creation Flow
@@ -84,7 +87,7 @@ Do not put new post objects directly into `src/data/docshunt-blogs.ts`; that fil
 9. Use the article's approved author value, defaulting to `독스헌트 마케팅팀` only when none is provided. Keep the visible author, JSON-LD author, and `/about#editorial-policy` link aligned; preserve an explicit `독스헌트` request exactly.
 10. Add the post to an appropriate `BLOG_TOPIC_GROUP_CONFIG` group when it belongs to an existing search-intent cluster.
 
-`BLOG_POSTS` derives pagination from aggregate order. Put a new post at the top of `BLOG_POST_SOURCE`; do not renumber existing post files or hand-edit their historical `page` and `index` fields.
+`BLOG_POSTS` derives pagination from aggregate order. Put a new post at the top of `BLOG_POST_SOURCE`; do not hand-edit the generated `page` and `index` fields. Renumbering is reserved for repairing a repository-wide filename gap and must include the post export, index import, and every paired cover asset reference in the same change.
 
 ## SEO/GEO Checklist
 
@@ -108,6 +111,7 @@ For every blog post change:
 Run:
 
 ```bash
+npm run blog:check-numbers
 node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs
 ```
 

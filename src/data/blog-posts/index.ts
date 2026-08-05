@@ -43,10 +43,18 @@ import { post42 } from "./00042-사업계획서-경쟁사-분석-경쟁사가-�
 import { post43 } from "./00043-지원사업-사업계획서-첫-문장을-이렇게-시작하면-핵심이-묻힙니다";
 import { post44 } from "./00044-지원사업-공고-신청-자격만-맞으면-지원해도-될까요";
 import { post45 } from "./00045-사업계획서-AI-후기-3인-팀-대표는-왜-10시간-을-말했을까";
+import { post46 } from "./00046-모두의-창업-지원금-선정되면-바로-1억-원을-받는-걸까요";
+import { post47 } from "./00047-사업계획서-수익모델-구독료-한-줄로-충분할까요";
+import { post48 } from "./00048-모두의-창업-직장인이나-팀도-신청할-수-있을까요";
+import { post49 } from "./00049-사업계획서-MVP-화면만-있으면-검증됐다고-볼-수-있을까요";
 import type { BlogPost } from "./types";
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post49,
+  post48,
+  post47,
+  post46,
   post45,
   post42,
   post43,

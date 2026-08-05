@@ -33,7 +33,11 @@ const root = path.resolve(args.root ?? process.cwd());
 const postsDir = path.join(root, "src/data/blog-posts");
 const indexPath = path.join(postsDir, "index.ts");
 const filenames = fs.readdirSync(postsDir).filter((name) => /^\d{5}-.+\.ts$/.test(name));
-const nextNumber = Math.max(...filenames.map((name) => Number(name.slice(0, 5))), 0) + 1;
+const numbers = filenames.map((name) => Number(name.slice(0, 5))).sort((left, right) => left - right);
+if (numbers.some((number, index) => number !== index + 1)) {
+  throw new Error("Existing blog post filenames must be contiguous from 00001 before creating a new post.");
+}
+const nextNumber = filenames.length + 1;
 const number = String(nextNumber).padStart(5, "0");
 const exportName = `post${String(nextNumber).padStart(2, "0")}`;
 const stem = filenamePart(args.title);
