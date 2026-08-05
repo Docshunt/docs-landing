@@ -48,6 +48,7 @@ import { post47 } from "./00047-사업계획서-수익모델-구독료-한-줄�
 import { post48 } from "./00048-모두의-창업-직장인이나-팀도-신청할-수-있을까요";
 import { post49 } from "./00049-사업계획서-MVP-화면만-있으면-검증됐다고-볼-수-있을까요";
 import { post50 } from "./00050-독스헌트-AI-인터뷰로-사업계획서-제출-단계까지";
+import { post51 } from "./00051-사업계획서-AI-후기-마감-하루-전에도-포기하지-않은-이유";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -111,6 +112,7 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
   "%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C-ai-%EC%B6%94%EC%B2%9C": { category: "ai-docshunt" },
   "gpt-business-plan-rejection": { category: "ai-docshunt" },
   "business-plan-ai-review-crescent-seoul-interview": { category: "interviews" },
+  "business-plan-ai-review-deadline-day-jigu-on-earth-interview": { category: "interviews" },
   "2": { category: "interviews" },
   "3-1": {
     category: "interviews",
@@ -147,6 +149,7 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post51,
   post50,
   post49,
   post48,
