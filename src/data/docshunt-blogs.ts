@@ -62,12 +62,12 @@ const BLOG_TOPIC_GROUP_CONFIG = [
     name: "독스헌트 활용법",
     summary: "사업계획서 AI로 초안 작성, 수정, 문서 자동화를 진행하는 방법",
     slugs: [
-      "business-plan-ai-review-crescent-seoul-interview",
       "gpt-business-plan-rejection",
       "%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C-ai-%EC%B6%94%EC%B2%9C",
       "gptvsai-2",
       "1763715641699x648859363769319400",
       "80",
+      "business-plan-ai-review-crescent-seoul-interview",
     ],
   },
 ] as const;
