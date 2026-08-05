@@ -25,7 +25,7 @@ function printUsage() {
     --title-lines "first line|second line" \\
     --hero-output <1200x750 jpg> \\
     --list-output <384x240 jpg> \\
-    [--accent-line 2] [--accent #2f80ed] [--background-position center] \
+    [--accent-line 2] [--accent #2f80ed] [--background-position center] \\
     [--font-size 62] [--minimum-font-size 42]`);
 }
 
@@ -240,7 +240,7 @@ async function render(width, height, scale, output, quality) {
       let size = initialFontSize;
       const fits = () => lines.every((line) => line.scrollWidth <= title.clientWidth);
       while (!fits() && size > minimumSize) {
-        size -= 1;
+        size = Math.max(minimumSize, size - 1);
         title.style.fontSize = `${size}px`;
       }
       if (!fits()) throw new Error("Title does not fit the cover text-safe area.");

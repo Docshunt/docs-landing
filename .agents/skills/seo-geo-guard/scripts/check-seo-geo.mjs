@@ -186,10 +186,10 @@ for (const file of postFiles) {
   if (/\bseo:\s*\{/.test(source)) {
     const title = quotedField(source, "title");
     const description = quotedField(source, "description");
-    const mainKeyword = quotedField(source, "mainKeyword");
+    const mainKeyword = quotedField(source, "mainKeyword")?.trim();
     const searchIntent = quotedField(source, "searchIntent");
     const supportKeywordBlock = source.match(/\bsupportKeywords:\s*\[([\s\S]*?)\]/)?.[1] || "";
-    const supportKeywords = [...supportKeywordBlock.matchAll(/"((?:\\.|[^"\\])*)"/g)].map((match) => match[1]);
+    const supportKeywords = [...supportKeywordBlock.matchAll(/"((?:\\.|[^"\\])*)"/g)].map((match) => match[1].trim()).filter(Boolean);
     const keywords = [mainKeyword, ...supportKeywords].filter(Boolean);
 
     if (!mainKeyword || !searchIntent) errors.push(`${file} has incomplete per-post SEO data.`);

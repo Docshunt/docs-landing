@@ -32,14 +32,16 @@ if (!args.slug || !args.title || !args["main-keyword"] || !args["support-keyword
 if (!args.category) throw new Error("Category is required for every blog post.");
 if (args.slug.includes("/") || args.slug.includes("..")) throw new Error("Slug must be one URL path segment.");
 
+const mainKeyword = args["main-keyword"].trim();
 const supportKeywords = args["support-keywords"]
   .split(",")
   .map((keyword) => keyword.trim())
   .filter(Boolean);
+if (!mainKeyword) throw new Error("Main keyword is required.");
 if (supportKeywords.length < 2 || supportKeywords.length > 4) {
   throw new Error("Support keywords must contain two to four comma-separated values.");
 }
-if (new Set([args["main-keyword"], ...supportKeywords]).size !== supportKeywords.length + 1) {
+if (new Set([mainKeyword, ...supportKeywords]).size !== supportKeywords.length + 1) {
   throw new Error("Main and support keywords must be unique.");
 }
 
@@ -101,7 +103,7 @@ export const ${exportName} = {
   title: ${JSON.stringify(args.title)},
   description: "TODO: 검색 결과에서 글의 답과 대상을 설명하는 고유한 문장",
   seo: {
-    mainKeyword: ${JSON.stringify(args["main-keyword"])},
+    mainKeyword: ${JSON.stringify(mainKeyword)},
     supportKeywords: ${JSON.stringify(supportKeywords)},
     searchIntent: ${JSON.stringify(args["search-intent"])},
   },

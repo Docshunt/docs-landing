@@ -14742,6 +14742,8 @@ img {
   }
 
   .blog-channel-category-section {
+    border-top: 0;
+    border-bottom: 1px solid #ededed;
     padding-top: 40px;
   }
 
@@ -14796,6 +14798,10 @@ img {
     border-bottom: 1px solid #ededed;
     padding: 0 0 18px;
     margin-bottom: 18px;
+  }
+
+  .blog-channel-category-section .blog-channel-card article {
+    border-bottom: 0;
   }
 
   .blog-channel-card-image {
