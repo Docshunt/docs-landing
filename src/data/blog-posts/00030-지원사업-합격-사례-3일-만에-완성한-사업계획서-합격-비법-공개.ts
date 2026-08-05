@@ -11,6 +11,8 @@ export const post30 = {
   date: "2025.08.28",
   image: "/docshunt-assets/blog-covers/00030-지원사업-합격-사례-3일-만에-완성한-사업계획서-합격-비법-공개-list.jpg",
   heroImage: "/docshunt-assets/blog-covers/00030-지원사업-합격-사례-3일-만에-완성한-사업계획서-합격-비법-공개-hero.jpg",
+  videoEmbedUrl: "https://www.youtube-nocookie.com/embed/GmIQijv2EFw?rel=0&start=22",
+  videoTitle: "3일 만에 완성한 사업계획서 합격 사례 인터뷰",
   paragraphs: [
     "3일만에 사업계획서 작성하고 지원사업 합격한 김지연 대표님",
     "창업을 준비하는 예비 창업자들에게 가장 큰 고민 중 하나는 바로 사업계획서 작성입니다. 특히 첫 도전이라면 “과연 내 사업계획서가 합격할 수 있을까?”라는 불안감이 클 수밖에 없죠. 이번 글에서는 독스헌트를 활용해 단 3일 만에 사업계획서 합격을 이뤄낸 김지연 대표님의 사례를 소개합니다.",

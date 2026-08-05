@@ -7,6 +7,7 @@ const assets = "/docshunt-assets";
 const siteNavLinks = [
   { href: "/pricing", label: "요금제 / 환급" },
   { href: "/blog_list", label: "블로그" },
+  { href: "/updates", label: "업데이트" },
 ] as const;
 
 export function BlogHeader() {

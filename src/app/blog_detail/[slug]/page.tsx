@@ -76,14 +76,16 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
       <main className="blog-detail-main">
         <article className="blog-detail-article">
           <h1>
-            {post.titleLines ? (
-              <>
-                {post.titleLines[0]}
-                <br className="blog-title-desktop-break" /> {post.titleLines[1]}
-              </>
-            ) : (
-              post.title
-            )}
+            {post.titleLines
+              ? post.titleLines.map((line, index) => (
+                  <span key={line}>
+                    {index > 0 ? (
+                      <br className={post.titleLineBreaks === "always" ? "blog-title-break" : "blog-title-desktop-break"} />
+                    ) : null}
+                    {line}
+                  </span>
+                ))
+              : post.title}
           </h1>
           <div className="blog-post-meta">
             <span>

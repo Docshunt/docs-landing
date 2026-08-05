@@ -25,6 +25,7 @@ export function GET(request: Request) {
 - HWP를 HWPX로 변환하는 방법: ${origin}/how_to_convert_hwpx
 - 독스헌트 사용자 후기: ${origin}/review
 - 사업계획서·지원사업 가이드: ${origin}/blog_list
+- 제품 업데이트와 변경 사항: ${origin}/updates
 - 회사와 콘텐츠 작성·검수 원칙: ${origin}/about
 - 사업자등록 및 통신판매업 신고 정보: ${origin}/business_info
 

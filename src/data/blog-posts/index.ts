@@ -42,10 +42,102 @@ import { post41 } from "./00041-지원사업-사업계획서-한-편에-올인�
 import { post42 } from "./00042-사업계획서-경쟁사-분석-경쟁사가-없습니다-가-위험한-이유";
 import { post43 } from "./00043-지원사업-사업계획서-첫-문장을-이렇게-시작하면-핵심이-묻힙니다";
 import { post44 } from "./00044-지원사업-공고-신청-자격만-맞으면-지원해도-될까요";
-import type { BlogPost } from "./types";
+import { post45 } from "./00045-독스헌트-AI-인터뷰로-사업계획서-제출-단계까지";
+import type { BlogCategory, CategorizedBlogPost } from "./types";
+
+type BlogPostPlacement = {
+  category: BlogCategory;
+  featuredSection?: CategorizedBlogPost["featuredSection"];
+  featuredRank?: number;
+  featuredLabel?: string;
+};
+
+const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "1778461267147x278620001529366040": { category: "business-plan-writing" },
+  "1777511331543x693426580638985500": { category: "business-plan-writing" },
+  "1777343094612x229953857115337000": {
+    category: "business-plan-writing",
+    featuredSection: "guides",
+    featuredRank: 1,
+    featuredLabel: "처음 시작하는 대표를 위한 가이드",
+  },
+  "1769491692159x279117165603586050": { category: "business-plan-writing" },
+  "2026-4": { category: "business-plan-writing" },
+  "1755658221110x981594766116126700": { category: "business-plan-writing" },
+  "1783933805576x494076817525278100": { category: "business-plan-writing" },
+  "business-plan-missing-evidence": { category: "business-plan-writing" },
+  "business-plan-first-page": { category: "business-plan-writing" },
+  "customer-interview-evidence-business-plan": { category: "business-plan-writing" },
+  "business-plan-competitor-analysis-no-competitors": { category: "business-plan-writing" },
+  "support-program-business-plan-first-sentence": { category: "business-plan-writing" },
+  "1780626861627x947397884088036900": { category: "support-programs" },
+  "k-startup-application-guide": {
+    category: "support-programs",
+    featuredSection: "guides",
+    featuredRank: 2,
+    featuredLabel: "지원사업 찾기부터 시작하는 가이드",
+  },
+  "startup-support-application-documents-checklist": { category: "support-programs" },
+  "2026": { category: "support-programs" },
+  "2026-2": { category: "support-programs" },
+  "1759293063517x574903222143811600": { category: "support-programs" },
+  "1758606878997x345158186660528100": { category: "support-programs" },
+  "1755666879059x990557590876586000": { category: "support-programs" },
+  "support-program-notice-eligibility-fit": {
+    category: "support-programs",
+    featuredSection: "guides",
+    featuredRank: 3,
+    featuredLabel: "신청 전 꼭 확인할 판단 기준",
+  },
+  "business-plan-reuse-support-program-guide": { category: "startup-programs" },
+  "1778551083864x517902503675335550": { category: "startup-programs" },
+  "1777862024151x122956064282869310": { category: "startup-programs" },
+  "200-1": { category: "startup-programs" },
+  "2026ai": { category: "startup-programs" },
+  "2026d6023": { category: "startup-programs" },
+  "2026qa-4": { category: "startup-programs" },
+  "1772689301598x438718639419162600": { category: "startup-insights" },
+  "3": { category: "startup-insights" },
+  "1770964843114x761947782936002600": { category: "startup-insights" },
+  "business-plan-revision-after-rejection": { category: "startup-insights" },
+  "gptvsai-2": { category: "ai-docshunt" },
+  "1763715641699x648859363769319400": { category: "ai-docshunt" },
+  "80": { category: "ai-docshunt" },
+  "%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C-ai-%EC%B6%94%EC%B2%9C": { category: "ai-docshunt" },
+  "gpt-business-plan-rejection": { category: "ai-docshunt" },
+  "2": { category: "interviews" },
+  "3-1": {
+    category: "interviews",
+    featuredSection: "interviews",
+    featuredRank: 5,
+    featuredLabel: "김지연 대표 인터뷰",
+  },
+  "business-plan-evaluation-criteria-interview": {
+    category: "interviews",
+    featuredSection: "interviews",
+    featuredRank: 2,
+    featuredLabel: "심사위원 인터뷰",
+  },
+  "business-plan-review-criteria-professor-interview": {
+    category: "interviews",
+    featuredSection: "interviews",
+    featuredRank: 1,
+    featuredLabel: "심사위원 인터뷰",
+  },
+  "support-program-business-plan-application-strategy": {
+    category: "interviews",
+    featuredSection: "interviews",
+    featuredRank: 3,
+    featuredLabel: "박중현 대표 인터뷰",
+  },
+  "docshunt-modoo-startup-ai-solution-provider": { category: "docshunt-news" },
+  "2-4": { category: "docshunt-news" },
+  "ai-business-plan-interview-update": { category: "docshunt-news" },
+};
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post45,
   post42,
   post43,
   post44,
@@ -92,12 +184,27 @@ const BLOG_POST_SOURCE = [
   post41,
 ];
 
-export const BLOG_POSTS: BlogPost[] = BLOG_POST_SOURCE.map((post, sourcePosition) => ({ post, sourcePosition }))
+export const BLOG_POSTS: CategorizedBlogPost[] = BLOG_POST_SOURCE.map((post, sourcePosition) => ({ post, sourcePosition }))
   .sort((left, right) => right.post.date.localeCompare(left.post.date) || left.sourcePosition - right.sourcePosition)
-  .map(({ post }, position) => ({
-    ...post,
-    page: Math.floor(position / 10) + 1,
-    index: (position % 10) + 1,
-  }));
+  .map(({ post }, position) => {
+    const placement = BLOG_POST_PLACEMENTS[post.slug];
+
+    if (!placement) {
+      throw new Error(`Missing blog category for post: ${post.slug}`);
+    }
+
+    return {
+      ...post,
+      ...placement,
+      page: Math.floor(position / 10) + 1,
+      index: (position % 10) + 1,
+    };
+  });
+
+const unmappedSlugs = Object.keys(BLOG_POST_PLACEMENTS).filter((slug) => !BLOG_POSTS.some((post) => post.slug === slug));
+
+if (unmappedSlugs.length > 0) {
+  throw new Error(`Unknown blog category mapping: ${unmappedSlugs.join(", ")}`);
+}
 
 export const BLOG_PAGE_COUNT = new Set(BLOG_POSTS.map((post) => post.page)).size;
