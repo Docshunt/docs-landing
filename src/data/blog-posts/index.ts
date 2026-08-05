@@ -110,7 +110,7 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
   "80": { category: "ai-docshunt" },
   "%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C-ai-%EC%B6%94%EC%B2%9C": { category: "ai-docshunt" },
   "gpt-business-plan-rejection": { category: "ai-docshunt" },
-  "business-plan-ai-review-crescent-seoul-interview": { category: "ai-docshunt" },
+  "business-plan-ai-review-crescent-seoul-interview": { category: "interviews" },
   "2": { category: "interviews" },
   "3-1": {
     category: "interviews",

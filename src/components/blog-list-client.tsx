@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { BlogChannelMobileMenu } from "@/components/blog-channel-mobile-menu";
+import { BlogChannelSidebarNav } from "@/components/blog-channel-sidebar-nav";
 import { BLOG_CATEGORIES, BLOG_POSTS, getPostsByCategory, type BlogCategory, type CategorizedBlogPost } from "@/data/docshunt-blogs";
 
 function blogHref(slug: string) {
@@ -23,11 +24,6 @@ function listHref(page: number, category?: BlogCategory) {
 
 function topicId(category: BlogCategory) {
   return "blog-category-" + category;
-}
-
-function topicHref(category: BlogCategory, hasPreviewAnchors: boolean) {
-  const hash = "#" + topicId(category);
-  return hasPreviewAnchors ? hash : "/blog_list" + hash;
 }
 
 function getFeaturedPosts() {
@@ -111,21 +107,7 @@ export function BlogListClient({
             <span>독스헌트</span>
             <span>블로그</span>
           </h1>
-          <nav className="blog-channel-sidebar-nav">
-            <Link className={!category ? "is-active" : undefined} href="/blog_list" aria-current={!category ? "page" : undefined}>
-              홈
-            </Link>
-            {BLOG_CATEGORIES.map((item) => (
-              <Link
-                className={category === item.id ? "is-active" : undefined}
-                href={topicHref(item.id, isHomePage)}
-                key={item.id}
-                aria-current={category === item.id ? "page" : undefined}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <BlogChannelSidebarNav category={category} isHomePage={isHomePage} />
         </aside>
 
         <div className="blog-channel-content">
