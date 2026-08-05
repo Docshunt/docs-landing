@@ -14795,13 +14795,8 @@ img {
     display: grid;
     grid-template-columns: 126px minmax(0, 1fr);
     gap: 14px;
-    border-bottom: 1px solid #ededed;
     padding: 0 0 18px;
     margin-bottom: 18px;
-  }
-
-  .blog-channel-category-section .blog-channel-card article {
-    border-bottom: 0;
   }
 
   .blog-channel-card-image {
