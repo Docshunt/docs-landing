@@ -11,6 +11,8 @@ export const post20 = {
   date: "2025.12.17",
   image: "/docshunt-assets/blog-covers/00020-예비창업패키지-합격-후기-독스헌트-사업계획서로-2억원의-지원금-확보했어요-list.jpg",
   heroImage: "/docshunt-assets/blog-covers/00020-예비창업패키지-합격-후기-독스헌트-사업계획서로-2억원의-지원금-확보했어요-hero.jpg",
+  videoEmbedUrl: "https://www.youtube-nocookie.com/embed/34KtW8uyPrU?rel=0",
+  videoTitle: "예비창업패키지 합격 후기 | 정승연 대표 인터뷰",
   paragraphs: [
     "예비창업패키지 합격 후기",
     '" 예비창업패키지 사업계획서를 잘 아는 팀원 한 명이 생긴 느낌이었어요! "',

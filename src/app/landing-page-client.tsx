@@ -2849,6 +2849,9 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
           <a className="nav-link" href="/blog_list">
             블로그
           </a>
+          <a className="nav-link" href="/updates">
+            업데이트
+          </a>
         </nav>
         <div className="header-actions">
           <a className="header-button primary" href={startPath} onClick={handleStart}>
@@ -2873,6 +2876,9 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
             </a>
             <a className="mobile-menu-link" href="/blog_list">
               블로그
+            </a>
+            <a className="mobile-menu-link" href="/updates">
+              업데이트
             </a>
           </nav>
         </div>

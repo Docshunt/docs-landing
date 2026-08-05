@@ -1,6 +1,6 @@
 import { APP_URL, CHANNEL_URL, DEFAULT_DESCRIPTION } from "@/seo/metadata";
 import { requestOrigin } from "@/seo/request-origin";
-import { BLOG_TOPIC_GROUPS } from "@/data/docshunt-blogs";
+import { BLOG_CATEGORIES, BLOG_TOPIC_GROUPS } from "@/data/docshunt-blogs";
 
 export function GET(request: Request) {
   const origin = requestOrigin(request);
@@ -9,8 +9,7 @@ export function GET(request: Request) {
     return new URL(`${url.pathname}${url.search}${url.hash}`, origin).href;
   };
   const topicGuides = BLOG_TOPIC_GROUPS.map(
-    ({ name, summary, posts }) =>
-      `### ${name}\n\n${summary}\n\n${posts.map((post) => `- ${post.title}: ${absoluteUrl(post.sourceUrl)}`).join("\n")}`,
+    ({ name, summary, hub }) => `### ${name}\n\n${summary}\n\n- ${hub.title}: ${absoluteUrl(hub.sourceUrl)}`,
   ).join("\n\n");
   const body = `# 독스헌트
 
@@ -25,6 +24,9 @@ export function GET(request: Request) {
 - HWP를 HWPX로 변환하는 방법: ${origin}/how_to_convert_hwpx
 - 독스헌트 사용자 후기: ${origin}/review
 - 사업계획서·지원사업 가이드: ${origin}/blog_list
+- 블로그 카테고리 허브:
+${BLOG_CATEGORIES.map(({ id, label }) => `  - ${label}: ${origin}/blog_list?category=${id}`).join("\n")}
+- 제품 업데이트와 변경 사항: ${origin}/updates
 - 회사와 콘텐츠 작성·검수 원칙: ${origin}/about
 - 사업자등록 및 통신판매업 신고 정보: ${origin}/business_info
 
