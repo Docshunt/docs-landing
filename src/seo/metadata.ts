@@ -80,6 +80,7 @@ export function buildPageMetadata({
   image = OG_IMAGE,
   type = "website",
   locale = "ko_KR",
+  keywords = SEO_KEYWORDS,
 }: {
   title: string;
   description: string;
@@ -87,13 +88,14 @@ export function buildPageMetadata({
   image?: string;
   type?: "website" | "article";
   locale?: string;
+  keywords?: string[];
 }): Metadata {
   const url = absoluteUrl(path);
   const absoluteImage = absoluteUrl(image);
   return {
     title,
     description,
-    keywords: SEO_KEYWORDS,
+    keywords,
     alternates: {
       canonical: url,
     },
@@ -267,6 +269,7 @@ export function blogListJsonLd(
       "@type": "BlogPosting",
       headline: post.title,
       description: post.description,
+      ...(post.seo ? { keywords: [post.seo.mainKeyword, ...post.seo.supportKeywords] } : {}),
       url: absoluteUrl(post.sourceUrl),
       datePublished: dateToIso(post.date),
       ...(post.modifiedDate ? { dateModified: dateToIso(post.modifiedDate) } : {}),
@@ -283,6 +286,7 @@ export function articleJsonLd(post: BlogPost) {
     "@id": `${url}#article`,
     headline: post.title,
     description: post.description,
+    ...(post.seo ? { keywords: [post.seo.mainKeyword, ...post.seo.supportKeywords] } : {}),
     url,
     image: absoluteUrl(post.heroImage),
     datePublished: dateToIso(post.date),

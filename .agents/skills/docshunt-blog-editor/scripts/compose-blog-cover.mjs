@@ -25,7 +25,8 @@ function printUsage() {
     --title-lines "first line|second line" \\
     --hero-output <1200x750 jpg> \\
     --list-output <384x240 jpg> \\
-    [--accent-line 2] [--accent #2f80ed] [--background-position center]`);
+    [--accent-line 2] [--accent #2f80ed] [--background-position center] \\
+    [--font-size 62] [--minimum-font-size 42]`);
 }
 
 function escapeHtml(value) {
@@ -76,6 +77,8 @@ const listOutputInput = readArg("--list-output");
 const accentLine = Number(readArg("--accent-line", String(titleLines.length)));
 const accent = readArg("--accent", "#2f80ed");
 const backgroundPosition = readArg("--background-position", "center");
+const fontSize = Number(readArg("--font-size", "62"));
+const minimumFontSize = Number(readArg("--minimum-font-size", "42"));
 
 if (!backgroundInput || !heroOutputInput || !listOutputInput || !titleLines.length) {
   printUsage();
@@ -92,6 +95,10 @@ if (accentLine < 1 || accentLine > titleLines.length) {
 
 if (!/^#[0-9a-f]{6}$/i.test(accent)) {
   throw new Error("--accent must be a six-digit hexadecimal color such as #2f80ed.");
+}
+
+if (!Number.isFinite(fontSize) || !Number.isFinite(minimumFontSize) || fontSize < 1 || minimumFontSize < 1 || minimumFontSize > fontSize) {
+  throw new Error("--font-size and --minimum-font-size must be positive numbers, and the minimum cannot exceed the initial size.");
 }
 
 const positionParts = backgroundPosition.trim().split(/\s+/);
@@ -194,7 +201,7 @@ const html = `<!doctype html>
     .title {
       margin-top: 150px;
       width: 548px;
-      font-size: 62px;
+      font-size: ${fontSize}px;
       line-height: 1.18;
       font-weight: 700;
       letter-spacing: 0;
@@ -222,21 +229,24 @@ const browser = await chromium.launch({ headless: true });
 async function render(width, height, scale, output, quality) {
   const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: 1 });
   await page.setContent(html, { waitUntil: "load" });
-  await page.evaluate(async (nextScale) => {
-    await document.fonts.ready;
-    const stage = document.querySelector("#stage");
-    const title = document.querySelector(".title");
-    const lines = [...document.querySelectorAll(".title-line")];
-    stage.style.transform = `scale(${nextScale})`;
+  await page.evaluate(
+    async ({ nextScale, initialFontSize, minimumSize }) => {
+      await document.fonts.ready;
+      const stage = document.querySelector("#stage");
+      const title = document.querySelector(".title");
+      const lines = [...document.querySelectorAll(".title-line")];
+      stage.style.transform = `scale(${nextScale})`;
 
-    let size = 62;
-    const fits = () => lines.every((line) => line.scrollWidth <= title.clientWidth);
-    while (!fits() && size > 42) {
-      size -= 1;
-      title.style.fontSize = `${size}px`;
-    }
-    if (!fits()) throw new Error("Title does not fit the cover text-safe area.");
-  }, scale);
+      let size = initialFontSize;
+      const fits = () => lines.every((line) => line.scrollWidth <= title.clientWidth);
+      while (!fits() && size > minimumSize) {
+        size = Math.max(minimumSize, size - 1);
+        title.style.fontSize = `${size}px`;
+      }
+      if (!fits()) throw new Error("Title does not fit the cover text-safe area.");
+    },
+    { nextScale: scale, initialFontSize: fontSize, minimumSize: minimumFontSize },
+  );
   await page.screenshot(screenshotOptions(output, quality));
   await page.close();
 }

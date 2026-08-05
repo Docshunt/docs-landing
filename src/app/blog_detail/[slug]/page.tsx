@@ -41,6 +41,7 @@ export async function generateMetadata({ params }: BlogDetailParams): Promise<Me
     path: post.sourceUrl,
     image: post.heroImage,
     type: "article",
+    ...(post.seo ? { keywords: [post.seo.mainKeyword, ...post.seo.supportKeywords] } : {}),
   });
 }
 
@@ -82,6 +83,7 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
                     {index > 0 ? (
                       <br className={post.titleLineBreaks === "always" ? "blog-title-break" : "blog-title-desktop-break"} />
                     ) : null}
+                    {index > 0 ? " " : null}
                     {line}
                   </span>
                 ))

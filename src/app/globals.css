@@ -9529,6 +9529,7 @@ img {
   font-size: 18px;
   font-weight: 600;
   line-height: 27px;
+  min-height: 54px;
   letter-spacing: -0.01em;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -9541,6 +9542,7 @@ img {
   color: #697180;
   font-size: 14px;
   line-height: 21px;
+  min-height: 42px;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
@@ -14757,6 +14759,7 @@ img {
   .blog-channel-card-copy h3 {
     font-size: 17px;
     line-height: 25px;
+    min-height: 50px;
   }
 
   .blog-detail-main {
@@ -14872,9 +14875,17 @@ img {
 
   .blog-channel-section {
     margin-bottom: 48px;
+    border-bottom: 1px solid #ededed;
+    padding-bottom: 18px;
+  }
+
+  .blog-channel-section:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
   }
 
   .blog-channel-category-section {
+    border-top: 0;
     padding-top: 40px;
   }
 
@@ -14926,7 +14937,6 @@ img {
     display: grid;
     grid-template-columns: 126px minmax(0, 1fr);
     gap: 14px;
-    border-bottom: 1px solid #ededed;
     padding: 0 0 18px;
     margin-bottom: 18px;
   }
@@ -14945,6 +14955,7 @@ img {
     margin: 6px 0 12px;
     font-size: 13px;
     line-height: 20px;
+    min-height: 40px;
   }
 
   .blog-pagination {

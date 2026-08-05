@@ -2,7 +2,7 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
-export const post51 = {
+export const post55 = {
   page: 1,
   index: 1,
   slug: "business-plan-ai-review-deadline-day-jigu-on-earth-interview",
@@ -12,10 +12,10 @@ export const post51 = {
   description:
     "농산부산물 펫푸드 스타트업 지구온어스 김나연 대표가 마감 하루 전 독스헌트로 사업계획서 초안을 만들고, 2026 농식품 벤처육성 지원사업을 준비한 과정과 일반 AI와의 차이를 인터뷰로 정리했습니다.",
   author: "독스헌트",
-  date: "2026.08.05",
-  modifiedDate: "2026.08.05",
+  date: "2026.08.06",
+  modifiedDate: "2026.08.06",
   verification: {
-    date: "2026.08.05",
+    date: "2026.08.06",
     note: "독스헌트 유튜브 채널에 공개된 지구온어스 김나연 대표 인터뷰의 설명란과 스크립트를 기준으로 작성하고, 지원사업의 공식 명칭과 모집 대상은 한국농업기술진흥원 공고로 교차 확인했습니다. 선정·지원금·작성량·활용 비율은 인터뷰이의 발언이며, 독스헌트 사용과 선정 결과 사이의 인과관계로 해석하지 않았습니다.",
     sources: [
       {
@@ -28,8 +28,8 @@ export const post51 = {
       },
     ],
   },
-  image: "/docshunt-assets/blog-covers/00051-business-plan-ai-review-deadline-day-jigu-on-earth-interview-list.jpg",
-  heroImage: "/docshunt-assets/blog-covers/00051-business-plan-ai-review-deadline-day-jigu-on-earth-interview-hero.jpg",
+  image: "/docshunt-assets/blog-covers/00055-business-plan-ai-review-deadline-day-jigu-on-earth-interview-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00055-business-plan-ai-review-deadline-day-jigu-on-earth-interview-hero.jpg",
   videoEmbedUrl: "https://www.youtube-nocookie.com/embed/2pamKM3ZhCQ?rel=0",
   videoTitle: "마감 하루 전, 사업계획서 완성하는 방법 | 지구온어스 김나연 대표 인터뷰",
   paragraphs: [
@@ -52,7 +52,7 @@ export const post51 = {
   </div>
 
   <figure class="dh-image dh-image--portrait">
-    <img src="/docshunt-assets/blog-inline/00051-jigu-on-earth-kim-na-yeon-with-dog.jpg" alt="반려견을 안고 앉아 있는 지구온어스 김나연 대표" loading="lazy" />
+    <img src="/docshunt-assets/blog-inline/00055-jigu-on-earth-kim-na-yeon-with-dog.jpg" alt="반려견을 안고 앉아 있는 지구온어스 김나연 대표" loading="lazy" />
     <figcaption>농산부산물을 활용한 펫푸드 사업을 준비하는 지구온어스 김나연 대표와 반려견</figcaption>
   </figure>
 
@@ -61,7 +61,7 @@ export const post51 = {
   <h3>Q. 지구온어스는 어떤 회사인가요?</h3>
   <p>저희 지구온어스는 농산부산물을 활용해 지구에도, 반려동물에게도 좋은 펫푸드를 만드는 회사예요. 버려질 수 있는 농산 자원을 반려동물 제품으로 연결하는 사업을 준비하고 있어요.</p>
   <figure class="dh-image dh-image--portrait">
-    <img src="/docshunt-assets/blog-inline/00051-jigu-on-earth-pet-food-dog-tasting.jpg" alt="펫푸드 샘플을 바라보는 세 마리의 반려견" loading="lazy" />
+    <img src="/docshunt-assets/blog-inline/00055-jigu-on-earth-pet-food-dog-tasting.jpg" alt="펫푸드 샘플을 바라보는 세 마리의 반려견" loading="lazy" />
     <figcaption>농산부산물을 활용한 펫푸드 샘플을 확인하는 반려견들</figcaption>
   </figure>
 
@@ -90,14 +90,14 @@ export const post51 = {
     <div class="dh-document-slider-track" tabindex="0">
       <figure class="dh-document-slide" id="jigu-on-earth-plan-product-service">
         <div class="dh-document-slide-media">
-          <img src="/docshunt-assets/blog-inline/00051-jigu-on-earth-business-plan-product-service-page.jpg" alt="농산부산물을 활용한 펫푸드의 제품과 서비스 개요를 정리한 사업계획서 페이지" loading="lazy" />
+          <img src="/docshunt-assets/blog-inline/00055-jigu-on-earth-business-plan-product-service-page.jpg" alt="농산부산물을 활용한 펫푸드의 제품과 서비스 개요를 정리한 사업계획서 페이지" loading="lazy" />
           <a class="dh-document-slider-arrow dh-document-slider-arrow--next" href="#jigu-on-earth-plan-founder-capability" aria-label="다음 사업계획서 페이지 보기">›</a>
         </div>
         <figcaption>인터뷰 자료로 공유된 사업계획서의 제품·서비스 개요 페이지 (1/2)</figcaption>
       </figure>
       <figure class="dh-document-slide" id="jigu-on-earth-plan-founder-capability">
         <div class="dh-document-slide-media">
-          <img src="/docshunt-assets/blog-inline/00051-jigu-on-earth-business-plan-founder-capability-page.jpg" alt="ESG와 마케팅, 생명과학 역량 및 위기 대응 능력을 정리한 창업자 역량 사업계획서 페이지" loading="lazy" />
+          <img src="/docshunt-assets/blog-inline/00055-jigu-on-earth-business-plan-founder-capability-page.jpg" alt="ESG와 마케팅, 생명과학 역량 및 위기 대응 능력을 정리한 창업자 역량 사업계획서 페이지" loading="lazy" />
           <a class="dh-document-slider-arrow dh-document-slider-arrow--prev" href="#jigu-on-earth-plan-product-service" aria-label="이전 사업계획서 페이지 보기">‹</a>
         </div>
         <figcaption>인터뷰 자료로 공유된 사업계획서의 창업자 역량 페이지 (2/2)</figcaption>
