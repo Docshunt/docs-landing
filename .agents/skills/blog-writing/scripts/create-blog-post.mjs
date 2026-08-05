@@ -62,7 +62,11 @@ const arrayMarker = "const BLOG_POST_SOURCE = [\n";
 if (!indexSource.includes(importMarker) || !indexSource.includes(placementMarker) || !indexSource.includes(arrayMarker)) {
   throw new Error("index.ts category markers changed; update this script before generating a post.");
 }
-if (indexSource.includes(`${JSON.stringify(args.slug)}:`)) {
+const placementStart = indexSource.indexOf(placementMarker) + placementMarker.length;
+const placementEnd = indexSource.indexOf("\n};", placementStart);
+if (placementEnd === -1) throw new Error("index.ts BLOG_POST_PLACEMENTS block is not closed.");
+const placementSource = indexSource.slice(placementStart, placementEnd);
+if (placementSource.includes(`${JSON.stringify(args.slug)}:`)) {
   throw new Error(`Blog category mapping already exists for slug: ${args.slug}`);
 }
 

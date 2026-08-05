@@ -78,7 +78,7 @@ export default async function BlogDetailPage({ params }: BlogDetailParams) {
           <h1>
             {post.titleLines
               ? post.titleLines.map((line, index) => (
-                  <span key={line}>
+                  <span key={`${line}-${index}`}>
                     {index > 0 ? (
                       <br className={post.titleLineBreaks === "always" ? "blog-title-break" : "blog-title-desktop-break"} />
                     ) : null}

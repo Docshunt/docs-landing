@@ -4,10 +4,8 @@ import { notFound } from "next/navigation";
 import { BlogListClient } from "@/components/blog-list-client";
 import { BlogHeader, DocshuntFooter } from "@/components/docshunt-blog-shell";
 import { JsonLd } from "@/components/json-ld";
-import { BLOG_CATEGORIES, getPostsByCategory, type BlogCategory } from "@/data/docshunt-blogs";
+import { BLOG_CATEGORIES, BLOG_POSTS_PER_PAGE, getPostsByCategory, type BlogCategory } from "@/data/docshunt-blogs";
 import { BLOG_LIST_DESCRIPTION, BLOG_LIST_TITLE, blogListJsonLd, buildPageMetadata } from "@/seo/metadata";
-
-const POSTS_PER_PAGE = 10;
 
 type BlogListPageProps = {
   searchParams: Promise<{ category?: string | string[]; page?: string | string[] }>;
@@ -25,7 +23,7 @@ function readCategory(value?: string | string[]) {
 }
 
 function pageCount(category?: BlogCategory) {
-  return Math.max(1, Math.ceil(getPostsByCategory(category).length / POSTS_PER_PAGE));
+  return Math.max(1, Math.ceil(getPostsByCategory(category).length / BLOG_POSTS_PER_PAGE));
 }
 
 function readPage(value: string | string[] | undefined, category?: BlogCategory) {
@@ -46,20 +44,27 @@ function blogListPath(page: number, category?: BlogCategory) {
   return query ? "/blog_list?" + query : "/blog_list";
 }
 
+function blogListSeo(page: number, category?: BlogCategory) {
+  const selectedCategory = category ? BLOG_CATEGORIES.find((item) => item.id === category) : undefined;
+  return {
+    title: selectedCategory
+      ? selectedCategory.label + " | " + BLOG_LIST_TITLE
+      : page === 1
+        ? BLOG_LIST_TITLE
+        : BLOG_LIST_TITLE + " - " + page + "페이지",
+    description: selectedCategory?.summary ?? BLOG_LIST_DESCRIPTION,
+  };
+}
+
 export async function generateMetadata({ searchParams }: BlogListPageProps): Promise<Metadata> {
   const params = await searchParams;
   const category = readCategory(params.category);
-  const selectedCategory = category ? BLOG_CATEGORIES.find((item) => item.id === category) : undefined;
   const page = readPage(params.page, category ?? undefined) ?? 1;
-  const title = selectedCategory
-    ? selectedCategory.label + " | " + BLOG_LIST_TITLE
-    : page === 1
-      ? BLOG_LIST_TITLE
-      : BLOG_LIST_TITLE + " - " + page + "페이지";
+  const { title, description } = blogListSeo(page, category ?? undefined);
 
   return buildPageMetadata({
     title,
-    description: selectedCategory?.summary ?? BLOG_LIST_DESCRIPTION,
+    description,
     path: blogListPath(page, category ?? undefined),
   });
 }
@@ -73,14 +78,17 @@ export default async function BlogListPage({ searchParams }: BlogListPageProps) 
   const page = readPage(params.page, category);
   if (!page) notFound();
 
-  const posts = getPostsByCategory(category).slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE);
+  const feedPosts = getPostsByCategory(category);
+  const totalPages = pageCount(category);
+  const posts = feedPosts.slice((page - 1) * BLOG_POSTS_PER_PAGE, page * BLOG_POSTS_PER_PAGE);
+  const { title, description } = blogListSeo(page, category ?? undefined);
 
   return (
     <div className="page blog-page">
-      <JsonLd data={blogListJsonLd(posts, page)} />
+      <JsonLd data={blogListJsonLd(posts, page, blogListPath(page, category ?? undefined), title, description)} />
       <BlogHeader />
       <main className="blog-main">
-        <BlogListClient category={category} page={page} />
+        <BlogListClient category={category} page={page} posts={posts} totalPages={totalPages} totalPosts={feedPosts.length} />
       </main>
       <DocshuntFooter />
     </div>

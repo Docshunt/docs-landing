@@ -43,12 +43,16 @@ const placementEntries = placementBlock
       category: match[2],
     }))
   : [];
-const postSlugs = postFiles
-  .map((filename) => {
-    const source = fs.readFileSync(path.join(postsDir, filename), "utf8");
-    return source.match(/\bslug:\s*["']([^"']+)["']/)?.[1];
-  })
-  .filter(Boolean);
+const postSlugs = [];
+for (const filename of postFiles) {
+  const source = fs.readFileSync(path.join(postsDir, filename), "utf8");
+  const slug = source.match(/\bslug:\s*["']([^"']+)["']/)?.[1];
+  if (!slug) {
+    errors.push(`blog post file has no slug field: ${filename}`);
+  } else {
+    postSlugs.push(slug);
+  }
+}
 
 if (!placementBlock) {
   errors.push("index.ts must define BLOG_POST_PLACEMENTS for blog categories");

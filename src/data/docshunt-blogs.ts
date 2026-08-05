@@ -6,7 +6,8 @@ export type { BlogPost, BlogCategory, CategorizedBlogPost } from "./blog-posts/t
 export { BLOG_CATEGORIES };
 
 export const BLOG_POSTS = SOURCE_BLOG_POSTS;
-export const BLOG_PAGE_COUNT = Math.ceil(BLOG_POSTS.length / 10);
+export const BLOG_POSTS_PER_PAGE = 10;
+export const BLOG_PAGE_COUNT = Math.ceil(BLOG_POSTS.length / BLOG_POSTS_PER_PAGE);
 
 export function decodeBlogSlug(slug: string) {
   try {
@@ -44,9 +45,9 @@ export function getRecommendedPosts(slug: string) {
     return BLOG_TOPIC_HUBS;
   }
 
-  return BLOG_POSTS.filter(
-    (post) => post.category === currentPost.category && !hasSlug(post, slug),
-  ).slice(0, 2);
+  return BLOG_POSTS.filter((post) => post.category === currentPost.category && !hasSlug(post, slug))
+    .concat(BLOG_TOPIC_HUBS.filter((post) => post.category !== currentPost.category))
+    .slice(0, 2);
 }
 
 export function getPostsByCategory(category?: BlogCategory) {

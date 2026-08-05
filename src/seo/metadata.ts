@@ -244,14 +244,20 @@ export function authorProfileJsonLd() {
   };
 }
 
-export function blogListJsonLd(posts: BlogPost[], page = 1) {
-  const url = absoluteUrl(page === 1 ? "/blog_list" : `/blog_list?page=${page}`);
+export function blogListJsonLd(
+  posts: BlogPost[],
+  page = 1,
+  path = page === 1 ? "/blog_list" : `/blog_list?page=${page}`,
+  name = BLOG_LIST_TITLE,
+  description = BLOG_LIST_DESCRIPTION,
+) {
+  const url = absoluteUrl(path);
   return {
     "@context": "https://schema.org",
     "@type": "Blog",
     "@id": `${url}#blog`,
-    name: BLOG_LIST_TITLE,
-    description: BLOG_LIST_DESCRIPTION,
+    name,
+    description,
     url,
     inLanguage: "ko-KR",
     isPartOf: {

@@ -1,11 +1,7 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
 
+import { BlogChannelMobileMenu } from "@/components/blog-channel-mobile-menu";
 import { BLOG_CATEGORIES, BLOG_POSTS, getPostsByCategory, type BlogCategory, type CategorizedBlogPost } from "@/data/docshunt-blogs";
-
-const POSTS_PER_PAGE = 10;
 
 function blogHref(slug: string) {
   return "/blog_detail/" + slug;
@@ -29,13 +25,13 @@ function topicId(category: BlogCategory) {
   return "blog-category-" + category;
 }
 
-function topicHref(category: BlogCategory, isCategoryPage: boolean) {
+function topicHref(category: BlogCategory, hasPreviewAnchors: boolean) {
   const hash = "#" + topicId(category);
-  return isCategoryPage ? "/blog_list" + hash : hash;
+  return hasPreviewAnchors ? hash : "/blog_list" + hash;
 }
 
-function getFeaturedPosts(section: "interviews" | "guides", category?: BlogCategory) {
-  return BLOG_POSTS.filter((post) => post.featuredSection === section && (!category || post.category === category)).sort(
+function getFeaturedPosts() {
+  return BLOG_POSTS.filter((post) => post.featuredSection === "interviews").sort(
     (left, right) => (left.featuredRank ?? Infinity) - (right.featuredRank ?? Infinity),
   );
 }
@@ -84,24 +80,28 @@ function BlogCategoryPreview({ category }: { category: (typeof BLOG_CATEGORIES)[
   );
 }
 
-export function BlogListClient({ page, category }: { page: number; category?: BlogCategory | undefined }) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+export function BlogListClient({
+  page,
+  category,
+  posts,
+  totalPages,
+  totalPosts,
+}: {
+  page: number;
+  category?: BlogCategory | undefined;
+  posts: CategorizedBlogPost[];
+  totalPages: number;
+  totalPosts: number;
+}) {
   const selectedCategory = BLOG_CATEGORIES.find((item) => item.id === category);
-  const feedPosts = getPostsByCategory(category);
-  const totalPages = Math.max(1, Math.ceil(feedPosts.length / POSTS_PER_PAGE));
-  const posts = feedPosts.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE);
-  const recommendedPosts = getFeaturedPosts("interviews").slice(0, 4);
+  const recommendedPosts = getFeaturedPosts().slice(0, 4);
   const [leadPost, ...supportingPosts] = recommendedPosts;
   const latestPosts = BLOG_POSTS.filter((post) => !recommendedPosts.some((recommendedPost) => recommendedPost.slug === post.slug)).slice(
     0,
     4,
   );
   const [latestLeadPost, ...latestSupportingPosts] = latestPosts;
-  const currentTopicLabel = selectedCategory ? selectedCategory.label : "홈";
-  const isCategoryPage = Boolean(category);
   const isHomePage = !category && page === 1;
-
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <section className="blog-list-section" aria-labelledby="blog-list-title">
@@ -118,7 +118,7 @@ export function BlogListClient({ page, category }: { page: number; category?: Bl
             {BLOG_CATEGORIES.map((item) => (
               <Link
                 className={category === item.id ? "is-active" : undefined}
-                href={topicHref(item.id, isCategoryPage)}
+                href={topicHref(item.id, isHomePage)}
                 key={item.id}
                 aria-current={category === item.id ? "page" : undefined}
               >
@@ -129,41 +129,7 @@ export function BlogListClient({ page, category }: { page: number; category?: Bl
         </aside>
 
         <div className="blog-channel-content">
-          <div className="blog-channel-mobile-menu">
-            <button
-              className="blog-channel-mobile-trigger"
-              type="button"
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="blog-channel-mobile-dialog"
-              onClick={() => setIsMobileMenuOpen((open) => !open)}
-            >
-              <span>{currentTopicLabel}</span>
-              <span aria-hidden="true">⌄</span>
-            </button>
-            {isMobileMenuOpen ? (
-              <div className="blog-channel-mobile-dialog" id="blog-channel-mobile-dialog">
-                <Link
-                  className={!category ? "is-active" : undefined}
-                  href="/blog_list"
-                  aria-current={!category ? "page" : undefined}
-                  onClick={closeMobileMenu}
-                >
-                  홈
-                </Link>
-                {BLOG_CATEGORIES.map((item) => (
-                  <Link
-                    className={category === item.id ? "is-active" : undefined}
-                    href={topicHref(item.id, isCategoryPage)}
-                    key={item.id}
-                    aria-current={category === item.id ? "page" : undefined}
-                    onClick={closeMobileMenu}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            ) : null}
-          </div>
+          <BlogChannelMobileMenu category={category} isHomePage={isHomePage} />
 
           {!category && leadPost ? (
             <section className="blog-channel-section" aria-labelledby="blog-recommendation-title">
@@ -173,7 +139,7 @@ export function BlogListClient({ page, category }: { page: number; category?: Bl
               <Link className="blog-channel-featured-lead" href={blogHref(leadPost.slug)}>
                 <article className="blog-channel-featured-lead-content">
                   <div className="blog-channel-card-image">
-                    <img src={leadPost.image} alt={leadPost.title + " 대표 이미지"} loading="lazy" />
+                    <img src={leadPost.heroImage} alt={leadPost.title + " 대표 이미지"} loading="lazy" />
                   </div>
                   <div className="blog-channel-card-copy">
                     <h3>{leadPost.title}</h3>
@@ -198,7 +164,7 @@ export function BlogListClient({ page, category }: { page: number; category?: Bl
               <Link className="blog-channel-featured-lead" href={blogHref(latestLeadPost.slug)}>
                 <article className="blog-channel-featured-lead-content">
                   <div className="blog-channel-card-image">
-                    <img src={latestLeadPost.image} alt={latestLeadPost.title + " 대표 이미지"} loading="lazy" />
+                    <img src={latestLeadPost.heroImage} alt={latestLeadPost.title + " 대표 이미지"} loading="lazy" />
                   </div>
                   <div className="blog-channel-card-copy">
                     <h3>{latestLeadPost.title}</h3>
@@ -220,7 +186,7 @@ export function BlogListClient({ page, category }: { page: number; category?: Bl
               <div className="blog-channel-section-heading">
                 <div>
                   <h2 id="blog-feed-title">{selectedCategory?.label ?? "전체 아티클"}</h2>
-                  <p>{feedPosts.length}개의 글</p>
+                  <p>{totalPosts}개의 글</p>
                 </div>
               </div>
               <div className="blog-channel-card-grid">
