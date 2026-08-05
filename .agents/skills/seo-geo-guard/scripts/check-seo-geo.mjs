@@ -183,6 +183,23 @@ for (const file of postFiles) {
     }
   }
 
+  if (/\bseo:\s*\{/.test(source)) {
+    const title = quotedField(source, "title");
+    const description = quotedField(source, "description");
+    const mainKeyword = quotedField(source, "mainKeyword")?.trim();
+    const searchIntent = quotedField(source, "searchIntent");
+    const supportKeywordBlock = source.match(/\bsupportKeywords:\s*\[([\s\S]*?)\]/)?.[1] || "";
+    const supportKeywords = [...supportKeywordBlock.matchAll(/"((?:\\.|[^"\\])*)"/g)].map((match) => match[1].trim()).filter(Boolean);
+    const keywords = [mainKeyword, ...supportKeywords].filter(Boolean);
+
+    if (!mainKeyword || !searchIntent) errors.push(`${file} has incomplete per-post SEO data.`);
+    if (supportKeywords.length < 2 || supportKeywords.length > 4) errors.push(`${file} must have two to four support keywords.`);
+    if (new Set(keywords).size !== keywords.length) errors.push(`${file} has duplicate SEO keywords.`);
+    if (mainKeyword && title && !title.includes(mainKeyword)) errors.push(`${file} title does not contain its main keyword.`);
+    if (mainKeyword && description && !description.includes(mainKeyword))
+      errors.push(`${file} description does not contain its main keyword.`);
+  }
+
   if (slug && sourceUrl !== `https://docshunt.ai/blog_detail/${slug}`) {
     errors.push(`${file} sourceUrl does not match its slug.`);
   }

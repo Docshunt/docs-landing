@@ -48,6 +48,11 @@ export type BlogPost = {
   titleLines?: string[];
   titleLineBreaks?: "always";
   description: string;
+  seo?: {
+    mainKeyword: string;
+    supportKeywords: string[];
+    searchIntent: string;
+  };
   author?: string;
   date: string;
   modifiedDate?: string;
