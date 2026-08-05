@@ -23,12 +23,25 @@ function filenamePart(title) {
 }
 
 const args = parseArgs(process.argv.slice(2));
-if (!args.slug || !args.title) {
-  console.error("Usage: create-blog-post.mjs --slug <slug> --title <title> --category <category-id> [--date YYYY.MM.DD] [--root <repo>]");
+if (!args.slug || !args.title || !args["main-keyword"] || !args["support-keywords"] || !args["search-intent"]) {
+  console.error(
+    "Usage: create-blog-post.mjs --slug <slug> --title <title> --category <category-id> --main-keyword <keyword> --support-keywords <keyword,keyword> --search-intent <intent> [--date YYYY.MM.DD] [--root <repo>]",
+  );
   process.exit(1);
 }
 if (!args.category) throw new Error("Category is required for every blog post.");
 if (args.slug.includes("/") || args.slug.includes("..")) throw new Error("Slug must be one URL path segment.");
+
+const supportKeywords = args["support-keywords"]
+  .split(",")
+  .map((keyword) => keyword.trim())
+  .filter(Boolean);
+if (supportKeywords.length < 2 || supportKeywords.length > 4) {
+  throw new Error("Support keywords must contain two to four comma-separated values.");
+}
+if (new Set([args["main-keyword"], ...supportKeywords]).size !== supportKeywords.length + 1) {
+  throw new Error("Main and support keywords must be unique.");
+}
 
 const root = path.resolve(args.root ?? process.cwd());
 const postsDir = path.join(root, "src/data/blog-posts");
@@ -87,6 +100,11 @@ export const ${exportName} = {
   sourceUrl: ${JSON.stringify(`https://docshunt.ai/blog_detail/${args.slug}`)},
   title: ${JSON.stringify(args.title)},
   description: "TODO: 검색 결과에서 글의 답과 대상을 설명하는 고유한 문장",
+  seo: {
+    mainKeyword: ${JSON.stringify(args["main-keyword"])},
+    supportKeywords: ${JSON.stringify(supportKeywords)},
+    searchIntent: ${JSON.stringify(args["search-intent"])},
+  },
   date: ${JSON.stringify(date)},
   image: "/docshunt-assets/blog-covers/${number}-${filenamePart(args.slug)}-list.jpg",
   heroImage: "/docshunt-assets/blog-covers/${number}-${filenamePart(args.slug)}-hero.jpg",
