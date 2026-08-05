@@ -11,8 +11,8 @@ export const post40 = {
   description:
     "기술창업·벤처투자 전문가인 허공회 숭실대학교 교수에게 좋은 사업계획서의 기준, 심사 순서, 시장·매출 작성법, AI 활용 주의점과 독스헌트의 개선 방향을 물었습니다.",
   date: "2026.08.03",
-  image: "/docshunt-assets/blog-covers/00040-business-plan-review-criteria-professor-interview-list.jpg",
-  heroImage: "/docshunt-assets/blog-covers/00040-heogonghoe-professor-interview-face-table-hero.jpg",
+  image: "/docshunt-assets/blog-covers/00040-business-plan-review-criteria-professor-interview-editorial-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00040-business-plan-review-criteria-professor-interview-editorial-hero.jpg",
   paragraphs: [
     "사업계획서 심사위원은 제목과 사업 분야를 확인한 뒤 창업자와 팀, 현재 검증 단계부터 살펴봅니다. 시장 설명을 길게 늘어놓기보다 왜 지금 이 사업인지, 왜 이 팀이 실행할 수 있는지, 무엇을 실제로 검증했는지를 초반에 보여줘야 합니다.",
     "허공회 숭실대학교 교수는 좋은 사업계획서가 지원금으로 시제품이나 POC를 만들고 후속 투자와 스케일업으로 이어지는 경로를 설명해야 한다고 말합니다.",

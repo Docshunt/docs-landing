@@ -2,7 +2,7 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
-export const post45 = {
+export const post46 = {
   page: 1,
   index: 1,
   slug: "ai-business-plan-interview-update",
@@ -13,8 +13,8 @@ export const post45 = {
   description:
     "7월 29일 독스헌트 업데이트: AI 인터뷰로 공고별 빈 항목을 묻고, 답변을 사업 아이템과 기업 프로필에 쌓아 제출 전까지 사업계획서를 고도화하는 흐름을 소개합니다.",
   date: "2026.08.05",
-  image: "/docshunt-assets/blog-covers/00045-ai-business-plan-interview-update-list.jpg",
-  heroImage: "/docshunt-assets/blog-covers/00045-ai-business-plan-interview-update-hero.jpg",
+  image: "/docshunt-assets/blog-covers/00046-ai-business-plan-interview-update-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00046-ai-business-plan-interview-update-hero.jpg",
   paragraphs: [
     "지난 7월 29일, 독스헌트는 사업계획서를 초안에서 멈추지 않고 제출 전 단계까지 끌어올리기 위한 대규모 업데이트를 진행했습니다. 이제는 단순히 초안을 만드는 것을 넘어, 공고와 양식에 맞춰 빈 항목을 채우고 보완점까지 점검하며 사업계획서를 고도화할 수 있습니다.",
     "사업계획서 공고와 그에 대한 양식은 수백 수천가지나 됩니다. 그리고 그 모든 양식들은 요구하는 내용이 다 달랐습니다. 이 때문에 독스헌트의 결과물엔 종종 정보가 부족해 생기는 빈칸들이 있었습니다.",

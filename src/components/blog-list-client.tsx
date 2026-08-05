@@ -12,9 +12,13 @@ function blogHref(slug: string) {
 }
 
 function listHref(page: number, category?: BlogCategory) {
+  if (!category) {
+    return page === 1 ? "/blog_list" : "/blog_list?page=" + String(page);
+  }
+
   const params = new URLSearchParams();
 
-  if (category) params.set("category", category);
+  params.set("category", category);
   if (page > 1) params.set("page", String(page));
 
   const query = params.toString();
@@ -83,9 +87,9 @@ function BlogCategoryPreview({ category }: { category: (typeof BLOG_CATEGORIES)[
 export function BlogListClient({ page, category }: { page: number; category?: BlogCategory | undefined }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const selectedCategory = BLOG_CATEGORIES.find((item) => item.id === category);
-  const categoryPosts = category ? getPostsByCategory(category) : [];
-  const totalPages = Math.max(1, Math.ceil(categoryPosts.length / POSTS_PER_PAGE));
-  const posts = categoryPosts.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE);
+  const feedPosts = getPostsByCategory(category);
+  const totalPages = Math.max(1, Math.ceil(feedPosts.length / POSTS_PER_PAGE));
+  const posts = feedPosts.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE);
   const recommendedPosts = getFeaturedPosts("interviews").slice(0, 4);
   const [leadPost, ...supportingPosts] = recommendedPosts;
   const latestPosts = BLOG_POSTS.filter((post) => !recommendedPosts.some((recommendedPost) => recommendedPost.slug === post.slug)).slice(
@@ -95,6 +99,7 @@ export function BlogListClient({ page, category }: { page: number; category?: Bl
   const [latestLeadPost, ...latestSupportingPosts] = latestPosts;
   const currentTopicLabel = selectedCategory ? selectedCategory.label : "홈";
   const isCategoryPage = Boolean(category);
+  const isHomePage = !category && page === 1;
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
@@ -210,12 +215,12 @@ export function BlogListClient({ page, category }: { page: number; category?: Bl
             </section>
           ) : null}
 
-          {category ? (
+          {!isHomePage ? (
             <section className="blog-channel-section" aria-labelledby="blog-feed-title">
               <div className="blog-channel-section-heading">
                 <div>
-                  <h2 id="blog-feed-title">{selectedCategory?.label}</h2>
-                  <p>{categoryPosts.length}개의 글</p>
+                  <h2 id="blog-feed-title">{selectedCategory?.label ?? "전체 아티클"}</h2>
+                  <p>{feedPosts.length}개의 글</p>
                 </div>
               </div>
               <div className="blog-channel-card-grid">

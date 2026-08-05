@@ -9933,6 +9933,11 @@ img {
   text-underline-offset: 3px;
 }
 
+.blog-detail-body .dh-seo-post .dh-emphasis {
+  color: #1769e0;
+  font-weight: 800;
+}
+
 .blog-detail-body .dh-seo-post .dh-image {
   margin: 24px 0 34px;
 }
