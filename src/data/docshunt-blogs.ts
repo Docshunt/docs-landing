@@ -67,6 +67,7 @@ const BLOG_TOPIC_GROUP_CONFIG = [
       "gptvsai-2",
       "1763715641699x648859363769319400",
       "80",
+      "business-plan-ai-review-crescent-seoul-interview",
     ],
   },
 ] as const;

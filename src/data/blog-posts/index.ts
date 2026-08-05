@@ -42,10 +42,12 @@ import { post41 } from "./00041-지원사업-사업계획서-한-편에-올인�
 import { post42 } from "./00042-사업계획서-경쟁사-분석-경쟁사가-없습니다-가-위험한-이유";
 import { post43 } from "./00043-지원사업-사업계획서-첫-문장을-이렇게-시작하면-핵심이-묻힙니다";
 import { post44 } from "./00044-지원사업-공고-신청-자격만-맞으면-지원해도-될까요";
+import { post45 } from "./00045-사업계획서-AI-후기-3인-팀-대표는-왜-10시간-을-말했을까";
 import type { BlogPost } from "./types";
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post45,
   post42,
   post43,
   post44,
