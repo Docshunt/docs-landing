@@ -13,8 +13,8 @@ export const post38 = {
     "지원사업 심사위원은 아이디어보다 문서의 형식과 논리, 고객·시장·팀의 실행 근거를 먼저 확인합니다. 김종배 숭실대학교 창업지원단 교수 인터뷰로 좋은 사업계획서의 조건을 들어봅니다.",
   author: "독스헌트 마케팅팀",
   date: "2026.08.01",
-  image: "/docshunt-assets/blog-covers/00035-business-plan-evaluation-interview-list.jpg",
-  heroImage: "/docshunt-assets/blog-covers/00035-business-plan-evaluation-interview-hero.jpg",
+  image: "/docshunt-assets/blog-covers/00038-business-plan-evaluation-criteria-interview-editorial-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00038-business-plan-evaluation-criteria-interview-editorial-hero.jpg",
   paragraphs: [
     "지원사업 심사위원이 아이디어보다 먼저 보는 것은 문서의 형식과 논리적인 체계입니다.",
     "제목과 첫 페이지에서 어떤 고객에게 어떤 가치를 제공하는지 한 문장으로 이해할 수 있어야 합니다.",
