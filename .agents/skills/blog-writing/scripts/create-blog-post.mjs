@@ -24,18 +24,25 @@ function filenamePart(title) {
 
 const args = parseArgs(process.argv.slice(2));
 if (!args.slug || !args.title) {
-  console.error("Usage: create-blog-post.mjs --slug <slug> --title <title> [--date YYYY.MM.DD] [--root <repo>]");
+  console.error("Usage: create-blog-post.mjs --slug <slug> --title <title> --category <category-id> [--date YYYY.MM.DD] [--root <repo>]");
   process.exit(1);
 }
+if (!args.category) throw new Error("Category is required for every blog post.");
 if (args.slug.includes("/") || args.slug.includes("..")) throw new Error("Slug must be one URL path segment.");
 
 const root = path.resolve(args.root ?? process.cwd());
 const postsDir = path.join(root, "src/data/blog-posts");
 const indexPath = path.join(postsDir, "index.ts");
+const typesPath = path.join(postsDir, "types.ts");
 const filenames = fs.readdirSync(postsDir).filter((name) => /^\d{5}-.+\.ts$/.test(name));
 const numbers = filenames.map((name) => Number(name.slice(0, 5))).sort((left, right) => left - right);
 if (numbers.some((number, index) => number !== index + 1)) {
   throw new Error("Existing blog post filenames must be contiguous from 00001 before creating a new post.");
+}
+const typesSource = fs.readFileSync(typesPath, "utf8");
+const categoryIds = [...typesSource.matchAll(/^\s*id:\s*["']([^"']+)["'],/gm)].map((match) => match[1]);
+if (!categoryIds.includes(args.category)) {
+  throw new Error(`Unknown blog category: ${args.category}. Use one of: ${categoryIds.join(", ")}`);
 }
 const nextNumber = filenames.length + 1;
 const number = String(nextNumber).padStart(5, "0");
@@ -49,15 +56,20 @@ if (!stem) throw new Error("Title cannot produce a filename.");
 if (fs.existsSync(postPath)) throw new Error(`Post already exists: ${postPath}`);
 
 let indexSource = fs.readFileSync(indexPath, "utf8");
-const importMarker = '\nimport type { BlogPost } from "./types";';
+const importMarker = 'import type { BlogCategory, CategorizedBlogPost } from "./types";';
+const placementMarker = "const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {\n";
 const arrayMarker = "const BLOG_POST_SOURCE = [\n";
-if (!indexSource.includes(importMarker) || !indexSource.includes(arrayMarker)) {
-  throw new Error("index.ts markers changed; update this script before generating a post.");
+if (!indexSource.includes(importMarker) || !indexSource.includes(placementMarker) || !indexSource.includes(arrayMarker)) {
+  throw new Error("index.ts category markers changed; update this script before generating a post.");
+}
+if (indexSource.includes(`${JSON.stringify(args.slug)}:`)) {
+  throw new Error(`Blog category mapping already exists for slug: ${args.slug}`);
 }
 
 const modulePath = `./${filename.slice(0, -3)}`;
 indexSource = indexSource
-  .replace(importMarker, `\nimport { ${exportName} } from "${modulePath}";${importMarker}`)
+  .replace(importMarker, `import { ${exportName} } from "${modulePath}";\n${importMarker}`)
+  .replace(placementMarker, `${placementMarker}  ${JSON.stringify(args.slug)}: { category: ${JSON.stringify(args.category)} },\n`)
   .replace(arrayMarker, `${arrayMarker}  ${exportName},\n`);
 
 const source = `import { APP_URL } from "@/seo/metadata";

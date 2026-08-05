@@ -34,6 +34,11 @@ export function GET(request: Request) {
       changefreq: "monthly",
     },
     {
+      loc: "/updates",
+      priority: "0.6",
+      changefreq: "weekly",
+    },
+    {
       loc: "/how_to_convert_hwpx",
       priority: "0.6",
       changefreq: "yearly",

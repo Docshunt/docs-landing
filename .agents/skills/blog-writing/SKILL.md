@@ -62,7 +62,17 @@ export const postNN = {
 
 `src/data/blog-posts/index.ts` is the ordered aggregate. Blog list, blog detail, sitemap, and JSON-LD read from `BLOG_POSTS`.
 
+Category rules:
+
+- `src/data/blog-posts/types.ts` is the source of truth for the allowed `BLOG_CATEGORIES` ids.
+- Every post slug must have exactly one `BLOG_POST_PLACEMENTS` entry in `src/data/blog-posts/index.ts`.
+- A placement must use an existing category id; `featuredSection`, `featuredRank`, and `featuredLabel` are optional.
+- New posts must be assigned a category when they are created. Do not leave a post uncategorized or add a one-off category only for a single article.
+- If a genuinely new topic is needed, add the category definition, at least one placement, list navigation/copy, and category QA together.
+
 Run `npm run blog:check-numbers` before adding a post. It fails when filenames are missing from the sequence or when `index.ts` imports a missing post. Repair an existing gap before creating another post; do not let the generator advance past a gap.
+
+The same check also fails when a post has no category, uses an unknown category, a mapping points to a missing post, or a declared category has no posts.
 
 Do not put new post objects directly into `src/data/docshunt-blogs.ts`; that file is a compatibility facade only.
 
@@ -75,8 +85,10 @@ Do not put new post objects directly into `src/data/docshunt-blogs.ts`; that fil
    ```bash
    node .agents/skills/blog-writing/scripts/create-blog-post.mjs \
      --slug example-slug \
-     --title "검색 친화적인 제목"
+     --title "검색 친화적인 제목" \
+     --category business-plan-writing
    ```
+   The generator updates the post import, source order, and category placement together.
 3. Complete the generated one-file post. Keep new rich HTML in `contentHtml`; `src/data/docshunt-blog-content.ts` is a legacy compatibility store only.
 4. Set `sourceUrl` to `https://docshunt.ai/blog_detail/<slug>`.
 5. Ensure `title`, `description`, `date`, `image`, and `heroImage` are complete.
@@ -85,7 +97,7 @@ Do not put new post objects directly into `src/data/docshunt-blogs.ts`; that fil
 7. Select an editorial pattern from [references/editorial-patterns.md](references/editorial-patterns.md) and keep only the blocks the article needs.
 8. Recommendation cards use the linked post's own title and list image.
 9. Use the article's approved author value, defaulting to `독스헌트 마케팅팀` only when none is provided. Keep the visible author, JSON-LD author, and `/about#editorial-policy` link aligned; preserve an explicit `독스헌트` request exactly.
-10. Add the post to an appropriate `BLOG_TOPIC_GROUP_CONFIG` group when it belongs to an existing search-intent cluster.
+10. Confirm the post is mapped to an appropriate `BLOG_CATEGORIES` group through `BLOG_POST_PLACEMENTS`.
 
 `BLOG_POSTS` derives pagination from aggregate order. Put a new post at the top of `BLOG_POST_SOURCE`; do not hand-edit the generated `page` and `index` fields. Renumbering is reserved for repairing a repository-wide filename gap and must include the post export, index import, and every paired cover asset reference in the same change.
 

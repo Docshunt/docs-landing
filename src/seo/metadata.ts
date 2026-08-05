@@ -33,6 +33,9 @@ export const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST ? new URL(proce
 export const BLOG_LIST_TITLE = "사업계획서 AI, 정부지원사업에 어떻게 활용할까요? | 독스헌트";
 export const BLOG_LIST_DESCRIPTION =
   "독스헌트 블로그는 사업계획서 AI 활용법과 정부지원사업 준비 방법을 안내합니다. 한글 양식 작성, 합격 예시, 공고별 실전 팁을 확인하세요.";
+export const UPDATES_TITLE = "독스헌트 업데이트 | 새 기능과 개선 사항";
+export const UPDATES_DESCRIPTION =
+  "독스헌트의 새 기능, 서비스 개선 사항과 중요한 변경 내용을 확인하세요. 사업계획서 AI와 지원사업 준비 경험을 더 좋게 만드는 업데이트를 안내합니다.";
 export const ABOUT_TITLE = "독스헌트 마케팅팀 | 블로그 작성자 소개";
 export const ABOUT_DESCRIPTION =
   "정부지원사업과 사업계획서 작성 정보를 전하는 독스헌트 마케팅팀을 소개합니다. 글을 만드는 기준과 독스헌트의 공개 이력을 확인하세요.";
@@ -124,8 +127,9 @@ export function buildPageMetadata({
 
 export function dateToIso(date: string) {
   const [year, month, day] = date.split(".");
-  if (!year || !month || !day) return undefined;
-  return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+  if (!year || !month) return undefined;
+  const yearMonth = `${year}-${month.padStart(2, "0")}`;
+  return day ? `${yearMonth}-${day.padStart(2, "0")}` : yearMonth;
 }
 
 export function organizationJsonLd() {
