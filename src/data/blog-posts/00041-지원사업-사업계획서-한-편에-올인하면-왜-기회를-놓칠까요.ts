@@ -36,8 +36,8 @@ export const post41 = {
       },
     ],
   },
-  image: "/docshunt-assets/blog-covers/00041-support-program-business-plan-application-strategy-list.jpg",
-  heroImage: "/docshunt-assets/blog-covers/00041-support-program-business-plan-application-strategy-hero.jpg",
+  image: "/docshunt-assets/blog-covers/00041-support-program-business-plan-application-strategy-editorial-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00041-support-program-business-plan-application-strategy-editorial-hero.jpg",
   videoEmbedUrl: "https://www.youtube-nocookie.com/embed/9a_QmMnxmOo?rel=0",
   videoTitle: "지원사업은 잘 쓰는 싸움이 아니라 많이 넣는 싸움입니다 | 박중현 대표 인터뷰",
   paragraphs: [
