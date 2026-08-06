@@ -53,6 +53,10 @@ import { post51 } from "./00051-사업계획서-AI-출처-없는-숫자를-그�
 import { post52 } from "./00052-사업계획서-작성-AI-공고문-없이-쓰면-왜-다시-고칠까요";
 import { post53 } from "./00053-모두의-창업-아이디어-보호-원본증명과-기술임치가-같은-건가요";
 import { post54 } from "./00054-모두의-창업-합격자-130명-최종-5-000명과-숫자가-달랐던-이유";
+import { post56 } from "./00056-사업계획서-AI-추천-결과물보다-먼저-확인할-3가지";
+import { post57 } from "./00057-사업계획서-목차-평가항목을-그대로-베끼면-왜-흐름이-끊길까요";
+import { post58 } from "./00058-모두의창업-멘토-등록-신청-전에-역할부터-확인하세요";
+import { post59 } from "./00059-모두의-창업-도전-신청서-아이디어-한-줄만으로-충분할까요";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -63,6 +67,10 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "modoo-startup-challenge-application-one-page": { category: "support-programs" },
+  "modoo-startup-mentor-registration-role": { category: "support-programs" },
+  "business-plan-table-of-contents-evidence-map": { category: "business-plan-writing" },
+  "business-plan-ai-recommendation-checklist": { category: "ai-docshunt" },
   "1778461267147x278620001529366040": { category: "business-plan-writing" },
   "1777511331543x693426580638985500": { category: "business-plan-writing" },
   "1777343094612x229953857115337000": {
@@ -157,6 +165,10 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post59,
+  post58,
+  post57,
+  post56,
   post55,
   post54,
   post53,
