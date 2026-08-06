@@ -15,7 +15,6 @@ export const post58 = {
   slug: "modoo-startup-mentor-registration-role",
   sourceUrl: "https://docshunt.ai/blog_detail/modoo-startup-mentor-registration-role",
   title: "모두의창업 멘토 등록, 도전자 신청과 헷갈리지 마세요",
-  titleLines: ["모두의창업 멘토 등록,", "도전자 신청과", "헷갈리지 마세요"],
   description:
     "모두의창업 멘토 등록을 찾고 있다면 도전자 신청, 멘토링, 현재 열린 리그 공고를 먼저 구분해야 합니다. 공식 자료 기준으로 신청자가 확인할 순서를 정리했습니다.",
   seo: {

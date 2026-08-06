@@ -12,7 +12,6 @@ export const post56 = {
   slug: "business-plan-ai-recommendation-checklist",
   sourceUrl: "https://docshunt.ai/blog_detail/business-plan-ai-recommendation-checklist",
   title: "사업계획서 AI 추천, 결과물보다 먼저 확인할 3가지",
-  titleLines: ["사업계획서 AI 추천,", "결과물보다 먼저", "확인할 3가지"],
   description:
     "사업계획서 AI 추천을 찾을 때는 문장이 아니라 공고문 반영, 근거 검증, 반복 제출 관리가 되는지 먼저 봐야 합니다. 제출 전 비교 기준을 정리했습니다.",
   seo: {

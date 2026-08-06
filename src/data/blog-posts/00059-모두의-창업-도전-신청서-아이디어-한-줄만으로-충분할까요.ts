@@ -15,7 +15,6 @@ export const post59 = {
   slug: "modoo-startup-challenge-application-one-page",
   sourceUrl: "https://docshunt.ai/blog_detail/modoo-startup-challenge-application-one-page",
   title: "모두의 창업 도전 신청서, 아이디어 한 줄만으로 충분할까요?",
-  titleLines: ["모두의 창업 도전 신청서,", "아이디어 한 줄만으로", "충분할까요?"],
   description:
     "모두의 창업 도전 신청서는 복잡한 사업계획서가 아니어도 아이디어의 고객, 문제, 현재 대안, 첫 검증 계획이 보여야 합니다. 한 줄을 신청서 문장으로 바꾸는 법을 정리했습니다.",
   seo: {
