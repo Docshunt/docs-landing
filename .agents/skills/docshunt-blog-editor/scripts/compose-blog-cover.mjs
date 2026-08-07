@@ -232,6 +232,17 @@ async function render(width, height, scale, output, quality) {
   await page.evaluate(
     async ({ nextScale, initialFontSize, minimumSize }) => {
       await document.fonts.ready;
+      await Promise.all(
+        [...document.images].map(async (image) => {
+          if (!image.complete) {
+            await new Promise((resolve, reject) => {
+              image.addEventListener("load", resolve, { once: true });
+              image.addEventListener("error", reject, { once: true });
+            });
+          }
+          await image.decode();
+        }),
+      );
       const stage = document.querySelector("#stage");
       const title = document.querySelector(".title");
       const lines = [...document.querySelectorAll(".title-line")];
