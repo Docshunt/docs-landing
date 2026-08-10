@@ -46,7 +46,7 @@ jobs:
     env:
       VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
-      NEXT_PUBLIC_SITE_ORIGIN: ${{ vars.NEXT_PUBLIC_SITE_ORIGIN }}
+      NEXT_PUBLIC_SITE_ORIGIN: "https://docshunt.ai"
       NEXT_PUBLIC_APP_ORIGIN: ${{ vars.NEXT_PUBLIC_APP_ORIGIN }}
       NEXT_PUBLIC_CHANNEL_ORIGIN: ${{ vars.NEXT_PUBLIC_CHANNEL_ORIGIN }}
       NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN: ""
@@ -64,7 +64,7 @@ jobs:
         run: |
           test -n "$VERCEL_ORG_ID"
           test -n "$VERCEL_PROJECT_ID"
-          [[ "$NEXT_PUBLIC_SITE_ORIGIN" == https://* ]]
+          test "$NEXT_PUBLIC_SITE_ORIGIN" = "https://docshunt.ai"
           test -n "$NEXT_PUBLIC_APP_ORIGIN"
           test -n "$NEXT_PUBLIC_CHANNEL_ORIGIN"
           test -z "$NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN"
@@ -121,7 +121,7 @@ jobs:
     env:
       VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
-      NEXT_PUBLIC_SITE_ORIGIN: ${{ vars.NEXT_PUBLIC_SITE_ORIGIN }}
+      NEXT_PUBLIC_SITE_ORIGIN: "https://docshunt.ai"
       NEXT_PUBLIC_APP_ORIGIN: ${{ vars.NEXT_PUBLIC_APP_ORIGIN }}
       NEXT_PUBLIC_CHANNEL_ORIGIN: ${{ vars.NEXT_PUBLIC_CHANNEL_ORIGIN }}
       NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN: ${{ vars.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN }}
@@ -150,7 +150,7 @@ jobs:
         run: |
           test -n "$VERCEL_ORG_ID"
           test -n "$VERCEL_PROJECT_ID"
-          [[ "$NEXT_PUBLIC_SITE_ORIGIN" == https://* ]]
+          test "$NEXT_PUBLIC_SITE_ORIGIN" = "https://docshunt.ai"
           test -n "$NEXT_PUBLIC_APP_ORIGIN"
           test -n "$NEXT_PUBLIC_CHANNEL_ORIGIN"
           test -n "$NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN"
