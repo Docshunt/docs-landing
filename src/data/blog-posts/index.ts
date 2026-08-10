@@ -61,6 +61,7 @@ import { post60 } from "./00060-사업계획서-AI-작성-문제-실현가능성
 import { post61 } from "./00061-예비창업패키지-경쟁률-숫자보다-주관기관을-먼저-봐야-하는-이유";
 import { post62 } from "./00062-모두의-창업-마감일-8월-19일이-모든-트랙에-적용될까요";
 import { post63 } from "./00063-모두의-창업-사업계획서-양식-예창패-한글-파일을-써도-될까요";
+import { post64 } from "./00064-예비창업패키지-사업계획서-심사-전에-확인할-내-숫자-는-무엇일까요";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -71,6 +72,7 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "pre-startup-package-business-plan-own-numbers": { category: "interviews" },
   "modoo-startup-business-plan-form-difference": { category: "support-programs" },
   "modoo-startup-deadline-track-check": { category: "support-programs" },
   "pre-startup-package-competition-managing-institution": { category: "startup-programs" },
@@ -173,6 +175,7 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post64,
   post63,
   post62,
   post61,
