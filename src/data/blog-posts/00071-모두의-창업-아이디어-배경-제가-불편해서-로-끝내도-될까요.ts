@@ -5,7 +5,7 @@ import type { BlogPost } from "./types";
 const MODOO_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310&parentSeq=1066642";
 const YASU_APPLICATION_URL = "https://www.yasu.ac.kr/kor/CMS/Board/Board.do?board_seq=241546&mCode=MN133&mgr_seq=6&mode=view";
 
-export const post67 = {
+export const post71 = {
   page: 1,
   index: 1,
   slug: "modoo-startup-idea-background-story",
@@ -30,8 +30,8 @@ export const post67 = {
       { label: "용인예술과학대학교 창업교육센터, 모두의 창업 작성 항목 안내", url: YASU_APPLICATION_URL },
     ],
   },
-  image: "/docshunt-assets/blog-covers/00067-modoo-startup-idea-background-story-list.jpg",
-  heroImage: "/docshunt-assets/blog-covers/00067-modoo-startup-idea-background-story-hero.jpg",
+  image: "/docshunt-assets/blog-covers/00071-modoo-startup-idea-background-story-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00071-modoo-startup-idea-background-story-hero.jpg",
   paragraphs: [
     "모두의 창업 아이디어 배경을 ‘제가 불편해서 생각했습니다’로 끝내면 문제를 발견한 장면과 다른 사람에게도 같은 일이 반복되는지 드러나지 않습니다.",
     "2026년 1기 도전신청서 안내 당시에는 아이디어 소개와 별도로 아이디어를 떠올린 배경 이야기가 포함돼 있었습니다. 배경 문항에서는 제품 설명을 반복하기보다 문제를 처음 발견하고 확인한 과정을 적는 편이 자연스럽습니다.",

@@ -5,7 +5,7 @@ import type { BlogPost } from "./types";
 const PRE_STARTUP_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1065953&cbIdx=310&parentSeq=1065953";
 const K_STARTUP_EDU_URL = "https://www.k-startup.go.kr/edu/home/package/PTYPE_003/PTYPE_00301/PKG_0000002003/detail";
 
-export const post65 = {
+export const post69 = {
   page: 1,
   index: 1,
   slug: "business-plan-example-market-entry-action",
@@ -33,8 +33,8 @@ export const post65 = {
       { label: "K-Startup 창업에듀, 창업 준비 교육과정", url: K_STARTUP_EDU_URL },
     ],
   },
-  image: "/docshunt-assets/blog-covers/00065-business-plan-example-market-entry-action-list.jpg",
-  heroImage: "/docshunt-assets/blog-covers/00065-business-plan-example-market-entry-action-hero.jpg",
+  image: "/docshunt-assets/blog-covers/00069-business-plan-example-market-entry-action-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00069-business-plan-example-market-entry-action-hero.jpg",
   paragraphs: [
     "‘SNS로 홍보하겠습니다’에는 채널 이름만 있고 누구에게 무엇을 확인할지가 빠져 있습니다.",
     "2026년도 예비창업패키지 수정 공고는 성장전략에서 시장진입 전략을 평가한다고 안내합니다. 채널 다음에는 첫 고객의 행동과 검증 기준까지 이어져야 합니다.",

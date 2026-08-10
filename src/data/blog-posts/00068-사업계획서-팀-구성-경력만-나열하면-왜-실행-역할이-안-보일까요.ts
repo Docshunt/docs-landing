@@ -4,7 +4,7 @@ import type { BlogPost } from "./types";
 
 const PRE_STARTUP_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1065953&cbIdx=310&parentSeq=1065953";
 
-export const post64 = {
+export const post68 = {
   page: 1,
   index: 1,
   slug: "business-plan-team-role-evidence",
@@ -31,8 +31,8 @@ export const post64 = {
       },
     ],
   },
-  image: "/docshunt-assets/blog-covers/00064-business-plan-team-role-evidence-list.jpg",
-  heroImage: "/docshunt-assets/blog-covers/00064-business-plan-team-role-evidence-hero.jpg",
+  image: "/docshunt-assets/blog-covers/00068-business-plan-team-role-evidence-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00068-business-plan-team-role-evidence-hero.jpg",
   paragraphs: [
     "사업계획서 팀 구성에는 경력의 길이보다 그 경험이 이번 사업의 어떤 과업으로 이어지는지가 보여야 합니다.",
     "2026년도 예비창업패키지 수정 공고는 대표자와 고용 예정 인력이 보유한 기술역량과 노하우를 팀 구성 평가지표로 제시했습니다. 직함이나 회사명만으로는 이 연결을 설명하기 어렵습니다.",

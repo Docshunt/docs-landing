@@ -5,7 +5,7 @@ import type { BlogPost } from "./types";
 const MODOO_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310&parentSeq=1066642";
 const MODOO_GUIDELINES_URL = "https://www.k-startup.go.kr/user/board/webRFRR_view_reference.do?page=1&viewCount=18&id=175865&schM=view";
 
-export const post66 = {
+export const post70 = {
   page: 1,
   index: 1,
   slug: "modoo-startup-evaluation-track-difference",
@@ -30,8 +30,8 @@ export const post66 = {
       { label: "K-Startup, 모두의 창업 프로젝트 세부관리기준(2026.6.23. 개정)", url: MODOO_GUIDELINES_URL },
     ],
   },
-  image: "/docshunt-assets/blog-covers/00066-modoo-startup-evaluation-track-difference-list.jpg",
-  heroImage: "/docshunt-assets/blog-covers/00066-modoo-startup-evaluation-track-difference-hero.jpg",
+  image: "/docshunt-assets/blog-covers/00070-modoo-startup-evaluation-track-difference-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00070-modoo-startup-evaluation-track-difference-hero.jpg",
   paragraphs: [
     "모두의 창업 평가항목은 2026년 1기 기준으로 두 트랙이 같은 표현을 쓰지 않았습니다. 일반·기술은 아이디어의 차별성과 효과성, 로컬은 창의성과 지역적 가치를 종합 평가한다고 안내했습니다.",
     "따라서 같은 아이디어라도 일반·기술에서는 기존 대안과 효과를, 로컬에서는 지역 자원과 지역 안에서 생기는 변화를 더 분명히 보여줘야 합니다.",
