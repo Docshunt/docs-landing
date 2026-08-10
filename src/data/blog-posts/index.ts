@@ -65,7 +65,11 @@ import { post64 } from "./00064-예비창업패키지-후기-합격-문장보다
 import { post65 } from "./00065-사업계획서-작성법-일정표와-사업비를-따로-쓰면-왜-다시-고칠까요";
 import { post66 } from "./00066-모두의-창업-소셜벤처-리그-신청-자격-사회문제를-다룬다고-모두-지원할-수-있을까요";
 import { post67 } from "./00067-모두의-창업-소셜벤처-리그-제안서-사회문제와-해결방안을-한-문단에-섞지-마세요";
-import { post68 } from "./00068-예비창업패키지-사업계획서-심사-전에-확인할-내-숫자-는-무엇일까요";
+import { post68 } from "./00068-사업계획서-팀-구성-경력만-나열하면-왜-실행-역할이-안-보일까요";
+import { post69 } from "./00069-사업계획서-예시-SNS로-홍보하겠습니다-에서-무엇이-빠졌을까요";
+import { post70 } from "./00070-모두의-창업-평가항목-일반-기술과-로컬은-같은-기준일까요";
+import { post71 } from "./00071-모두의-창업-아이디어-배경-제가-불편해서-로-끝내도-될까요";
+import { post72 } from "./00072-예비창업패키지-사업계획서-심사-전에-확인할-내-숫자-는-무엇일까요";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -76,11 +80,15 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
-  "pre-startup-package-business-plan-own-numbers": { category: "interviews" },
   "modoo-social-venture-solution-proposal": { category: "support-programs" },
   "modoo-social-venture-league-eligibility": { category: "support-programs" },
   "business-plan-schedule-budget-alignment": { category: "business-plan-writing" },
+  "business-plan-team-role-evidence": { category: "business-plan-writing" },
+  "business-plan-example-market-entry-action": { category: "business-plan-writing" },
+  "pre-startup-package-business-plan-own-numbers": { category: "interviews" },
   "pre-startup-package-review-reading-checklist": { category: "startup-programs" },
+  "modoo-startup-evaluation-track-difference": { category: "support-programs" },
+  "modoo-startup-idea-background-story": { category: "support-programs" },
   "modoo-startup-business-plan-form-difference": { category: "support-programs" },
   "modoo-startup-deadline-track-check": { category: "support-programs" },
   "pre-startup-package-competition-managing-institution": { category: "startup-programs" },
@@ -183,6 +191,10 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post72,
+  post71,
+  post70,
+  post69,
   post68,
   post67,
   post66,
