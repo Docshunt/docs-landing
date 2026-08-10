@@ -4,7 +4,7 @@ import type { BlogPost } from "./types";
 
 const UK_COACH_CHANNEL_URL = "https://www.youtube.com/channel/UC6hKGaPQz7Ub32aWBbWYjWg";
 
-export const post68 = {
+export const post64 = {
   page: 1,
   index: 1,
   slug: "pre-startup-package-business-plan-own-numbers",
@@ -19,15 +19,15 @@ export const post68 = {
     searchIntent: "예비창업패키지와 창업지원사업을 준비할 때 어떤 고객 검증 수치를 먼저 확인하고 AI에는 무엇을 맡겨야 하는지 알고 싶다.",
   },
   author: "독스헌트 마케팅팀",
-  date: "2026.08.09",
-  modifiedDate: "2026.08.09",
+  date: "2026.08.07",
+  modifiedDate: "2026.08.07",
   verification: {
-    date: "2026.08.09",
+    date: "2026.08.07",
     note: "2026년 8월 7일 진행한 욱코치 인터뷰 녹음과 공개 채널 소개를 기준으로 정리했습니다. 발언의 뜻을 유지하면서 반복되는 구어체를 다듬었으며, 특정 팀의 선정 결과와 지원금 수치는 공개 검증이 어려워 본문 근거로 사용하지 않았습니다.",
     sources: [{ label: "욱코치의 초보창업스쿨 유튜브 채널", url: UK_COACH_CHANNEL_URL }],
   },
-  image: "/docshunt-assets/blog-covers/00068-pre-startup-package-business-plan-own-numbers-list.png",
-  heroImage: "/docshunt-assets/blog-covers/00068-pre-startup-package-business-plan-own-numbers-hero.png",
+  image: "/docshunt-assets/blog-covers/00064-pre-startup-package-business-plan-own-numbers-list.png",
+  heroImage: "/docshunt-assets/blog-covers/00064-pre-startup-package-business-plan-own-numbers-hero.png",
   paragraphs: [
     "예비창업패키지 사업계획서에서 먼저 확인할 숫자는 시장 규모가 아니라 내가 직접 만난 고객 수, 실제 결제 여부, 결제 전환율과 현실적인 매출 목표입니다.",
     "욱코치는 시장 규모와 경쟁사 실적처럼 공개 자료에서 찾는 ‘남의 숫자’는 AI의 도움을 받을 수 있지만, 고객 반응과 매출 목표 같은 ‘내 숫자’를 AI에 맡기면 사업계획서가 소설이 될 수 있다고 설명했습니다.",
