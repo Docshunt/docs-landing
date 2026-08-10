@@ -60,6 +60,15 @@ description: Docs Landing 변경사항에 대해 precommit/build/Playwright/SEO 
    - Agent/Workflow: `AGENTS.md`, `CLAUDE.md`, `.agents/**`, `.codex/**`, `.githooks/**`, `.github/**`, scripts
    - 공개 전환 준비: `LICENSE`, `package.json`, repository metadata, asset provenance notes
 
+### 블로그 번호 충돌 사전 점검
+
+블로그 파일이나 커버 자산을 추가·복사·이름 변경할 때는 현재 브랜치의 최대 번호만 사용하지 않습니다.
+
+1. `git fetch origin main`으로 최신 `origin/main`을 확인하고, `src/data/blog-posts/`와 `public/docshunt-assets/blog-covers/`, `public/docshunt-assets/blog-inline/`의 5자리 번호를 수집합니다.
+2. `gh pr list --base main --state open --json number,headRefName`으로 Draft를 포함한 모든 열린 PR을 확인하고, 각 PR의 `gh pr diff <number> --name-only`에서 같은 번호 패턴을 수집합니다. 다른 PR의 버전도 아직 병합 전인 예약 번호로 간주합니다.
+3. `origin/main`, 열린 PR, 현재 변경을 합친 번호 중 가장 큰 값 다음부터 새 글 수만큼 연속 번호를 예약합니다. 여러 글을 한 PR에 추가하면 PR 안에서 서로 겹치지 않는 범위를 먼저 정한 뒤 파일명, export/import, `BLOG_POST_SOURCE`, 커버·인라인 자산 참조를 함께 맞춥니다.
+4. 번호를 정한 기준 main SHA와 확인한 열린 PR 번호를 PR 본문에 기록합니다. 충돌 가능성이 있으면 QA나 PR 생성 후가 아니라 이 단계에서 파일명과 인덱스를 뒤로 미룹니다.
+
 ### Phase 2: 정적 검증
 
 기본 검증은 항상 실행합니다.
