@@ -70,6 +70,10 @@ import { post69 } from "./00069-사업계획서-예시-SNS로-홍보하겠습니
 import { post70 } from "./00070-모두의-창업-평가항목-일반-기술과-로컬은-같은-기준일까요";
 import { post71 } from "./00071-모두의-창업-아이디어-배경-제가-불편해서-로-끝내도-될까요";
 import { post72 } from "./00072-예비창업패키지-사업계획서-심사-전에-확인할-내-숫자-는-무엇일까요";
+import { post73 } from "./00073-사업계획서-양식-파란-안내문까지-남겨-제출해야-할까요";
+import { post74 } from "./00074-사업계획서-AI-원본-파일을-통째로-올려도-될까요";
+import { post75 } from "./00075-모두의-창업-2기-예비창업패키지가-사라지는-걸까요";
+import { post76 } from "./00076-모두의-창업-도전신청서-이미지와-숏폼은-꼭-내야-할까요";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -80,6 +84,10 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "modoo-startup-application-image-shortform": { category: "support-programs" },
+  "modoo-startup-2-pre-startup-package-status": { category: "support-programs" },
+  "business-plan-ai-file-privacy-checklist": { category: "ai-docshunt" },
+  "business-plan-template-instruction-text-checklist": { category: "business-plan-writing" },
   "modoo-social-venture-solution-proposal": { category: "support-programs" },
   "modoo-social-venture-league-eligibility": { category: "support-programs" },
   "business-plan-schedule-budget-alignment": { category: "business-plan-writing" },
@@ -191,6 +199,10 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post76,
+  post75,
+  post74,
+  post73,
   post72,
   post71,
   post70,
