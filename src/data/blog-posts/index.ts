@@ -74,6 +74,10 @@ import { post73 } from "./00073-사업계획서-양식-파란-안내문까지-�
 import { post74 } from "./00074-사업계획서-AI-원본-파일을-통째로-올려도-될까요";
 import { post75 } from "./00075-모두의-창업-2기-예비창업패키지가-사라지는-걸까요";
 import { post76 } from "./00076-모두의-창업-도전신청서-이미지와-숏폼은-꼭-내야-할까요";
+import { post77 } from "./00077-사업계획서-표절-AI-문장이-비슷해도-괜찮을까요";
+import { post78 } from "./00078-K-Startup-사업계획서-제출-임시저장-이면-접수된-걸까요";
+import { post79 } from "./00079-모두의-창업-중복신청-두-트랙에-모두-내도-될까요";
+import { post80 } from "./00080-모두의-창업-아이디어-다른-공모전-수상작을-다시-내도-될까요";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -84,6 +88,10 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "modoo-startup-public-idea-reapplication": { category: "support-programs" },
+  "modoo-startup-one-track-one-idea-rule": { category: "support-programs" },
+  "k-startup-business-plan-submission-complete": { category: "support-programs" },
+  "business-plan-ai-plagiarism-similarity-check": { category: "business-plan-writing" },
   "modoo-startup-application-image-shortform": { category: "support-programs" },
   "modoo-startup-2-pre-startup-package-status": { category: "support-programs" },
   "business-plan-ai-file-privacy-checklist": { category: "ai-docshunt" },
@@ -199,6 +207,10 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post80,
+  post79,
+  post78,
+  post77,
   post76,
   post75,
   post74,
