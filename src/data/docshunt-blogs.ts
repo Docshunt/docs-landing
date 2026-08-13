@@ -6,7 +6,7 @@ export type { BlogPost, BlogCategory, CategorizedBlogPost } from "./blog-posts/t
 export { BLOG_CATEGORIES };
 
 export const BLOG_POSTS = SOURCE_BLOG_POSTS;
-export const BLOG_POSTS_PER_PAGE = 10;
+export const BLOG_POSTS_PER_PAGE = 12;
 export const BLOG_PAGE_COUNT = Math.ceil(BLOG_POSTS.length / BLOG_POSTS_PER_PAGE);
 
 export function decodeBlogSlug(slug: string) {

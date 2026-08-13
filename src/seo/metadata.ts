@@ -81,6 +81,7 @@ export function buildPageMetadata({
   type = "website",
   locale = "ko_KR",
   keywords = SEO_KEYWORDS,
+  robots,
 }: {
   title: string;
   description: string;
@@ -89,6 +90,7 @@ export function buildPageMetadata({
   type?: "website" | "article";
   locale?: string;
   keywords?: string[];
+  robots?: Metadata["robots"];
 }): Metadata {
   const url = absoluteUrl(path);
   const absoluteImage = absoluteUrl(image);
@@ -119,6 +121,7 @@ export function buildPageMetadata({
       description,
       images: [absoluteImage],
     },
+    ...(robots ? { robots } : {}),
     verification: {
       other: {
         "naver-site-verification": NAVER_SITE_VERIFICATION,

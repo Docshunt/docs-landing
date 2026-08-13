@@ -68,6 +68,6 @@ export const post18 = {
     "그 다음 달에도 또 도전하세요",
     "완벽한 사업계획서 하나를 만드는 것보다 포기하지 않고 계속 도전하는 것이 훨씬 중요합니다.",
     "아래 버튼에서 마스터 플랜의 현재 제공 기능과 이용 조건을 확인하세요.",
-    "https://docshunt.ai/2026_master_plan",
+    "https://docshunt.ai/refund-event",
   ],
 } satisfies BlogPost;

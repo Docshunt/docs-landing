@@ -6,6 +6,7 @@ export const metadata = buildPageMetadata({
   description: MARKETING_CONSENT_EN_DESCRIPTION,
   path: "/marketing_consent_en_",
   locale: "en_US",
+  robots: { index: false, follow: false },
 });
 
 export default function MarketingConsentEnglishPage() {
