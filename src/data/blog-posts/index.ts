@@ -78,6 +78,10 @@ import { post77 } from "./00077-사업계획서-표절-AI-문장이-비슷해도
 import { post78 } from "./00078-K-Startup-사업계획서-제출-임시저장-이면-접수된-걸까요";
 import { post79 } from "./00079-모두의-창업-중복신청-두-트랙에-모두-내도-될까요";
 import { post80 } from "./00080-모두의-창업-아이디어-다른-공모전-수상작을-다시-내도-될까요";
+import { post81 } from "./00081-사업계획서-시장규모-TAM-SAM-SOM-숫자부터-찾으면-왜-막힐까요";
+import { post82 } from "./00082-예비창업패키지-가점-증빙-선정된-뒤-내도-될까요";
+import { post83 } from "./00083-모두의-창업-한-줄-아이디어-비공개로-제출해도-될까요";
+import { post84 } from "./00084-모두의-창업-운영기관-접수-뒤에도-바꿀-수-있을까요";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -88,6 +92,10 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "modoo-startup-operating-organization-change": { category: "support-programs" },
+  "modoo-startup-one-line-idea-privacy": { category: "support-programs" },
+  "pre-startup-package-bonus-evidence-submission": { category: "support-programs" },
+  "business-plan-market-size-tam-sam-som": { category: "business-plan-writing" },
   "modoo-startup-public-idea-reapplication": { category: "support-programs" },
   "modoo-startup-one-track-one-idea-rule": { category: "support-programs" },
   "k-startup-business-plan-submission-complete": { category: "support-programs" },
@@ -207,6 +215,10 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post84,
+  post83,
+  post82,
+  post81,
   post80,
   post79,
   post78,
