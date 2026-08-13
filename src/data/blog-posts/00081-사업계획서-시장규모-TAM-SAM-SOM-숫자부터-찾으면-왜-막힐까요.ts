@@ -13,7 +13,7 @@ export const post81 = {
   slug: "business-plan-market-size-tam-sam-som",
   sourceUrl: "https://docshunt.ai/blog_detail/business-plan-market-size-tam-sam-som",
   title: "사업계획서 시장규모, TAM·SAM·SOM 숫자부터 찾으면 왜 막힐까요?",
-  titleLines: ["사업계획서 시장규모,", "TAM·SAM·SOM,", "숫자부터 찾지 마세요"],
+  titleLines: ["사업계획서 시장규모,", "TAM·SAM·SOM", "숫자부터 찾지 마세요"],
   titleLineBreaks: "always",
   description:
     "사업계획서 시장규모는 큰 통계 하나가 아니라 고객 수·가격·기간·도달 범위를 같은 기준으로 계산해야 합니다. TAM·SAM·SOM을 출처와 가정으로 나누는 순서를 가상 예시와 함께 정리했습니다.",
