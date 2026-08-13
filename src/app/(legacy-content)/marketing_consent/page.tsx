@@ -5,6 +5,7 @@ export const metadata = buildPageMetadata({
   title: MARKETING_CONSENT_TITLE,
   description: MARKETING_CONSENT_DESCRIPTION,
   path: "/marketing_consent",
+  robots: { index: false, follow: false },
 });
 
 export default function MarketingConsentPage() {

@@ -21,6 +21,7 @@ const nextConfig: NextConfig = {
       },
       { source: "/index_seo", destination: "/", permanent: true },
       { source: "/________", destination: "/refund-event", permanent: true },
+      { source: "/2026_master_plan", destination: "/refund-event", permanent: true },
       { source: "/_deprecated_2026_master_plan", destination: "/refund-event", permanent: true },
       { source: "/_deprecated_index_2026_04_", destination: "/", permanent: true },
       { source: "/_deprecated_index_old", destination: "/", permanent: true },

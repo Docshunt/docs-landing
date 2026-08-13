@@ -63,15 +63,5 @@ export function GET(request: Request) {
       priority: "0.2",
       changefreq: "yearly",
     },
-    {
-      loc: "/marketing_consent",
-      priority: "0.2",
-      changefreq: "yearly",
-    },
-    {
-      loc: "/marketing_consent_en_",
-      priority: "0.2",
-      changefreq: "yearly",
-    },
   ]);
 }
