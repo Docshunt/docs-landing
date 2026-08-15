@@ -82,6 +82,10 @@ import { post81 } from "./00081-사업계획서-시장규모-TAM-SAM-SOM-숫자�
 import { post82 } from "./00082-예비창업패키지-가점-증빙-선정된-뒤-내도-될까요";
 import { post83 } from "./00083-모두의-창업-한-줄-아이디어-비공개로-제출해도-될까요";
 import { post84 } from "./00084-모두의-창업-운영기관-접수-뒤에도-바꿀-수-있을까요";
+import { post85 } from "./00085-예비창업패키지-협약체결확약서-내면-다른-지원사업은-어떻게-될까요";
+import { post86 } from "./00086-예비창업패키지-사업자등록-선정되면-바로-해야-할까요";
+import { post87 } from "./00087-모두의-창업-창업활동자금-기차표와-재료비에-써도-될까요";
+import { post88 } from "./00088-모두의-창업-중도포기-모든-트랙에서-불이익이-없을까요";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -92,6 +96,10 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "modoo-startup-withdrawal-track-difference": { category: "support-programs" },
+  "modoo-startup-activity-fund-eligible-expenses": { category: "support-programs" },
+  "pre-startup-package-business-registration-deadline": { category: "support-programs" },
+  "pre-startup-package-agreement-commitment-other-programs": { category: "support-programs" },
   "modoo-startup-operating-organization-change": { category: "support-programs" },
   "modoo-startup-one-line-idea-privacy": { category: "support-programs" },
   "pre-startup-package-bonus-evidence-submission": { category: "support-programs" },
@@ -215,6 +223,10 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post88,
+  post87,
+  post86,
+  post85,
   post84,
   post83,
   post82,
