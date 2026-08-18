@@ -1,6 +1,6 @@
 ---
 name: blog-writing
-description: Use when creating, editing, importing, or reviewing docs-landing blog posts. Guides one-file-per-post data, SEO metadata, sitemap/GEO alignment, content HTML, recommendations, and QA.
+description: Use when creating, editing, importing, or reviewing docs-landing blog posts, including posts built from overseas startup insights or card-news research. Guides one-file-per-post data, SEO metadata, sitemap/GEO alignment, content HTML, recommendations, and QA.
 ---
 
 # Blog Writing Skill
@@ -130,11 +130,13 @@ node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs
 ## Writing Guidelines
 
 - Write for Korean founders preparing government support applications.
+- For overseas-insight or card-news-source topics, read `.agents/skills/docshunt-blog-editor/references/overseas-source-search.md`, search its listed platforms, select one real source, and complete its source ledger and Korean evidence bridge before writing the post data.
 - Keep the title concrete and search-friendly.
 - The first paragraph should state the problem clearly.
 - Use headings that match actual search intent.
 - Put a direct answer in the first two or three sentences.
 - For practical guides, include the intended reader, a checklist or table, an example, and frequently asked questions when they help the reader.
+- For source-led posts, build a complete argument rather than a short source summary: show the source case's sequence and limitation, connect it to Korean evidence, include one worked example, and state when the advice does not apply. One overseas anchor plus one or two supporting sources is enough.
 - Include a practical next step or Docshunt CTA when appropriate.
 - Do not invent policy dates, program names, funding amounts, or eligibility rules. Verify current facts before writing time-sensitive public guidance.
 - Cite source links in body copy when referring to external programs or public notices.
