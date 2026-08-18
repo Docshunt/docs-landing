@@ -86,6 +86,14 @@ import { post85 } from "./00085-예비창업패키지-협약체결확약서-내�
 import { post86 } from "./00086-예비창업패키지-사업자등록-선정되면-바로-해야-할까요";
 import { post87 } from "./00087-모두의-창업-창업활동자금-기차표와-재료비에-써도-될까요";
 import { post88 } from "./00088-모두의-창업-중도포기-모든-트랙에서-불이익이-없을까요";
+import { post89 } from "./00089-예비창업패키지-발표평가-팀원만-보내도-될까요";
+import { post90 } from "./00090-예비창업패키지-이의신청-주말은-빼고-6일일까요";
+import { post91 } from "./00091-모두의-창업-아이템-변경-선정-뒤-완전히-바꿔도-될까요";
+import { post92 } from "./00092-모두의-창업-사업자등록-라운드-중간에는-못-하나요";
+import { post93 } from "./00093-스타트업-원스톱-지원센터-소상공인도-상담받을-수-있을까요";
+import { post94 } from "./00094-예비창업패키지-인건비-배우자에게-지급해도-될까요";
+import { post95 } from "./00095-모두의-창업-외주용역-선금을-절반-넘게-줘도-될까요";
+import { post96 } from "./00096-모두의-창업-로컬트랙-부가세-사업자등록-전에도-빼야-할까요";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -96,6 +104,14 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "modoo-startup-local-track-vat-before-registration": { category: "support-programs" },
+  "modoo-startup-outsourcing-advance-payment-limit": { category: "support-programs" },
+  "pre-startup-package-payroll-family-restriction": { category: "support-programs" },
+  "startup-onestop-center-eligibility-consultation": { category: "support-programs" },
+  "modoo-startup-business-registration-during-round": { category: "support-programs" },
+  "modoo-startup-item-change-after-selection": { category: "support-programs" },
+  "pre-startup-package-review-objection-six-days": { category: "support-programs" },
+  "pre-startup-package-presentation-applicant-attendance": { category: "support-programs" },
   "modoo-startup-withdrawal-track-difference": { category: "support-programs" },
   "modoo-startup-activity-fund-eligible-expenses": { category: "support-programs" },
   "pre-startup-package-business-registration-deadline": { category: "support-programs" },
@@ -223,6 +239,14 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post96,
+  post95,
+  post94,
+  post93,
+  post92,
+  post91,
+  post90,
+  post89,
   post88,
   post87,
   post86,
