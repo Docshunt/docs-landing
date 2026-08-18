@@ -94,6 +94,10 @@ import { post93 } from "./00093-스타트업-원스톱-지원센터-소상공인
 import { post94 } from "./00094-예비창업패키지-인건비-배우자에게-지급해도-될까요";
 import { post95 } from "./00095-모두의-창업-외주용역-선금을-절반-넘게-줘도-될까요";
 import { post96 } from "./00096-모두의-창업-로컬트랙-부가세-사업자등록-전에도-빼야-할까요";
+import { post97 } from "./00097-벤처나라-등록-추천기관-없이-직접-신청할-수-있을까요";
+import { post98 } from "./00098-예비창업패키지-폐업-이력-같은-업종이면-3년을-기다려야-할까요";
+import { post99 } from "./00099-모두의-창업-특허비-협약-전에-출원한-건도-쓸-수-있을까요";
+import { post100 } from "./00100-모두의-창업-로컬트랙-비교견적-200만원부터-내야-할까요";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -104,6 +108,10 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "modoo-startup-local-track-comparison-quote-threshold": { category: "support-programs" },
+  "modoo-startup-ip-cost-before-agreement": { category: "support-programs" },
+  "pre-startup-package-closure-history-same-industry-three-years": { category: "support-programs" },
+  "venture-nara-direct-application-without-recommendation": { category: "support-programs" },
   "modoo-startup-local-track-vat-before-registration": { category: "support-programs" },
   "modoo-startup-outsourcing-advance-payment-limit": { category: "support-programs" },
   "pre-startup-package-payroll-family-restriction": { category: "support-programs" },
@@ -239,6 +247,10 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post100,
+  post99,
+  post98,
+  post97,
   post96,
   post95,
   post94,
