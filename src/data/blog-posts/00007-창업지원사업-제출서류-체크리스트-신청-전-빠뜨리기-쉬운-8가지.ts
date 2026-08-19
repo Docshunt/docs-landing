@@ -7,7 +7,7 @@ export const post07 = {
   sourceUrl: "https://docshunt.ai/blog_detail/startup-support-application-documents-checklist",
   title: "창업지원사업 제출서류 체크리스트: 신청 전 빠뜨리기 쉬운 8가지",
   description:
-    "창업지원사업 신청 전에 확인해야 할 제출서류와 증빙자료를 정리했습니다. K-Startup 공고문에서 자격, 사업계획서, 가점 증빙, 파일 제출 조건을 빠르게 점검하는 방법입니다.",
+    "창업지원사업 신청 전에 확인해야 할 제출서류와 증빙자료를 정리했습니다. K-Startup 공고문에서 신청 자격, 사업계획서, 가점 증빙과 파일 제출 조건을 빠르게 점검하고 마감 직전 누락을 줄이는 방법을 안내합니다.",
   date: "2026.05.07",
   modifiedDate: "2026.07.26",
   verification: {

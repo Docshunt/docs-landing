@@ -15,7 +15,7 @@ export const SITE_NAME = "독스헌트 | 지원사업 사업계획서 작성 AI"
 export const BLOG_AUTHOR_NAME = "독스헌트 마케팅팀";
 export const BLOG_AUTHOR_PATH = "/about#editorial-policy";
 export const BLOG_AUTHOR_URL = `${SITE_URL}${BLOG_AUTHOR_PATH}`;
-export const DEFAULT_TITLE = "지원사업 사업계획서, AI로 어떻게 작성할까요? | 독스헌트";
+export const DEFAULT_TITLE = "지원사업 사업계획서, AI로 어떻게 작성할까요? | 공고 분석·작성 AI 독스헌트";
 export const DEFAULT_DESCRIPTION =
   "독스헌트는 공고별 문항과 평가 기준을 분석하고, AI가 필요한 질문을 한 뒤 지원사업 사업계획서 초안을 작성하는 서비스입니다. 작성할수록 아이템과 사업 정보가 AI 기억에 쌓여 다음 지원사업을 더 빠르게 준비할 수 있습니다.";
 export const LANDING_OG_DESCRIPTION = DEFAULT_DESCRIPTION;
@@ -32,38 +32,41 @@ export const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST ? new URL(proce
 
 export const BLOG_LIST_TITLE = "사업계획서 AI, 정부지원사업에 어떻게 활용할까요? | 독스헌트";
 export const BLOG_LIST_DESCRIPTION =
-  "독스헌트 블로그는 사업계획서 AI 활용법과 정부지원사업 준비 방법을 안내합니다. 한글 양식 작성, 합격 예시, 공고별 실전 팁을 확인하세요.";
-export const UPDATES_TITLE = "독스헌트 업데이트 | 새 기능과 개선 사항";
+  "독스헌트 블로그에서 정부지원사업 공고를 읽는 법, 사업계획서 작성법과 합격 사례, AI 활용 팁을 확인하세요. 예비·초기창업자가 지원 자격과 제출 서류, 평가 기준을 점검하고 준비 시간을 줄이는 실전 정보를 제공합니다.";
+export const UPDATES_TITLE = "독스헌트 업데이트 | 사업계획서 AI 새 기능과 개선 사항";
 export const UPDATES_DESCRIPTION =
   "독스헌트의 새 기능, 서비스 개선 사항과 중요한 변경 내용을 확인하세요. 사업계획서 AI와 지원사업 준비 경험을 더 좋게 만드는 업데이트를 안내합니다.";
-export const ABOUT_TITLE = "독스헌트 마케팅팀 | 블로그 작성자 소개";
+export const ABOUT_TITLE = "독스헌트 마케팅팀 | 지원사업 콘텐츠 작성자 소개";
 export const ABOUT_DESCRIPTION =
   "정부지원사업과 사업계획서 작성 정보를 전하는 독스헌트 마케팅팀을 소개합니다. 글을 만드는 기준과 독스헌트의 공개 이력을 확인하세요.";
-export const PRICING_TITLE = "요금제 | 독스헌트";
-export const PRICING_DESCRIPTION = "내 사업의 지원사업 준비 방식에 맞는 독스헌트 플랜을 선택하세요.";
-export const REFUND_EVENT_TITLE = "2026 지원사업 합격 시 환급 | 독스헌트";
+export const PRICING_TITLE = "독스헌트 요금제 비교 | 정부지원사업·사업계획서 작성 AI 서비스 플랜";
+export const PRICING_DESCRIPTION =
+  "지원사업 준비부터 사업계획서 작성까지, 내 사업에 맞는 독스헌트 AI 요금제와 기능을 비교해 보세요. 플랜별 제공 범위, 작성 지원 기능과 이용 조건을 한눈에 확인할 수 있습니다.";
+export const REFUND_EVENT_TITLE = "2026 지원사업 합격 시 구독료 환급 | 독스헌트";
 export const REFUND_EVENT_DESCRIPTION =
-  "연간 Pro 또는 Max 요금제로 지원사업을 준비하고 합격하면, 실제 결제한 구독료의 최대 50%를 환급받으세요.";
-export const PRIVACY_POLICY_TITLE = "개인정보 처리방침 | 독스헌트";
-export const PRIVACY_POLICY_DESCRIPTION = "독스헌트 서비스의 개인정보 수집, 이용, 보관, 파기 및 정보주체의 권리를 안내합니다.";
-export const BUSINESS_INFO_TITLE = "사업자 정보 확인 | 독스헌트";
-export const BUSINESS_INFO_DESCRIPTION = "주식회사 사페레아우데의 사업자등록 및 통신판매업 신고 정보를 안내합니다.";
-export const TERMS_TITLE = "서비스 이용약관 | 독스헌트";
-export const TERMS_DESCRIPTION = "독스헌트 서비스의 이용 조건, 회원의 권리와 의무, 결제 및 콘텐츠 관리 기준을 안내합니다.";
-export const SAMPLE_TITLE = "사업계획서 예시 샘플 | 독스헌트";
+  "지원사업 합격을 준비하는 연간 Pro·Max 구독자를 위한 독스헌트 구독료 환급 조건과 최대 50% 환급 기준을 확인하세요.";
+export const PRIVACY_POLICY_TITLE = "독스헌트 개인정보 처리방침 | 수집·이용·보관 안내";
+export const PRIVACY_POLICY_DESCRIPTION =
+  "독스헌트 서비스의 개인정보 수집·이용·보관·파기 기준과 정보주체의 권리, 데이터 보호 원칙을 안내합니다.";
+export const BUSINESS_INFO_TITLE = "독스헌트 사업자 정보 | 사업자등록·통신판매업 신고";
+export const BUSINESS_INFO_DESCRIPTION = "주식회사 사페레아우데의 사업자등록, 대표자, 주소, 통신판매업 신고 정보를 확인할 수 있습니다.";
+export const TERMS_TITLE = "독스헌트 서비스 이용약관 | 회원·결제·콘텐츠 기준";
+export const TERMS_DESCRIPTION = "독스헌트 서비스 이용 조건, 회원의 권리와 의무, 결제·환불 및 콘텐츠 관리 기준을 안내합니다.";
+export const SAMPLE_TITLE = "사업계획서 예시·샘플 | 정부지원사업 문항을 반영한 독스헌트 AI 사례";
 export const SAMPLE_DESCRIPTION =
-  "독스헌트가 생성한 실제 사업계획서 예시를 확인하세요. 독스헌트와 숙박 공유 플랫폼 사업 모델을 바탕으로 만든 참고용 샘플입니다.";
+  "독스헌트가 생성한 실제 사업계획서 예시와 작성 과정을 확인하세요. 숙박 공유 플랫폼 사업 모델을 바탕으로 지원사업 문항을 분석하고 사업계획서 초안을 만드는 과정과 참고 기준을 살펴볼 수 있습니다.";
 export const MARKETING_CONSENT_TITLE = "마케팅 정보 수집 및 이용동의 | 독스헌트";
 export const MARKETING_CONSENT_DESCRIPTION = "독스헌트의 마케팅 정보 수집 목적, 수집 항목, 보유 기간과 동의 철회 방법을 안내합니다.";
 export const MARKETING_CONSENT_EN_TITLE = "Marketing Consent | DocsHunt";
 export const MARKETING_CONSENT_EN_DESCRIPTION =
   "Learn how DocsHunt collects and uses optional marketing information and how to withdraw your consent.";
-export const PAYMENT_POLICY_TITLE = "결제 및 청약철회 정책 | 독스헌트";
-export const PAYMENT_POLICY_DESCRIPTION = "독스헌트 유료서비스의 결제, 자동결제 중단 및 청약철회 기준을 안내합니다.";
-export const HWPX_GUIDE_TITLE = "HWP를 HWPX로 변환하는 방법 | 독스헌트";
-export const HWPX_GUIDE_DESCRIPTION = "한컴오피스와 온라인 변환 도구를 이용해 HWP 파일을 HWPX로 변환하는 방법을 안내합니다.";
-export const REVIEW_TITLE = "독스헌트 사용 후기";
-export const REVIEW_DESCRIPTION = "사업계획서 작성과 정부지원사업 준비에 독스헌트를 활용한 사용자들의 실제 후기를 확인하세요.";
+export const PAYMENT_POLICY_TITLE = "독스헌트 결제·청약철회 정책 | 자동결제·환불 안내";
+export const PAYMENT_POLICY_DESCRIPTION = "독스헌트 유료서비스의 결제, 자동결제 중단, 청약철회와 환불 기준을 자세히 안내합니다.";
+export const HWPX_GUIDE_TITLE = "HWP를 HWPX로 변환하는 방법 | 한글 파일 변환 가이드";
+export const HWPX_GUIDE_DESCRIPTION = "한컴오피스와 온라인 변환 도구로 HWP 파일을 HWPX로 바꾸는 방법과 변환 전 확인할 점을 안내합니다.";
+export const REVIEW_TITLE = "독스헌트 사용자 후기 | 정부지원사업·사업계획서 작성 AI 활용 경험";
+export const REVIEW_DESCRIPTION =
+  "사업계획서 작성과 정부지원사업 준비에 독스헌트를 활용한 사용자들의 실제 후기와 작성 시간 단축 경험을 확인하세요. 공고 분석, AI 초안 작성과 제출 준비에 활용한 사례를 함께 살펴볼 수 있습니다.";
 
 export function absoluteUrl(path: string) {
   if (path.startsWith("http://") || path.startsWith("https://")) {

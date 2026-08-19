@@ -1,6 +1,6 @@
 ---
 name: seo-geo-guard
-description: Use whenever a docs-landing page, route, blog data, metadata, sitemap, robots, llms.txt, ai.txt, proxy behavior, or public crawler-facing asset changes. Detects SEO/GEO impact for new pages and existing page edits.
+description: Use whenever a docs-landing page, route, blog data, metadata, sitemap, robots, llms.txt, ai.txt, proxy behavior, public crawler-facing asset, or Bing Webmaster SEO report finding changes. Detects SEO/GEO impact for new pages and existing page edits.
 ---
 
 # SEO/GEO Guard Skill
@@ -63,6 +63,22 @@ Preferred pattern:
 - Shared constants/helpers live in `src/seo/metadata.ts`.
 - Page metadata should use shared helpers such as `buildPageMetadata` when available.
 - Blog detail metadata must derive from the same blog post data used for rendering.
+
+## Bing Webmaster Recommendation Baseline
+
+When Bing SEO Reports flags a URL, inspect the rendered route and its source data together. For indexable `docshunt.ai` pages:
+
+- keep the page title unique and descriptive; titles shorter than 30 characters are a short-title review risk, so aim for 30–60 characters when natural
+- write a page-specific meta description that states the reader's problem and useful outcome; descriptions shorter than 70 characters are a short-description review risk, and blog posts should generally stay near 100–150 Korean characters
+- provide one meaningful `<h1>` and enough visible content to answer the search intent; never pad copy just to pass a length check
+- give informative images useful `alt` text and decorative images `alt=""`
+- after blog or metadata edits, audit the rendered title, description, H1, and image alt for every affected Bing URL; source-file inspection alone is insufficient
+
+Keep crawler ownership explicit across the two public domains:
+
+- `https://docshunt.ai/` is the indexable landing/blog surface and owns the public sitemap, `llms.txt`, and `ai.txt`
+- `https://app.docshunt.ai/` is the authenticated product SPA; keep `noindex, nofollow, noarchive` in its HTML and production `robots.txt` at `Disallow: /`, without the landing sitemap
+- `make.docshunt.ai` is out of scope unless the task explicitly includes it
 
 ## Phase 3: Discovery Surface Checklist
 
@@ -130,6 +146,8 @@ Required for SEO/GEO changes:
 - `/sitemap-blog_detail.xml`
 - `/llms.txt`
 - `/ai.txt`
+
+For a cross-repository audit, verify the app HTML/robots policy in `docs-front` separately. Do not treat authenticated-app H1 or thin-content findings as landing-page defects.
 
 For each endpoint, record:
 

@@ -6,7 +6,8 @@ export const post19 = {
   slug: "2026d6023",
   sourceUrl: "https://docshunt.ai/blog_detail/2026d6023",
   title: "2026 예비창업패키지 공고 기준: 사업계획서 준비 전략 3가지",
-  description: "2026년 예비창업패키지 공식 공고를 기준으로 MVP, 실행 데이터, 창업자만의 근거를 사업계획서에 담는 준비 전략을 정리했습니다.",
+  description:
+    "2026년 예비창업패키지 공식 공고를 기준으로 MVP, 실행 데이터, 창업자만의 근거를 사업계획서에 담는 준비 전략을 정리했습니다. 평가 항목을 확인하고 문제 정의와 실행 계획을 설득력 있게 준비하는 방법을 안내합니다.",
   date: "2025.12.18",
   modifiedDate: "2026.07.26",
   verification: {

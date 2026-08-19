@@ -7,7 +7,7 @@ export const post01 = {
   sourceUrl: "https://docshunt.ai/blog_detail/business-plan-reuse-support-program-guide",
   title: "예창패·청창사 끝났다고 사업계획서 방치하시나요?",
   description:
-    "예창패·청창사 시즌이 끝난 뒤 작성한 사업계획서를 방치하지 마세요. 기존 사업계획서를 다음 지원사업 공고에 맞게 다시 활용해야 하는 이유와 준비 방법을 정리했습니다.",
+    "예창패·청창사 시즌이 끝난 뒤 작성한 사업계획서를 다음 지원사업 공고에 맞게 다시 활용하는 방법을 정리했습니다. 기존 자료를 점검하고 변경된 자격, 문항과 제출 일정에 맞춰 준비하는 기준과 체크리스트를 확인하세요.",
   date: "2026.06.15",
   image: "/docshunt-assets/blog-covers/00001-예창패-청창사-끝났다고-사업계획서-방치하시나요-list.jpg",
   heroImage: "/docshunt-assets/blog-covers/00001-예창패-청창사-끝났다고-사업계획서-방치하시나요-hero.jpg",
