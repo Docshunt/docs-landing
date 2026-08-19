@@ -7,8 +7,8 @@ export const post50 = {
   index: 1,
   slug: "ai-business-plan-interview-update",
   sourceUrl: "https://docshunt.ai/blog_detail/ai-business-plan-interview-update",
-  title: "독스헌트, 이제 초안을 넘어 제출 단계까지",
-  titleLines: ["독스헌트,", "이제 초안을 넘어", "제출 단계까지"],
+  title: "독스헌트 AI 인터뷰 업데이트: 사업계획서 제출 단계까지",
+  titleLines: ["독스헌트 AI 인터뷰 업데이트:", "사업계획서 제출 단계까지"],
   titleLineBreaks: "always",
   description:
     "7월 29일 독스헌트 업데이트: AI 인터뷰로 공고별 빈 항목을 묻고, 답변을 사업 아이템과 기업 프로필에 쌓아 제출 전까지 사업계획서를 고도화하는 흐름을 소개합니다.",
