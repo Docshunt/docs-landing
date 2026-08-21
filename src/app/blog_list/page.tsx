@@ -46,13 +46,14 @@ function blogListPath(page: number, category?: BlogCategory) {
 
 function blogListSeo(page: number, category?: BlogCategory) {
   const selectedCategory = category ? BLOG_CATEGORIES.find((item) => item.id === category) : undefined;
+  const pageSuffix = page > 1 ? ` ${page}페이지` : "";
   return {
     title: selectedCategory
-      ? selectedCategory.label + " | " + BLOG_LIST_TITLE
+      ? selectedCategory.label + pageSuffix + " | " + BLOG_LIST_TITLE
       : page === 1
         ? BLOG_LIST_TITLE
         : BLOG_LIST_TITLE + " - " + page + "페이지",
-    description: selectedCategory?.summary ?? BLOG_LIST_DESCRIPTION,
+    description: selectedCategory ? selectedCategory.summary + (page > 1 ? ` (${page}페이지)` : "") : BLOG_LIST_DESCRIPTION,
   };
 }
 

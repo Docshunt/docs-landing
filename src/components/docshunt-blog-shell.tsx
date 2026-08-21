@@ -74,6 +74,10 @@ export function DocshuntFooter() {
           <Link className="footer-about-link" href="/about">
             작성자·회사 소개
           </Link>
+          <span>|</span>
+          <Link href="/review">사용 후기</Link>
+          <span>|</span>
+          <Link href="/how_to_convert_hwpx">HWPX 변환 가이드</Link>
         </div>
       </div>
     </footer>

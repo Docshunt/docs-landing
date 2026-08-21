@@ -5,7 +5,6 @@ import { JsonLd } from "@/components/json-ld";
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_TITLE,
-  FAVICON_URL,
   GA_ID,
   GTM_ID,
   LANDING_OG_DESCRIPTION,
@@ -30,19 +29,6 @@ export const metadata: Metadata = {
   keywords: SEO_KEYWORDS,
   alternates: {
     canonical: SITE_URL,
-  },
-  icons: {
-    icon: [
-      {
-        url: FAVICON_URL,
-        type: "image/x-icon",
-      },
-      {
-        url: "/favicon.ico",
-        type: "image/x-icon",
-      },
-    ],
-    shortcut: "/favicon.ico",
   },
   openGraph: {
     title: DEFAULT_TITLE,

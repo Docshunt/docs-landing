@@ -2843,15 +2843,15 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
           />
         </Link>
         <nav className="header-nav" aria-label="주요 메뉴">
-          <a className="nav-link" href="/pricing">
+          <Link className="nav-link" href="/pricing">
             요금제 / 환급
-          </a>
-          <a className="nav-link" href="/blog_list">
+          </Link>
+          <Link className="nav-link" href="/blog_list">
             블로그
-          </a>
-          <a className="nav-link" href="/updates">
+          </Link>
+          <Link className="nav-link" href="/updates">
             업데이트
-          </a>
+          </Link>
         </nav>
         <div className="header-actions">
           <a className="header-button primary" href={startPath} onClick={handleStart}>
@@ -2871,15 +2871,15 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
             <span />
           </button>
           <nav className={`mobile-menu ${mobileMenuOpen ? "is-open" : ""}`} id="mobile-menu" aria-label="모바일 메뉴">
-            <a className="mobile-menu-link" href="/pricing">
+            <Link className="mobile-menu-link" href="/pricing">
               요금제 / 환급
-            </a>
-            <a className="mobile-menu-link" href="/blog_list">
+            </Link>
+            <Link className="mobile-menu-link" href="/blog_list">
               블로그
-            </a>
-            <a className="mobile-menu-link" href="/updates">
+            </Link>
+            <Link className="mobile-menu-link" href="/updates">
               업데이트
-            </a>
+            </Link>
           </nav>
         </div>
       </header>
@@ -3137,6 +3137,10 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
             <Link className="footer-about-link" href="/about">
               작성자·회사 소개
             </Link>
+            <span>|</span>
+            <Link href="/review">사용 후기</Link>
+            <span>|</span>
+            <Link href="/how_to_convert_hwpx">HWPX 변환 가이드</Link>
           </div>
         </div>
       </footer>

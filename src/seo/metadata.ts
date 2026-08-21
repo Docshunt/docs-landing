@@ -22,7 +22,6 @@ export const LANDING_OG_DESCRIPTION = DEFAULT_DESCRIPTION;
 export const TWITTER_TITLE = DEFAULT_TITLE;
 export const SEO_KEYWORDS = ["사업계획서", "사업계획서 예시", "사업계획서 AI", "사업계획서 작성", "창업", "독스헌트", "정부지원사업"];
 export const OG_IMAGE = `${SITE_URL}/docshunt-assets/og-new-landing.jpg`;
-export const FAVICON_URL = "/favicon.ico";
 export const NAVER_SITE_VERIFICATION = "8b95bd75264aba5160dbc5493c948c6059c20628";
 export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-KGH2N9HZ";
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-71LW9PVQGN";
