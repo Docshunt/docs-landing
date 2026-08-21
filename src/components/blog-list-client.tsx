@@ -98,6 +98,7 @@ export function BlogListClient({
   );
   const [latestLeadPost, ...latestSupportingPosts] = latestPosts;
   const isHomePage = !category && page === 1;
+  const feedHeading = (selectedCategory?.label ?? "전체 아티클") + (page > 1 ? ` ${page}페이지` : "");
 
   return (
     <section className="blog-list-section" aria-labelledby="blog-list-title">
@@ -167,7 +168,7 @@ export function BlogListClient({
             <section className="blog-channel-section" aria-labelledby="blog-feed-title">
               <div className="blog-channel-section-heading">
                 <div>
-                  <h2 id="blog-feed-title">{selectedCategory?.label ?? "전체 아티클"}</h2>
+                  <h2 id="blog-feed-title">{feedHeading}</h2>
                   <p>{totalPosts}개의 글</p>
                 </div>
               </div>

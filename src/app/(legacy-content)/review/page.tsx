@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { JsonLd } from "@/components/json-ld";
 import { REVIEW_DESCRIPTION, REVIEW_TITLE, buildPageMetadata, webPageJsonLd } from "@/seo/metadata";
 
@@ -183,6 +185,9 @@ export default function ReviewPage() {
       <article className="legal-document legacy-review-document">
         <header className="legal-title">
           <h1>독스헌트 사용 후기</h1>
+          <p>
+            <Link href="/pricing">요금제와 환급 안내 보기</Link>
+          </p>
         </header>
         <div className="legacy-review-grid">
           {reviews.map(([body, name, context]) => (
