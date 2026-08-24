@@ -58,6 +58,15 @@ test("a slow view count stays hidden and does not block the article", async ({ p
   await expect(page.locator(".blog-view-count")).toBeHidden();
 });
 
+test("published and modified dates stay together while views are hidden", async ({ page }) => {
+  await page.goto(`${baseUrl}/blog_detail/1759293063517x574903222143811600`);
+
+  const meta = page.locator(".blog-post-meta");
+  await expect(meta.locator("time").nth(0)).toHaveText("게시 2025.10.01");
+  await expect(meta.locator("time").nth(1)).toHaveText("수정 2026.07.26");
+  await expect(meta.locator(".blog-view-count")).toHaveAttribute("data-visible", "false");
+});
+
 test("the same browser does not increment a slug again within the dedupe window", async ({ page }) => {
   let postRequests = 0;
 
