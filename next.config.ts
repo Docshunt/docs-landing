@@ -26,6 +26,8 @@ const nextConfig: NextConfig = {
       { source: "/_deprecated_index_2026_04_", destination: "/", permanent: true },
       { source: "/_deprecated_index_old", destination: "/", permanent: true },
       { source: "/_deprecated_pricing", destination: "/pricing", permanent: true },
+      { source: "/main", destination: "/", permanent: true },
+      { source: "/blog_detail", destination: "/blog_list", permanent: true },
       { source: "/Home", destination: "/", permanent: true },
       { source: "/how_credits_work", destination: "/pricing", permanent: true },
     ];
