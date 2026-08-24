@@ -1,4 +1,5 @@
 import { BlogPageShell } from "@/components/site/layout/blog-page-shell";
+import { BlogViewCount } from "@/components/site/molecules/blog/blog-view-count";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -95,6 +96,7 @@ export async function BlogDetailPageTemplate({ params }: BlogDetailParams) {
           {post.modifiedDate && post.modifiedDate !== post.date ? (
             <time dateTime={dateToIso(post.modifiedDate)}>수정 {post.modifiedDate}</time>
           ) : null}
+          <BlogViewCount slug={post.slug} />
         </div>
         {post.videoEmbedUrl ? (
           <div className="blog-detail-video">
