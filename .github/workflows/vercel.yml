@@ -41,7 +41,8 @@ jobs:
     if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     environment:
-      name: dev
+      # ponytail: preview shares the production counter until a dedicated dev Supabase is configured.
+      name: prod
       url: ${{ steps.deploy.outputs.url }}
     env:
       VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
@@ -51,6 +52,8 @@ jobs:
       NEXT_PUBLIC_CHANNEL_ORIGIN: ${{ vars.NEXT_PUBLIC_CHANNEL_ORIGIN }}
       NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN: ""
       NEXT_PUBLIC_POSTHOG_HOST: ""
+      SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
 
     steps:
       - name: Checkout
@@ -92,6 +95,13 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
           test -n "$VERCEL_TOKEN"
+          supabase_args=()
+          if [[ -n "$SUPABASE_URL" && -n "$SUPABASE_SERVICE_ROLE_KEY" ]]; then
+            supabase_args=(
+              --env "SUPABASE_URL=$SUPABASE_URL"
+              --env "SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY"
+            )
+          fi
           args=(
             --yes
             --token="$VERCEL_TOKEN"
@@ -105,6 +115,7 @@ jobs:
             --build-env NEXT_PUBLIC_POSTHOG_HOST="$NEXT_PUBLIC_POSTHOG_HOST"
             --env NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN="$NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN"
             --env NEXT_PUBLIC_POSTHOG_HOST="$NEXT_PUBLIC_POSTHOG_HOST"
+            "${supabase_args[@]}"
           )
           deployment_url=$(vercel deploy "${args[@]}")
           echo "url=$deployment_url" >> "$GITHUB_OUTPUT"
