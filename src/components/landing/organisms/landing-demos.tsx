@@ -41,7 +41,7 @@ import {
   type DraftActualChatPhase,
   type DraftActualDocumentPhase,
   type draftWorkflowCards,
-} from "../landing-data";
+} from "../data";
 
 export function DraftProofCarousel() {
   const [activeIndex, setActiveIndex] = useState(1);

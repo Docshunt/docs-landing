@@ -10,6 +10,14 @@ function exists(relativePath) {
   return fs.existsSync(path.join(root, relativePath));
 }
 
+function isFile(relativePath) {
+  try {
+    return fs.statSync(path.join(root, relativePath)).isFile();
+  } catch {
+    return false;
+  }
+}
+
 function read(relativePath) {
   return fs.readFileSync(path.join(root, relativePath), "utf8");
 }
@@ -28,6 +36,46 @@ function walk(dir, matches = []) {
   return matches;
 }
 
+function findAppFile(suffix) {
+  return walk("src/app").find((file) => file.endsWith(suffix));
+}
+
+function hasAppFile(suffix) {
+  return Boolean(findAppFile(suffix));
+}
+
+function readAppFile(suffix) {
+  const file = findAppFile(suffix);
+  return file ? resolveSource(file) : "";
+}
+
+function resolveAliasModule(specifier) {
+  if (!specifier.startsWith("@/")) return undefined;
+
+  const relative = specifier.slice(2);
+  const candidates = [
+    relative,
+    `${relative}.ts`,
+    `${relative}.tsx`,
+    `${relative}.mts`,
+    path.join(relative, "index.ts"),
+    path.join(relative, "index.tsx"),
+  ];
+
+  return candidates.map((candidate) => path.join("src", candidate)).find((candidate) => isFile(candidate));
+}
+
+function resolveSource(file, visited = new Set()) {
+  if (visited.has(file)) return "";
+  visited.add(file);
+
+  const source = read(file);
+  const imports = [...source.matchAll(/from\s+["'](@\/[^"']+)["']/g)].map((match) => match[1]);
+  const dependencies = imports.map(resolveAliasModule).filter((dependency) => dependency && !dependency.startsWith("src/data/"));
+
+  return [source, ...dependencies.map((dependency) => resolveSource(dependency, visited))].join("\n");
+}
+
 function routeFromPage(file) {
   let route = file.replace(/^src\/app/, "").replace(/\/page\.tsx$/, "");
   route = route.replace(/\(([^)]+)\)\//g, "");
@@ -42,23 +90,23 @@ if (!pageFiles.length) {
 }
 
 const requiredCrawlerRoutes = [
-  "src/app/sitemap.xml/route.ts",
-  "src/app/sitemap-index.xml/route.ts",
-  "src/app/sitemap-blog_list.xml/route.ts",
-  "src/app/sitemap-blog_detail.xml/route.ts",
-  "src/app/llms.txt/route.ts",
-  "src/app/ai.txt/route.ts",
+  "sitemap.xml/route.ts",
+  "sitemap-index.xml/route.ts",
+  "sitemap-blog_list.xml/route.ts",
+  "sitemap-blog_detail.xml/route.ts",
+  "llms.txt/route.ts",
+  "ai.txt/route.ts",
 ];
 
-if (!exists("src/app/robots.ts") && !exists("src/app/robots.txt/route.ts")) {
+if (!hasAppFile("robots.ts") && !hasAppFile("robots.txt/route.ts")) {
   errors.push("Missing crawler-facing route: src/app/robots.ts or src/app/robots.txt/route.ts");
 }
 
-for (const file of requiredCrawlerRoutes) {
-  if (!exists(file)) errors.push(`Missing crawler-facing route: ${file}`);
+for (const suffix of requiredCrawlerRoutes) {
+  if (!hasAppFile(suffix)) errors.push(`Missing crawler-facing route: src/app/**/${suffix}`);
 }
 
-if (exists("src/app/llms.txt/route.ts") !== exists("src/app/ai.txt/route.ts")) {
+if (hasAppFile("llms.txt/route.ts") !== hasAppFile("ai.txt/route.ts")) {
   errors.push("llms.txt and ai.txt route parity is broken; update both together.");
 }
 
@@ -100,7 +148,7 @@ if (!exists("src/seo/metadata.ts")) {
   }
 }
 
-if (!read("src/app/landing-page-client.tsx").includes("softwareApplicationJsonLd")) {
+if (!resolveSource("src/app/page.tsx").includes("softwareApplicationJsonLd")) {
   errors.push("Landing page must expose SoftwareApplication JSON-LD.");
 }
 
@@ -116,7 +164,7 @@ for (const file of walk("src")) {
 }
 
 for (const file of pageFiles) {
-  const source = read(file);
+  const source = resolveSource(file);
   const route = routeFromPage(file);
   const hasMetadata = /export\s+(const\s+metadata|async\s+function\s+generateMetadata|function\s+generateMetadata)/.test(source);
   const isRoot = route === "/";
@@ -142,16 +190,18 @@ if (exists("src/proxy.ts")) {
   }
 }
 
-if (exists("src/data/blog-posts/index.ts") && exists("src/app/sitemap-blog_detail.xml/route.ts")) {
+const blogDetailSitemapFile = findAppFile("sitemap-blog_detail.xml/route.ts");
+if (exists("src/data/blog-posts/index.ts") && blogDetailSitemapFile) {
   const blogs = read("src/data/blog-posts/index.ts");
-  const sitemap = read("src/app/sitemap-blog_detail.xml/route.ts");
-  if (!/BLOG_POSTS/.test(sitemap)) {
+  const sitemap = read(blogDetailSitemapFile);
+  const sitemapSource = exists("src/seo/sitemap-xml.ts") ? read("src/seo/sitemap-xml.ts") : sitemap;
+  if (!/BLOG_POSTS/.test(sitemap) && !/BLOG_POSTS/.test(sitemapSource)) {
     warnings.push("Blog detail sitemap route does not visibly reference BLOG_POSTS; verify sitemap stays aligned with blog data.");
   }
   if (!/post\d+/.test(blogs)) {
     warnings.push("Blog post index does not visibly aggregate per-post files; verify blog route generation manually.");
   }
-} else if (exists("src/data/docshunt-blogs.ts") && exists("src/app/sitemap-blog_detail.xml/route.ts")) {
+} else if (exists("src/data/docshunt-blogs.ts") && blogDetailSitemapFile) {
   warnings.push("Legacy single-file blog data detected; prefer one post file per entry under src/data/blog-posts/.");
 }
 
@@ -215,29 +265,32 @@ if (exists("src/components/blog-list-client.tsx")) {
   }
 }
 
-if (exists("src/app/new-landing/page.tsx")) {
-  const draftLanding = read("src/app/new-landing/page.tsx");
+const draftLandingFile = findAppFile("new-landing/page.tsx");
+if (draftLandingFile) {
+  const draftLanding = read(draftLandingFile);
   if (!/\bredirect\s*\(\s*["']\/["']\s*\)/.test(draftLanding) && !/\bnoindex\b/.test(draftLanding)) {
     errors.push("/new-landing must redirect to / or explicitly use noindex.");
   }
 }
 
+const aboutPage = readAppFile("about/page.tsx");
+const blogDetailPage = readAppFile("blog_detail/[slug]/page.tsx");
 if (
-  !exists("src/app/about/page.tsx") ||
+  !aboutPage ||
   !exists("src/seo/metadata.ts") ||
   !read("src/seo/metadata.ts").includes('BLOG_AUTHOR_NAME = "독스헌트 마케팅팀"') ||
   !read("src/seo/metadata.ts").includes('"@id": BLOG_AUTHOR_URL') ||
-  !read("src/app/about/page.tsx").includes("authorProfileJsonLd") ||
-  !read("src/app/blog_detail/[slug]/page.tsx").includes("BLOG_AUTHOR_PATH")
+  !aboutPage.includes("authorProfileJsonLd") ||
+  !blogDetailPage.includes("BLOG_AUTHOR_PATH")
 ) {
   errors.push("Visible blog authorship, JSON-LD author, and /about editorial policy must stay aligned.");
 }
 
-if (!read("src/app/blog_detail/[slug]/page.tsx").includes("hasContentCta")) {
+if (!blogDetailPage.includes("hasContentCta")) {
   errors.push("Blog detail must avoid rendering its generic CTA when rich content already includes one.");
 }
 
-if (!read("src/app/blog_detail/[slug]/page.tsx").includes('rawContentHtml?.includes("dh-seo-post-legacy")')) {
+if (!blogDetailPage.includes('rawContentHtml?.includes("dh-seo-post-legacy")')) {
   errors.push("Blog detail must strip unscoped legacy style blocks before rendering imported HTML.");
 }
 
@@ -246,7 +299,8 @@ for (const [imageTag] of blogContentSource.matchAll(/<img\b[^>]*>/g)) {
   if (!/\balt=/.test(imageTag)) errors.push(`Inline blog image is missing alt text: ${imageTag}`);
 }
 
-if (!read("src/app/sitemap-index.xml/route.ts").includes('loc: "/about"')) {
+const sitemapIndexSource = exists("src/seo/sitemap-xml.ts") ? read("src/seo/sitemap-xml.ts") : readAppFile("sitemap-index.xml/route.ts");
+if (!readAppFile("sitemap-index.xml/route.ts").includes('loc: "/about"') && !sitemapIndexSource.includes('loc: "/about"')) {
   errors.push("/about must be included in the main sitemap.");
 }
 

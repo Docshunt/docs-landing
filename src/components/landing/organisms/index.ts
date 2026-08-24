@@ -2,6 +2,7 @@ export { DraftFlowDemo, DraftMemoryDemo, DraftProofCarousel, DraftWorkflowPrevie
 export { DraftProgramAnnouncementOverlay, HeroWorkflowCarousel } from "./landing-hero";
 export { LandingFooter } from "./landing-footer";
 export { LandingHeader } from "./landing-header";
+export { LandingShell } from "./landing-shell";
 export {
   DraftFinalCtaSection,
   DraftHeroSection,

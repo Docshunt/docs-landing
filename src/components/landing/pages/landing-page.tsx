@@ -3,12 +3,9 @@
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
-import { JsonLd } from "@/components/json-ld";
-import { LandingBox } from "../design-system/atoms";
-import { LandingFooter, LandingHeader } from "../organisms";
-import { buildAppUrl, type LandingPageClientProps } from "../landing-data";
+import { LandingFooter, LandingHeader, LandingShell } from "../organisms";
+import { buildAppUrl, type LandingPageClientProps } from "../data";
 import { DraftLandingTemplate, LegacyLandingTemplate } from "../templates";
-import { softwareApplicationJsonLd } from "@/seo/metadata";
 
 export function LandingPageClient({ initialDraft = false }: LandingPageClientProps) {
   const pathname = usePathname();
@@ -78,8 +75,7 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
   };
 
   return (
-    <LandingBox className={`page landing-page ${draftLanding ? "draft-landing-page" : ""}`} id="top">
-      <JsonLd data={softwareApplicationJsonLd()} />
+    <LandingShell draftLanding={draftLanding}>
       <LandingHeader
         mobileMenuOpen={mobileMenuOpen}
         onLogoClick={handleLogoClick}
@@ -91,6 +87,6 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
       {draftLanding ? <DraftLandingTemplate onStart={handleStart} /> : <LegacyLandingTemplate onStart={handleStart} />}
 
       <LandingFooter />
-    </LandingBox>
+    </LandingShell>
   );
 }

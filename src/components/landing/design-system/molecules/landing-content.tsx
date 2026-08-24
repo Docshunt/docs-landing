@@ -46,6 +46,14 @@ export function LandingSection({ ariaLabel, children, className, id, labelledBy 
   );
 }
 
+export function LandingMain({ children, ...props }: HTMLAttributes<HTMLElement>) {
+  return (
+    <LandingBox as="main" {...props}>
+      {children}
+    </LandingBox>
+  );
+}
+
 export function LandingCopy({ children, className, inverted = false, narrow = false, title, titleId }: LandingCopyProps) {
   const copyClassName = ["draft-centered-copy", narrow && "narrow", inverted && "inverted", className].filter(Boolean).join(" ");
 

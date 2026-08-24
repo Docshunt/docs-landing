@@ -12,7 +12,7 @@ import {
   LandingVideo,
 } from "../design-system/atoms";
 import { LandingCta, LandingSection } from "../design-system/molecules";
-import { assets, interviewVideos, questionVideo, startPath, toolColumns, youtubeEmbedSrc, type StartHandler } from "../landing-data";
+import { assets, interviewVideos, questionVideo, startPath, toolColumns, youtubeEmbedSrc, type StartHandler } from "../data";
 import { HeroWorkflowCarousel } from "./landing-hero";
 
 export function LegacyHeroSection({ onStart }: { onStart: StartHandler }) {

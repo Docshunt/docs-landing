@@ -2,7 +2,7 @@
 
 import { LandingBox, LandingBreak, LandingHeading, LandingImage, LandingText } from "../design-system/atoms";
 import { LandingCard, LandingCopy, LandingCta, LandingMediaFrame, LandingSection } from "../design-system/molecules";
-import { assets, draftWorkflowCards, startPath, type StartHandler } from "../landing-data";
+import { assets, draftWorkflowCards, startPath, type StartHandler } from "../data";
 import { DraftFlowDemo, DraftMemoryDemo, DraftProofCarousel, DraftWorkflowPreview } from "./landing-demos";
 import { DraftProgramAnnouncementOverlay, HeroWorkflowCarousel } from "./landing-hero";
 

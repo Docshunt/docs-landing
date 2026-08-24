@@ -18,8 +18,6 @@ export const BLOG_AUTHOR_URL = `${SITE_URL}${BLOG_AUTHOR_PATH}`;
 export const DEFAULT_TITLE = "지원사업 사업계획서, AI로 어떻게 작성할까요? | 공고 분석·작성 AI 독스헌트";
 export const DEFAULT_DESCRIPTION =
   "독스헌트는 공고별 문항과 평가 기준을 분석하고, AI가 필요한 질문을 한 뒤 지원사업 사업계획서 초안을 작성하는 서비스입니다. 작성할수록 아이템과 사업 정보가 AI 기억에 쌓여 다음 지원사업을 더 빠르게 준비할 수 있습니다.";
-export const LANDING_OG_DESCRIPTION = DEFAULT_DESCRIPTION;
-export const TWITTER_TITLE = DEFAULT_TITLE;
 export const SEO_KEYWORDS = ["사업계획서", "사업계획서 예시", "사업계획서 AI", "사업계획서 작성", "창업", "독스헌트", "정부지원사업"];
 export const OG_IMAGE = `${SITE_URL}/docshunt-assets/og-new-landing.jpg`;
 export const NAVER_SITE_VERIFICATION = "8b95bd75264aba5160dbc5493c948c6059c20628";

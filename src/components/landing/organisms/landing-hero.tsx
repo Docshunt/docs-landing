@@ -11,7 +11,7 @@ import {
   heroWorkflowProgramClickMs,
   heroWorkflowSlides,
   heroWorkflowSwipeThreshold,
-} from "../landing-data";
+} from "../data";
 
 export type HeroWorkflowSlide = (typeof heroWorkflowSlides)[number];
 

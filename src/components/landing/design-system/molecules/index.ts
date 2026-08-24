@@ -1,1 +1,1 @@
-export { LandingCard, LandingCopy, LandingCta, LandingMediaFrame, LandingSection } from "./landing-content";
+export { LandingCard, LandingCopy, LandingCta, LandingMain, LandingMediaFrame, LandingSection } from "./landing-content";

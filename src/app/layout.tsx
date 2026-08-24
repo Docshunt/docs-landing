@@ -7,16 +7,11 @@ import {
   DEFAULT_TITLE,
   GA_ID,
   GTM_ID,
-  LANDING_OG_DESCRIPTION,
   META_PIXEL_ID,
-  NAVER_SITE_VERIFICATION,
-  OG_IMAGE,
   POSTHOG_HOST,
   POSTHOG_PROJECT_TOKEN,
-  SEO_KEYWORDS,
-  SITE_NAME,
   SITE_URL,
-  TWITTER_TITLE,
+  buildPageMetadata,
   organizationJsonLd,
   websiteJsonLd,
 } from "@/seo/metadata";
@@ -24,37 +19,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: DEFAULT_TITLE,
-  description: DEFAULT_DESCRIPTION,
-  keywords: SEO_KEYWORDS,
-  alternates: {
-    canonical: SITE_URL,
-  },
-  openGraph: {
+  ...buildPageMetadata({
     title: DEFAULT_TITLE,
-    description: LANDING_OG_DESCRIPTION,
-    url: SITE_URL,
-    siteName: SITE_NAME,
-    type: "website",
-    locale: "ko_KR",
-    images: [
-      {
-        url: OG_IMAGE,
-        alt: DEFAULT_TITLE,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: TWITTER_TITLE,
-    description: LANDING_OG_DESCRIPTION,
-    images: [OG_IMAGE],
-  },
-  verification: {
-    other: {
-      "naver-site-verification": NAVER_SITE_VERIFICATION,
-    },
-  },
+    description: DEFAULT_DESCRIPTION,
+    path: "/",
+  }),
 };
 
 export default function RootLayout({

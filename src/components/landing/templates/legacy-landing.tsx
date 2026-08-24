@@ -9,12 +9,12 @@ import {
   LegacySecuritySection,
   LegacyToolsSection,
 } from "../organisms/landing-legacy-sections";
-import type { StartHandler } from "../landing-data";
-import { LandingBox } from "../design-system/atoms";
+import type { StartHandler } from "../data";
+import { LandingMain } from "../design-system/molecules";
 
 export function LegacyLandingTemplate({ onStart }: { onStart: StartHandler }) {
   return (
-    <LandingBox as="main">
+    <LandingMain>
       <LegacyHeroSection onStart={onStart} />
       <LegacyQuestionSection onStart={onStart} />
       <LegacyToolsSection />
@@ -22,6 +22,6 @@ export function LegacyLandingTemplate({ onStart }: { onStart: StartHandler }) {
       <LegacySecuritySection />
       <LegacyProblemGraphic />
       <LegacyFinalCtaSection onStart={onStart} />
-    </LandingBox>
+    </LandingMain>
   );
 }
