@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cardnews Blog Writing"
+  short_description: "Convert card-news files into faithful DocsHunt blog posts"
+  default_prompt: "Use $cardnews-blog-writing to turn the attached card-news into a DocsHunt blog post."
