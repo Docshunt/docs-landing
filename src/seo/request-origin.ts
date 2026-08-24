@@ -27,3 +27,8 @@ export function requestOrigin(request: Request) {
     return fallbackOrigin;
   }
 }
+
+export function absoluteOriginUrl(origin: string, path: string) {
+  const url = new URL(path, origin);
+  return new URL(`${url.pathname}${url.search}${url.hash}`, origin).href;
+}

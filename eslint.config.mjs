@@ -12,6 +12,54 @@ const eslintConfig = defineConfig([
     },
   },
   {
+    files: ["src/components/landing/pages/**/*.tsx", "src/components/landing/templates/**/*.tsx", "src/components/site/pages/**/*.tsx"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["**/design-system/atoms"],
+              message: "Page and template layers must compose molecules or organisms, not landing primitives directly.",
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ["src/components/site/pages/**/*.tsx"],
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector: "JSXOpeningElement[name.name=/^[a-z]/]",
+          message: "Page components must compose templates instead of rendering HTML primitives directly.",
+        },
+        {
+          selector: "JSXFragment",
+          message: "Page components must compose PageDocument or templates instead of direct fragments.",
+        },
+      ],
+    },
+  },
+  {
+    files: ["src/app/**/page.tsx", "src/app/**/not-found.tsx"],
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector: "JSXOpeningElement[name.name=/^[a-z]/]",
+          message: "App route pages must compose page components instead of rendering HTML primitives directly.",
+        },
+        {
+          selector: "JSXFragment",
+          message: "App route pages must use PageDocument or a page component instead of direct fragments.",
+        },
+      ],
+    },
+  },
+  {
     linterOptions: {
       reportUnusedDisableDirectives: "error",
     },

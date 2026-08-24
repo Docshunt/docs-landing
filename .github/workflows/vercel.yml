@@ -126,6 +126,8 @@ jobs:
       NEXT_PUBLIC_CHANNEL_ORIGIN: ${{ vars.NEXT_PUBLIC_CHANNEL_ORIGIN }}
       NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN: ${{ vars.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN }}
       NEXT_PUBLIC_POSTHOG_HOST: ${{ vars.NEXT_PUBLIC_POSTHOG_HOST }}
+      SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
 
     steps:
       - name: Checkout
@@ -178,6 +180,13 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
           test -n "$VERCEL_TOKEN"
+          supabase_args=()
+          if [[ -n "$SUPABASE_URL" && -n "$SUPABASE_SERVICE_ROLE_KEY" ]]; then
+            supabase_args=(
+              --env "SUPABASE_URL=$SUPABASE_URL"
+              --env "SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY"
+            )
+          fi
           deployment_url=$(vercel deploy \
             --yes \
             --prod \
@@ -191,7 +200,8 @@ jobs:
             --env NEXT_PUBLIC_APP_ORIGIN="$NEXT_PUBLIC_APP_ORIGIN" \
             --env NEXT_PUBLIC_CHANNEL_ORIGIN="$NEXT_PUBLIC_CHANNEL_ORIGIN" \
             --env NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN="$NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN" \
-            --env NEXT_PUBLIC_POSTHOG_HOST="$NEXT_PUBLIC_POSTHOG_HOST")
+            --env NEXT_PUBLIC_POSTHOG_HOST="$NEXT_PUBLIC_POSTHOG_HOST" \
+            "${supabase_args[@]}")
           echo "url=$deployment_url" >> "$GITHUB_OUTPUT"
           echo "### Vercel production" >> "$GITHUB_STEP_SUMMARY"
           echo "$deployment_url" >> "$GITHUB_STEP_SUMMARY"
