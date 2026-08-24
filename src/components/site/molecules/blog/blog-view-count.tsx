@@ -36,8 +36,6 @@ export function BlogViewCount({ slug }: BlogViewCountProps) {
     };
   }, [slug]);
 
-  if (viewCount === null) return null;
-
-  const formattedCount = viewCount.toLocaleString("ko-KR");
+  const formattedCount = viewCount === null ? "—" : viewCount.toLocaleString("ko-KR");
   return <span aria-label={`조회수 ${formattedCount}`}>조회수 {formattedCount}</span>;
 }
