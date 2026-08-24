@@ -9663,6 +9663,16 @@ img {
   line-height: inherit;
 }
 
+.blog-view-count {
+  display: inline-block;
+  min-inline-size: 7em;
+  visibility: hidden;
+}
+
+.blog-view-count[data-visible="true"] {
+  visibility: visible;
+}
+
 .about-main {
   padding: 104px 40px 120px;
 }
