@@ -1,6 +1,4 @@
 function getSupabaseConfig() {
-  if (process.env.VERCEL_ENV !== "production") return null;
-
   const url = process.env.SUPABASE_URL?.trim().replace(/\/$/, "");
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
 
