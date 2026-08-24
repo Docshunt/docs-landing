@@ -93,10 +93,10 @@ export async function BlogDetailPageTemplate({ params }: BlogDetailParams) {
             작성·검수 <Link href={BLOG_AUTHOR_PATH}>{post.author ?? BLOG_AUTHOR_NAME}</Link>
           </span>
           <time dateTime={dateToIso(post.date)}>게시 {post.date}</time>
+          <BlogViewCount slug={post.slug} />
           {post.modifiedDate && post.modifiedDate !== post.date ? (
             <time dateTime={dateToIso(post.modifiedDate)}>수정 {post.modifiedDate}</time>
           ) : null}
-          <BlogViewCount slug={post.slug} />
         </div>
         {post.videoEmbedUrl ? (
           <div className="blog-detail-video">
