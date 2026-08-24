@@ -9960,6 +9960,18 @@ img {
   margin: 24px 0 34px;
 }
 
+.blog-detail-body .dh-seo-post .dh-card-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 24px;
+}
+
+.blog-detail-body .dh-seo-post .dh-card-columns p {
+  margin: 0 0 20px;
+}
+
 .blog-detail-body .dh-seo-post .dh-image img {
   display: block;
   width: 100%;
@@ -10168,6 +10180,11 @@ img {
   .blog-detail-body .dh-seo-post h2 {
     margin-top: 48px;
     font-size: 26px;
+  }
+
+  .blog-detail-body .dh-seo-post .dh-card-columns {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .blog-detail-body .dh-seo-post .dh-cta {

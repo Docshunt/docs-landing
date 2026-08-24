@@ -96,6 +96,7 @@ import { post95 } from "./00095-모두의-창업-외주용역-선금을-절반-�
 import { post96 } from "./00096-모두의-창업-로컬트랙-부가세-사업자등록-전에도-빼야-할까요";
 import { post97 } from "./00097-지원사업-공고가-뜨면-사업계획서를-쓰겠다고요-그때는-이미-늦습니다";
 import { post98 } from "./00098-Canva-AI-시대에-2억-6천만-명이-쓰는-이유";
+import { post99 } from "./00099-모두의-창업-선정을-위한-최소-기준";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -106,6 +107,7 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "modoo-startup-selection-minimum-criteria": { category: "startup-insights" },
   "business-plan-feature-list-workflow": { category: "startup-insights" },
   "support-program-business-plan-before-notice": { category: "support-programs" },
   "modoo-startup-local-track-vat-before-registration": { category: "support-programs" },
@@ -243,6 +245,7 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post99,
   post98,
   post97,
   post96,
