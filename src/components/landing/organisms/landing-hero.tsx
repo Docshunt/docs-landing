@@ -628,7 +628,7 @@ export function HeroWorkflowCarousel() {
       role="region"
       tabIndex={0}
     >
-      <LandingBox className="hero-track" style={{ transform: `translateX(-${activeIndex * 100}%)` }}>
+      <LandingBox className="hero-track" style={{ transform: `translateX(-${(activeIndex * 100) / heroWorkflowSlides.length}%)` }}>
         {heroWorkflowSlides.map((slide, index) => (
           <HeroWorkflowSlideCard
             index={index}
