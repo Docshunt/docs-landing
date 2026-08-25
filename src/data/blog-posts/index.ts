@@ -97,6 +97,7 @@ import { post96 } from "./00096-모두의-창업-로컬트랙-부가세-사업�
 import { post97 } from "./00097-지원사업-공고가-뜨면-사업계획서를-쓰겠다고요-그때는-이미-늦습니다";
 import { post98 } from "./00098-Canva-AI-시대에-2억-6천만-명이-쓰는-이유";
 import { post99 } from "./00099-모두의-창업-선정을-위한-최소-기준";
+import { post100 } from "./00100-재즈바도-소설도-하루키는-하루치씩-했습니다";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -107,6 +108,7 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "haruki-murakami-routine-startup-consistency": { category: "startup-insights" },
   "modoo-startup-selection-minimum-criteria": { category: "startup-insights" },
   "business-plan-feature-list-workflow": { category: "startup-insights" },
   "support-program-business-plan-before-notice": { category: "support-programs" },
@@ -245,6 +247,7 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post100,
   post99,
   post98,
   post97,

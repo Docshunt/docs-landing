@@ -15,7 +15,7 @@ Turn card-news source files into one production-ready post under `src/data/blog-
 4. Scaffold the next numbered post with `../blog-writing/scripts/create-blog-post.mjs`. Choose an existing category from the article's subject and search intent, not from the card-news format; selection criteria, judging, and acceptance strategy belong in `startup-insights`.
 5. Extract each card's underlying photo or illustration from an editable deck. For a flattened source, crop only the visual region. Resize those visual assets for the browser while preserving aspect ratio; do not publish full rendered cards as body images.
 6. Recreate the non-image copy as HTML in the same sequence. Preserve headings, line breaks, underlines, emphasis, left or center alignment, image-before-text or text-before-image order, and intentional two-column relationships.
-7. Rebuild the first card as a 1200×750 hero and 384×240 list cover following post 00098: full-bleed source visual with no side padding, the article title over a lower gradient, and the DocsHunt watermark at bottom center. The remaining cards become HTML text plus extracted visual assets.
+7. Rebuild the first card as a 1200×750 hero and 384×240 list cover following post 00098: full-bleed source visual with no side padding, the article title over a lower gradient, and no bottom DocsHunt watermark or footer branding. When updating a cardnews batch, apply the same no-watermark treatment to every affected hero/list cover.
 8. Reuse `.dh-seo-post`, `.dh-image`, and `.dh-card-columns`. Add only the smallest shared responsive CSS needed to express a source layout that existing blocks cannot render.
 9. Keep editorial copy exact unless the user asks for rewriting, but omit platform-only actions such as asking readers to comment a keyword or promising to send a link by DM. Replace them with one direct blog CTA when appropriate.
 10. Add only metadata, semantic image `alt` text, sources, and exactly one `.dh-cta` containing one `.dh-cta-button`; do not duplicate it with another generic CTA.
@@ -26,6 +26,7 @@ Turn card-news source files into one production-ready post under `src/data/blog-
 
 - One numbered post module and its index registration.
 - One hero cover, one list cover, and the source cards' extracted visual regions as inline images.
+- Cardnews-derived hero and list covers do not contain a bottom DocsHunt watermark or footer branding.
 - No full-card body images and no social-platform comment or DM CTA.
 - No temporary files in the repository.
 - A concise handoff with the preview URL and verification results.
