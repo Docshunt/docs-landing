@@ -100,6 +100,9 @@ export function buildPageMetadata({
     keywords,
     alternates: {
       canonical: url,
+      types: {
+        "application/rss+xml": absoluteUrl("/feed.xml"),
+      },
     },
     openGraph: {
       title,

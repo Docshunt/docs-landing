@@ -28,7 +28,7 @@ export const STATIC_SITEMAP_URLS: SitemapUrl[] = [
   { loc: "/payment_policy", priority: "0.2", changefreq: "yearly" },
 ];
 
-function escapeXml(value: string) {
+export function escapeXml(value: string) {
   return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
 }
 
