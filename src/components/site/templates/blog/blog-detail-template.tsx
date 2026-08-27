@@ -52,9 +52,14 @@ export async function BlogDetailPageTemplate({ params }: BlogDetailParams) {
   if (!post) notFound();
 
   const rawContentHtml = post.contentHtml ?? BLOG_CONTENT_HTML[post.slug] ?? BLOG_CONTENT_HTML[decodeBlogSlug(post.slug)];
-  const contentHtml = rawContentHtml?.includes("dh-seo-post-legacy")
-    ? rawContentHtml.replace(/<style>[\s\S]*?<\/style>/, "")
-    : rawContentHtml;
+  const contentWithoutEmbeddedStyles = rawContentHtml?.includes("dh-seo-post-legacy")
+    ? rawContentHtml.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "")
+    : rawContentHtml?.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "");
+  const contentWithoutInlineStyles = contentWithoutEmbeddedStyles?.replace(
+    /\sstyle=(['"])text-align:\s*center;?\1/gi,
+    ' data-dh-align="center"',
+  );
+  const contentHtml = contentWithoutInlineStyles?.replace(/\sstyle=(['"])[\s\S]*?\1/gi, "");
   const hasContentCta = contentHtml?.includes('class="dh-cta-button"') ?? false;
   const recommendedPosts = getRecommendedPosts(post.slug);
   const recommendationCards = recommendedPosts.map((recommended) => ({

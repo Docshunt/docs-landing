@@ -30,6 +30,7 @@
     "build:strict": "npm run validate && npm run build",
     "blog:check-numbers": "node .agents/skills/blog-writing/scripts/check-blog-numbering.mjs",
     "blog:editor:check": "node .agents/skills/docshunt-blog-editor/scripts/check-portability.mjs",
+    "indexnow:submit": "node scripts/submit-indexnow.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "start": "next start -p 3001",
