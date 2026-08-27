@@ -91,7 +91,11 @@ export function LegacyQuestionSection({ onStart }: { onStart: StartHandler }) {
           <LandingCta kind="cta" href={startPath} onClick={onStart} small>
             무료 체험하기
           </LandingCta>
-          <LandingImage className="feature-card-image" src={`${assets}/feature-question-answer-mobile.webp`} alt="" />
+          <LandingImage
+            className="feature-card-image"
+            src={`${assets}/feature-question-answer-mobile.webp`}
+            alt="사업계획서 문항별 질문과 답변을 정리하는 독스헌트 화면"
+          />
         </LandingBox>
         <LandingBox as="article" className="wide-card two">
           <LandingHeading as="h3">
@@ -108,7 +112,11 @@ export function LegacyQuestionSection({ onStart }: { onStart: StartHandler }) {
           <LandingCta kind="cta" href={startPath} onClick={onStart} small>
             무료 체험하기
           </LandingCta>
-          <LandingImage className="feature-card-image" src={`${assets}/feature-hwp-template-mobile.webp`} alt="" />
+          <LandingImage
+            className="feature-card-image"
+            src={`${assets}/feature-hwp-template-mobile.webp`}
+            alt="지원사업 한글 양식에 사업계획서를 맞추는 독스헌트 화면"
+          />
         </LandingBox>
       </LandingBox>
     </LandingSection>
@@ -145,7 +153,7 @@ export function LegacyToolsSection() {
                 </LandingBox>
                 <LandingPicture>
                   <LandingSource media="(max-width: 1200px)" srcSet={tool.mobileImage} />
-                  <LandingImage src={tool.image} alt="" />
+                  <LandingImage src={tool.image} alt={tool.title.replace("\n", " ")} />
                 </LandingPicture>
               </LandingBox>
             ))}

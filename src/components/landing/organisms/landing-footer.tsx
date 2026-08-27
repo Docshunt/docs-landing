@@ -22,7 +22,7 @@ export function LandingFooter() {
       </LandingBox>
       <LandingBox className="footer-bottom">
         <LandingLink className="instagram" href="https://www.instagram.com/docshunt.ai/" target="_blank" rel="noreferrer">
-          <LandingImage src={`${assets}/instagram-icon.webp`} alt="" />
+          <LandingImage src={`${assets}/instagram-icon.webp`} alt="독스헌트 인스타그램" />
           <LandingText as="span">docshunt.ai</LandingText>
         </LandingLink>
         <LandingBox className="legal-links">

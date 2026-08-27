@@ -61,7 +61,7 @@ export function DocshuntFooter() {
       </div>
       <div className="footer-bottom">
         <a className="instagram" href="https://www.instagram.com/docshunt.ai/" target="_blank" rel="noreferrer">
-          <img src={`${assets}/instagram-icon.png`} alt="" />
+          <img src={`${assets}/instagram-icon.png`} alt="독스헌트 인스타그램" />
           <span>docshunt.ai</span>
         </a>
         <div className="legal-links">
