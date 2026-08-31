@@ -1,10 +1,17 @@
 import assert from "node:assert/strict";
+import { createRequire } from "node:module";
 import test from "node:test";
 
-import type { BlogPost } from "../src/data/blog-posts/types.ts";
-import { videoObjectJsonLd, videoWatchPath } from "../src/seo/metadata.ts";
+type JsonLd = Record<string, unknown>;
+type MetadataModule = {
+  videoObjectJsonLd(post: object): JsonLd | undefined;
+  videoWatchPath(slug: string): string;
+};
 
-const postWithVideo: BlogPost = {
+const require = createRequire(import.meta.url);
+const { videoObjectJsonLd, videoWatchPath } = require("../src/seo/metadata.ts") as MetadataModule;
+
+const postWithVideo = {
   page: 1,
   index: 1,
   slug: "video-seo-fixture",
@@ -19,13 +26,13 @@ const postWithVideo: BlogPost = {
   paragraphs: ["테스트"],
 };
 
-const postWithoutVideo: BlogPost = {
+const postWithoutVideo = {
   ...postWithVideo,
   slug: "no-video-fixture",
   sourceUrl: "https://docshunt.ai/blog_detail/no-video-fixture",
+  videoEmbedUrl: undefined,
+  videoTitle: undefined,
 };
-delete postWithoutVideo.videoEmbedUrl;
-delete postWithoutVideo.videoTitle;
 
 test("adds a complete VideoObject to video interview article metadata", () => {
   const video = videoObjectJsonLd(postWithVideo);
