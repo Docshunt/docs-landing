@@ -99,6 +99,7 @@ import { post98 } from "./00098-Canva-AI-시대에-2억-6천만-명이-쓰는-�
 import { post99 } from "./00099-모두의-창업-선정을-위한-최소-기준";
 import { post100 } from "./00100-재즈바도-소설도-하루키는-하루치씩-했습니다";
 import { post101 } from "./00101-모두의-창업-2차-신청서-작성-가이드";
+import { post102 } from "./00102-2027년-지원사업-공고보다-먼저-3년-성장-경로를-정리해야-하는-이유";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -109,6 +110,7 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "2027-support-program-budget-growth-path": { category: "support-programs" },
   "modoo-startup-2-application-writing-guide": { category: "support-programs" },
   "haruki-murakami-routine-startup-consistency": { category: "startup-insights" },
   "modoo-startup-selection-minimum-criteria": { category: "startup-insights" },
@@ -249,6 +251,7 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post102,
   post101,
   post100,
   post99,
