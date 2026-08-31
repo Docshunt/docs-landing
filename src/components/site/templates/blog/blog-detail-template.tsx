@@ -7,7 +7,16 @@ import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/json-ld";
 import { BLOG_CONTENT_HTML } from "@/data/docshunt-blog-content";
 import { BLOG_POSTS, BLOG_TOPIC_GROUPS, decodeBlogSlug, findBlogPost, getRecommendedPosts } from "@/data/docshunt-blogs";
-import { APP_URL, articleJsonLd, BLOG_AUTHOR_NAME, BLOG_AUTHOR_PATH, breadcrumbJsonLd, buildPageMetadata, dateToIso } from "@/seo/metadata";
+import {
+  APP_URL,
+  articleJsonLd,
+  BLOG_AUTHOR_NAME,
+  BLOG_AUTHOR_PATH,
+  breadcrumbJsonLd,
+  buildPageMetadata,
+  dateToIso,
+  videoWatchPath,
+} from "@/seo/metadata";
 
 type BlogDetailParams = {
   params: Promise<{
@@ -61,6 +70,7 @@ export async function BlogDetailPageTemplate({ params }: BlogDetailParams) {
   );
   const contentHtml = contentWithoutInlineStyles?.replace(/\sstyle=(['"])[\s\S]*?\1/gi, "");
   const hasContentCta = contentHtml?.includes('class="dh-cta-button"') ?? false;
+  const videoTitle = post.videoTitle ?? `${post.title} 인터뷰 영상`;
   const recommendedPosts = getRecommendedPosts(post.slug);
   const recommendationCards = recommendedPosts.map((recommended) => ({
     image: recommended.image,
@@ -104,15 +114,14 @@ export async function BlogDetailPageTemplate({ params }: BlogDetailParams) {
           <BlogViewCount slug={post.slug} />
         </div>
         {post.videoEmbedUrl ? (
-          <div className="blog-detail-video">
-            <iframe
-              src={post.videoEmbedUrl}
-              title={post.videoTitle ?? `${post.title} 인터뷰 영상`}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
-          </div>
+          <Link
+            className="blog-detail-video blog-detail-video-link"
+            href={videoWatchPath(post.slug)}
+            aria-label={`${videoTitle} 영상 보기`}
+          >
+            <img src={post.heroImage} alt={`${videoTitle} 썸네일`} />
+            <span className="blog-detail-video-link-label">영상 인터뷰 보기 →</span>
+          </Link>
         ) : (
           <img className="blog-detail-hero" src={post.heroImage} alt={`${post.title} 대표 이미지`} />
         )}

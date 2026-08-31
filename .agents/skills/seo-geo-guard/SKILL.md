@@ -1,6 +1,6 @@
 ---
 name: seo-geo-guard
-description: Use whenever a docs-landing page, route, blog data, metadata, sitemap, robots, llms.txt, ai.txt, proxy behavior, public crawler-facing asset, or Bing Webmaster SEO report finding changes. Detects SEO/GEO impact for new pages and existing page edits.
+description: Use whenever a docs-landing page, route, blog data, metadata, sitemap, robots, llms.txt, ai.txt, proxy behavior, public crawler-facing asset, or Bing/Google video indexing report finding changes. Detects SEO/GEO impact for new pages and existing page edits.
 ---
 
 # SEO/GEO Guard Skill
@@ -63,6 +63,15 @@ Preferred pattern:
 - Shared constants/helpers live in `src/seo/metadata.ts`.
 - Page metadata should use shared helpers such as `buildPageMetadata` when available.
 - Blog detail metadata must derive from the same blog post data used for rendering.
+
+### Optional video SEO branch
+
+When a blog post includes `videoEmbedUrl`:
+
+- Keep video fields optional. Posts without `videoEmbedUrl` remain ordinary article pages and emit no video JSON-LD or video sitemap entry.
+- Treat `/video/[slug]` as the dedicated watch page. Put the player near the top and emit `VideoObject` JSON-LD with `name`, `thumbnailUrl`, `uploadDate`, and the provider `embedUrl` (for example, a YouTube embed URL).
+- On the long-form `/blog_detail/[slug]` page, use a crawlable thumbnail/link to the watch page instead of making the article itself the watch page. This prevents Search Console's `동영상이 보기 페이지에 없음` finding.
+- Add only video-bearing watch URLs to the sitemap. After deployment, inspect representative watch URLs and validate the Video indexing issue in Search Console.
 
 ## Bing Webmaster Recommendation Baseline
 

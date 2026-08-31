@@ -315,6 +315,37 @@ export function articleJsonLd(post: BlogPost) {
   };
 }
 
+export function videoWatchPath(slug: string) {
+  return `/video/${encodeURIComponent(slug)}`;
+}
+
+export function videoThumbnailUrl(post: BlogPost) {
+  return absoluteUrl(post.heroImage);
+}
+
+export function videoObjectJsonLd(post: BlogPost) {
+  if (!post.videoEmbedUrl) return undefined;
+
+  const uploadDate = dateToIso(post.date);
+  if (!uploadDate) return undefined;
+
+  const videoUrl = absoluteUrl(videoWatchPath(post.slug));
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "@id": `${videoUrl}#video`,
+    name: post.videoTitle ?? `${post.title} 영상`,
+    description: post.description,
+    thumbnailUrl: videoThumbnailUrl(post),
+    uploadDate,
+    embedUrl: post.videoEmbedUrl,
+    url: videoUrl,
+    inLanguage: "ko-KR",
+    publisher: { "@id": `${SITE_URL}/#organization` },
+  };
+}
+
 export function breadcrumbJsonLd(items: Array<{ name: string; path: string }>) {
   return {
     "@context": "https://schema.org",
