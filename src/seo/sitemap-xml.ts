@@ -1,6 +1,6 @@
 import { BLOG_CATEGORIES, BLOG_PAGE_COUNT, BLOG_POSTS, BLOG_POSTS_PER_PAGE, getPostsByCategory } from "@/data/docshunt-blogs";
 
-import { dateToIso } from "./metadata";
+import { dateToIso, videoWatchPath } from "./metadata";
 import { absoluteOriginUrl } from "./request-origin";
 
 export type SitemapUrl = {
@@ -95,10 +95,24 @@ export function blogListSitemapUrls(): SitemapUrl[] {
 }
 
 export function blogDetailSitemapUrls(): SitemapUrl[] {
-  return BLOG_POSTS.map((post) => {
+  const blogUrls = BLOG_POSTS.map((post) => {
     const lastmod = dateToIso(post.modifiedDate ?? post.date);
     return {
       loc: post.sourceUrl,
+      ...(lastmod ? { lastmod } : {}),
+      priority: "0.7",
+      changefreq: "monthly" as const,
+    };
+  });
+
+  return [...blogUrls, ...videoWatchSitemapUrls()];
+}
+
+export function videoWatchSitemapUrls(): SitemapUrl[] {
+  return BLOG_POSTS.filter((post) => post.videoEmbedUrl).map((post) => {
+    const lastmod = dateToIso(post.modifiedDate ?? post.date);
+    return {
+      loc: videoWatchPath(post.slug),
       ...(lastmod ? { lastmod } : {}),
       priority: "0.7",
       changefreq: "monthly" as const,
