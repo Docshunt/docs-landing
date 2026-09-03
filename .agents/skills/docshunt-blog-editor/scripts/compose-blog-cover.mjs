@@ -75,7 +75,7 @@ const titleLines = readArg("--title-lines")
 const heroOutputInput = readArg("--hero-output");
 const listOutputInput = readArg("--list-output");
 const accentLine = Number(readArg("--accent-line", String(titleLines.length)));
-const accent = readArg("--accent", "#2f80ed");
+const accent = readArg("--accent", "#ffffff");
 const backgroundPosition = readArg("--background-position", "center");
 const fontSize = Number(readArg("--font-size", "62"));
 const minimumFontSize = Number(readArg("--minimum-font-size", "42"));
@@ -115,10 +115,9 @@ for (const filePath of [background]) {
   if (!fs.existsSync(filePath)) throw new Error(`Asset not found: ${filePath}`);
 }
 
-const logo = path.join(repositoryRoot, "public/docshunt-assets/docshunt-logo.svg");
 const font = path.join(repositoryRoot, "public/docshunt-assets/fonts/pyeojin-gothic-bold.woff2");
 
-for (const filePath of [logo, font]) {
+for (const filePath of [font]) {
   if (!fs.existsSync(filePath)) throw new Error(`Repository asset not found: ${filePath}`);
 }
 
@@ -161,15 +160,15 @@ const html = `<!doctype html>
       width: 1200px;
       height: 750px;
       overflow: hidden;
-      background: #f7f9fc;
-      color: #171b24;
+      background: #090b10;
+      color: #ffffff;
       font-family: "PyeojinGothic", Arial, sans-serif;
       letter-spacing: 0;
     }
     .visual {
       position: absolute;
-      inset: 0 0 0 auto;
-      width: 57%;
+      inset: 0;
+      width: 100%;
       height: 100%;
       overflow: hidden;
       background: #eef2f7;
@@ -183,31 +182,27 @@ const html = `<!doctype html>
     .visual::after {
       content: "";
       position: absolute;
-      inset: 0 auto 0 0;
-      width: 28%;
-      background: linear-gradient(90deg, #f7f9fc 0%, rgba(247, 249, 252, 0) 100%);
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(5, 7, 11, 0.78) 0%, rgba(5, 7, 11, 0.5) 44%, rgba(5, 7, 11, 0.04) 78%),
+        linear-gradient(0deg, rgba(5, 7, 11, 0.72) 0%, rgba(5, 7, 11, 0) 58%);
     }
     .copy {
       position: absolute;
       z-index: 2;
-      left: 68px;
-      top: 66px;
-      width: 548px;
-      height: 618px;
-      display: flex;
-      flex-direction: column;
+      left: 72px;
+      bottom: 62px;
+      width: 660px;
     }
-    .logo { width: 192px; height: auto; }
     .title {
-      margin-top: 150px;
-      width: 548px;
+      width: 660px;
       font-size: ${fontSize}px;
-      line-height: 1.18;
+      line-height: 1.14;
       font-weight: 700;
       letter-spacing: 0;
     }
     .title-line { display: block; white-space: nowrap; }
-    .title-line + .title-line { margin-top: 10px; }
+    .title-line + .title-line { margin-top: 7px; }
     .title-line.accent { color: ${escapeHtml(accent)}; }
   </style>
 </head>
@@ -216,7 +211,6 @@ const html = `<!doctype html>
     <main id="cover">
       <div class="visual"><img src="${dataUrl(background)}" alt="" /></div>
       <div class="copy">
-        <img class="logo" src="${dataUrl(logo)}" alt="DocsHunt" />
         <div class="title">${lineMarkup}</div>
       </div>
     </main>

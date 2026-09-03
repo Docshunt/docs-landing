@@ -18,7 +18,7 @@ Use only company-owned screenshots, newly generated assets, or images with expli
 2. Reduce the cover copy to two or three short lines. It may be shorter than the HTML title but must make the same claim.
 3. Choose one visual metaphor or subject. Do not combine several objects, badges, labels, or feature lists.
 4. When using image generation, request a **text-free** 16:10 background with a clear subject and enough negative space for the title.
-5. Compose the DocsHunt logo and Korean copy with `scripts/compose-blog-cover.mjs`.
+5. Compose the Korean copy over the full-bleed visual with `scripts/compose-blog-cover.mjs`.
 6. Inspect both 1200×750 and 384×240 output. The list image must remain readable without a separate layout.
 7. Open the actual `/blog_list` and `/blog_detail/[slug]` routes at 390, 768, and 1440 pixels.
 
@@ -57,7 +57,7 @@ Rules:
 - Separate deliberate line breaks with `|`.
 - Use two or three lines only.
 - Use `--accent-line` to color at most one line.
-- The compositor uses the repository logo and Pyeojin Gothic font.
+- The compositor uses the repository Pyeojin Gothic font.
 - It crops the source visual with `object-fit: cover`; it never changes the source aspect ratio.
 - It reduces type size only when required to keep every line inside the text-safe region.
 
