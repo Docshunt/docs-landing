@@ -101,6 +101,7 @@ import { post100 } from "./00100-재즈바도-소설도-하루키는-하루치�
 import { post101 } from "./00101-모두의-창업-2차-신청서-작성-가이드";
 import { post102 } from "./00102-2027년-지원사업-공고보다-먼저-3년-성장-경로를-정리해야-하는-이유";
 import { post103 } from "./00103-어사이드-AI-브라우저-2년간-7번-피벗하고-2주-만에-2만-유저";
+import { post104 } from "./00104-마크-큐반은-왜-반값-약국을-차렸을까";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -111,6 +112,7 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "mark-cuban-cost-plus-drugs-price-transparency": { category: "startup-insights" },
   "aside-ai-browser-seven-pivots": { category: "startup-insights" },
   "2027-support-program-budget-growth-path": { category: "support-programs" },
   "modoo-startup-2-application-writing-guide": { category: "support-programs" },
@@ -253,6 +255,7 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post104,
   post103,
   post102,
   post101,
