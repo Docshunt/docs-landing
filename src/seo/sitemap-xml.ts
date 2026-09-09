@@ -2,6 +2,9 @@ import { BLOG_CATEGORIES, BLOG_PAGE_COUNT, BLOG_POSTS, BLOG_POSTS_PER_PAGE, getP
 
 import { dateToIso, videoWatchPath } from "./metadata";
 import { absoluteOriginUrl } from "./request-origin";
+import { escapeXml } from "./xml";
+
+export { escapeXml } from "./xml";
 
 export type SitemapUrl = {
   loc: string;
@@ -11,7 +14,12 @@ export type SitemapUrl = {
 };
 
 export const SITEMAP_INDEX_PATH = "/sitemap.xml";
-export const SITEMAP_PATHS = ["/sitemap-index.xml", "/sitemap-blog_detail.xml", "/sitemap-blog_list.xml"] as const;
+export const SITEMAP_PATHS = [
+  "/sitemap-index.xml",
+  "/sitemap-blog_detail.xml",
+  "/sitemap-blog_list.xml",
+  "/sitemap-support-programs.xml",
+] as const;
 
 export const STATIC_SITEMAP_URLS: SitemapUrl[] = [
   { loc: "/", priority: "1.0", changefreq: "weekly" },
@@ -21,16 +29,13 @@ export const STATIC_SITEMAP_URLS: SitemapUrl[] = [
   { loc: "/sample", priority: "0.7", changefreq: "monthly" },
   { loc: "/review", priority: "0.7", changefreq: "monthly" },
   { loc: "/updates", priority: "0.6", changefreq: "weekly" },
+  { loc: "/support-programs", priority: "0.8", changefreq: "daily" },
   { loc: "/how_to_convert_hwpx", priority: "0.6", changefreq: "yearly" },
   { loc: "/privacy_policy", priority: "0.3", changefreq: "yearly" },
   { loc: "/business_info", priority: "0.3", changefreq: "yearly" },
   { loc: "/terms", priority: "0.3", changefreq: "yearly" },
   { loc: "/payment_policy", priority: "0.2", changefreq: "yearly" },
 ];
-
-export function escapeXml(value: string) {
-  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
-}
 
 function renderUrl(origin: string, url: SitemapUrl) {
   return `  <url>

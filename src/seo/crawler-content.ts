@@ -39,6 +39,7 @@ export function llmsTxt(origin: string) {
 - HWP를 HWPX로 변환하는 방법: ${siteUrl("/how_to_convert_hwpx")}
 - 독스헌트 사용자 후기: ${siteUrl("/review")}
 - 사업계획서·지원사업 가이드: ${siteUrl("/blog_list")}
+- 최신 지원사업 공고: ${siteUrl("/support-programs")}
 - 블로그 카테고리 허브:
 ${BLOG_CATEGORIES.map(({ id, label }) => `  - ${label}: ${siteUrl(`/blog_list?category=${id}`)}`).join("\n")}
 - 제품 업데이트와 변경 사항: ${siteUrl("/updates")}
@@ -78,6 +79,7 @@ ${topicGuides}
 ## 크롤링
 
 - Sitemap: ${siteUrl(SITEMAP_INDEX_PATH)}
+- 지원사업 RSS: ${siteUrl("/rss.xml")}
 - Robots: ${siteUrl("/robots.txt")}
 `;
 
