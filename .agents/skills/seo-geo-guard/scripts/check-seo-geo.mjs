@@ -131,8 +131,15 @@ if (!exists("src/seo/metadata.ts")) {
   if (/localhost|127\.0\.0\.1|192\.168\./.test(metadata)) {
     errors.push("Localhost/LAN URL detected in src/seo/metadata.ts.");
   }
-  if (!/DEFAULT_TITLE\s*=\s*"[^"]+\?/.test(metadata)) {
-    errors.push("Landing DEFAULT_TITLE must lead with the target search question.");
+  const defaultTitle = metadata.match(/DEFAULT_TITLE\s*=\s*"([^"]+)"/)?.[1];
+  if (
+    !defaultTitle ||
+    defaultTitle.length < 30 ||
+    defaultTitle.length > 60 ||
+    !defaultTitle.includes("사업계획서") ||
+    !defaultTitle.includes("독스헌트")
+  ) {
+    errors.push("Landing DEFAULT_TITLE must be 30-60 characters and include 사업계획서 and 독스헌트.");
   }
   if (!/DEFAULT_DESCRIPTION\s*=\s*\n?\s*"독스헌트는/.test(metadata)) {
     errors.push("Landing DEFAULT_DESCRIPTION must begin with a direct answer.");
