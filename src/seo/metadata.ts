@@ -64,6 +64,9 @@ export const HWPX_GUIDE_DESCRIPTION = "한컴오피스와 온라인 변환 도�
 export const REVIEW_TITLE = "독스헌트 사용자 후기 | 정부지원사업 사업계획서 작성 AI 활용 과정과 경험";
 export const REVIEW_DESCRIPTION =
   "사업계획서 작성과 정부지원사업 준비에 독스헌트를 활용한 사용자의 경험을 살펴보세요. 공고 분석, AI 초안 작성, 문항 보완과 제출 전 검토에 어떻게 활용했는지 실제 작성 흐름을 확인할 수 있습니다.";
+export const SUPPORT_PROGRAMS_TITLE = "정부지원사업 공고 | 독스헌트";
+export const SUPPORT_PROGRAMS_DESCRIPTION =
+  "최신 정부지원사업과 창업지원사업 공고의 주관기관, 마감일, 지원금, 지역과 지원 내용을 확인하세요.";
 
 export function absoluteUrl(path: string) {
   if (path.startsWith("http://") || path.startsWith("https://")) {
@@ -82,6 +85,7 @@ export function buildPageMetadata({
   locale = "ko_KR",
   keywords = SEO_KEYWORDS,
   robots,
+  rssPath = "/feed.xml",
 }: {
   title: string;
   description: string;
@@ -91,6 +95,7 @@ export function buildPageMetadata({
   locale?: string;
   keywords?: string[];
   robots?: Metadata["robots"];
+  rssPath?: string;
 }): Metadata {
   const url = absoluteUrl(path);
   const absoluteImage = absoluteUrl(image);
@@ -101,7 +106,7 @@ export function buildPageMetadata({
     alternates: {
       canonical: url,
       types: {
-        "application/rss+xml": absoluteUrl("/feed.xml"),
+        "application/rss+xml": absoluteUrl(rssPath),
       },
     },
     openGraph: {
