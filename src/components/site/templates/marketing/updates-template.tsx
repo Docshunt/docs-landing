@@ -2,7 +2,7 @@ import { BlogPageShell } from "@/components/site/layout/blog-page-shell";
 import type { Metadata } from "next";
 
 import { JsonLd } from "@/components/json-ld";
-import { PRODUCT_UPDATES } from "@/data/product-updates";
+import { PRODUCT_UPDATES_LATEST_FIRST } from "@/data/product-updates";
 import { UPDATES_DESCRIPTION, UPDATES_TITLE, absoluteUrl, buildPageMetadata, dateToIso, webPageJsonLd } from "@/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -19,7 +19,7 @@ const updatesJsonLd = {
   description: UPDATES_DESCRIPTION,
   url: absoluteUrl("/updates"),
   inLanguage: "ko-KR",
-  itemListElement: PRODUCT_UPDATES.map((update, index) => ({
+  itemListElement: PRODUCT_UPDATES_LATEST_FIRST.map((update, index) => ({
     "@type": "ListItem",
     position: index + 1,
     item: {
@@ -53,7 +53,7 @@ export function UpdatesPageTemplate() {
                 </div>
               </div>
               <div className="updates-feed">
-                {PRODUCT_UPDATES.map((update) => (
+                {PRODUCT_UPDATES_LATEST_FIRST.map((update) => (
                   <article className="update-card" id={update.slug} key={update.slug}>
                     <div className="update-card-meta">
                       <div className="update-card-chips" aria-label="업데이트 주제">

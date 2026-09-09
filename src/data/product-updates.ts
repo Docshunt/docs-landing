@@ -224,3 +224,27 @@ export const PRODUCT_UPDATES: readonly ProductUpdate[] = [
     ],
   },
 ];
+
+const PRODUCT_UPDATE_DATE_PATTERN = /^\d{4}\.\d{2}\.\d{2}$/;
+
+function isValidProductUpdateDate(value: string) {
+  if (!PRODUCT_UPDATE_DATE_PATTERN.test(value)) return false;
+
+  const [yearText, monthText, dayText] = value.split(".");
+  const year = Number(yearText);
+  const month = Number(monthText);
+  const day = Number(dayText);
+  const date = new Date(Date.UTC(year, month - 1, day));
+
+  return date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day;
+}
+
+export function latestProductUpdateVersion(updates: readonly ProductUpdate[] = PRODUCT_UPDATES) {
+  return updates
+    .map((update) => update.publishedAt)
+    .filter(isValidProductUpdateDate)
+    .sort()
+    .at(-1);
+}
+
+export const PRODUCT_UPDATES_LATEST_FIRST = [...PRODUCT_UPDATES].sort((left, right) => right.publishedAt.localeCompare(left.publishedAt));
