@@ -23275,3 +23275,190 @@ img {
     aspect-ratio: 3 / 2;
   }
 }
+
+/* Mobile copy and demos use readable type without scaling the desktop canvas. */
+@media (max-width: 767.98px) {
+  .draft-landing-page .draft-mobile-copy-line {
+    display: block;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    text-wrap: balance;
+  }
+
+  .draft-landing-page #draft-proof-title {
+    font-size: 24px;
+    line-height: 1.4;
+    word-break: keep-all;
+    text-wrap: balance;
+  }
+
+  .draft-landing-page .draft-proof-content {
+    padding-top: 28px;
+  }
+
+  .draft-landing-page .draft-proof-quote {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    text-wrap: pretty;
+  }
+
+  .landing-page.draft-landing-page .draft-landing-main .draft-memory-chat-to-reference {
+    aspect-ratio: auto;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 224px 196px;
+    gap: 20px;
+    padding: 28px 16px 20px;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-card-copy h2 {
+    font-size: 24px;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-card-copy p {
+    font-size: 13px;
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-mobile-break {
+    display: none;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-chat-stage,
+  .draft-memory-chat-to-reference .draft-memory-reference-stage {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    height: 224px;
+    min-width: 0;
+    align-self: stretch;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-reference-stage {
+    grid-row: 3;
+    height: 196px;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-chat-stage::after {
+    content: "";
+    position: absolute;
+    bottom: -14px;
+    left: calc(50% - 4px);
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #b7acf2;
+    border-bottom: 2px solid #b7acf2;
+    transform: rotate(45deg);
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-transfer-stream {
+    display: none;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-chat-shell,
+  .draft-memory-chat-to-reference .draft-memory-reference-card {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-chat-thread {
+    height: 100%;
+    padding: 16px 14px;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-chat-flow {
+    gap: 16px;
+    justify-content: flex-start;
+  }
+
+  .draft-memory-chat-to-reference .draft-actual-chat-scroll .draft-actual-assistant-message-content p,
+  .draft-memory-chat-to-reference .draft-actual-chat-scroll .draft-actual-user-message-content {
+    font-size: 13px;
+    line-height: 1.65;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  .draft-memory-chat-to-reference .draft-actual-chat-scroll .draft-actual-user-message-content {
+    max-width: 94%;
+    border-radius: 14px;
+    padding: 10px 12px;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-reference-card {
+    padding: 16px 12px;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-reference-header {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-reference-header strong {
+    font-size: 16px;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-reference-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-reference-body {
+    height: auto;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-plain-list,
+  .draft-memory-chat-to-reference .draft-memory-plain-list.is-rolling {
+    gap: 8px;
+    animation: none;
+    transform: none;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-plain-list li {
+    height: 26px;
+    padding-left: 20px;
+    font-size: 12px;
+    line-height: 26px;
+  }
+
+  .draft-memory-chat-to-reference .draft-memory-plain-list li::before {
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 359.98px) {
+  .draft-landing-page #draft-proof-title {
+    font-size: 20px;
+  }
+
+  .draft-landing-page .draft-proof-content {
+    padding: 22px 18px 0;
+  }
+
+  .draft-landing-page .draft-proof-content h3 {
+    font-size: 21px;
+    line-height: 1.25;
+  }
+
+  .draft-landing-page .draft-proof-quote {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .draft-landing-page .draft-proof-author {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+
+  .draft-landing-page .draft-proof-cta {
+    bottom: 18px;
+    left: 18px;
+  }
+}

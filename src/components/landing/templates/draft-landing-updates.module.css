@@ -1,0 +1,34 @@
+/* Limit refinements to the reviewed draft; other landing variants stay unchanged. */
+.main :global(.draft-proof-eyebrow) {
+  margin: 0 auto 16px;
+  color: #3478f6;
+  font-size: clamp(14px, 1.25vw, 18px);
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  word-break: keep-all;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  :global(.landing-page.draft-landing-page) .main:global(.draft-landing-main) > :global(.hero) {
+    --hero-bottom-space: 80px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 819.98px) {
+  :global(.landing-page.draft-landing-page) .main:global(.draft-landing-main) > :global(.hero) {
+    --hero-slide-width: 600px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .main :global(.draft-dark-workflow) {
+    padding-block: 72px 88px;
+  }
+
+  .main :global(.draft-final-cta h2) {
+    font-size: clamp(26px, 6.7vw, 38px);
+    line-height: 1.35;
+    word-break: keep-all;
+  }
+}

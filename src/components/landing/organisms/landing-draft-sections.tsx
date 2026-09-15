@@ -5,26 +5,70 @@ import { LandingCard, LandingCopy, LandingCta, LandingMediaFrame, LandingSection
 import { assets, draftWorkflowCards, startPath, type StartHandler } from "../data";
 import { DraftFlowDemo, DraftMemoryDemo, DraftProofCarousel, DraftWorkflowPreview } from "./landing-demos";
 import { DraftProgramAnnouncementOverlay, HeroWorkflowCarousel } from "./landing-hero";
+import { InterviewMarquee } from "./interview-marquee";
+import { DocumentMarquee } from "./document-marquee";
+import { MemoryReuseDemo } from "./memory-reuse-demo";
+import { MemoryReusePreview } from "./memory-reuse-preview";
+import workflowStyles from "./memory-reuse-preview.module.css";
 
-export function DraftHeroSection({ onStart }: { onStart: StartHandler }) {
+export function DraftHeroSection({ onStart, selectedUpdates = false }: { onStart: StartHandler; selectedUpdates?: boolean }) {
   return (
     <LandingSection className="hero" labelledBy="draft-hero-title">
       <LandingBox className="hero-copy">
         <LandingHeading as="h1" className="hero-title" id="draft-hero-title">
-          모든 지원사업,
+          {selectedUpdates ? "지원사업 공고에 맞춰," : "모든 지원사업,"}
           <LandingBreak className="draft-hero-title-break" /> 사업계획서를 작성하는 AI
         </LandingHeading>
-        <LandingText className="hero-subtitle">쓰면 쓸수록 더 잘 써주는 독스헌트, 지금 바로 만나보세요</LandingText>
+        <LandingText className="hero-subtitle">
+          {selectedUpdates ? (
+            <>
+              공고를 고르고 질문에 답하면,
+              <LandingBreak />
+              제출 양식에 맞는 사업계획서 초안이 완성됩니다.
+            </>
+          ) : (
+            <>
+              <span className="draft-mobile-copy-line">쓰면 쓸수록 더 잘 써주는 독스헌트,</span>{" "}
+              <span className="draft-mobile-copy-line">지금 바로 만나보세요</span>
+            </>
+          )}
+        </LandingText>
         <LandingCta kind="cta" href={startPath} onClick={onStart}>
           무료로 시작하기
         </LandingCta>
       </LandingBox>
-      <HeroWorkflowCarousel />
+      <HeroWorkflowCarousel refinedChat={selectedUpdates} />
     </LandingSection>
   );
 }
 
-export function DraftStorySection() {
+export function DraftStorySection({ selectedUpdates = false }: { selectedUpdates?: boolean }) {
+  if (selectedUpdates) {
+    return (
+      <LandingSection className="draft-story-section draft-result-section" labelledBy="draft-result-title">
+        <section aria-labelledby="draft-result-title" className="draft-result-preview">
+          <LandingCopy
+            title={
+              <>
+                AI와 대화하면,
+                <LandingBreak />
+                양식에 맞는 사업계획서가 완성됩니다
+              </>
+            }
+            titleId="draft-result-title"
+          >
+            <LandingText>
+              문항별 본문부터 일정표·예산표까지.
+              <LandingBreak />
+              초안을 검토하고 보완해 제출을 준비하세요.
+            </LandingText>
+          </LandingCopy>
+          <DocumentMarquee />
+        </section>
+      </LandingSection>
+    );
+  }
+
   return (
     <LandingSection className="draft-story-section" labelledBy="draft-story-title">
       <LandingCopy title="끝없는 지원사업, 대표 몸은 하나" titleId="draft-story-title">
@@ -59,21 +103,26 @@ export function DraftStorySection() {
           </>
         }
       >
-        <LandingText>아이템 정보를 모아두고, 사업계획서를 지원사업마다 더 정교하게</LandingText>
+        <LandingText>
+          <span className="draft-mobile-copy-line">아이템 정보를 모아두고,</span>{" "}
+          <span className="draft-mobile-copy-line">사업계획서를 지원사업마다 더 정교하게</span>
+        </LandingText>
       </LandingCopy>
       <DraftFlowDemo />
     </LandingSection>
   );
 }
 
-export function DraftProofSection() {
+export function DraftProofSection({ marquee = false }: { marquee?: boolean }) {
   return (
     <LandingSection className="draft-proof-section" labelledBy="draft-proof-title">
+      {marquee && <LandingText className="draft-proof-eyebrow">대표 15,000명이 선택한 독스헌트</LandingText>}
       <LandingCopy
         title={
           <>
-            똑똑한 대표들은 이미 독스헌트로
-            <LandingBreak />더 빠르게 결과를 내고 있습니다
+            {marquee ? "똑똑한 대표들은 독스헌트로" : "똑똑한 대표들은 이미 독스헌트로"}
+            <LandingBreak />
+            {marquee ? "지원사업을 더 빠르게 준비합니다" : "더 빠르게 결과를 내고 있습니다"}
           </>
         }
         titleId="draft-proof-title"
@@ -91,43 +140,85 @@ export function DraftProofSection() {
           </LandingText>
         </LandingText>
       </LandingCopy>
-      <DraftProofCarousel />
+      {marquee ? <InterviewMarquee /> : <DraftProofCarousel />}
     </LandingSection>
   );
 }
 
-export function DraftRefineSection() {
+export function DraftRefineSection({ selectedUpdates = false }: { selectedUpdates?: boolean }) {
   return (
     <LandingSection className="draft-refine-section" labelledBy="draft-refine-title">
-      <DraftMemoryDemo />
+      {selectedUpdates ? <MemoryReuseDemo /> : <DraftMemoryDemo />}
     </LandingSection>
   );
 }
 
-export function DraftWorkflowSection() {
+export function DraftWorkflowSection({ selectedUpdates = false }: { selectedUpdates?: boolean }) {
+  const cards = selectedUpdates
+    ? ([
+        {
+          title: "단번에 이해되는 시각 자료",
+          body: "복잡한 사업 구조를 직관적인 이미지로 변환해 심사자에게 확실히 각인시킵니다.",
+          preview: "visual",
+        },
+        {
+          title: "주장을 증명하는 데이터 조사",
+          body: "시장과 경쟁사 데이터를 출처와 함께 찾아 막연한 주장을 객관적인 근거로 바꿉니다.",
+          preview: "research",
+        },
+        {
+          title: "클릭 한 번, 서식 일괄 적용",
+          body: "매번 글꼴과 간격을 맞추는 수작업 없이, 한 번에 스타일을 적용해 내용에만 집중하세요.",
+          preview: "style",
+        },
+      ] as const)
+    : draftWorkflowCards;
+
   return (
     <LandingSection className="draft-dark-workflow" labelledBy="draft-workflow-title">
-      <LandingCopy inverted title="사업계획서 완성까지, 독스헌트에서 전부" titleId="draft-workflow-title">
+      <LandingCopy
+        inverted
+        title={selectedUpdates ? "사업계획서, 작성부터 제출까지" : "사업계획서 완성까지, 독스헌트에서 전부"}
+        titleId="draft-workflow-title"
+      >
         <LandingText>
-          시각 자료 생성, 시장·경쟁사 조사, 문서 스타일 자동 정리까지
+          {selectedUpdates
+            ? "자료를 찾고, 정리하고, 제출 형식까지 맞추세요."
+            : "시각 자료 생성, 시장·경쟁사 조사, 문서 스타일 자동 정리까지"}
           <LandingBreak />
-          사업계획서 완성에 필요한 작업을 AI와 함께 이어서 처리할 수 있습니다.
+          {selectedUpdates
+            ? "다음 공고에는 저장한 사업 정보를 다시 활용하세요."
+            : "사업계획서 완성에 필요한 작업을 AI와 함께 이어서 처리할 수 있습니다."}
         </LandingText>
       </LandingCopy>
-      <LandingBox className="draft-workflow-grid">
-        {draftWorkflowCards.map((card) => (
+      <LandingBox className={`draft-workflow-grid${selectedUpdates ? ` ${workflowStyles.grid}` : ""}`}>
+        {cards.map((card) => (
           <LandingCard body={card.body} key={card.title} title={card.title}>
             <LandingBox className="draft-workflow-image">
-              <DraftWorkflowPreview type={card.preview} />
+              <DraftWorkflowPreview type={card.preview} compact={selectedUpdates} />
             </LandingBox>
           </LandingCard>
         ))}
+        {selectedUpdates && (
+          <LandingCard
+            title="기존 사업 정보 자동 반영"
+            body="저장된 핵심 정보를 새 공고 양식에 알아서 채워주어 처음부터 다시 쓰는 수고를 없앱니다."
+          >
+            <LandingBox className="draft-workflow-image">
+              <MemoryReusePreview />
+            </LandingBox>
+          </LandingCard>
+        )}
       </LandingBox>
     </LandingSection>
   );
 }
 
-export function DraftSecuritySection() {
+export function DraftSecuritySection({ selectedUpdates = false }: { selectedUpdates?: boolean }) {
+  const securityCopy = selectedUpdates
+    ? "모든 사업계획서 데이터는, 암호화되어 안전하게 보호됩니다."
+    : "모든 데이터는, 암호화되어 안전하게 보호됩니다.";
+
   return (
     <LandingSection ariaLabel="보안 안내" className="security-section draft-security-lite">
       <LandingHeading as="h2" className="draft-security-title">
@@ -140,12 +231,12 @@ export function DraftSecuritySection() {
       <LandingImage className="security-image" src={`${assets}/trust-security-desktop.webp`} alt="보안 잠금 이미지" />
       <LandingText className="security-copy">
         <LandingText as="span" className="desktop-only">
-          모든 데이터는, 암호화되어 안전하게 보호됩니다.
+          {securityCopy}
           <LandingBreak />
           외부 유출 및 AI 모델 학습에 이용되지 않습니다.
         </LandingText>
         <LandingText as="span" className="mobile-only">
-          모든 데이터는, 암호화되어 안전하게 보호됩니다.
+          {securityCopy}
           <LandingBreak />
           외부 유출 및 AI 모델 학습에 이용되지 않습니다.
         </LandingText>
@@ -154,35 +245,41 @@ export function DraftSecuritySection() {
   );
 }
 
-export function DraftFinalCtaSection({ onStart }: { onStart: StartHandler }) {
+export function DraftFinalCtaSection({ onStart, selectedUpdates = false }: { onStart: StartHandler; selectedUpdates?: boolean }) {
   return (
     <LandingSection className="draft-final-cta" labelledBy="draft-final-title">
       <LandingHeading as="h2" id="draft-final-title">
         <LandingText as="span" className="draft-final-title-gradient">
-          작성 시간은 1/10로
+          {selectedUpdates ? "사업계획서에 쓰던 시간," : "작성 시간은 1/10로"}
           <LandingBreak />
-          자금 확보 기회는 10배로
+          {selectedUpdates ? "이제 사업에 쓰세요." : "자금 확보 기회는 10배로"}
         </LandingText>
       </LandingHeading>
       <LandingText>
-        <LandingText as="span" className="desktop-only">
-          “낚싯대를 1개 드리우는 것과 100개 드리우는 것의 확률은 다릅니다.
-          <LandingBreak />
-          독스헌트를 활용해서 지원사업을 최대한 많이 신청하는 게 최고의 전략입니다.”
-        </LandingText>
-        <LandingText as="span" className="mobile-only">
-          “낚싯대를 1개 드리우는 것과
-          <LandingBreak />
-          100개 드리우는 것의 확률은 다릅니다.
-          <LandingBreak />
-          <LandingBreak />
-          독스헌트를 활용해서 지원사업을 최대한 많이
-          <LandingBreak />
-          신청하는 게 최고의 전략입니다.”
-        </LandingText>
-        <LandingText as="span" className="final-quote-author">
-          박중현, 스피노자 대표
-        </LandingText>
+        {selectedUpdates ? (
+          "첫 사업계획서 초안을 무료로 만들어보세요."
+        ) : (
+          <>
+            <LandingText as="span" className="desktop-only">
+              “낚싯대를 1개 드리우는 것과 100개 드리우는 것의 확률은 다릅니다.
+              <LandingBreak />
+              독스헌트를 활용해서 지원사업을 최대한 많이 신청하는 게 최고의 전략입니다.”
+            </LandingText>
+            <LandingText as="span" className="mobile-only">
+              “낚싯대를 1개 드리우는 것과
+              <LandingBreak />
+              100개 드리우는 것의 확률은 다릅니다.
+              <LandingBreak />
+              <LandingBreak />
+              독스헌트를 활용해서 지원사업을 최대한 많이
+              <LandingBreak />
+              신청하는 게 최고의 전략입니다.”
+            </LandingText>
+            <LandingText as="span" className="final-quote-author">
+              박중현, 스피노자 대표
+            </LandingText>
+          </>
+        )}
       </LandingText>
       <LandingCta dark href={startPath} onClick={onStart}>
         무료로 시작하기

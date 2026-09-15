@@ -186,13 +186,12 @@ export function DraftProofCarousel() {
   );
 }
 
-export function DraftMemoryDemo() {
+export function DraftMemoryDemo({ selectedUpdates = false }: { selectedUpdates?: boolean }) {
   const initialChatCount = 8;
   const memoryVisibleLimit = 12;
   const memorySlideDuration = 640;
   const [visibleChatCount, setVisibleChatCount] = useState(initialChatCount);
   const [isCompactMemoryDemo, setIsCompactMemoryDemo] = useState(false);
-  const [mobileMemoryChatCount, setMobileMemoryChatCount] = useState(8);
   const [memoryItems, setMemoryItems] = useState<Array<{ id: number; text: string }>>([]);
   const [nextMemoryItem, setNextMemoryItem] = useState<{ id: number; text: string } | null>(null);
   const [isMemoryRolling, setIsMemoryRolling] = useState(false);
@@ -201,19 +200,22 @@ export function DraftMemoryDemo() {
   const memoryItemsRef = useRef<Array<{ id: number; text: string }>>([]);
   const memoryNextIndexRef = useRef(0);
   const isMemoryRollingRef = useRef(false);
-  const visibleChatLimit = isCompactMemoryDemo ? 8 : 10;
+  const visibleChatLimit = isCompactMemoryDemo ? 2 : 10;
   const visibleChatStart = Math.max(0, visibleChatCount - visibleChatLimit);
+  const mobileAnswers = draftMemoryChatMessages
+    .map((message, index) => (message.role === "user" ? index : -1))
+    .filter((index) => index >= 0);
+  const mobileAnswerIndex = mobileAnswers[Math.floor((visibleChatCount - initialChatCount) / 2) % mobileAnswers.length]!;
   const visibleChatMessages = isCompactMemoryDemo
-    ? draftMemoryChatMessages.slice(5, 5 + mobileMemoryChatCount)
+    ? draftMemoryChatMessages.slice(mobileAnswerIndex - 1, mobileAnswerIndex + 1)
     : draftMemoryChatMessages.slice(visibleChatStart, visibleChatCount);
-  const visibleMemoryItems = nextMemoryItem ? [...memoryItems, nextMemoryItem] : memoryItems;
+  const visibleMemoryItems = isCompactMemoryDemo ? memoryItems.slice(-4) : nextMemoryItem ? [...memoryItems, nextMemoryItem] : memoryItems;
 
   useEffect(() => {
     const syncCompactLayout = () => {
       const viewportWidth = window.innerWidth;
 
       setIsCompactMemoryDemo(viewportWidth <= 767);
-      setMobileMemoryChatCount(viewportWidth >= 448 ? 12 : viewportWidth >= 440 ? 11 : viewportWidth >= 420 ? 9 : 8);
     };
 
     syncCompactLayout();
@@ -303,11 +305,29 @@ export function DraftMemoryDemo() {
     >
       <LandingBox className="draft-memory-card-copy">
         <LandingHeading as="h2" id="draft-refine-title">
-          쓰면 쓸수록 정교해지는 AI
+          {selectedUpdates ? (
+            <>
+              다음 지원사업엔,
+              <LandingBreak />
+              처음부터 쓰지 마세요
+            </>
+          ) : (
+            "쓰면 쓸수록 정교해지는 AI"
+          )}
         </LandingHeading>
         <LandingText>
-          사업계획서를 쓸수록 AI 메모리에 아이템과 사업 정보가 쌓이고,
-          <LandingBreak className="draft-memory-mobile-break" /> 다음 사업계획서에 재활용됩니다.
+          {selectedUpdates ? (
+            <>
+              아이템·고객·핵심 정보를 사업 메모리에 모아두고,
+              <LandingBreak />
+              다른 공고의 사업계획서를 작성할 때 재활용하세요.
+            </>
+          ) : (
+            <>
+              사업계획서를 쓸수록 AI 메모리에 아이템과 사업 정보가 쌓이고,
+              <LandingBreak className="draft-memory-mobile-break" /> 다음 사업계획서에 재활용됩니다.
+            </>
+          )}
         </LandingText>
       </LandingBox>
 
@@ -606,7 +626,7 @@ export function ActualSupportFlowSvg() {
   );
 }
 
-export function DraftWorkflowPreview({ type }: { type: DraftWorkflowPreviewType }) {
+export function DraftWorkflowPreview({ type, compact = false }: { type: DraftWorkflowPreviewType; compact?: boolean }) {
   if (type === "visual") {
     return (
       <LandingBox className="workflow-ui workflow-actual-ui workflow-visual-actual-ui" aria-hidden="true">
@@ -631,11 +651,14 @@ export function DraftWorkflowPreview({ type }: { type: DraftWorkflowPreviewType 
           <LandingBox as="article" className="actual-document-canvas">
             <LandingText as="span">시장 분석</LandingText>
             <LandingHeading as="h4">
-              IDP 시장은 북미가 최대, 유럽이 빠르게 성장하며 미국·독일·영국·중국·일본이 주요 진출 후보로 제시됨
+              {compact
+                ? "IDP 시장, 북미가 최대·유럽은 빠른 성장"
+                : "IDP 시장은 북미가 최대, 유럽이 빠르게 성장하며 미국·독일·영국·중국·일본이 주요 진출 후보로 제시됨"}
             </LandingHeading>
             <LandingText>
-              Research Nester의 Intelligent Document Processing Market 보고서는 글로벌 IDP 시장 규모가 2025년 30억 달러에서 2035년 547억
-              달러로 성장하고, 2026~2035년 CAGR 33.4%를 기록할 것으로 전망합니다.
+              {compact
+                ? "글로벌 IDP 시장은 2025년 30억 달러에서 2035년 547억 달러로 성장할 전망입니다. 문서 자동화 수요가 높은 시장을 우선 검토합니다."
+                : "Research Nester의 Intelligent Document Processing Market 보고서는 글로벌 IDP 시장 규모가 2025년 30억 달러에서 2035년 547억 달러로 성장하고, 2026~2035년 CAGR 33.4%를 기록할 것으로 전망합니다."}
             </LandingText>
             <LandingText>
               독스헌트는 문서 집약 업무 자동화 수요가 크고 디지털 인프라 성숙도가 높은 시장부터 접근하는 것이 적합합니다.
@@ -645,11 +668,14 @@ export function DraftWorkflowPreview({ type }: { type: DraftWorkflowPreviewType 
           <LandingBox as="article" className="actual-document-canvas">
             <LandingText as="span">경쟁사 분석</LandingText>
             <LandingHeading as="h4">
-              Document AI 시장의 경쟁 축은 IDP·문서 워크플로 자동화·생성형 AI 문서 생성 솔루션으로 확장
+              {compact
+                ? "문서 처리에서 생성·편집으로 넓어지는 경쟁"
+                : "Document AI 시장의 경쟁 축은 IDP·문서 워크플로 자동화·생성형 AI 문서 생성 솔루션으로 확장"}
             </LandingHeading>
             <LandingText>
-              Market.us의 Document AI Market 보고서는 Document AI 시장을 솔루션, 문서 워크플로 자동화, 생성형 문서 생성, ECM 및 정부 문서
-              도구까지 구분합니다.
+              {compact
+                ? "문서 워크플로 자동화와 생성형 문서 생성까지 경쟁 범위가 확장됩니다. 원본 편집과 양식 보존을 차별화 방향으로 검토합니다."
+                : "Market.us의 Document AI Market 보고서는 Document AI 시장을 솔루션, 문서 워크플로 자동화, 생성형 문서 생성, ECM 및 정부 문서 도구까지 구분합니다."}
             </LandingText>
             <LandingText>
               기존 솔루션이 추출·분류·워크플로 자동화 중심인 만큼, 독스헌트는 HWPX/DOCX 원본 편집과 양식 보존을 차별화 축으로 제시하기
