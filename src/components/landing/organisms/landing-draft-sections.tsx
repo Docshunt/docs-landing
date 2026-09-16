@@ -7,7 +7,6 @@ import { DraftFlowDemo, DraftMemoryDemo, DraftProofCarousel, DraftWorkflowPrevie
 import { DraftProgramAnnouncementOverlay, HeroWorkflowCarousel } from "./landing-hero";
 import { InterviewMarquee } from "./interview-marquee";
 import { DocumentMarquee } from "./document-marquee";
-import { MemoryReuseDemo } from "./memory-reuse-demo";
 import { MemoryReusePreview } from "./memory-reuse-preview";
 import workflowStyles from "./memory-reuse-preview.module.css";
 
@@ -145,10 +144,10 @@ export function DraftProofSection({ marquee = false }: { marquee?: boolean }) {
   );
 }
 
-export function DraftRefineSection({ selectedUpdates = false }: { selectedUpdates?: boolean }) {
+export function DraftRefineSection() {
   return (
     <LandingSection className="draft-refine-section" labelledBy="draft-refine-title">
-      {selectedUpdates ? <MemoryReuseDemo /> : <DraftMemoryDemo />}
+      <DraftMemoryDemo />
     </LandingSection>
   );
 }
