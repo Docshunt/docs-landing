@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, type PointerEvent } from "react";
+import { RefinedHeroChat } from "./hero-chat-preview";
 
 import { LandingBox, LandingBreak, LandingButton, LandingHeading, LandingText } from "../design-system/atoms";
 import {
@@ -320,11 +321,13 @@ export function HeroMiniRoadmapSvg() {
 }
 
 export function HeroWorkflowPreview({
+  refinedChat = false,
   onProgramSelect,
   preview,
 }: {
   onProgramSelect?: (() => void) | undefined;
   preview: HeroWorkflowSlide["preview"];
+  refinedChat?: boolean;
 }) {
   if (preview === "program") {
     return (
@@ -356,6 +359,8 @@ export function HeroWorkflowPreview({
       </LandingBox>
     );
   }
+
+  if (preview === "chat" && refinedChat) return <RefinedHeroChat />;
 
   if (preview === "chat") {
     return (
@@ -474,6 +479,7 @@ export function HeroWorkflowPreview({
 }
 
 export function HeroWorkflowSlideCard({
+  refinedChat = false,
   clone = false,
   index,
   isActive = false,
@@ -481,6 +487,7 @@ export function HeroWorkflowSlideCard({
   slide,
 }: {
   clone?: boolean;
+  refinedChat?: boolean;
   index: number;
   isActive?: boolean;
   onProgramSelect?: (() => void) | undefined;
@@ -499,7 +506,7 @@ export function HeroWorkflowSlideCard({
           {slide.title}
         </LandingHeading>
       </LandingBox>
-      <HeroWorkflowPreview onProgramSelect={onProgramSelect} preview={slide.preview} />
+      <HeroWorkflowPreview onProgramSelect={onProgramSelect} preview={slide.preview} refinedChat={refinedChat} />
     </LandingBox>
   );
 }
@@ -531,7 +538,7 @@ export function DraftProgramAnnouncementOverlay() {
   );
 }
 
-export function HeroWorkflowCarousel() {
+export function HeroWorkflowCarousel({ refinedChat = false }: { refinedChat?: boolean }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const dragStartX = useRef<number | null>(null);
@@ -631,6 +638,7 @@ export function HeroWorkflowCarousel() {
       <LandingBox className="hero-track" style={{ transform: `translateX(-${(activeIndex * 100) / heroWorkflowSlides.length}%)` }}>
         {heroWorkflowSlides.map((slide, index) => (
           <HeroWorkflowSlideCard
+            refinedChat={refinedChat}
             index={index}
             isActive={activeIndex === index}
             key={slide.step}

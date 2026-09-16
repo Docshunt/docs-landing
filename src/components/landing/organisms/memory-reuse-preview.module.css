@@ -1,0 +1,196 @@
+.grid.grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: min(1600px, 100%);
+  max-width: 1600px;
+  gap: 24px;
+}
+
+.grid :global(.workflow-actual-ui) {
+  background: #f5f6f8;
+}
+
+.grid > :last-child h3 {
+  text-wrap: balance;
+}
+
+.grid :global(.actual-visual-stack),
+.grid :global(.actual-research-stack) {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  gap: 12px;
+}
+
+.grid :global(.actual-visual-stack) {
+  inset: 5%;
+}
+
+.grid :global(.workflow-research-actual-ui),
+.grid :global(.workflow-style-actual-ui) {
+  padding: 5%;
+}
+
+.grid :global(.actual-research-stack),
+.grid :global(.actual-style-card) {
+  height: 100%;
+}
+
+.grid :global(.actual-visual-asset-card),
+.grid :global(.actual-flow-diagram-card),
+.grid :global(.actual-document-canvas) {
+  border-color: #e4e7ec;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.grid :global(.actual-visual-asset-preview) {
+  background: #fff;
+}
+
+.grid :global(.actual-style-card) {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.grid :global(.actual-document-canvas) p + p,
+.grid :global(.actual-style-row):nth-child(3),
+.grid :global(.actual-format-block),
+.grid :global(.actual-style-list) span:last-child {
+  display: none;
+}
+
+.grid :global(.workflow-actual-ui) {
+  container-type: inline-size;
+}
+
+.grid :global(.actual-document-canvas) h4 {
+  font-size: clamp(12px, 4cqw, 17px);
+  margin: 7px 0;
+}
+
+.grid :global(.actual-document-canvas) p {
+  font-size: clamp(10px, 3.2cqw, 13px);
+  line-height: 1.55;
+}
+
+.grid :global(.actual-document-canvas) footer {
+  font-size: clamp(9px, 2.8cqw, 11px);
+}
+
+.grid :global(.actual-style-content) {
+  margin-top: 20px;
+  grid-template-columns: 54px minmax(0, 1fr);
+}
+
+.grid :global(.actual-style-properties) {
+  gap: 9px;
+}
+
+.grid :global(.actual-style-list) span,
+.grid :global(.actual-style-row) label b {
+  font-size: clamp(11px, 3.3cqw, 14px);
+}
+
+.grid :global(.actual-style-row) label span,
+.grid :global(.actual-preview-caption) {
+  font-size: clamp(10px, 3cqw, 12px);
+}
+
+.grid :global(.actual-style-row) label b {
+  min-height: 32px;
+}
+
+.grid :global(.actual-preview-box) {
+  padding: 12px;
+  min-height: 100px;
+}
+
+@media (max-width: 1279px) {
+  .grid.grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(960px, calc(100% - 32px));
+  }
+}
+
+@media (max-width: 767px) {
+  .grid.grid {
+    grid-template-columns: 1fr;
+    width: min(560px, calc(100% - 16px));
+    gap: 32px;
+    margin-top: 32px;
+  }
+
+  .grid > :first-child :global(.draft-workflow-image) {
+    aspect-ratio: 1;
+  }
+
+  .grid > :nth-child(2) :global(.draft-workflow-image),
+  .grid > :nth-child(3) :global(.draft-workflow-image) {
+    aspect-ratio: auto;
+  }
+
+  .grid :global(.workflow-research-actual-ui),
+  .grid :global(.workflow-style-actual-ui),
+  .grid :global(.actual-research-stack),
+  .grid :global(.actual-style-card) {
+    height: auto;
+  }
+
+  .grid :global(.actual-document-canvas) {
+    padding: 14px;
+  }
+
+  .grid :global(.actual-document-canvas) h4 {
+    font-size: 14px;
+  }
+
+  .grid :global(.actual-document-canvas) p {
+    font-size: 12px;
+  }
+
+  .grid :global(.actual-document-canvas) footer {
+    padding-top: 18px;
+    font-size: 10px;
+  }
+
+  .grid :global(.actual-style-content) {
+    margin-top: 14px;
+  }
+
+  .grid :global(.actual-style-card) h4 {
+    font-size: 18px;
+  }
+
+  .grid :global(.actual-style-row) label b {
+    font-size: 12px;
+  }
+}
+
+@container (max-width: 320px) {
+  .grid :global(.actual-style-content) {
+    margin-top: 10px;
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .grid :global(.actual-style-properties) {
+    gap: 6px;
+  }
+
+  .grid :global(.actual-style-row) label b {
+    min-height: 26px;
+  }
+
+  .grid :global(.actual-preview-box) {
+    min-height: 70px;
+    padding: 8px;
+  }
+}

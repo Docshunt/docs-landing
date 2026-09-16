@@ -139,8 +139,8 @@ export const toolColumns = [
 
 export const draftProofCards = [
   {
-    image: `${assets}/interviews/11111.webp`,
-    mobileImage: `${assets}/interviews/11111-mobile.webp`,
+    image: `${assets}/interviews/park-junghyun-clean.webp`,
+    mobileImage: `${assets}/interviews/park-junghyun-clean.webp`,
     alt: "박중현 스피노자 대표 인터뷰",
     title: "지원사업, 잘 쓰는 것보다\n많이 넣는 싸움",
     quote: "“독스헌트로 하루에 사업계획서 4개까지 접수했고요.\n기존엔 2~3일 걸리던 것을 1시간 안에 할 수 있게 됐습니다.”",
@@ -149,8 +149,8 @@ export const draftProofCards = [
     href: "https://www.youtube.com/watch?v=9a_QmMnxmOo",
   },
   {
-    image: `${assets}/interviews/33334.webp`,
-    mobileImage: `${assets}/interviews/33334-mobile.webp`,
+    image: `${assets}/interviews/ha-jungyeon-clean.webp`,
+    mobileImage: `${assets}/interviews/ha-jungyeon-clean.webp`,
     alt: "하정연 크레센트 서울 대표 인터뷰",
     title: "밤새 쓰던 사업계획서,\n독스헌트로 자동화했어요",
     quote: "“반복적인 작업들은 자동화하고,\n본질에 시간을 더 쓸 수 있었습니다.”",
@@ -158,8 +158,8 @@ export const draftProofCards = [
     href: "https://www.youtube.com/watch?v=OWhe63kWoBk",
   },
   {
-    image: `${assets}/interviews/55555.webp`,
-    mobileImage: `${assets}/interviews/55555-mobile.webp`,
+    image: `${assets}/interviews/kim-nayeon-clean.webp`,
+    mobileImage: `${assets}/interviews/kim-nayeon-clean.webp`,
     alt: "김나연 지구온어스 대표 인터뷰",
     title: "마감 하루 전에도,\n2~3시간 만에 완성",
     quote: "“독스헌트가 전체 문서를 한 번에 만들어줬고,\n문제 제기와 사업 설명은 80% 이상 그대로 활용했습니다.”",
@@ -167,8 +167,8 @@ export const draftProofCards = [
     href: "https://www.youtube.com/watch?v=2pamKM3ZhCQ",
   },
   {
-    image: `${assets}/interviews/22222.webp`,
-    mobileImage: `${assets}/interviews/22222-mobile.webp`,
+    image: `${assets}/interviews/gong-hyukjin-natural.webp`,
+    mobileImage: `${assets}/interviews/gong-hyukjin-natural.webp`,
     alt: "공혁진 세르칸 대표 인터뷰",
     title: "일기처럼 쓴 아이디어가\n사업계획서 초안이 됐어요",
     quote: "“일기장에 써놨던 내용을 독스헌트에 한번 넣었죠.\n그랬더니 제가 쓴 거 같은 초안이 하나 나오더라고요.”",
@@ -176,13 +176,22 @@ export const draftProofCards = [
     href: "https://www.youtube.com/watch?v=XDzMe3WWUEo&t=2s",
   },
   {
-    image: `${assets}/interviews/33333.webp`,
-    mobileImage: `${assets}/interviews/33333-mobile.webp`,
+    image: `${assets}/interviews/kim-jiyeon-natural.webp`,
+    mobileImage: `${assets}/interviews/kim-jiyeon-natural.webp`,
     alt: "김지연 음파차트 대표 인터뷰",
     title: "마감 3일 전 시작했는데,\n2500만원 +α 확보했습니다",
     quote: "“첫 도전이다보니 기대도 크지 않았는데,\n막상 합격하니 날아갈 듯이 기뻤습니다.”",
     author: "김지연, 음파차트 대표",
     href: "https://www.youtube.com/watch?v=GmIQijv2EFw&t=8s",
+  },
+  {
+    image: `${assets}/interviews/jung-seungyeon-natural.webp`,
+    mobileImage: `${assets}/interviews/jung-seungyeon-natural.webp`,
+    alt: "정승연 쿼카온어트립 대표 인터뷰",
+    title: "사업계획서를 잘 쓰는\n팀원 한 명이 생겼어요",
+    quote: "“3주의 시간을 아껴주는\n전문 인력 한 명의 역할을 했어요.”",
+    author: "정승연, 쿼카온어트립 대표",
+    href: "https://www.youtube.com/watch?v=34KtW8uyPrU&t=14s",
   },
 ];
 

@@ -1,0 +1,117 @@
+.root {
+  --card-width: clamp(240px, calc((100vw - 112px) / 4.25), 440px);
+  --gap: 16px;
+  width: 100%;
+  min-width: 0;
+}
+
+.viewport {
+  margin-top: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: flow 85s linear infinite;
+}
+
+.group {
+  display: flex;
+  gap: var(--gap);
+  padding-right: var(--gap);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 var(--card-width);
+  width: var(--card-width);
+  overflow: hidden;
+  border: 1px solid #3f434d;
+  border-radius: 16px;
+  background: #2e323b;
+  color: #fff;
+  text-decoration: none;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.content h3 {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.content p {
+  margin: 0;
+  padding-top: 20px;
+  border-top: 1px solid #434854;
+  color: #d6dae2;
+  font-size: 16px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.link {
+  margin-top: auto;
+  color: #91bfff;
+  font-size: 14px;
+}
+
+.viewport:focus-within .track {
+  animation-play-state: paused;
+}
+
+@media (hover: hover) {
+  .viewport:hover .track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes flow {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 700px) {
+  .root {
+    --card-width: min(78vw, 320px);
+    --gap: 12px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .viewport:active .track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+
+  .group[aria-hidden="true"] {
+    display: none;
+  }
+}

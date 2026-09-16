@@ -1,6 +1,6 @@
 ---
 name: submit-pr
-description: Docs Landing 변경사항에 대해 precommit/build/Playwright/SEO smoke 검증 → 리뷰 → P0/P1 자동수정 가능 항목 처리 → P2 사용자확인 → 한글 커밋/PR 생성까지 자동 수행합니다. "PR 올려줘", "PR 생성", "submit pr", "코드 제출", "PR 만들어줘" 요청 시 호출.
+description: Docs Landing 변경사항에 대해 precommit/build/Aside MCP E2E/SEO smoke 검증 → 리뷰 → P0/P1 자동수정 가능 항목 처리 → P2 사용자확인 → 한글 커밋/PR 생성과 리뷰 대응까지 수행합니다. "PR 올려줘", "PR 생성", "submit pr", "코드 제출", "PR 만들어줘" 요청 시 호출.
 ---
 
 # Submit PR Skill
@@ -85,7 +85,7 @@ npm run build
 변경 유형별 추가 검증:
 
 - 랜딩/블로그/디자인/정적 자산 변경:
-  - `.agents/skills/landing-change/SKILL.md`의 Playwright responsive QA를 실행합니다.
+  - `.agents/skills/landing-change/SKILL.md`의 Aside MCP responsive E2E QA를 실행합니다.
   - mobile `390x844`, tablet `768x1024`, desktop `1440x1000`에서 `/`, `/blog_list`, 대표 `/blog_detail/[slug]`를 확인합니다.
 - SEO/GEO 변경:
   - `next start` 또는 standalone 서버를 띄워 `/robots.txt`, `/sitemap.xml`, `/sitemap-blog_detail.xml`, `/llms.txt`, `/ai.txt`의 HTTP 200과 응답 내용을 확인합니다.
@@ -232,7 +232,7 @@ npm run build
    - ✅ `npm run security:scan` 통과
    - ✅ `npm run precommit` 통과
    - ✅ `npm run build` 통과
-   - ✅ Playwright 반응형 QA 통과
+   - ✅ Aside MCP 반응형 E2E QA 통과
    - ✅ SEO/GEO smoke 통과
    - ⚠️ Known Issues: [없으면 `없음`, 있으면 정확히 기재]
 
@@ -253,7 +253,22 @@ npm run build
    - 구현 세부 용어는 필요한 만큼만 사용합니다.
    - 실행하지 않은 검증은 통과했다고 쓰지 말고 Known Issues 또는 미검증 항목에 남깁니다.
 
-### Phase 6: 병합 handoff
+### Phase 6: PR 링크, 배포본, 리뷰 대응
+
+1. PR 생성 또는 갱신 직후에는 다음을 모두 직접 확인하고 사용자에게 안내합니다.
+   - PR URL
+   - Vercel preview deployment URL
+   - preview의 실제 변경 경로와 핵심 문구/CTA가 의도대로 렌더링되는지
+   - PR 본문이 현재 변경 범위, QA 방법, Known Issues를 직관적으로 설명하는지
+2. PR 본문에는 preview URL과 비개발자가 바로 확인할 수 있는 변경 진입점을 반드시 넣습니다.
+3. PR 생성 후 즉시 리뷰 스레드를 확인하고, 5분 뒤 한 번 더 확인합니다. 두 번째 확인 뒤에는 Phase 7 handoff로 진행합니다. PR을 다시 갱신하거나 사용자가 추가 모니터링을 요청하면 새 확인 주기를 시작합니다. 새 리뷰가 있으면 각 항목을 현재 diff와 실제 동작 기준으로 검증합니다.
+   - 유효한 P0/P1은 최소 범위로 수정하고, 필요한 검증을 다시 실행한 뒤 reply와 resolve를 진행합니다.
+   - P2 또는 제품 결정을 바꾸는 제안은 사용자 확인 없이 적용하지 않습니다.
+   - 현재 diff와 무관하거나 이미 해소된 항목은 수정하지 않고, 근거를 짧게 reply한 뒤 resolve합니다.
+   - 모든 reply/resolve 결과와 남은 미해결 항목을 사용자에게 명확히 알립니다.
+4. E2E 시각 검증은 Aside MCP를 사용합니다. Aside MCP가 현재 환경에 없으면 그 사실을 PR Known Issues에 남기고, Playwright 테스트 파일을 새로 추가하거나 수정해 시각 QA를 대체하지 않습니다.
+
+### Phase 7: 병합 handoff
 
 Agent는 여기서 멈춥니다. 다음 내용만 사용자에게 전달합니다.
 
@@ -313,4 +328,4 @@ Agent는 여기서 멈춥니다. 다음 내용만 사용자에게 전달합니�
 - PR 본문을 영어 `Summary / Verification / QA Notes` 템플릿으로 작성하지 말 것. Docshunt 한글 QA 포맷을 사용한다.
 - `gh pr edit`가 Projects classic GraphQL deprecation 오류로 실패하면 REST API PATCH로 제목/본문을 갱신한다.
 - `curl`이 없는 로컬 환경이 있을 수 있다. 이때 Node `fetch` smoke로 대체하고 PR 본문에 대체 사실을 적는다.
-- Playwright screenshot이 font readiness에서 멈추면 `PW_TEST_SCREENSHOT_NO_FONTS_READY=1`로 재실행하고 사유를 기록한다.
+- 시각 E2E 검증은 Aside MCP에서 수행하고, 사용한 경로와 viewport, preview URL을 PR 본문에 기록한다. Playwright 기반 반응형 스크린샷은 추가하지 않는다.

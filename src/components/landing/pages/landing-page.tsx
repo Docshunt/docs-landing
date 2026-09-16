@@ -6,8 +6,14 @@ import { usePathname, useRouter } from "next/navigation";
 import { LandingFooter, LandingHeader, LandingShell } from "../organisms";
 import { buildAppUrl, type LandingPageClientProps } from "../data";
 import { DraftLandingTemplate, LegacyLandingTemplate } from "../templates";
+import { ReviewedLandingTemplate } from "../templates/reviewed-landing";
 
-export function LandingPageClient({ initialDraft = false }: LandingPageClientProps) {
+export function LandingPageClient({
+  initialDraft = false,
+  reviewed = false,
+  selectedUpdates = false,
+  showNavigation = true,
+}: LandingPageClientProps & { reviewed?: boolean; selectedUpdates?: boolean; showNavigation?: boolean }) {
   const pathname = usePathname();
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
@@ -76,15 +82,23 @@ export function LandingPageClient({ initialDraft = false }: LandingPageClientPro
 
   return (
     <LandingShell draftLanding={draftLanding}>
-      <LandingHeader
-        mobileMenuOpen={mobileMenuOpen}
-        onLogoClick={handleLogoClick}
-        onStart={(event) => handleStart(event)}
-        onToggleMenu={() => setMobileMenuOpen((value) => !value)}
-        scrolled={scrolled}
-      />
+      {showNavigation && (
+        <LandingHeader
+          mobileMenuOpen={mobileMenuOpen}
+          onLogoClick={handleLogoClick}
+          onStart={(event) => handleStart(event)}
+          onToggleMenu={() => setMobileMenuOpen((value) => !value)}
+          scrolled={scrolled}
+        />
+      )}
 
-      {draftLanding ? <DraftLandingTemplate onStart={handleStart} /> : <LegacyLandingTemplate onStart={handleStart} />}
+      {reviewed ? (
+        <ReviewedLandingTemplate onStart={handleStart} />
+      ) : draftLanding ? (
+        <DraftLandingTemplate onStart={handleStart} selectedUpdates={selectedUpdates} />
+      ) : (
+        <LegacyLandingTemplate onStart={handleStart} />
+      )}
 
       <LandingFooter />
     </LandingShell>
