@@ -3,12 +3,16 @@ import { JsonLd } from "@/components/json-ld";
 import { LandingPageClient } from "@/components/landing/pages";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, softwareApplicationJsonLd, webPageJsonLd } from "@/seo/metadata";
 
-export function HomeTemplate() {
+type HomeTemplateProps = {
+  reviewed?: boolean;
+};
+
+export function HomeTemplate({ reviewed = false }: HomeTemplateProps) {
   return (
     <PageDocument>
       <JsonLd data={webPageJsonLd({ name: DEFAULT_TITLE, description: DEFAULT_DESCRIPTION, path: "/" })} />
       <JsonLd data={softwareApplicationJsonLd()} />
-      <LandingPageClient initialDraft />
+      <LandingPageClient initialDraft={!reviewed} reviewed={reviewed} />
     </PageDocument>
   );
 }

@@ -1,5 +1,5 @@
-import { LandingPageClient } from "@/components/landing/pages";
+import { HomeTemplate } from "@/components/site/templates/home-template";
 
 export default function HomePage() {
-  return <LandingPageClient initialDraft selectedUpdates showNavigation={false} />;
+  return <HomeTemplate reviewed />;
 }

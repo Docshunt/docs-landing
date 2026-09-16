@@ -49,9 +49,11 @@ Use this skill before editing landing, blog, styles, SEO/GEO endpoints, or publi
 - Update `public/docshunt-assets/manifest.json` and all source references in the same change.
 - Run `rg "asset-[0-9]" public/docshunt-assets src` after renames. Existing generic names should not remain unless intentionally documented.
 
-## Responsive Playwright QA
+## Responsive E2E QA
 
-For landing/blog/design/public asset changes, run screenshots with Playwright at:
+For landing/blog/design/public asset changes, verify the rendered experience through the Aside MCP browser surface. Do not add or modify Playwright specs solely to capture visual responsive evidence.
+
+Use the supported browser surface at:
 
 ```text
 mobile: 390x844
@@ -68,7 +70,7 @@ Required checks:
 - No incoherent text overlap in the first viewport.
 - Referenced local assets return HTTP 200.
 
-Save screenshots under a gitignored location such as `test-results/responsive/` and include the paths in the PR body.
+Capture the responsive evidence through Aside MCP and include the verified routes, viewports, and the preview deployment URL in the PR body. If Aside MCP is unavailable in the active environment, record that exact gap as unverified; do not substitute a new or modified Playwright test. Do not commit screenshot artifacts.
 
 ## Verification
 
