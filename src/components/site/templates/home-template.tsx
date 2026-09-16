@@ -4,15 +4,15 @@ import { LandingPageClient } from "@/components/landing/pages";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, softwareApplicationJsonLd, webPageJsonLd } from "@/seo/metadata";
 
 type HomeTemplateProps = {
-  reviewed?: boolean;
+  selectedUpdates?: boolean;
 };
 
-export function HomeTemplate({ reviewed = false }: HomeTemplateProps) {
+export function HomeTemplate({ selectedUpdates = false }: HomeTemplateProps) {
   return (
     <PageDocument>
       <JsonLd data={webPageJsonLd({ name: DEFAULT_TITLE, description: DEFAULT_DESCRIPTION, path: "/" })} />
       <JsonLd data={softwareApplicationJsonLd()} />
-      <LandingPageClient initialDraft reviewed={reviewed} />
+      <LandingPageClient initialDraft selectedUpdates={selectedUpdates} />
     </PageDocument>
   );
 }
