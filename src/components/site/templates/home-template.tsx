@@ -12,7 +12,7 @@ export function HomeTemplate({ reviewed = false }: HomeTemplateProps) {
     <PageDocument>
       <JsonLd data={webPageJsonLd({ name: DEFAULT_TITLE, description: DEFAULT_DESCRIPTION, path: "/" })} />
       <JsonLd data={softwareApplicationJsonLd()} />
-      <LandingPageClient initialDraft={!reviewed} reviewed={reviewed} />
+      <LandingPageClient initialDraft reviewed={reviewed} />
     </PageDocument>
   );
 }

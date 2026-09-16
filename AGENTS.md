@@ -54,7 +54,7 @@ Codex-compatible skill discovery is exposed through `.codex/skills` when the sym
 - Do not re-enable `/blog_list` or `/blog_detail` in `src/proxy.ts` unless the PR explicitly says metadata and JSON-LD will be sacrificed.
 - Blog post metadata lives one file per post under `src/data/blog-posts/`; do not add new post objects directly to `src/data/docshunt-blogs.ts`.
 - For blog content changes, keep title, description, slug, source URL, hero image, JSON-LD, and sitemap behavior aligned.
-- For visual/layout changes, verify mobile, tablet, and desktop viewports with Playwright screenshots before PR handoff.
+- For visual/layout changes, verify mobile, tablet, and desktop viewports through the Aside MCP browser surface before PR handoff. Do not add or modify Playwright specs solely to produce responsive evidence.
 
 ## Static Asset Rules
 
@@ -71,7 +71,7 @@ For any PR that changes landing, blog, SEO/GEO, styles, or public assets:
 2. `npm run precommit`
 3. `npm run build`
 4. `node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs` when pages, routes, metadata, proxy, blog data, or crawler endpoints change
-5. Playwright screenshots at:
+5. Aside MCP visual E2E at:
    - mobile: `390x844`
    - tablet: `768x1024`
    - desktop: `1440x1000`
@@ -82,7 +82,7 @@ For any PR that changes landing, blog, SEO/GEO, styles, or public assets:
    - `/llms.txt`
    - `/ai.txt`
 
-PR notes must include which checks ran and where screenshots/artifacts were saved.
+PR notes must include which checks ran, the verified routes/viewports, and the preview deployment URL. If Aside MCP is unavailable in the active environment, record the visual E2E as unverified rather than adding or modifying a Playwright spec as a substitute.
 
 ## Precommit and CI Rules
 
