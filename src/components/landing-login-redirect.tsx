@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 
+import { buildAppUrl } from "@/components/landing/data";
 import { APP_URL } from "@/seo/metadata";
 
 export function LandingLoginRedirect() {
@@ -26,7 +27,7 @@ export function LandingLoginRedirect() {
         return;
 
       cleanup();
-      if (event.data.loggedIn) window.location.replace(APP_URL);
+      if (event.data.loggedIn) window.location.replace(buildAppUrl());
     };
     const timeout = window.setTimeout(cleanup, 5000);
     frame.onload = () => frame.contentWindow?.postMessage("docshunt:login-status:request", APP_URL);
