@@ -112,33 +112,44 @@ export function DraftStorySection({ selectedUpdates = false }: { selectedUpdates
   );
 }
 
-export function DraftProofSection({ marquee = false }: { marquee?: boolean }) {
+export function DraftProofSection({ marquee = false, pricingPreview = false }: { marquee?: boolean; pricingPreview?: boolean }) {
   return (
     <LandingSection className="draft-proof-section" labelledBy="draft-proof-title">
-      {marquee && <LandingText className="draft-proof-eyebrow">대표 15,000명이 선택한 독스헌트</LandingText>}
-      <LandingCopy
-        title={
-          <>
-            {marquee ? "똑똑한 대표들은 독스헌트로" : "똑똑한 대표들은 이미 독스헌트로"}
-            <LandingBreak />
-            {marquee ? "지원사업을 더 빠르게 준비합니다" : "더 빠르게 결과를 내고 있습니다"}
-          </>
-        }
-        titleId="draft-proof-title"
-      >
-        <LandingText className="draft-proof-intro">
-          <LandingText as="span" className="draft-proof-intro-desktop">
-            하루에 사업계획서 5개를 작성하는 대표부터, 첫 지원사업에 합격한 대표까지
-            <LandingBreak />
-            직접 사용해보며 그 진가를 확인해 보세요.
-          </LandingText>
-          <LandingText as="span" className="draft-proof-intro-mobile">
-            <LandingText as="span">하루에 사업계획서 5개를 작성하는 대표부터,</LandingText>
-            <LandingText as="span">첫 지원사업에 합격한 대표까지</LandingText>
-            <LandingText as="span">직접 사용해보며 그 진가를 확인해 보세요.</LandingText>
-          </LandingText>
-        </LandingText>
-      </LandingCopy>
+      {pricingPreview ? (
+        <>
+          <p className="pricing-preview-proof-badge">독스헌트 사업계획서 후기</p>
+          <h2 id="draft-proof-title" className="pricing-preview-proof-title">
+            대표 15,000명이 선택한 독스헌트
+          </h2>
+        </>
+      ) : (
+        <>
+          {marquee && <LandingText className="draft-proof-eyebrow">대표 15,000명이 선택한 독스헌트</LandingText>}
+          <LandingCopy
+            title={
+              <>
+                {marquee ? "똑똑한 대표들은 독스헌트로" : "똑똑한 대표들은 이미 독스헌트로"}
+                <LandingBreak />
+                {marquee ? "지원사업을 더 빠르게 준비합니다" : "더 빠르게 결과를 내고 있습니다"}
+              </>
+            }
+            titleId="draft-proof-title"
+          >
+            <LandingText className="draft-proof-intro">
+              <LandingText as="span" className="draft-proof-intro-desktop">
+                하루에 사업계획서 5개를 작성하는 대표부터, 첫 지원사업에 합격한 대표까지
+                <LandingBreak />
+                직접 사용해보며 그 진가를 확인해 보세요.
+              </LandingText>
+              <LandingText as="span" className="draft-proof-intro-mobile">
+                <LandingText as="span">하루에 사업계획서 5개를 작성하는 대표부터,</LandingText>
+                <LandingText as="span">첫 지원사업에 합격한 대표까지</LandingText>
+                <LandingText as="span">직접 사용해보며 그 진가를 확인해 보세요.</LandingText>
+              </LandingText>
+            </LandingText>
+          </LandingCopy>
+        </>
+      )}
       {marquee ? <InterviewMarquee /> : <DraftProofCarousel />}
     </LandingSection>
   );

@@ -7,6 +7,7 @@ import { LandingFooter, LandingHeader, LandingShell } from "../organisms";
 import { buildAppUrl, type LandingPageClientProps } from "../data";
 import { DraftLandingTemplate, LegacyLandingTemplate } from "../templates";
 import { ReviewedLandingTemplate } from "../templates/reviewed-landing";
+import { LandingPromotionBanner } from "../organisms/landing-promotion-banner";
 
 export function LandingPageClient({
   initialDraft = false,
@@ -91,6 +92,8 @@ export function LandingPageClient({
           scrolled={scrolled}
         />
       )}
+
+      {showNavigation && pathname === "/" && <LandingPromotionBanner />}
 
       {reviewed ? (
         <ReviewedLandingTemplate onStart={handleStart} />

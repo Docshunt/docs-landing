@@ -17,7 +17,7 @@ const faqs = [
   ],
   [
     "지원사업 공고와 양식에 맞춰 작성할 수 있나요?",
-    "독스헌트는 모든 HWPX·HWP 양식을 지원합니다. K-Startup과 기업마당의 공고는 모두 수집하고 있으며, 그 외 공고는 공고문과 양식을 직접 업로드해 작성할 수 있습니다. 양식 맞춤 작성과 직접 업로드는 Basic 이상에서 이용할 수 있습니다.",
+    "독스헌트는 모든 HWPX·HWP 양식을 지원합니다. K-Startup과 기업마당의 공고는 모두 수집하고 있으며, 그 외 공고는 공고문과 양식을 직접 업로드해 작성할 수 있습니다. 양식 맞춤 작성과 직접 업로드는 Pro 이상에서 이용할 수 있습니다.",
   ],
   [
     "기존 사업계획서도 활용할 수 있나요?",
@@ -25,16 +25,16 @@ const faqs = [
   ],
   [
     "작성한 문서를 수정하거나 한글 파일로 받을 수 있나요?",
-    "Basic 이상에서는 AI와 대화하며 문장을 수정하고, 완성한 문서를 한글(HWPX) 파일로 내보낼 수 있습니다.",
+    "Pro 이상에서는 AI와 대화하며 문장을 수정하고, 완성한 문서를 한글(HWPX) 파일로 내보낼 수 있습니다.",
   ],
   [
     "무료 플랜에서는 어디까지 사용할 수 있나요?",
-    "Free 플랜에서 기본 사업계획서 작성을 체험할 수 있습니다. 지원사업 양식 맞춤 작성, AI 문서 수정, 한글(HWPX) 내보내기 등은 Basic 이상 플랜에서 제공합니다.",
+    "Free 플랜에서 기본 사업계획서 작성을 체험할 수 있습니다. 지원사업 양식 맞춤 작성, AI 문서 수정, 한글(HWPX) 내보내기 등은 Pro 이상 플랜에서 제공합니다.",
   ],
   ["만든 사업계획서가 AI 학습에 사용되나요?", "입력한 정보와 생성한 문서는 암호화해 보호하며, AI 모델 학습에 사용하지 않습니다."],
   [
     "마스터플랜은 무엇인가요?",
-    "마스터플랜은 Basic·Pro·Max의 연간 구독입니다. 결제일부터 1년간 이용하며, 연간 총액을 한 번에 결제하고 매년 자동 갱신됩니다. 플랜별 제공 기능과 사용량, 실제 결제 금액은 요금제 페이지에서 확인할 수 있습니다. 연간 Pro·Max 이용자는 조건에 따라 지원사업 합격 환급을 신청할 수 있습니다.",
+    "마스터플랜은 Pro와 Max를 6개월 단위로 이용하는 구독입니다. 6개월 이용 금액을 한 번에 결제하며, 구독을 유지하는 동안 최초 결제 가격으로 6개월마다 자동 갱신됩니다. 해지하면 다음 결제부터 갱신되지 않습니다. 마스터플랜 이용자는 지원사업 선정 시 조건에 따라 최대 50% 환급을 신청할 수 있습니다. 플랜별 기능과 가격은 요금제 페이지에서 확인해 주세요.",
   ],
 ];
 
@@ -164,7 +164,7 @@ export function ReviewedLandingContent({ onStart }: { onStart: StartHandler }) {
             <p>문항별 초안을 보완하고 한글(HWPX) 파일로 받아요.</p>
           </li>
         </ol>
-        <p className="reviewed-plan-note">양식 맞춤 작성·AI 수정·HWPX 내보내기는 Basic 이상에서 제공됩니다.</p>
+        <p className="reviewed-plan-note">양식 맞춤 작성·AI 수정·HWPX 내보내기는 Pro 이상에서 제공됩니다.</p>
       </section>
 
       <DraftProofSection />
@@ -195,7 +195,7 @@ export function ReviewedLandingContent({ onStart }: { onStart: StartHandler }) {
         </header>
         <div className="reviewed-tool-list">
           <article>
-            <span>Basic 이상</span>
+            <span>Pro 이상</span>
             <h3>시장·경쟁사 조사</h3>
             <p>사업계획서에 필요한 근거자료를 찾고, 핵심 수치와 출처를 정리합니다.</p>
           </article>
@@ -229,7 +229,7 @@ export function ReviewedLandingContent({ onStart }: { onStart: StartHandler }) {
         <LandingCta dark href={startPath} onClick={onStart}>
           무료로 시작하기
         </LandingCta>
-        <p className="reviewed-plan-note">양식 맞춤 작성과 HWPX 내보내기는 Basic 이상에서 이용할 수 있습니다.</p>
+        <p className="reviewed-plan-note">양식 맞춤 작성과 HWPX 내보내기는 Pro 이상에서 이용할 수 있습니다.</p>
       </LandingSection>
       <dialog ref={previewDialog} className="reviewed-preview-dialog" aria-labelledby="reviewed-preview-title">
         <header>

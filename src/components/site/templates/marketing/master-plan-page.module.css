@@ -1,0 +1,114 @@
+.page {
+  background: #000000;
+}
+
+.main {
+  overflow: clip;
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  border: 0;
+  background: #000000;
+}
+
+.framePlaceholder {
+  min-height: 100vh;
+  background: #000000;
+}
+
+.purchaseBar {
+  position: fixed;
+  z-index: 45;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #2e323b;
+}
+
+.purchaseBarInner {
+  display: grid;
+  width: min(1200px, calc(100% - 32px));
+  min-height: 72px;
+  margin: 0 auto;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.purchaseBar p {
+  margin: 0;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.purchaseBar a {
+  justify-self: end;
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0 20px;
+  background: #ffffff;
+  color: #1a1a1c;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .purchaseBarInner {
+    width: 100%;
+    min-height: 64px;
+    grid-template-columns: 1fr;
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
+  }
+
+  .purchaseBarSpacer,
+  .purchaseBar p {
+    display: none;
+  }
+
+  .purchaseBar a {
+    width: 100%;
+    min-height: 44px;
+  }
+}
+
+.embedded :global(.pricing2026-refund-section) {
+  background: #1a1a1c;
+  color: #fff;
+}
+.embedded :global(.pricing2026-refund-copy h2),
+.embedded :global(.pricing2026-refund-tiers span),
+.embedded :global(.pricing2026-refund-links button) {
+  color: #f1f4fa;
+}
+.finalCta {
+  padding: 80px 24px 100px;
+  text-align: center;
+  background: #10131b;
+  color: white;
+}
+.finalCta h2 {
+  margin: 0 0 32px;
+  font-size: clamp(28px, 3.5vw, 44px);
+  line-height: 1.45;
+  word-break: keep-all;
+}
+.finalCta a {
+  display: inline-flex;
+  padding: 18px 28px;
+  border-radius: 12px;
+  background: #3182f7;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+}
