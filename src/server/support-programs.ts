@@ -106,11 +106,11 @@ function parseSupportProgram(value: unknown): SupportProgram {
   };
 }
 
-async function fetchApi(url: URL, notFoundOn404 = false) {
+async function fetchApi(url: URL, notFoundOn404 = false, cache?: "no-store") {
   let response: Response;
   try {
     response = await fetch(url, {
-      next: { revalidate: REVALIDATE_SECONDS },
+      ...(cache ? { cache } : { next: { revalidate: REVALIDATE_SECONDS } }),
       signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
     });
   } catch {
@@ -160,12 +160,12 @@ export function safePostingUrl(value: string | null | undefined) {
   }
 }
 
-export async function fetchSupportProgramListPage(page = 0): Promise<SupportProgramListPage> {
+export async function fetchSupportProgramListPage(page = 0, cache?: "no-store"): Promise<SupportProgramListPage> {
   const url = new URL("/api/products/business-plans", APP_URL);
   url.searchParams.set("sort", "LATEST");
   url.searchParams.set("page", String(page));
   url.searchParams.set("size", String(PAGE_SIZE));
-  const data = await fetchApi(url);
+  const data = await fetchApi(url, false, cache);
 
   if (
     !Array.isArray(data.items) ||
@@ -196,26 +196,45 @@ export const fetchSupportProgramDetail = cache(async (sourceId: string): Promise
   return parseSupportProgram(data.item);
 });
 
-export async function fetchAllSupportPrograms() {
-  const firstPage = await fetchSupportProgramListPage(0);
+async function loadAllSupportPrograms() {
+  // Cache the completed sitemap, not independently revalidating API pages.
+  const firstPage = await fetchSupportProgramListPage(0, "no-store");
   const pageCount = Math.ceil(firstPage.totalItems / firstPage.pageSize);
-  const remainingPages: SupportProgramListPage[] = [];
+  const programs: SupportProgram[] = [];
 
-  for (let startPage = 1; startPage < pageCount; startPage += 5) {
-    remainingPages.push(
-      ...(await Promise.all(
-        Array.from({ length: Math.min(5, pageCount - startPage) }, (_, index) => fetchSupportProgramListPage(startPage + index)),
-      )),
-    );
+  function appendPage(result: SupportProgramListPage) {
+    const expectedItems = Math.min(firstPage.pageSize, firstPage.totalItems - result.page * firstPage.pageSize);
+    if (result.totalItems !== firstPage.totalItems || result.pageSize !== firstPage.pageSize || result.items.length !== expectedItems) {
+      throw new SupportProgramUpstreamError("지원사업 공고 전체 목록을 확인할 수 없습니다.");
+    }
+    programs.push(...result.items);
   }
 
-  for (const [index, result] of remainingPages.entries()) {
-    const page = index + 1;
-    if (result.page !== page || result.pageSize !== firstPage.pageSize) {
-      throw new SupportProgramUpstreamError("지원사업 공고 페이지 정보가 일치하지 않습니다.");
+  appendPage(firstPage);
+  for (let startPage = 1; startPage < pageCount; startPage += 2) {
+    // Drain both requests before rejecting so a retry cannot overlap a failed batch.
+    const results = await Promise.allSettled(
+      Array.from({ length: Math.min(2, pageCount - startPage) }, (_, index) => fetchSupportProgramListPage(startPage + index, "no-store")),
+    );
+    for (const result of results) {
+      if (result.status === "rejected") throw result.reason;
+      appendPage(result.value);
     }
   }
 
-  const programs = [firstPage, ...remainingPages].flatMap(({ items }) => items);
-  return [...new Map(programs.map((program) => [supportProgramId(program), program])).values()];
+  const uniquePrograms = [...new Map(programs.map((program) => [supportProgramId(program), program])).values()];
+  if (uniquePrograms.length !== firstPage.totalItems) {
+    throw new SupportProgramUpstreamError("지원사업 공고 전체 목록을 확인할 수 없습니다.");
+  }
+  return uniquePrograms;
+}
+
+let pendingPrograms: Promise<SupportProgram[]> | undefined;
+
+export function fetchAllSupportPrograms(): Promise<SupportProgram[]> {
+  // Share one generation across simultaneous sitemap requests in this process.
+  pendingPrograms ??= loadAllSupportPrograms().finally(() => {
+    pendingPrograms = undefined;
+  });
+  return pendingPrograms;
 }
