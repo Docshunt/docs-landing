@@ -1,0 +1,39 @@
+name: Login redirect isolated dev preview
+on:
+  push:
+    branches: [codex/landing-login-dev-preview]
+permissions:
+  contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: dev
+    env:
+      VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --global vercel@58.0.0
+      - run: vercel pull --yes --environment=preview --token="$VERCEL_TOKEN"
+      - name: Deploy isolated preview
+        shell: bash
+        run: |
+          url=$(vercel deploy --yes --token="$VERCEL_TOKEN" \
+            --build-env NEXT_PUBLIC_APP_ORIGIN=https://bizcanvas.net \
+            --env NEXT_PUBLIC_APP_ORIGIN=https://bizcanvas.net \
+            --build-env NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN= \
+            --env NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN= \
+            --build-env NEXT_PUBLIC_POSTHOG_HOST= \
+            --env NEXT_PUBLIC_POSTHOG_HOST= \
+            --build-env SUPABASE_URL= \
+            --env SUPABASE_URL= \
+            --build-env SUPABASE_SERVICE_ROLE_KEY= \
+            --env SUPABASE_SERVICE_ROLE_KEY=)
+          echo "Preview URL: $url" >> "$GITHUB_STEP_SUMMARY"
+          echo "Preview URL: $url"
