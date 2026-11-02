@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
+import { setImmediate } from "node:timers/promises";
 import test, { afterEach } from "node:test";
 
 import type * as SupportProgramsModule from "../src/server/support-programs";
@@ -118,34 +119,92 @@ test("distinguishes a missing detail from an upstream failure", async () => {
   await assert.rejects(fetchSupportProgramDetail("notice:178097"), SupportProgramUpstreamError);
 });
 
-test("walks every sitemap page and removes duplicate ids", async () => {
-  globalThis.fetch = async (input) => {
+function listPage(page: number, totalItems = 251) {
+  return {
+    items: Array.from({ length: Math.min(50, totalItems - page * 50) }, (_, index) => {
+      const id = `notice:${page * 50 + index}`;
+      return program({ productFileId: id, fileSourceId: id });
+    }),
+    totalItems,
+    page,
+    pageSize: 50,
+  };
+}
+
+test("shares a complete sitemap scan with at most two uncached page requests", async () => {
+  let active = 0;
+  let peak = 0;
+  const requestedPages: number[] = [];
+  globalThis.fetch = async (input, init) => {
     const url = new URL(String(input));
     const page = Number(url.searchParams.get("page"));
-    return apiResponse({
-      items:
-        page === 0
-          ? [program(), program({ productFileId: "second", fileSourceId: "second", title: "두 번째 공고" })]
-          : [
-              program({ productFileId: "second", fileSourceId: "second", title: "중복 공고" }),
-              program({ productFileId: "third", fileSourceId: "third", title: "세 번째 공고" }),
-            ],
-      totalItems: 51,
-      page,
-      pageSize: 50,
-      totalTemplateItems: 0,
-      totalKStartupItems: 51,
-      kStartupAvailable: true,
-      kStartupMessage: null,
-    });
+    assert.equal(init?.cache, "no-store");
+    assert.equal((init as RequestInit & { next?: unknown }).next, undefined);
+    assert.equal(url.searchParams.get("size"), "50");
+    requestedPages.push(page);
+    peak = Math.max(peak, ++active);
+    await setImmediate();
+    active--;
+    return apiResponse(listPage(page));
   };
 
-  const items = await fetchAllSupportPrograms();
+  const [items, concurrentItems] = await Promise.all([fetchAllSupportPrograms(), fetchAllSupportPrograms()]);
 
+  assert.equal(items, concurrentItems);
+  assert.equal(peak, 2);
+  assert.deepEqual(requestedPages, [0, 1, 2, 3, 4, 5]);
   assert.deepEqual(
     items.map((item) => item.fileSourceId),
-    ["notice:178097", "second", "third"],
+    Array.from({ length: 251 }, (_, index) => `notice:${index}`),
   );
+});
+
+test("rejects incomplete or inconsistent sitemap scans but accepts an empty catalogue", async () => {
+  for (const failure of ["short-page", "changed-total", "changed-size", "duplicate"]) {
+    globalThis.fetch = async (input) => {
+      const page = Number(new URL(String(input)).searchParams.get("page"));
+      const data = listPage(page, 51);
+      if (page === 1) {
+        if (failure === "short-page") data.items = [];
+        if (failure === "changed-total") data.totalItems++;
+        if (failure === "changed-size") data.pageSize--;
+        if (failure === "duplicate") data.items = [program({ productFileId: "notice:0", fileSourceId: "notice:0" })];
+      }
+      return apiResponse(data);
+    };
+    await assert.rejects(fetchAllSupportPrograms(), SupportProgramUpstreamError, failure);
+  }
+
+  globalThis.fetch = async () => apiResponse(listPage(0, 0));
+  assert.deepEqual(await fetchAllSupportPrograms(), []);
+});
+
+test("waits for the failed batch to drain before allowing another sitemap scan", async () => {
+  const secondStarted = Promise.withResolvers<void>();
+  const releaseSecond = Promise.withResolvers<void>();
+  const requestedPages: number[] = [];
+  globalThis.fetch = async (input) => {
+    const page = Number(new URL(String(input)).searchParams.get("page"));
+    requestedPages.push(page);
+    if (page === 1) return new Response("unavailable", { status: 503 });
+    if (page === 2) {
+      secondStarted.resolve();
+      await releaseSecond.promise;
+    }
+    return apiResponse(listPage(page));
+  };
+
+  const pending = fetchAllSupportPrograms();
+  const rejection = assert.rejects(pending, SupportProgramUpstreamError);
+  await secondStarted.promise;
+  await setImmediate();
+  assert.equal(fetchAllSupportPrograms(), pending);
+  assert.deepEqual(requestedPages, [0, 1, 2]);
+  releaseSecond.resolve();
+  await rejection;
+
+  globalThis.fetch = async () => apiResponse(listPage(0, 1));
+  assert.equal((await fetchAllSupportPrograms()).length, 1);
 });
 
 test("builds escaped RSS and sitemap links to canonical detail pages", () => {
