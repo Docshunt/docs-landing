@@ -1,9 +1,13 @@
-export { metadata } from "@/components/site/pages/marketing/pricing-page";
-
 import { JsonLd } from "@/components/json-ld";
 import { PricingPreviewClient } from "@/components/pricing/pricing-preview-client";
 import { PageDocument } from "@/components/site/layout/page-document";
-import { PRICING_DESCRIPTION, PRICING_TITLE, webPageJsonLd } from "@/seo/metadata";
+import { PRICING_DESCRIPTION, PRICING_TITLE, buildPageMetadata, webPageJsonLd } from "@/seo/metadata";
+
+export const metadata = buildPageMetadata({
+  title: PRICING_TITLE,
+  description: PRICING_DESCRIPTION,
+  path: "/pricing",
+});
 
 export const dynamic = "force-dynamic";
 

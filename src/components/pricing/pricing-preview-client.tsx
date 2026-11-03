@@ -13,18 +13,14 @@ type BillingCycle = "monthly" | "six-month";
 
 type Plan = {
   name: "Free" | "Pro" | "Max";
-  tier: number;
   description: string;
   monthlyPrice: string;
   sixMonthMonthlyPrice?: string;
   sixMonthTotal?: string;
   discount?: string;
-  usageDescription: string;
-  storage: string;
   features: string[];
   recommended?: boolean;
   badge?: string;
-  refundEligible?: boolean;
 };
 
 const pricingAppUrl = `${APP_URL}/d?pricing=true`;
@@ -32,21 +28,15 @@ const pricingAppUrl = `${APP_URL}/d?pricing=true`;
 const plans: Plan[] = [
   {
     name: "Free",
-    tier: 0,
     description: "부담 없이 시작하기",
     monthlyPrice: "0원",
     sixMonthMonthlyPrice: "0원",
-    usageDescription: "체험",
-    storage: "저장공간 500MB",
     features: ["기본 사업계획서 최초 2회", "AI 시각자료 자동 생성·배치 1회", "사업 아이템 1개 · 저장공간 500MB"],
   },
   {
     name: "Pro",
-    tier: 2,
     description: "사업계획서 작성부터 완성까지",
     monthlyPrice: "149,000원",
-    usageDescription: "일일 기본 사용량",
-    storage: "저장공간 5GB",
     features: [
       "기본·지원사업 사업계획서 작성",
       "양식 직접 업로드 · 한글 내보내기",
@@ -54,32 +44,15 @@ const plans: Plan[] = [
       "AI 시각자료 생성·배치·수정",
       "사업 아이템 5개 · 저장공간 5GB",
     ],
-    refundEligible: true,
   },
   {
     name: "Max",
     recommended: true,
     badge: "지원사업 합격률 제일 높은",
-    tier: 3,
     description: "여러 지원사업을 집중 준비하기",
     monthlyPrice: "190,000원",
-    usageDescription: "Pro의 2배 사용량",
-    storage: "저장공간 20GB",
     features: ["Pro의 모든 기능", "Pro의 2배 사용량", "맞춤 양식 신청 월 3건 · 우선 검토", "사업 아이템 15개 · 저장공간 20GB"],
-    refundEligible: true,
   },
-];
-
-const featureRows = [
-  ["기본 사업계획서 작성", "최초 2회", "✓", "✓"],
-  ["지원사업 양식 맞춤 작성", "—", "✓", "✓"],
-  ["한글(HWPX) 내보내기", "—", "✓", "✓"],
-  ["양식 직접 업로드", "—", "✓", "✓"],
-  ["AI로 문서 수정", "—", "✓", "✓"],
-  ["근거자료 찾기", "—", "✓", "✓"],
-  ["AI 시각자료", "1회", "생성·배치·수정", "생성·배치·수정"],
-  ["맞춤 양식 신청", "—", "—", "✓"],
-  ["사업 아이템", "1개", "5개", "15개"],
 ];
 
 function PhaseCountdown({ end }: { end: string }) {
@@ -277,58 +250,7 @@ export function PricingPreviewClient({ initialNow }: { initialNow: number }) {
           </div>
         </section>
 
-        <section className="pricing2026-compare-section" aria-labelledby="pricing-compare-title" hidden>
-          <div className="pricing2026-section-heading">
-            <p>FEATURES</p>
-            <h2 id="pricing-compare-title">플랜별 기능을 비교해보세요</h2>
-          </div>
-          <div className="pricing2026-compare-scroll" tabIndex={0}>
-            <table className="pricing2026-compare-table">
-              <colgroup>
-                <col className="pricing2026-compare-feature-column" />
-                {plans.map((plan) => (
-                  <col className="pricing2026-compare-plan-column" key={plan.name} />
-                ))}
-              </colgroup>
-              <thead>
-                <tr>
-                  <th scope="col">기능</th>
-                  {plans.map((plan) => (
-                    <th scope="col" key={plan.name}>
-                      {plan.name}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="pricing2026-usage-row">
-                  <th scope="row">일일 AI 사용량</th>
-                  {plans.map((plan) => (
-                    <td key={plan.name}>{plan.usageDescription}</td>
-                  ))}
-                </tr>
-                <tr className="pricing2026-usage-row">
-                  <th scope="row">저장공간</th>
-                  {plans.map((plan) => (
-                    <td key={plan.name}>{plan.storage.replace("저장공간 ", "")}</td>
-                  ))}
-                </tr>
-                {featureRows.map(([feature, ...availability]) => (
-                  <tr key={feature}>
-                    <th scope="row">{feature}</th>
-                    {availability.map((value, index) => (
-                      <td className={value !== "—" ? "is-included" : ""} key={`${feature}-${plans[index]?.name ?? index}`}>
-                        {value}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <MasterPlanPreview embedded phaseName={phase.name} offers={displayedPlans.filter((plan) => plan.sixMonthTotal)}>
+        <MasterPlanPreview phaseName={phase.name} offers={displayedPlans.filter((plan) => plan.sixMonthTotal)}>
           <PricingPreviewSchedule activePhase={phase.name} />
         </MasterPlanPreview>
         <PricingPreviewFinalCta />
