@@ -82,16 +82,25 @@ export function MasterPlanPreview({
       const updateCountdown = () => {
         const now = Date.now();
         const phase = getMasterPlanPhase(now);
-        const remaining = phase ? Math.max(0, Math.ceil((Date.parse(phase.end) - now) / 1000)) : 0;
+        const remaining = phase.end ? Math.max(0, Math.ceil((Date.parse(phase.end) - now) / 1000)) : 0;
         const values = [Math.floor(remaining / 86400), Math.floor(remaining / 3600) % 24, Math.floor(remaining / 60) % 60, remaining % 60];
-        const title = phase
+        const title = phase.end
           ? `2027 마스터플랜 ${phase.name} 종료까지 (~${new Date(Date.parse(phase.end) - 1).toLocaleDateString("ko-KR", { timeZone: "Asia/Seoul", year: "numeric", month: "numeric", day: "numeric" })})`
-          : "2027 마스터플랜 시즌 판매가 종료되었습니다";
+          : "2027 마스터플랜 3차 시즌 가격으로 이용하세요";
         [".baTaOiaG0 > div", ".baTaPaIz > div"].forEach((selector) => setText(selector, title));
+        [".baTaOjb0", ".baTaPaJaA"].forEach((selector) => {
+          const node = frameDocument.querySelector<HTMLElement>(selector);
+          if (phase.end === null) node?.style.setProperty("display", "none", "important");
+          else node?.style.removeProperty("display");
+        });
         [
           [".baTaOiaM0", ".baTaOix0", ".baTaOjaJ0", ".baTaOjaV0"],
           [".baTaPaJaG", ".baTaPaJaN", ".baTaPaJaX", ".baTaPaJe"],
-        ].forEach((selectors) => selectors.forEach((selector, index) => setText(`${selector} > div`, String(values[index]))));
+        ].forEach((selectors) =>
+          selectors.forEach((selector, index) => {
+            setText(`${selector} > div`, String(values[index]));
+          }),
+        );
       };
       updateCountdown();
       countdownTimerRef.current = window.setInterval(updateCountdown, 1000);
@@ -305,7 +314,7 @@ export function MasterPlanPreview({
         .b-root .bubble-element.baTaPaRaV { background:#1a1a1c; }
         .b-root .bubble-element.baTaPaRaX { background: radial-gradient(ellipse 62% 48% at 50% 32%, rgba(49,130,247,.42) 0%, rgba(49,130,247,.24) 38%, transparent 78%), #1a1a1c !important; }
         .b-root .bubble-element.baTaQaEn { background:#1a1a1c !important; }
-        .b-root .bubble-element.baTaOgaD0 { background: url("https://4691947d26a9c64d254186f138cdee17.cdn.bubble.io/f1766021897656x431425094396937800/PrblemBackground.svg") center 48px / auto 600px no-repeat, linear-gradient(to bottom,#f4f5f7 0,#3185ff 48px,#3185ff 160px,#e6f1ff 50%,#e6f1ff 100%) !important; }
+        .b-root .bubble-element.baTaOgaD0 { background: url("/docshunt-assets/master-plan-problem-background.svg") center 48px / auto 600px no-repeat, linear-gradient(to bottom,#f4f5f7 0,#3185ff 48px,#3185ff 160px,#e6f1ff 50%,#e6f1ff 100%) !important; }
         .b-root .bubble-element.baTaOkaE0, .b-root .bubble-element.baTaOym, .b-root .bubble-element.baTaPaIc { display:none !important; }
         .b-root .bubble-element.baTaOgaN0 { padding-top:140px; padding-bottom:24px !important; background-image:none !important; }
         @media (max-width: 767px) { .b-root .bubble-element.baTaOgaD0 { background-size: auto 450px, auto !important; } .b-root .bubble-element.baTaOgaN0 { padding-top:120px; padding-bottom:16px !important; } }

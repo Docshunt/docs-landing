@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { MasterPlanPreview } from "@/components/site/templates/marketing/master-plan-preview";
 import previewStyles from "./pricing-preview-page.module.css";
 import { PricingPreviewSchedule, PricingPreviewFinalCta } from "./pricing-preview-sections";
+import { APP_URL } from "@/seo/metadata";
 import { BlogHeader, DocshuntFooter } from "@/components/docshunt-blog-shell";
-import { getMasterPlanPhase, masterPlanPhases } from "./master-plan-schedule";
+import { getMasterPlanPhase } from "./master-plan-schedule";
 
 type BillingCycle = "monthly" | "six-month";
 
@@ -15,7 +16,7 @@ type Plan = {
   tier: number;
   description: string;
   monthlyPrice: string;
-  sixMonthMonthlyPrice: string;
+  sixMonthMonthlyPrice?: string;
   sixMonthTotal?: string;
   discount?: string;
   usageDescription: string;
@@ -26,7 +27,7 @@ type Plan = {
   refundEligible?: boolean;
 };
 
-const pricingAppUrl = "#pricing-plans";
+const pricingAppUrl = `${APP_URL}/d?pricing=true`;
 
 const plans: Plan[] = [
   {
@@ -44,9 +45,6 @@ const plans: Plan[] = [
     tier: 2,
     description: "사업계획서 작성부터 완성까지",
     monthlyPrice: "149,000원",
-    sixMonthMonthlyPrice: "80,000원",
-    sixMonthTotal: "480,000원",
-    discount: "46.3% 할인",
     usageDescription: "일일 기본 사용량",
     storage: "저장공간 5GB",
     features: [
@@ -65,9 +63,6 @@ const plans: Plan[] = [
     tier: 3,
     description: "여러 지원사업을 집중 준비하기",
     monthlyPrice: "190,000원",
-    sixMonthMonthlyPrice: "95,000원",
-    sixMonthTotal: "570,000원",
-    discount: "50% 할인",
     usageDescription: "Pro의 2배 사용량",
     storage: "저장공간 20GB",
     features: ["Pro의 모든 기능", "Pro의 2배 사용량", "맞춤 양식 신청 월 3건 · 우선 검토", "사업 아이템 15개 · 저장공간 20GB"],
@@ -86,21 +81,6 @@ const featureRows = [
   ["맞춤 양식 신청", "—", "—", "✓"],
   ["사업 아이템", "1개", "5개", "15개"],
 ];
-
-function getCurrentPlan(): Plan["name"] {
-  if (typeof window === "undefined") return "Free";
-
-  const currentPlan = new URLSearchParams(window.location.search).get("currentPlan");
-  return plans.some((plan) => plan.name === currentPlan) ? (currentPlan as Plan["name"]) : "Free";
-}
-
-function subscribeToCurrentPlan() {
-  return () => undefined;
-}
-
-function getServerCurrentPlan(): Plan["name"] {
-  return "Free";
-}
 
 function PhaseCountdown({ end }: { end: string }) {
   const [now, setNow] = useState<number | null>(null);
@@ -189,22 +169,9 @@ function AnimatedPrice({ price }: { price: string }) {
   );
 }
 
-function PriceCard({
-  plan,
-  billingCycle,
-  currentPlan,
-  closed,
-}: {
-  plan: Plan;
-  billingCycle: BillingCycle;
-  currentPlan: Plan["name"];
-  closed: boolean;
-}) {
+function PriceCard({ plan, billingCycle }: { plan: Plan; billingCycle: BillingCycle }) {
   const masterPlan = billingCycle === "six-month";
-  const price = masterPlan ? plan.sixMonthMonthlyPrice : plan.monthlyPrice;
-  const currentPlanTier = plans.find((candidate) => candidate.name === currentPlan)?.tier ?? 0;
-  const isCurrentPlan = plan.name === currentPlan;
-  const isDowngrade = plan.name !== "Free" && plan.tier < currentPlanTier;
+  const price = masterPlan ? (plan.sixMonthMonthlyPrice ?? plan.monthlyPrice) : plan.monthlyPrice;
 
   return (
     <article className={`pricing2026-card ${plan.recommended ? "is-recommended" : ""}`}>
@@ -214,7 +181,7 @@ function PriceCard({
         <p>{plan.description}</p>
       </div>
       <div className="pricing2026-price-offer">
-        {masterPlan && !closed && plan.name !== "Free" ? (
+        {masterPlan && plan.name !== "Free" ? (
           <>
             <b>{plan.discount}</b>
             <del>{plan.monthlyPrice}</del>
@@ -225,30 +192,21 @@ function PriceCard({
         className="pricing2026-price"
         aria-label={plan.name === "Free" ? "무료" : `${plan.name} ${price} ${masterPlan ? "월 환산" : "월 이용료"}`}
       >
-        {plan.name === "Free" ? <strong>무료</strong> : masterPlan && closed ? <strong>판매 종료</strong> : <AnimatedPrice price={price} />}
-        {plan.name !== "Free" && !(masterPlan && closed) ? <span>{masterPlan ? "/월 환산" : "/월"}</span> : null}
+        {plan.name === "Free" ? <strong>무료</strong> : <AnimatedPrice price={price} />}
+        {plan.name !== "Free" ? <span>{masterPlan ? "/월 환산" : "/월"}</span> : null}
       </div>
       <div className="pricing2026-price-detail" style={masterPlan ? { minHeight: 36 } : undefined}>
-        {plan.name !== "Free" && !(masterPlan && closed) ? (
+        {plan.name !== "Free" ? (
           <span>{masterPlan ? <>6개월마다 {plan.sixMonthTotal} 결제 · 최초 결제가로 갱신</> : `매월 ${plan.monthlyPrice} 결제`}</span>
         ) : null}
       </div>
       <div className="pricing2026-card-action">
-        {isCurrentPlan ? (
-          <p className="pricing2026-card-status is-current">
-            <strong>현재 이용 중</strong>
-          </p>
-        ) : plan.name === "Free" ? (
-          <p className="pricing2026-card-status is-default">기본 플랜</p>
-        ) : masterPlan && closed ? (
-          <p className="pricing2026-card-status is-downgrade">시즌 판매 종료</p>
-        ) : isDowngrade ? (
-          <p className="pricing2026-card-status is-downgrade">다운그레이드는 현 이용권이 만료된 후 진행할 수 있습니다.</p>
-        ) : (
-          <a className="pricing2026-card-cta is-upgrade" href={pricingAppUrl}>
-            {plan.name} 시작하기
-          </a>
-        )}
+        <a
+          className="pricing2026-card-cta is-upgrade"
+          href={plan.name === "Free" ? APP_URL : `${pricingAppUrl}&pricingCycle=${masterPlan ? "SIX_MONTH" : "MONTHLY"}`}
+        >
+          {plan.name} 시작하기
+        </a>
       </div>
       <ul className="pricing2026-feature-list">
         {plan.features.map((feature) => (
@@ -262,19 +220,16 @@ function PriceCard({
   );
 }
 
-export function PricingPreviewClient() {
+export function PricingPreviewClient({ initialNow }: { initialNow: number }) {
   const [billingCycle, setBillingCycle] = useState<BillingCycle>("six-month");
-  const currentPlan = useSyncExternalStore(subscribeToCurrentPlan, getCurrentPlan, getServerCurrentPlan);
   const masterPlan = billingCycle === "six-month";
-  const [now, setNow] = useState<number | null>(null);
+  const [now, setNow] = useState(initialNow);
   useEffect(() => {
-    const update = () => setNow(Date.now());
-    update();
-    const timer = window.setInterval(update, 1000);
+    const startedAt = performance.now();
+    const timer = window.setInterval(() => setNow(initialNow + performance.now() - startedAt), 1000);
     return () => window.clearInterval(timer);
-  }, []);
-  const activePhase = now === null ? masterPlanPhases[0] : getMasterPlanPhase(now);
-  const phase = activePhase ?? masterPlanPhases[2];
+  }, [initialNow]);
+  const phase = getMasterPlanPhase(now);
   const displayedPlans = plans.map((plan) => {
     if (plan.name === "Free") return plan;
     const total = plan.name === "Pro" ? phase.pro : phase.max;
@@ -292,7 +247,7 @@ export function PricingPreviewClient() {
     <div className={`pricing-page pricing2026-page ${previewStyles.page} ${masterPlan ? "is-master-plan" : "is-monthly"}`}>
       <BlogHeader />
       <main className="pricing2026-main">
-        {activePhase && <DiscountBanner discount={maxDiscount} end={activePhase.end} stage={activePhase.name} />}
+        {phase.end && <DiscountBanner discount={maxDiscount} end={phase.end} stage={phase.name} />}
         <section className="pricing2026-hero" id="pricing-plans" aria-label="결제 주기 선택">
           <div className="pricing2026-billing" aria-label="결제 주기">
             <button
@@ -317,7 +272,7 @@ export function PricingPreviewClient() {
         <section className="pricing2026-plans" aria-label="독스헌트 플랜">
           <div className="pricing2026-plan-grid">
             {displayedPlans.map((plan) => (
-              <PriceCard billingCycle={billingCycle} closed={!activePhase} currentPlan={currentPlan} key={plan.name} plan={plan} />
+              <PriceCard billingCycle={billingCycle} key={plan.name} plan={plan} />
             ))}
           </div>
         </section>
@@ -373,12 +328,8 @@ export function PricingPreviewClient() {
           </div>
         </section>
 
-        <MasterPlanPreview
-          embedded
-          phaseName={activePhase?.name ?? "시즌 판매 종료"}
-          offers={activePhase ? displayedPlans.filter((plan) => plan.sixMonthTotal) : []}
-        >
-          <PricingPreviewSchedule {...(activePhase ? { activePhase: activePhase.name } : {})} />
+        <MasterPlanPreview embedded phaseName={phase.name} offers={displayedPlans.filter((plan) => plan.sixMonthTotal)}>
+          <PricingPreviewSchedule activePhase={phase.name} />
         </MasterPlanPreview>
         <PricingPreviewFinalCta />
       </main>

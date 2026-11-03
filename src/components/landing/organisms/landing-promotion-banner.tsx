@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-import { getMasterPlanPhase, masterPlanPhases } from "@/components/pricing/master-plan-schedule";
+import { getMasterPlanPhase } from "@/components/pricing/master-plan-schedule";
 import styles from "./landing-promotion-banner.module.css";
 
 function formatRemainingTime(end: string, now: number | null) {
@@ -27,7 +27,7 @@ export function LandingPromotionBanner() {
     return () => window.clearInterval(timer);
   }, []);
 
-  const phase = now === null ? masterPlanPhases[0] : getMasterPlanPhase(now);
+  const phase = now === null ? null : getMasterPlanPhase(now);
   if (!phase) return null;
 
   const discount = Math.floor((1 - phase.max / (190000 * 6)) * 100);
@@ -38,12 +38,14 @@ export function LandingPromotionBanner() {
         <span className={styles.copy}>
           마스터플랜 {phase.name} 최대 <strong>{discount}%</strong> 할인
         </span>
-        <span className={styles.countdown}>
-          <span className={styles.label}>종료까지</span>
-          <span className={styles.clock} role="timer" aria-live="off">
-            {formatRemainingTime(phase.end, now)}
+        {phase.end && (
+          <span className={styles.countdown}>
+            <span className={styles.label}>종료까지</span>
+            <span className={styles.clock} role="timer" aria-live="off">
+              {formatRemainingTime(phase.end, now)}
+            </span>
           </span>
-        </span>
+        )}
         <span className={styles.cta}>
           혜택 보기 <span aria-hidden="true">→</span>
         </span>

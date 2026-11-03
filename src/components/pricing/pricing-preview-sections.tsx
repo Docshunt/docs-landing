@@ -5,7 +5,7 @@ import styles from "./pricing-preview-sections.module.css";
 const stages = [
   { stage: "1차 얼리버드", period: "~ 2026.12.31", pro: "390,000원", max: "490,000원" },
   { stage: "2차 시즌 특별가", period: "2027.01.01 ~ 02.15", pro: "490,000원", max: "590,000원" },
-  { stage: "3차 시즌 가격", period: "2027.02.16 ~ 03.31", pro: "590,000원", max: "690,000원" },
+  { stage: "3차 시즌 가격", period: "2027.02.16 이후", pro: "590,000원", max: "690,000원" },
 ];
 
 export function PricingPreviewSchedule({ activePhase }: { activePhase?: string }) {
