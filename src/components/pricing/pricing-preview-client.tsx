@@ -7,7 +7,7 @@ import previewStyles from "./pricing-preview-page.module.css";
 import { PricingPreviewSchedule, PricingPreviewFinalCta } from "./pricing-preview-sections";
 import { APP_URL } from "@/seo/metadata";
 import { BlogHeader, DocshuntFooter } from "@/components/docshunt-blog-shell";
-import { getMasterPlanPhase } from "./master-plan-schedule";
+import { getMasterPlanPhase, monthlyPlanPrices } from "./master-plan-schedule";
 
 type BillingCycle = "monthly" | "six-month";
 
@@ -36,7 +36,7 @@ const plans: Plan[] = [
   {
     name: "Pro",
     description: "사업계획서 작성부터 완성까지",
-    monthlyPrice: "149,000원",
+    monthlyPrice: `${monthlyPlanPrices.Pro.toLocaleString("ko-KR")}원`,
     features: [
       "기본·지원사업 사업계획서 작성",
       "양식 직접 업로드 · 한글 내보내기",
@@ -50,7 +50,7 @@ const plans: Plan[] = [
     recommended: true,
     badge: "지원사업 합격률 제일 높은",
     description: "여러 지원사업을 집중 준비하기",
-    monthlyPrice: "190,000원",
+    monthlyPrice: `${monthlyPlanPrices.Max.toLocaleString("ko-KR")}원`,
     features: ["Pro의 모든 기능", "Pro의 2배 사용량", "맞춤 양식 신청 월 3건 · 우선 검토", "사업 아이템 15개 · 저장공간 20GB"],
   },
 ];
@@ -206,7 +206,7 @@ export function PricingPreviewClient({ initialNow }: { initialNow: number }) {
   const displayedPlans = plans.map((plan) => {
     if (plan.name === "Free") return plan;
     const total = plan.name === "Pro" ? phase.pro : phase.max;
-    const monthly = plan.name === "Pro" ? 149000 : 190000;
+    const monthly = monthlyPlanPrices[plan.name];
     return {
       ...plan,
       sixMonthTotal: `${total.toLocaleString("ko-KR")}원`,
@@ -214,7 +214,7 @@ export function PricingPreviewClient({ initialNow }: { initialNow: number }) {
       discount: `${(100 * (1 - total / (monthly * 6))).toFixed(1).replace(/\.0$/, "")} % 할인`.replace(" %", "%"),
     };
   });
-  const maxDiscount = Math.floor(100 * (1 - phase.max / (190000 * 6)));
+  const maxDiscount = Math.floor(100 * (1 - phase.max / (monthlyPlanPrices.Max * 6)));
 
   return (
     <div className={`pricing-page pricing2026-page ${previewStyles.page} ${masterPlan ? "is-master-plan" : "is-monthly"}`}>

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-import { getMasterPlanPhase } from "@/components/pricing/master-plan-schedule";
+import { getMasterPlanPhase, monthlyPlanPrices } from "@/components/pricing/master-plan-schedule";
 import styles from "./landing-promotion-banner.module.css";
 
 function formatRemainingTime(end: string, now: number | null) {
@@ -30,7 +30,7 @@ export function LandingPromotionBanner() {
   const phase = now === null ? null : getMasterPlanPhase(now);
   if (!phase) return null;
 
-  const discount = Math.floor((1 - phase.max / (190000 * 6)) * 100);
+  const discount = Math.floor((1 - phase.max / (monthlyPlanPrices.Max * 6)) * 100);
 
   return (
     <div className={styles.banner}>

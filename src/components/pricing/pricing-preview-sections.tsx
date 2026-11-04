@@ -2,11 +2,7 @@
 
 import styles from "./pricing-preview-sections.module.css";
 
-const stages = [
-  { stage: "1차 얼리버드", period: "~ 2026.12.31", pro: "390,000원", max: "490,000원" },
-  { stage: "2차 시즌 특별가", period: "2027.01.01 ~ 02.15", pro: "490,000원", max: "590,000원" },
-  { stage: "3차 시즌 가격", period: "2027.02.16 이후", pro: "590,000원", max: "690,000원" },
-];
+import { getMasterPlanPeriod, masterPlanPhases } from "./master-plan-schedule";
 
 export function PricingPreviewSchedule({ activePhase }: { activePhase?: string }) {
   return (
@@ -23,15 +19,15 @@ export function PricingPreviewSchedule({ activePhase }: { activePhase?: string }
               </tr>
             </thead>
             <tbody>
-              {stages.map((item) => (
-                <tr key={item.stage} className={item.stage === activePhase ? styles.activeStage : undefined}>
+              {masterPlanPhases.map((item) => (
+                <tr key={item.name} className={item.name === activePhase ? styles.activeStage : undefined}>
                   <th scope="row">
-                    {item.stage}
-                    {item.stage === activePhase && <span className={styles.activeBadge}>진행 중</span>}
+                    {item.name}
+                    {item.name === activePhase && <span className={styles.activeBadge}>진행 중</span>}
                   </th>
-                  <td>{item.period}</td>
-                  <td>{item.pro}</td>
-                  <td>{item.max}</td>
+                  <td>{getMasterPlanPeriod(item)}</td>
+                  <td>{item.pro.toLocaleString("ko-KR")}원</td>
+                  <td>{item.max.toLocaleString("ko-KR")}원</td>
                 </tr>
               ))}
             </tbody>
