@@ -1,0 +1,30 @@
+.page {
+  background: #000000;
+}
+
+.main {
+  overflow: clip;
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  border: 0;
+  background: #000000;
+}
+
+.framePlaceholder {
+  min-height: 100vh;
+  background: #000000;
+}
+
+.embedded :global(.pricing2026-refund-section) {
+  background: #1a1a1c;
+  color: #fff;
+}
+.embedded :global(.pricing2026-refund-copy h2),
+.embedded :global(.pricing2026-refund-tiers span),
+.embedded :global(.pricing2026-refund-links button) {
+  color: #f1f4fa;
+}

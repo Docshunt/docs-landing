@@ -1,0 +1,515 @@
+/* Keep the exported desktop artwork; adapt layout without stretching icons. */
+html.b-root,
+.b-root body {
+  height: auto !important;
+  min-height: 0 !important;
+}
+.b-root .PoweredByBubble,
+.b-root .baTaOgaT0,
+.b-root .baTaPaVaX {
+  display: none !important;
+}
+.b-root .Button:is(.baTaPaAq, .baTaPaAj, .baTaOnz0, .baTaPaRb, .baTaQaFaX, .baTaPraT, .baTaPhaT) {
+  padding-inline: 22px !important;
+}
+.b-root video {
+  display: block;
+}
+/* Collapse HTML indentation; intentional breaks remain in <br> and block elements. */
+.b-root .bubble-element.Text,
+.b-root .bubble-element.Button,
+.b-root .bubble-element.Link {
+  white-space: normal !important;
+}
+.b-root .baTaOof0 {
+  height: auto !important;
+  max-height: none !important;
+  padding: 24px 40px !important;
+  align-items: center !important;
+  gap: 16px !important;
+}
+.b-root .baTaOnz0 .icon-item {
+  display: none;
+}
+.b-root .baTaOnz0 .label-item {
+  flex: 1;
+  text-align: center;
+}
+.b-root #refund-modal .baTaPnw {
+  width: 100% !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+}
+.b-root #refund-modal .baTaPnaB {
+  width: 0 !important;
+  min-width: 0 !important;
+  flex: 1 1 0 !important;
+}
+.b-root #refund-modal .baTaPnq {
+  width: 44px !important;
+  min-width: 44px !important;
+  max-width: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  flex: 0 0 44px !important;
+  align-self: flex-start !important;
+  padding: 0 !important;
+  font-size: 28px !important;
+  color: #1a1a1c !important;
+}
+.b-root #refund-modal .baTaPnq .icon-item {
+  display: none;
+}
+.b-root #refund-modal .baTaPnq::before {
+  content: "\00d7";
+}
+
+/* Normalize spacing left behind by the Bubble export's preformatted text rules. */
+.b-root .baTaPoaZ :is(.baTaPpi, .baTaPpt, .baTaPqaN, .baTaPqk) {
+  width: min(1100px, 100%) !important;
+  min-width: 0 !important;
+  max-width: 1100px !important;
+  align-self: center !important;
+}
+
+.b-root .baTaPob {
+  width: min(1100px, 100%) !important;
+  min-width: 0 !important;
+  max-width: 1100px !important;
+  align-self: center !important;
+}
+
+.b-root .baTaPoaZ .Text {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: auto !important;
+  white-space: normal !important;
+  text-align: left !important;
+}
+
+.b-root :is(.baTaOsaP0, .baTaOyaN) {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.b-root :is(.baTaOsaU0, .baTaOyaP) {
+  width: 100% !important;
+  min-height: 276px !important;
+  padding: 32px 36px 36px !important;
+  box-sizing: border-box;
+}
+
+.b-root :is(.baTaOsr0, .baTaOyaT) {
+  min-height: 40px;
+  align-items: center !important;
+  column-gap: 12px !important;
+}
+
+.b-root :is(.baTaOtaV0, .baTaOyaZ) {
+  width: 100% !important;
+  min-height: 116px !important;
+  align-items: flex-start !important;
+  column-gap: 14px !important;
+}
+
+.b-root :is(.baTaOsaZ0, .baTaOyf) {
+  width: auto !important;
+  min-width: 0 !important;
+  flex: 1 1 0 !important;
+  white-space: normal !important;
+  text-align: center !important;
+  line-height: 1.55 !important;
+}
+
+.b-root :is(.baTaOsz0, .baTaOtaP0, .baTaOya, .baTaOyb) {
+  flex: 0 0 22px !important;
+  width: 22px !important;
+  max-width: 22px !important;
+}
+
+.b-root :is(.baTaOtaP0, .baTaOyb) {
+  align-self: flex-end;
+}
+
+.b-root .master-plan-refund-notes {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  white-space: normal;
+  line-height: 1.65;
+  list-style: none;
+  text-align: left;
+}
+
+.b-root .master-plan-refund-notes li {
+  margin: 0;
+}
+
+.b-root .master-plan-refund-notes li + li {
+  margin-top: 8px;
+}
+
+.b-root .master-plan-refund-notes li::before {
+  content: "- ";
+}
+
+@media (max-width: 1199px) {
+  html.b-root {
+    -webkit-text-size-adjust: 100%;
+  }
+  .b-root .main-page {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  .b-root .bubble-element:is(.Group, .CustomElement, .HTML, .Text, .Image, .Button),
+  .b-root .bubble-r-container {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+  .b-root .Text {
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+    letter-spacing: 0 !important;
+  }
+  .b-root .baTaOaUaU0 {
+    font-size: 54px !important;
+  }
+  .b-root .baTaOof0 {
+    flex-direction: column !important;
+    justify-content: center !important;
+    text-align: center;
+  }
+  .b-root .baTaOpaP0 {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .b-root
+    :is(
+      .baTaOnaW0,
+      .baTaOzz,
+      .baTaOrd0,
+      .baTaOvaZ0,
+      .baTaPaRi,
+      .baTaQaEt,
+      .baTaOgaO0,
+      .baTaOkaP0,
+      .baTaPaHaO,
+      .baTaPaHaU,
+      .baTaPaHz,
+      .baTaPaNaC,
+      .baTaQaFaR
+    ) {
+    font-size: 40px !important;
+    line-height: 1.35 !important;
+  }
+  .b-root :is(.baTaQaFaG, .baTaOgaN0, .baTaOraX0, .baTaOnaJ0, .baTaQaEn, .baTaPoaZ) {
+    padding-inline: 32px !important;
+  }
+  .b-root :is(.baTaQaFaL, .baTaPaRaX) {
+    padding-inline: 24px !important;
+  }
+  .b-root .baTaOuaN0 {
+    gap: 20px !important;
+  }
+  .b-root .baTaOuaN0 > .Group {
+    flex: 1 1 0 !important;
+  }
+  .b-root :is(.baTaOsz0, .baTaOtaP0, .baTaOya, .baTaOyb) {
+    flex: 0 0 22px !important;
+    max-width: 22px !important;
+  }
+  .b-root .baTaOkaK0 {
+    padding-inline: 32px !important;
+  }
+  .b-root .baTaHbh {
+    width: calc(100% - 64px) !important;
+  }
+  .b-root :is(.baTaPwaF, .baTaPwaS) {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: hidden;
+    aspect-ratio: 700 / 380;
+    flex-grow: 0 !important;
+  }
+  .b-root :is(.baTaPwaF, .baTaPwaS) video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+  .b-root #refund-modal {
+    width: calc(100% - 32px) !important;
+    min-width: 0 !important;
+    max-width: 720px !important;
+    padding: 24px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .b-root .baTaOaUaJ0 {
+    padding: 100px 20px 32px !important;
+    row-gap: 24px !important;
+  }
+  .b-root .baTaOaUaT0 {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    text-align: center;
+  }
+  .b-root .baTaOaUaU0 {
+    font-size: 30px !important;
+    line-height: 1.35 !important;
+    text-align: center;
+  }
+  .b-root .baTaOaUaN0 {
+    row-gap: 24px !important;
+  }
+  /* The original artwork contains three tickets; frame only its center ticket. */
+  .b-root .baTaOhi0 {
+    width: 100% !important;
+    max-width: 420px !important;
+    aspect-ratio: 696.84 / 320.182;
+    overflow: hidden;
+  }
+  .b-root .baTaOhi0 .aspect-ratio {
+    display: none;
+  }
+  .b-root .baTaOhi0 img {
+    width: 206.647% !important;
+    max-width: none !important;
+    height: 109.625% !important;
+    left: -53.347% !important;
+    top: -9.514% !important;
+  }
+  .b-root
+    :is(
+      .baTaOnaW0,
+      .baTaOzz,
+      .baTaOrd0,
+      .baTaOvaZ0,
+      .baTaPaRi,
+      .baTaQaEt,
+      .baTaOgaO0,
+      .baTaOkaP0,
+      .baTaPaHaO,
+      .baTaPaHaU,
+      .baTaPaHz,
+      .baTaPaNaC,
+      .baTaQaFaR
+    ) {
+    font-size: 28px !important;
+    line-height: 1.4 !important;
+  }
+  .b-root .baTaOoaZ0 {
+    font-size: 32px !important;
+    line-height: 1.4 !important;
+  }
+  .b-root :is(.baTaOgaO0, .baTaQaFaR, .baTaOnaW0, .baTaOrd0, .baTaPaRi, .baTaQaEt) {
+    text-wrap: balance;
+  }
+  .b-root
+    :is(
+      .baTaOiaG0,
+      .baTaOoaR0,
+      .baTaOxaZ,
+      .baTaOsaV0,
+      .baTaOyaU,
+      .baTaPaPaL,
+      .baTaPaPaM,
+      .baTaPaOb,
+      .baTaPaOc,
+      .baTaPaQaJ,
+      .baTaPaQaN,
+      .baTaPaQa,
+      .baTaPaQb,
+      .baTaPaQm,
+      .baTaPaQt,
+      .baTaPaIz,
+      .baTaPwaH,
+      .baTaPwaX,
+      .baTaPhaF,
+      .baTaPob
+    ) {
+    font-size: 18px !important;
+    line-height: 1.5 !important;
+  }
+  .b-root :is(.baTaOzaF, .baTaOzaR, .baTaPaRh, .baTaPaMx) {
+    font-size: 16px !important;
+  }
+  .b-root .Button {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    min-height: 48px !important;
+    height: auto !important;
+    white-space: normal !important;
+  }
+  .b-root .Button .icon-item {
+    flex-shrink: 0;
+  }
+  .b-root :is(.baTaQaFaG, .baTaOgaN0, .baTaOraX0, .baTaOnaJ0, .baTaQaEn, .baTaPoaZ) {
+    padding: 48px 20px !important;
+    row-gap: 24px !important;
+  }
+  .b-root .baTaQaFaL {
+    padding: 0 !important;
+    width: 100% !important;
+    row-gap: 24px !important;
+  }
+  .b-root .baTaPaRaX {
+    padding: 48px 20px 0 !important;
+    width: 100% !important;
+  }
+  .b-root .baTaPaRaV {
+    padding-bottom: 48px !important;
+  }
+  .b-root .baTaOkaK0 {
+    padding: 24px 20px 40px !important;
+    row-gap: 24px !important;
+  }
+  .b-root :is(.baTaPaIaJ, .baTaPaIaR) {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    column-gap: 8px !important;
+  }
+  .b-root :is(.baTaPaIn, .baTaPaHx) {
+    min-height: 0 !important;
+  }
+  .b-root .baTaOlaF0 {
+    padding: 10px 12px !important;
+    gap: 8px !important;
+  }
+  .b-root .baTaOkaV0 {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    flex: 1 1 0 !important;
+    text-align: center;
+  }
+  .b-root :is(.baTaOyx, .baTaOlaN0) {
+    width: 16px !important;
+    flex: 0 0 16px !important;
+  }
+  .b-root .baTaOym {
+    width: 10px !important;
+    flex-grow: 0 !important;
+  }
+  .b-root :is(.baTaPwaG, .baTaPwaT) {
+    padding: 24px 20px !important;
+  }
+  .b-root :is(.baTaOjr0, .baTaPaIu) {
+    padding: 28px 20px !important;
+    row-gap: 16px !important;
+  }
+  .b-root :is(.baTaOiaG0, .baTaPaIz) {
+    font-size: 15px !important;
+    text-align: center;
+  }
+  .b-root :is(.baTaOjb0, .baTaPaJaA) {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .b-root :is(.baTaOjb0, .baTaPaJaA) > .Group {
+    width: 100% !important;
+    min-height: 56px !important;
+    height: 56px !important;
+  }
+  .b-root :is(.baTaOjb0, .baTaPaJaA) .Text {
+    font-size: 20px !important;
+  }
+  .b-root .baTaOuaN0 {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 24px !important;
+  }
+  .b-root .baTaOuaN0 > .Group {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+  }
+  .b-root :is(.baTaOsr0, .baTaOyaT) {
+    flex-wrap: wrap !important;
+    align-items: center !important;
+  }
+  .b-root :is(.baTaOsz0, .baTaOtaP0, .baTaOya, .baTaOyb) {
+    flex-basis: 18px !important;
+    max-width: 18px !important;
+  }
+  .b-root :is(.baTaOsaU0, .baTaOyaP) {
+    min-height: 0 !important;
+    padding: 24px 20px !important;
+  }
+  .b-root :is(.baTaOtaV0, .baTaOyaZ) {
+    min-height: 0 !important;
+    column-gap: 10px !important;
+  }
+  .b-root .master-plan-refund-notes {
+    width: 100%;
+    line-height: 1.7;
+  }
+  .b-root .baTaOoq0 {
+    color: #aeb3bf !important;
+  }
+  .b-root .baTaOraM0 {
+    width: 100% !important;
+  }
+  .b-root .baTaOraM0 > .baTaOof0 {
+    padding: 24px 16px !important;
+    gap: 12px !important;
+  }
+  .b-root .baTaOpaP0 {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 4px !important;
+    min-height: 0 !important;
+  }
+  .b-root .baTaOoq0 {
+    font-size: 13px !important;
+    line-height: 1.7 !important;
+  }
+  .b-root .baTaPaRaL {
+    padding: 16px 20px !important;
+  }
+  .b-root .baTaPaQz {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .b-root .baTaPoaZ .Text {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+  }
+  .b-root .baTaHbh {
+    width: calc(100% - 40px) !important;
+    padding: 40px 0 !important;
+  }
+  .b-root .baTaHbh .row {
+    flex-wrap: wrap !important;
+  }
+  .b-root .baTaHbh .Text {
+    font-size: 12px !important;
+  }
+  .b-root .baTaOaXaU0 {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom)) !important;
+  }
+  .b-root #refund-modal {
+    padding: 20px !important;
+  }
+  .b-root #refund-modal .Text {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+}
+
+@media (max-width: 359px) {
+  .b-root .baTaOoaZ0 {
+    font-size: 28px !important;
+  }
+  .b-root .baTaOaUaU0 {
+    font-size: 26px !important;
+  }
+  .b-root :is(.baTaOnaW0, .baTaOrd0, .baTaPaRi, .baTaQaEt, .baTaOgaO0, .baTaOkaP0, .baTaPaHaO, .baTaPaHaU, .baTaPaHz, .baTaQaFaR) {
+    font-size: 24px !important;
+  }
+}

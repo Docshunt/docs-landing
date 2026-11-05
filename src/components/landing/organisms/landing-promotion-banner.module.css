@@ -1,0 +1,98 @@
+:global(.landing-page):has(.banner) {
+  padding-bottom: 76px;
+}
+
+.banner {
+  position: fixed;
+  z-index: 100;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(110deg, #2546df 0%, #2876ec 65%, #489bf6 100%);
+  box-shadow: 0 -4px 20px rgb(24 70 185 / 25%);
+}
+
+.link {
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 14px 24px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.copy {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+
+.copy strong {
+  color: #fff;
+  font-size: 1.15em;
+}
+
+.countdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.label {
+  color: #e5efff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.clock {
+  font-size: 28px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.cta {
+  padding: 9px 16px;
+  border: 1px solid rgb(255 255 255 / 65%);
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  :global(.landing-page):has(.banner) {
+    padding-bottom: 112px;
+  }
+
+  .link {
+    min-height: 72px;
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    padding: 8px 16px;
+    text-align: center;
+  }
+  .copy {
+    font-size: 16px;
+  }
+  .copy {
+    flex-basis: 100%;
+  }
+  .countdown {
+    gap: 8px;
+  }
+  .label {
+    font-size: 12px;
+  }
+  .clock {
+    font-size: 20px;
+  }
+  .cta {
+    padding: 3px 10px;
+    font-size: 12px;
+  }
+}
