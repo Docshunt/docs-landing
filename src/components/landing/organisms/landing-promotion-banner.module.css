@@ -1,3 +1,7 @@
+:global(.landing-page):has(.banner) {
+  padding-bottom: 76px;
+}
+
 .banner {
   position: fixed;
   z-index: 100;
@@ -61,6 +65,10 @@
 }
 
 @media (max-width: 767px) {
+  :global(.landing-page):has(.banner) {
+    padding-bottom: 112px;
+  }
+
   .link {
     min-height: 72px;
     flex-wrap: wrap;

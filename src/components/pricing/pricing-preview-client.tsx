@@ -220,6 +220,7 @@ export function PricingPreviewClient({ initialNow }: { initialNow: number }) {
     <div className={`pricing-page pricing2026-page ${previewStyles.page} ${masterPlan ? "is-master-plan" : "is-monthly"}`}>
       <BlogHeader />
       <main className="pricing2026-main">
+        <h1 className={previewStyles.pageTitle}>독스헌트 요금제</h1>
         {phase.end && <DiscountBanner discount={maxDiscount} end={phase.end} stage={phase.name} />}
         <section className="pricing2026-hero" id="pricing-plans" aria-label="결제 주기 선택">
           <div className="pricing2026-billing" aria-label="결제 주기">
