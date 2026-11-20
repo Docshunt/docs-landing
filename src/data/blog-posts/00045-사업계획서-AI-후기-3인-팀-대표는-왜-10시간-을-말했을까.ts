@@ -26,6 +26,8 @@ export const post45 = {
   heroImage: "/docshunt-assets/blog-covers/00045-business-plan-ai-review-crescent-seoul-interview-hero.jpg",
   videoEmbedUrl: "https://www.youtube-nocookie.com/embed/OWhe63kWoBk?rel=0",
   videoTitle: "밤새 쓰던 사업계획서, 독스헌트로 자동화했습니다 | 차정연 대표 인터뷰",
+  videoDescription:
+    "크레센트 서울 차정연 대표 인터뷰 영상입니다. 한글 사업계획서를 밤새 직접 쓰던 3인 팀이 독스헌트로 반복 입력을 줄인 과정과, AI가 만든 초안을 제출 전에 어떻게 검수했는지 대표가 직접 설명합니다.",
   paragraphs: [
     "실행력이 좋은 팀도 사업계획서 앞에서는 멈추곤 합니다. 이미 고객과 매출이 있고 사업 모델도 검증됐지만, 그 내용을 평가자가 이해할 수 있는 문서로 정리하는 일은 또 다른 문제이기 때문입니다.",
     "한국 화장품 제조사와 해외 창업가를 연결하는 크레센트 서울도 같은 고민을 안고 있었습니다.",

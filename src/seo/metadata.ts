@@ -328,6 +328,10 @@ export function videoThumbnailUrl(post: BlogPost) {
   return absoluteUrl(post.heroImage);
 }
 
+export function videoDescription(post: BlogPost) {
+  return post.videoDescription ?? post.description;
+}
+
 export function videoObjectJsonLd(post: BlogPost) {
   if (!post.videoEmbedUrl) return undefined;
 
@@ -341,7 +345,7 @@ export function videoObjectJsonLd(post: BlogPost) {
     "@type": "VideoObject",
     "@id": `${videoUrl}#video`,
     name: post.videoTitle ?? `${post.title} 영상`,
-    description: post.description,
+    description: videoDescription(post),
     thumbnailUrl: videoThumbnailUrl(post),
     uploadDate,
     embedUrl: post.videoEmbedUrl,

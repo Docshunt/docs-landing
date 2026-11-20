@@ -40,6 +40,8 @@ export const post41 = {
   heroImage: "/docshunt-assets/blog-covers/00041-support-program-business-plan-application-strategy-editorial-hero.jpg",
   videoEmbedUrl: "https://www.youtube-nocookie.com/embed/9a_QmMnxmOo?rel=0",
   videoTitle: "지원사업은 잘 쓰는 싸움이 아니라 많이 넣는 싸움입니다 | 박중현 대표 인터뷰",
+  videoDescription:
+    "스피노자 박중현 대표 인터뷰 영상입니다. 연간 최대 60개의 사업계획서를 써 온 경험을 바탕으로, 공고 하나에 매달리기보다 여러 지원사업에 꾸준히 지원하는 방법과 HWP 양식 작성 시간을 줄인 과정을 대표가 직접 이야기합니다.",
   paragraphs: [
     "스피노자 박중현 대표는 현대자동차 설계 연구원과 KAIST MBA를 거쳐 묘목과 모종 생산 기술을 개발하는 회사를 창업했습니다.",
     "박 대표가 사업계획서를 쓰며 가장 어려웠던 점은 지원사업이 몰리는 시기에 공고마다 다른 문항과 HWP 양식을 동시에 맞춰야 한다는 것이었습니다.",

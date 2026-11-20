@@ -65,6 +65,8 @@ export type BlogPost = {
   heroImage: string;
   videoEmbedUrl?: string;
   videoTitle?: string;
+  /** Description for the /video/[slug] watch page; must differ from the article description. */
+  videoDescription?: string;
   paragraphs: string[];
   contentHtml?: string;
 };
