@@ -17,3 +17,6 @@ public/docshunt-assets/*.svg
 src/data/docshunt-blog-content.ts
 src/data/docshunt-blog-recommendations.ts
 src/data/docshunt-blogs.ts
+
+# 네이버 서치어드바이저 소유 확인 파일: 네이버가 준 내용과 정확히 같아야 하므로 서식 변경 금지
+public/naver*.html
