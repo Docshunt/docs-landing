@@ -81,7 +81,7 @@ export const post28 = {
       </tr>
     </tbody>
   </table>
-  <p><a href="${KAWF_URL}" target="_blank" rel="noopener noreferrer">예술활동준비금</a>은 「예술인 복지법」에 따른 예술활동증명을 마치고, 소득인정액이 기준의 120% 이내인 예술인이 대상이었습니다. 프로젝트 지원금과 달리 사업계획서보다 자격 요건 확인이 중심이라, 신청 전에 예술활동증명 유효 여부부터 확인해야 합니다.</p>
+  <p><a href="${KAWF_URL}" target="_blank" rel="noopener noreferrer">예술활동준비금</a>은 「예술인 복지법」에 따른 예술활동증명을 마치고, 소득인정액이 기준의 120% 이내(2026년 1인 가구 월 3,077,086원)인 예술인이 대상이었습니다. 프로젝트 지원금과 달리 사업계획서보다 자격 요건 확인이 중심이라, 신청 전에 예술활동증명 유효 여부부터 확인해야 합니다.</p>
 
   <h2>신청서가 심의 전에 빠지는 경우</h2>
   <p><a href="${ARKO_REVIEW_URL}" target="_blank" rel="noopener noreferrer">한국문화예술위원회의 심의 안내</a>가 결격사유로 적은 항목은 다음과 같습니다.</p>

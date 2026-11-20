@@ -71,7 +71,11 @@ const BANNED_PATTERNS = [
 // Repetition of these in the body usually signals filler.
 const WATCH_PHRASES = ["여러분", "중요합니다", "필수입니다"];
 
-const EMOJI = /\p{Extended_Pictographic}|⃣/u;
+// Flags are pairs of Regional Indicator symbols, which Extended_Pictographic does not cover.
+const EMOJI = /\p{Extended_Pictographic}|\p{Regional_Indicator}|\u20e3/u;
+// A number checked against a cited source can be kept by wrapping it in an element with
+// data-claim-verified, e.g. <q data-claim-verified>합격률 80%</q>. Only unsupported-claim patterns skip it.
+const VERIFIED_CLAIM = /<([a-z]+)[^>]*\bdata-claim-verified\b[^>]*>[\s\S]*?<\/\1>/g;
 
 function readString(source, field) {
   const match = source.match(new RegExp(`\\b${field}:\\s*\\n?\\s*"((?:[^"\\\\]|\\\\.)*)"`));
@@ -84,10 +88,10 @@ function parseDate(value) {
   return match ? new Date(Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3]))) : undefined;
 }
 
-function visibleText(source) {
+function visibleText(source, { skipVerifiedClaims = false } = {}) {
   const paragraphs = [...source.matchAll(/^\s*(["'`])((?:(?!\1)[^\\]|\\.)*)\1,?\s*$/gm)].map((match) => match[2]);
   const html = source.match(/contentHtml:\s*`([\s\S]*?)`,\s*\n/)?.[1] ?? "";
-  const htmlText = html
+  const htmlText = (skipVerifiedClaims ? html.replace(VERIFIED_CLAIM, " ") : html)
     .replace(/\$\{[^}]*\}/g, " ")
     // Decorative component icons (e.g. dh-callout-icon) are hidden from readers and are not copy.
     .replace(/<span[^>]*aria-hidden="true"[^>]*>[\s\S]*?<\/span>/g, " ")
@@ -125,6 +129,7 @@ const posts = fs
       modified,
       verificationDate,
       text: visibleText(source),
+      claimText: visibleText(source, { skipVerifiedClaims: true }),
       strict: allStrict || (parseDate(modified) ?? new Date(0)) >= effective,
     };
   });
@@ -134,9 +139,30 @@ function report(post, level, rule, detail) {
   findings.push({ file: post.file, slug: post.slug, level: post.strict ? level : "backlog", rule, detail });
 }
 
-const descriptionOwners = new Map();
+// Duplicate descriptions block only when a strict post is in the group; legacy-only duplicates are backlog.
+const descriptionGroups = new Map();
+for (const post of posts) {
+  if (!descriptionGroups.has(post.description)) descriptionGroups.set(post.description, []);
+  descriptionGroups.get(post.description).push(post);
+}
+for (const group of descriptionGroups.values()) {
+  if (group.length < 2) continue;
+  const level = group.some((post) => post.strict) ? "error" : "backlog";
+  for (const post of group) {
+    const others = group.filter((other) => other !== post).map((other) => other.file);
+    findings.push({
+      file: post.file,
+      slug: post.slug,
+      level,
+      rule: "duplicate-description",
+      detail: `same description as ${others.join(", ")}`,
+    });
+  }
+}
+
 for (const post of posts) {
   const surfaces = { title: post.title, description: post.description, body: post.text };
+  const claimSurfaces = { ...surfaces, body: post.claimText };
 
   for (const [surface, text] of Object.entries(surfaces)) {
     const emoji = text.match(EMOJI);
@@ -150,7 +176,7 @@ for (const post of posts) {
       else report(post, "error", "banned-phrase", `${surface}: "${phrase}"`);
     }
     for (const { label, pattern } of BANNED_PATTERNS) {
-      const match = text.match(pattern);
+      const match = claimSurfaces[surface].match(pattern);
       if (match) report(post, "error", "unsupported-claim", `${surface}: "${match[0]}" (${label})`);
     }
   }
@@ -170,18 +196,6 @@ for (const post of posts) {
     report(post, "error", "description-length", `${descriptionLength} chars (allowed 70-160, aim 100-150)`);
   } else if (descriptionLength < 100 || descriptionLength > 150) {
     report(post, "warn", "description-length", `${descriptionLength} chars (aim 100-150)`);
-  }
-
-  if (descriptionOwners.has(post.description)) {
-    findings.push({
-      file: post.file,
-      slug: post.slug,
-      level: "error",
-      rule: "duplicate-description",
-      detail: `same description as ${descriptionOwners.get(post.description)}`,
-    });
-  } else {
-    descriptionOwners.set(post.description, post.file);
   }
 
   const openWording = `${post.title} ${post.description}`.match(OPEN_NOTICE_WORDING);

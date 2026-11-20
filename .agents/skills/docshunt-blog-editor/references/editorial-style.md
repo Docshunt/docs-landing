@@ -55,7 +55,7 @@ The TAM·SAM·SOM article works because it begins with the weak sentence `국내
 - Unsupported performance numbers such as `합격률 200%`, `가능성을 2배 높이는`, `비용 80% 절감`, unless a cited source states that exact number
 - Invented or unverifiable first-person claims such as `5년 전 블로그 하나로 합격했습니다`; keep a founder's story only when the founder confirmed it for publication
 
-`npm run blog:check-copy` enforces most of this list for posts dated on or after its effective date (`modifiedDate`, or `date` when no modification date exists). Context-dependent words such as `완벽한` and `무조건` fail in titles and descriptions but only warn in the body, because a body sentence can quote or negate them. Read every warning; do not rephrase around the checker without fixing the underlying sentence.
+`npm run blog:check-copy` enforces most of this list for posts dated on or after its effective date (`modifiedDate`, or `date` when no modification date exists). Context-dependent words such as `완벽한` and `무조건` fail in titles and descriptions but only warn in the body, because a body sentence can quote or negate them. Read every warning; do not rephrase around the checker without fixing the underlying sentence. When a cited source states the exact number (for example a quoted 합격률), wrap only that quoted number in an element with `data-claim-verified`, such as `<q data-claim-verified>합격률 80%</q>`, and keep the source link next to it; unverified numbers must still fail.
 
 ## Human Review Questions
 

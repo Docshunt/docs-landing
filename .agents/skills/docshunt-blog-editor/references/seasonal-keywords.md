@@ -35,11 +35,11 @@ Before using a program name, confirm on K-Startup or the ministry notice board t
 
 These facts were confirmed from the attached notice files on the Ministry of SMEs and Startups notice board. Re-check them before reuse because each year's notice can change.
 
-| Program (2026, general type)      | Notice       | Application window     | Scale and funding                                                                                                                  |
-| --------------------------------- | ------------ | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| 초기창업패키지                    | 제2026-38호  | 2026.01.23–02.13 16:00 | Up to 3 years since founding, about 400 companies, up to KRW 100M (average KRW 50M)                                                |
-| 창업도약패키지                    | 제2026-39호  | 2026.01.23–02.13 16:00 | Over 3 and up to 7 years since founding (10 for new-industry fields), about 300 companies, up to KRW 200M (average about KRW 120M) |
-| 예비창업패키지 (revised notice 2) | 제2026-207호 | 2026.03.06–03.26 18:00 | About 300 founders, average KRW 40M, excluded below 70 points at each evaluation stage                                             |
+| Program (2026, general type)      | Notice       | Application window     | Scale and funding                                                                                                                      |
+| --------------------------------- | ------------ | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| 초기창업패키지                    | 제2026-38호  | 2026.01.23–02.13 16:00 | Up to 3 years since founding, about 400 companies, up to KRW 100M (average KRW 50M)                                                    |
+| 창업도약패키지                    | 제2026-39호  | 2026.01.23–02.13 16:00 | Over 3 and up to 7 years since founding (10 for new-industry fields), about 300 companies, up to KRW 200M (average about KRW 120M)     |
+| 예비창업패키지 (revised notice 2) | 제2026-207호 | 2026.03.06–03.26 18:00 | About 300 founders in total (general field 110, specialized fields about 190), average KRW 40M, excluded below 70 points at each stage |
 
 All three used the same four evaluation items: 문제인식, 실현가능성, 성장전략, 팀(기업) 구성.
 

@@ -108,7 +108,7 @@ export default `<div class="dh-seo-post" style="font-size:18px; line-height:1.88
   </div>
 
   <h2 style="margin:58px 0 18px; font-size:30px; line-height:1.38; font-weight:850; color:#25262C; letter-spacing:0;">독스헌트로 맞춤 공고 확인부터 사업계획서 작성까지 한 번에!</h2>
-  <p style="margin:0 0 20px;">사업계획서 AI 독스헌트는 입력한 기업 정보를 바탕으로 K-Startup과 기업마당에 올라온 공고 중에서 나에게 맞는 지원사업을 추천하고, 필요한 내용을 요약해서 한눈에 보기 쉽게 정리해줍니다.</p>
+  <p style="margin:0 0 20px;">사업계획서 AI 독스헌트는 입력한 기업 정보를 바탕으로 K-Startup과 기업마당에 올라온 공고 중에서 나에게 맞는 지원사업을 추천하고, 지원대상·신청기간·제출서류를 요약해 보여줍니다.</p>
   <p style="margin:0 0 20px;">공고를 선택하면 지원대상, 신청기간, 제출서류, 평가 기준처럼 사업계획서에 반영해야 할 내용을 빠르게 볼 수 있습니다. 긴 공고문을 처음부터 끝까지 다시 읽지 않아도 핵심 조건을 확인할 수 있습니다.</p>
 
   <div class="dh-shot-slots" aria-label="독스헌트 지원사업 추천과 공고 요약 화면">
