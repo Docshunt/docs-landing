@@ -89,6 +89,8 @@ function visibleText(source) {
   const html = source.match(/contentHtml:\s*`([\s\S]*?)`,\s*\n/)?.[1] ?? "";
   const htmlText = html
     .replace(/\$\{[^}]*\}/g, " ")
+    // Decorative component icons (e.g. dh-callout-icon) are hidden from readers and are not copy.
+    .replace(/<span[^>]*aria-hidden="true"[^>]*>[\s\S]*?<\/span>/g, " ")
     .replace(/<(script|style)[\s\S]*?<\/\1>/g, " ")
     .replace(/<[^>]+>/g, " ")
     .replace(/&[a-z]+;/g, " ");
