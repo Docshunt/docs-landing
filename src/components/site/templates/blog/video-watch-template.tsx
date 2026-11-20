@@ -5,7 +5,14 @@ import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/json-ld";
 import { BlogPageShell } from "@/components/site/layout/blog-page-shell";
 import { BLOG_POSTS, decodeBlogSlug, findBlogPost } from "@/data/docshunt-blogs";
-import { breadcrumbJsonLd, buildPageMetadata, videoObjectJsonLd, videoThumbnailUrl, videoWatchPath } from "@/seo/metadata";
+import {
+  breadcrumbJsonLd,
+  buildPageMetadata,
+  videoDescription,
+  videoObjectJsonLd,
+  videoThumbnailUrl,
+  videoWatchPath,
+} from "@/seo/metadata";
 
 type VideoWatchParams = {
   params: Promise<{
@@ -24,7 +31,7 @@ export async function generateMetadata({ params }: VideoWatchParams): Promise<Me
 
   return buildPageMetadata({
     title: post.videoTitle ?? `${post.title} 영상`,
-    description: post.description,
+    description: videoDescription(post),
     path: videoWatchPath(post.slug),
     image: videoThumbnailUrl(post),
     type: "article",
@@ -53,7 +60,7 @@ export async function VideoWatchPageTemplate({ params }: VideoWatchParams) {
       <article className="blog-detail-article video-watch-article">
         <p className="video-watch-kicker">독스헌트 인터뷰 영상</p>
         <h1>{video.name}</h1>
-        <p className="video-watch-description">{post.description}</p>
+        <p className="video-watch-description">{videoDescription(post)}</p>
         <div className="blog-detail-video">
           <iframe
             src={post.videoEmbedUrl}

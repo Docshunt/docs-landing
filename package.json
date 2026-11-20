@@ -29,6 +29,7 @@
     "build": "next build --webpack && node scripts/prepare-standalone-assets.mjs",
     "build:strict": "npm run validate && npm run build",
     "blog:check-numbers": "node .agents/skills/blog-writing/scripts/check-blog-numbering.mjs",
+    "blog:check-copy": "node .agents/skills/docshunt-blog-editor/scripts/check-blog-copy.mjs",
     "blog:editor:check": "node .agents/skills/docshunt-blog-editor/scripts/check-portability.mjs",
     "indexnow:submit": "node scripts/submit-indexnow.mjs",
     "format": "prettier --write .",
@@ -38,8 +39,8 @@
     "security:scan": "node scripts/scan-sensitive-info.mjs",
     "type-check": "tsc --noEmit --pretty false",
     "typecheck": "npm run type-check",
-    "validate": "npm run blog:check-numbers && npm run lint && npm run type-check",
-    "precommit": "npm run test:pricing && npm run blog:check-numbers && npm run type-check && npm run lint && npm run format:check",
+    "validate": "npm run blog:check-numbers && npm run blog:check-copy && npm run lint && npm run type-check",
+    "precommit": "npm run test:pricing && npm run blog:check-numbers && npm run blog:check-copy && npm run type-check && npm run lint && npm run format:check",
     "prepare": "node scripts/install-git-hooks.mjs",
     "check": "npm run security:scan && npm run precommit && npm run build",
     "test:pricing": "node --test scripts/tests/master-plan-schedule.test.mjs"

@@ -7,7 +7,7 @@ description: Create, rewrite, review, and validate Korean DocsHunt SEO blog post
 
 Write as a practitioner sitting next to a founder with the business-plan file open. Do not produce a generic AI explainer, lecture, or product brochure.
 
-Read [references/editorial-style.md](references/editorial-style.md) before drafting or rewriting an article. Read [references/overseas-source-search.md](references/overseas-source-search.md) whenever an overseas insight or card-news source is part of topic selection. Read [references/visual-production.md](references/visual-production.md) when creating or changing a cover or body image.
+Read [references/editorial-style.md](references/editorial-style.md) before drafting or rewriting an article. Read [references/seasonal-keywords.md](references/seasonal-keywords.md) when choosing a topic, a main keyword, or which legacy post to rewrite next. Read [references/overseas-source-search.md](references/overseas-source-search.md) whenever an overseas insight or card-news source is part of topic selection. Read [references/visual-production.md](references/visual-production.md) when creating or changing a cover or body image.
 
 ## Repository Integration
 
@@ -51,6 +51,24 @@ Do not copy a key, browser binary, global skill, generated test artifact, or abs
 9. Check the title, first 100 visible characters, headings, description, source links, CTA, and cover copy as one editorial unit.
 10. For a substantial new post or batch rewrite, request an independent review from an available external model only after removing personal, customer, and confidential data and explicitly authorizing the transfer. Ask only for concrete context, naturalness, repetition, and factuality problems. Apply suggestions selectively.
 11. Render the real blog list and detail routes on mobile, tablet, and desktop before handoff.
+
+## Legacy Post Rewrite
+
+Many posts dated 2025.08–2026.03 were drafted with a general-purpose model and imported from Bubble. Rewrite them instead of patching single words.
+
+1. List candidates with `npm run blog:check-copy -- --backlog`. Prioritize by [references/seasonal-keywords.md](references/seasonal-keywords.md), then by the number of findings.
+2. Keep `slug`, `sourceUrl`, `date`, `page`, `index`, and the category placement. Changing a legacy URL loses its search history.
+3. Re-plan the post: one search intent, one main keyword, supporting keywords in `seo`, and an approved `author`.
+4. Re-verify every date, amount, eligibility rule, and evaluation item against the official notice and its attachment, not a news summary. Download the notice attachment (HWPX, PDF) when the notice page shows only an image.
+5. When the notice window has closed:
+   - start the description with `[지난 공고]`
+   - put a `dh-note` box titled `지난 공고 안내` at the top of the body with the closing date and where to check the next notice
+   - keep the facts in past tense and do not invent next year's dates
+6. Remove unverifiable first-person stories, customer numbers, and performance claims. If the founder may want to keep one, list it in the PR notes and ask instead of guessing.
+7. Rebuild the body as `contentHtml` with the shared `.dh-seo-post` blocks, keep plain `paragraphs` as fallback, and keep exactly one CTA.
+8. Update `modifiedDate` and `verification.date` to the rewrite date. This also opts the post into the strict copy check.
+9. If the cover pixels carry an outdated or retracted claim (for example `공고 오픈` after the deadline, or a removed number), make a new cover with the compositor and a new descriptive filename. Leave the old Bubble-mapped file in place.
+10. Record the before/after title, description, and removed claims in the PR notes.
 
 ## Source-led topic workflow
 
@@ -195,7 +213,8 @@ Do not call a draft publish-ready until all are true:
 - For source-led articles, the pre-draft record includes three to five searched candidates, the selected primary and supporting sources, and the reason they fit the Korean reader problem.
 - For source-led articles, the draft has a source case or idea, a Korean evidence bridge, a worked example, and a stated boundary; it is not only a translated summary or checklist.
 - Every factual source link has been opened and supports the exact nearby claim; unverified Korean dates, amounts, eligibility rules, and program facts are omitted or clearly labeled.
-- The prose does not rely on generic AI phrases.
+- The prose does not rely on generic AI phrases, and `npm run blog:check-copy` reports no error and no unread warning for the post.
+- A closed notice is marked as `[지난 공고]` in the description and in the opening note box.
 - The CTA follows naturally and appears once.
 - Hero pixels, visible title, metadata, and article intent agree.
 

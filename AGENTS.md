@@ -70,7 +70,7 @@ For any PR that changes landing, blog, SEO/GEO, styles, or public assets:
 1. `npm run security:scan`
 2. `npm run precommit`
 3. `npm run build`
-4. `node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs` when pages, routes, metadata, proxy, blog data, or crawler endpoints change
+4. `node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs` when pages, routes, metadata, proxy, blog data, or crawler endpoints change; `npm run blog:check-copy` (also part of `precommit`) when blog posts change
 5. Aside MCP visual E2E at:
    - mobile: `390x844`
    - tablet: `768x1024`
@@ -98,9 +98,8 @@ PR notes must include which checks ran, the verified routes/viewports, and the p
 - Never force-push.
 - Because this is a public repository, run `npm run security:scan` and review the result before every push.
 - Do not push if the sensitive-info scan reports `.env`, private key material, API tokens, credentialed URLs, DB URLs, local cache, or private production data.
-- Codex and other coding agents must never merge PRs into `main`.
-- Do not merge through `gh pr merge`, GitHub REST/GraphQL API, local git merge, auto-merge enablement, or any other automated path.
-- `main` merge is a conservative human release action and must be performed directly by a maintainer in the GitHub web UI after reviewing checks, preview deployment, SEO/GEO impact, and rollout risk.
+- Coding agents merge a PR into `main` only when the maintainer explicitly asks for that PR to be merged in the current conversation. Never merge on your own initiative, and never enable auto-merge.
+- Before merging, confirm required checks pass, every review thread is resolved, and the preview deployment, SEO/GEO impact, and rollout risk are summarized for the maintainer. Merge with `gh pr merge` only; never push to `main` or merge locally.
 - GitHub branch protection for `main` must keep force-push disabled, require `precommit-and-build`, and require conversation resolution before merge.
 - If required checks fail or any PR review thread/comment remains unresolved, the PR must not be merged.
 - Stage only the intended files; do not use `git add -A` in mixed worktrees.

@@ -120,12 +120,18 @@ For every blog post change:
 - Every post must be reachable through a crawlable `<a href>` from blog pagination or a contextual internal link.
 - Time-sensitive verification sources shown on the page must match JSON-LD `citation`.
 
+- Title length: 30–60 characters when natural; over 60 fails the copy check.
+- Description length: aim for 100–150 characters; under 70 or over 160 fails the copy check.
+
 Run:
 
 ```bash
 npm run blog:check-numbers
+npm run blog:check-copy
 node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs
 ```
+
+`blog:check-copy` fails strict posts (dated on or after its effective date) on emoji, banned AI phrases, unsupported performance numbers, out-of-range title/description length, and duplicate descriptions. Legacy posts are reported with `--backlog` and do not block unrelated work. It also lists time-sensitive posts whose verification is older than 180 days or whose title still says a notice is open.
 
 ## Writing Guidelines
 
@@ -141,6 +147,7 @@ node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs
 - Do not invent policy dates, program names, funding amounts, or eligibility rules. Verify current facts before writing time-sensitive public guidance.
 - Cite source links in body copy when referring to external programs or public notices.
 - For time-sensitive support-program posts, state the verification date, distinguish confirmed notice facts from prior-year references and Docshunt guidance, and remind readers to check the final official notice.
+- After a notice closes, prefix the description with `[지난 공고]`, add a `지난 공고 안내` note box at the top of the body, and replace any cover that still says the notice is open. Follow the legacy rewrite steps in `.agents/skills/docshunt-blog-editor/SKILL.md`.
 - Check numerical or deadline claims in the title, description, body, CTA, and image pixels together. Do not leave a corrected claim in an old cover image.
 - Product-approved campaign copy and illustrative D-day UI may remain when explicitly recorded as product decisions; do not silently reinterpret them as current public notices.
 - Keep article-specific CSS out of new post files unless the shared `.dh-seo-post` blocks cannot express a required layout.
@@ -154,6 +161,7 @@ Run before handoff:
 npm run precommit
 npm run build
 npm run check
+npm run blog:check-copy -- --backlog
 node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs
 ```
 

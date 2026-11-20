@@ -50,6 +50,12 @@ The TAM·SAM·SOM article works because it begins with the weak sentence `국내
 - Empty transitions such as `그렇다면`, `이제`, `결국` when they add no logic
 - Fake urgency such as `무조건`, `안 하면 손해`, `바로 탈락`
 - Awkward tests such as `어느 사업계획서에나 들어갈 문장` without explaining the missing evidence
+- Emoji anywhere in the title, description, or body, including numbered keycaps such as `1️⃣` and section markers such as `📌`, `✅`, `💡`
+- Listicle hype from the Bubble era: `총정리`, `꿀팁`, `필승`, `필독`, `완벽 가이드`, `종결`, `놓치지 마세요`
+- Unsupported performance numbers such as `합격률 200%`, `가능성을 2배 높이는`, `비용 80% 절감`, unless a cited source states that exact number
+- Invented or unverifiable first-person claims such as `5년 전 블로그 하나로 합격했습니다`; keep a founder's story only when the founder confirmed it for publication
+
+`npm run blog:check-copy` enforces most of this list for posts dated on or after its effective date (`modifiedDate`, or `date` when no modification date exists). Context-dependent words such as `완벽한` and `무조건` fail in titles and descriptions but only warn in the body, because a body sentence can quote or negate them. Read every warning; do not rephrase around the checker without fixing the underlying sentence. When a cited source states the exact number (for example a quoted 합격률), wrap only that quoted number in an element with `data-claim-verified`, such as `<q data-claim-verified>합격률 80%</q>`, and keep the source link next to it. Mark it once in `contentHtml`; the checker also exempts the identical words in `paragraphs`. Unverified numbers must still fail.
 
 ## Human Review Questions
 

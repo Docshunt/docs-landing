@@ -71,6 +71,7 @@ When a blog post includes `videoEmbedUrl`:
 - Keep video fields optional. Posts without `videoEmbedUrl` remain ordinary article pages and emit no video JSON-LD or video sitemap entry.
 - Treat `/video/[slug]` as the dedicated watch page. Put the player near the top and emit `VideoObject` JSON-LD with `name`, `thumbnailUrl`, `uploadDate`, and the provider `embedUrl` (for example, a YouTube embed URL).
 - On the long-form `/blog_detail/[slug]` page, use a crawlable thumbnail/link to the watch page instead of making the article itself the watch page. This prevents Search Console's `동영상이 보기 페이지에 없음` finding.
+- Give the watch page its own description that describes the video (who speaks, length or format, what the viewer learns). Do not reuse the article description; identical descriptions on `/blog_detail/[slug]` and `/video/[slug]` are reported as duplicates.
 - Add only video-bearing watch URLs to the sitemap. After deployment, inspect representative watch URLs and validate the Video indexing issue in Search Console.
 
 ## Bing Webmaster Recommendation Baseline
@@ -157,6 +158,17 @@ Required for SEO/GEO changes:
 - `/ai.txt`
 
 For a cross-repository audit, verify the app HTML/robots policy in `docs-front` separately. Do not treat authenticated-app H1 or thin-content findings as landing-page defects.
+
+Check the live app policy during every SEO audit, because the landing repository cannot enforce it:
+
+```bash
+curl -s https://app.docshunt.ai/robots.txt
+curl -s https://app.docshunt.ai/ | grep -io '<meta name="robots"[^>]*>'
+```
+
+Expected: `Disallow: /` without the landing sitemap, and a `noindex, nofollow, noarchive` robots meta. If either is missing, report it as a `docs-front` follow-up in the PR notes instead of changing this repository.
+
+For a site-wide blog audit, also run `npm run blog:check-copy -- --backlog` and `npm run blog:check-copy -- --all-strict` to count legacy posts that would fail the current editorial rules.
 
 For each endpoint, record:
 

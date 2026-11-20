@@ -32,6 +32,8 @@ export const post55 = {
   heroImage: "/docshunt-assets/blog-covers/00055-business-plan-ai-review-deadline-day-jigu-on-earth-interview-hero.jpg",
   videoEmbedUrl: "https://www.youtube-nocookie.com/embed/2pamKM3ZhCQ?rel=0",
   videoTitle: "마감 하루 전, 사업계획서 완성하는 방법 | 지구온어스 김나연 대표 인터뷰",
+  videoDescription:
+    "지구온어스 김나연 대표 인터뷰 영상입니다. 2026 농식품 벤처육성 지원사업 마감 하루 전에 독스헌트로 초안을 만들고 고친 과정과, 일반 AI 도구와 비교해 느낀 차이를 대표가 직접 이야기합니다.",
   paragraphs: [
     "사업계획서 마감이 하루 남았다면 10장, 15장짜리 빈 문서부터 떠올리고 지원을 포기하기 쉽습니다. 지구온어스 김나연 대표는 독스헌트로 질문에 맞는 초안을 먼저 만든 덕분에 수정과 시각 자료 보완부터 시작할 수 있었다고 말합니다.",
     "김나연 대표는 농산부산물을 활용해 지구와 반려동물 모두에게 좋은 펫푸드를 만드는 사업을 준비하고 있습니다. 2026년 농식품 벤처육성 지원사업 예비창업자 전형에 선정돼 2천만 원 규모의 지원금을 확보했다고 인터뷰에서 밝혔습니다.",

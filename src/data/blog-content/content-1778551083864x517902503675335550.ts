@@ -38,10 +38,12 @@ export default `<div class="dh-seo-post" style="font-size:18px; line-height:1.88
   </style>
 
   <p style="margin:0 0 20px;">모두의 창업 프로젝트는 일반적인 창업지원사업처럼 사업계획서 파일을 올리는 방식과 다르게, 공식 플랫폼에서 아이디어를 직접 작성하고 분야와 멘토 기관을 선택한 뒤 제출하는 흐름입니다.</p>
-  <p style="margin:0 0 20px;">2026년 1기 신청 접수는 <strong>2026년 3월 26일부터 5월 15일 16시까지</strong> 진행됐으며 현재는 종료됐습니다. 다음 신청 일정과 제출 방식은 새 공식 공고를 확인해야 합니다.</p>
+  <div class="dh-note">
+    <p><strong>지난 공고 안내</strong><br>2026년 1기 신청 접수는 <strong>2026년 3월 26일부터 5월 15일 16시까지</strong> 진행됐으며 현재는 종료됐습니다. 다음 신청 일정과 제출 방식은 새 공식 공고를 확인해야 합니다.</p>
+  </div>
   <p style="margin:0 0 20px;">아래 화면은 로그인 후 실제 신청 흐름을 기준으로 정리했습니다. 상단 계정명처럼 개인을 식별할 수 있는 부분만 모자이크 처리했습니다.</p>
 
-  <div class="dh-callout">아이디어 한 줄은 중요합니다. 다만 처음부터 한 줄 문장만 다듬기보다, 선택한 분야와 멘토 기관까지 이어질 수 있게 고객 문제, 해결 방법, 실행 계획을 먼저 잡아두는 것이 안전합니다.</div>
+  <div class="dh-callout">아이디어 한 줄도 신경 써야 하지만, 처음부터 한 줄 문장만 다듬기보다, 선택한 분야와 멘토 기관까지 이어질 수 있게 고객 문제, 해결 방법, 실행 계획을 먼저 잡아두는 것이 안전합니다.</div>
 
   <h2 style="margin:58px 0 18px; font-size:30px; line-height:1.38; font-weight:850; color:#25262C; letter-spacing:0;">모두의 창업 작성 화면은 4단계로 진행됩니다</h2>
   <p style="margin:0 0 20px;">로그인한 뒤 도전하기 버튼을 누르면 작성 화면은 01 분야 선택, 02 아이디어 작성, 03 멘토 기관 선택, 04 내용 확인 및 제출 순서로 이어집니다. 공식 절차상 작성 후 본인인증을 거쳐야 하고, 제출 뒤에는 알림톡과 홈페이지에서 접수 완료 상태를 확인해야 합니다.</p>
@@ -66,7 +68,7 @@ export default `<div class="dh-seo-post" style="font-size:18px; line-height:1.88
     <p class="dh-caption">로그인 후 첫 화면. 일반/기술 분야와 로컬 분야 중 내 아이디어가 더 잘 설명되는 쪽을 선택합니다.</p>
   </div>
 
-  <h2 style="margin:58px 0 18px; font-size:30px; line-height:1.38; font-weight:850; color:#25262C; letter-spacing:0;">2. 아이디어 작성: 한 줄보다 구조가 중요합니다</h2>
+  <h2 style="margin:58px 0 18px; font-size:30px; line-height:1.38; font-weight:850; color:#25262C; letter-spacing:0;">2. 아이디어 작성: 한 줄보다 구조를 먼저 잡으세요</h2>
   <p style="margin:0 0 20px;">두 번째 단계에서는 아이디어를 한 줄로 소개하고, 아이디어를 떠올린 배경 이야기부터 문제, 실행 계획, 사업 분야, 창업 여부까지 이어서 입력합니다. 입력칸은 짧아 보이지만, 여기서 고객 문제와 해결 방법이 흐릿하면 뒤 단계의 멘토 기관 선택과 최종 제출 내용도 흔들립니다.</p>
 
   <div class="dh-shot">
