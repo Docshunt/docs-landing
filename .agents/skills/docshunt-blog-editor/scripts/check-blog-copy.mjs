@@ -89,8 +89,14 @@ function parseDate(value) {
 }
 
 function visibleText(source, { skipVerifiedClaims = false } = {}) {
-  const paragraphs = [...source.matchAll(/^\s*(["'`])((?:(?!\1)[^\\]|\\.)*)\1,?\s*$/gm)].map((match) => match[2]);
   const html = source.match(/contentHtml:\s*`([\s\S]*?)`,\s*\n/)?.[1] ?? "";
+  // A claim verified in contentHtml is also exempt where the same words repeat in the paragraphs fallback.
+  const verifiedClaims = skipVerifiedClaims
+    ? [...html.matchAll(VERIFIED_CLAIM)].map((match) => match[0].replace(/<[^>]+>/g, "").trim()).filter(Boolean)
+    : [];
+  const paragraphs = [...source.matchAll(/^\s*(["'`])((?:(?!\1)[^\\]|\\.)*)\1,?\s*$/gm)].map((match) =>
+    verifiedClaims.reduce((text, claim) => text.split(claim).join(" "), match[2]),
+  );
   const htmlText = (skipVerifiedClaims ? html.replace(VERIFIED_CLAIM, " ") : html)
     .replace(/\$\{[^}]*\}/g, " ")
     // Decorative component icons (e.g. dh-callout-icon) are hidden from readers and are not copy.
