@@ -13,7 +13,7 @@ export const post22 = {
   sourceUrl: "https://docshunt.ai/blog_detail/gptvsai-2",
   title: "GPT 사업계획서, 공고문 없이 '써줘'만 입력하면 어디서 어긋날까요?",
   description:
-    "GPT로 사업계획서를 쓰면 문장은 빨리 나오지만 공고 평가항목, 양식 문항, 숫자 출처는 직접 챙겨야 합니다. 범용 AI에 넣어야 할 자료와 지원사업 사업계획서 도구가 대신하는 부분을 나눠 비교했습니다.",
+    "GPT 사업계획서는 문장이 빨리 나오지만 공고 평가항목, 양식 문항, 숫자 출처는 직접 챙겨야 합니다. 범용 AI에 넣어야 할 자료와 지원사업 사업계획서 도구가 대신하는 부분을 나눠 비교했습니다.",
   seo: {
     mainKeyword: "GPT 사업계획서",
     supportKeywords: ["사업계획서 AI", "챗GPT 사업계획서 작성", "사업계획서 AI 비교"],

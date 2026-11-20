@@ -12,9 +12,9 @@ export const post01 = {
   index: 1,
   slug: "business-plan-reuse-support-program-guide",
   sourceUrl: "https://docshunt.ai/blog_detail/business-plan-reuse-support-program-guide",
-  title: "예창패·청창사 끝난 뒤, 써둔 사업계획서를 다른 지원사업에 그대로 내도 될까요?",
+  title: "사업계획서 재활용, 예창패·청창사에 냈던 파일을 다른 지원사업에 그대로 내도 될까요?",
   description:
-    "예창패·청창사에 냈던 사업계획서는 다른 지원사업의 좋은 출발점이지만, 평가항목이 달라 그대로 내면 맞지 않는 부분이 생깁니다. 다시 쓸 부분과 고칠 부분을 나누는 순서를 2026년 창업패키지 공고 예시로 정리했습니다.",
+    "예창패·청창사에 냈던 파일은 다른 지원사업의 좋은 출발점이지만, 평가항목이 달라 그대로 내면 어긋납니다. 사업계획서 재활용 전에 그대로 쓸 부분과 고칠 부분을 나누는 순서를 2026년 창업패키지 공고 예시로 정리했습니다.",
   seo: {
     mainKeyword: "사업계획서 재활용",
     supportKeywords: ["지원사업 사업계획서", "예비창업패키지 이후 지원사업", "사업계획서 수정"],
