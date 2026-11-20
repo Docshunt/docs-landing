@@ -70,7 +70,7 @@ For any PR that changes landing, blog, SEO/GEO, styles, or public assets:
 1. `npm run security:scan`
 2. `npm run precommit`
 3. `npm run build`
-4. `node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs` when pages, routes, metadata, proxy, blog data, or crawler endpoints change
+4. `node .agents/skills/seo-geo-guard/scripts/check-seo-geo.mjs` when pages, routes, metadata, proxy, blog data, or crawler endpoints change; `npm run blog:check-copy` (also part of `precommit`) when blog posts change
 5. Aside MCP visual E2E at:
    - mobile: `390x844`
    - tablet: `768x1024`
