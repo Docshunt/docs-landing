@@ -9,11 +9,10 @@ description: Docs Landing 변경사항에 대해 precommit/build/Aside MCP E2E/S
 
 이 스킬은 Docshunt child repo의 submit-pr 구조를 따르되, landing/blog/SEO/GEO/static asset/agent workflow 변경에 맞게 검증 명령과 QA 항목을 조정합니다.
 
-## 절대 금지: main 병합
+## main 병합
 
-- Codex와 다른 coding agent는 어떤 경우에도 PR을 `main`에 병합하지 않습니다.
-- `gh pr merge`, GitHub REST/GraphQL API, local `git merge`, auto-merge enablement 등 자동화 경로로 `main` 병합을 수행하지 않습니다.
-- `main` 병합은 보수적인 release gate이며, maintainer가 GitHub 웹 UI에서 checks, preview deployment, SEO/GEO 영향, rollout risk를 직접 확인한 뒤 수행해야 합니다.
+- coding agent는 maintainer가 지금 대화에서 그 PR의 병합을 명시적으로 요청한 경우에만 `main`에 병합합니다. 스스로 판단해 병합하거나 auto-merge를 켜지 않습니다.
+- 병합 전 required check 통과, 리뷰 스레드 전부 해결을 확인하고 preview deployment, SEO/GEO 영향, rollout risk를 maintainer에게 요약합니다. 병합은 `gh pr merge`로만 하고, `main`에 직접 push하거나 local `git merge`로 병합하지 않습니다.
 - `main` branch protection은 force push 금지, `precommit-and-build` required check, conversation resolution required 상태를 유지해야 합니다.
 - required check가 실패했거나 unresolved review thread/comment가 남아 있으면 절대 병합하지 않습니다.
 - 사용자가 "머지해줘"라고 요청해도 agent는 병합하지 않고, GitHub 웹 UI에서 직접 진행해야 한다고 안내합니다.

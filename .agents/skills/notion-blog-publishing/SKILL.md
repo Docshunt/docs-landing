@@ -105,4 +105,4 @@ Save screenshots under a gitignored test-results path and record their paths for
 - Never move photos to aesthetically convenient positions when Notion defines their order.
 - Never alter a stable slug or published canonical URL as part of a copy-only edit.
 - Never publish secrets, credentialed URLs, local caches, or private production data.
-- Never merge the PR; leave final review and merge to a maintainer.
+- Merge the PR only when the maintainer explicitly asks for it in the current conversation; otherwise leave final review and merge to a maintainer.
