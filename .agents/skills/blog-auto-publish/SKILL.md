@@ -18,7 +18,7 @@ This skill is the only place where an agent may merge its own PR and create a re
   - a fact the article depends on cannot be confirmed from an official or first-party source;
   - a required check still fails after two fix attempts;
   - CI, review threads, the release workflow, or the live check are not clean within the time limits below.
-- When you skip, leave no open PR behind: close it with a short Korean comment and delete the branch.
+- When you skip before the merge, leave no open PR behind: close it with a short Korean comment and delete the branch. After the merge, a skip is not possible; follow the deploy-failure rule in Publish step 5.
 - Never push to `main`, never force-push, never enable auto-merge, and never touch another session's branch or worktree.
 
 ## Local Paths
@@ -31,7 +31,7 @@ The run keeps private material outside this public repository.
 
 ## 1. Find the Topic
 
-Read the last 30 lines of `history.md` and the `seo.primaryKeyword` values of all files in `src/data/blog-posts/`. Never repeat a main keyword or a source that is already used.
+Read the last 30 lines of `history.md` and the `seo.mainKeyword` values of all files in `src/data/blog-posts/`. Never repeat a main keyword or a source that is already used.
 
 Collect five to eight candidates from at least three of the four pools below.
 
@@ -118,7 +118,11 @@ Run every command from the repository root. All must pass.
    - Take the latest tag from `gh release list -L 1` and bump the patch number, for example `v5.1.8` → `v5.1.9`.
    - Run `gh release create <tag> --target main --title <tag> --generate-notes`.
    - If the tag already exists because another session released, bump again.
-   - Watch the `Vercel` workflow run for that release until it finishes, up to 20 minutes. If the release deploy fails, do not create another release; notify Slack with the reason and stop.
+   - Watch the `Vercel` workflow run for that release until it finishes, up to 20 minutes. If the release deploy fails, do not create another release in this run.
+   - The post is already in `main` and has passed every check, so it stays there in the state `배포 대기`. Do not revert it.
+   - Append `DEPLOY_FAILED | <태그> | <슬러그> | <이유>` to `history.md`, run `notify_slack.py skipped "<태그> 배포 실패: <이유>. 글은 다음 배포 때 올라갑니다"`, clean up, and stop.
+   - The next run starts by reading `history.md`. If the last entry is `DEPLOY_FAILED`, it re-runs that release's failed workflow once with `gh run rerun <run-id> --failed`, then finishes steps 6–10 for that post instead of writing a new one. If the rerun fails again, it notifies Slack that the maintainer must look at the deploy, and writes nothing that day.
+   - If the maintainer wants the waiting post removed instead, follow Pulling a Post.
 6. Live check:
    - `https://docshunt.ai/blog_detail/<slug>` returns 200 with the new title.
    - The URL appears in `https://docshunt.ai/sitemap-blog_detail.xml`.
@@ -138,8 +142,9 @@ If the run is skipped at any point, run `notify_slack.py skipped "<이유>"`, ap
 When the maintainer asks to take down an auto-published post:
 
 1. Open a PR that deletes that post file and removes it from `src/data/blog-posts/index.ts`. Renumber so that `blog:check-numbers` passes; if renumbering is risky, ask first.
-2. Merge it and release, following steps 3–6 of Publish. Confirm the URL no longer appears in the sitemap.
-3. Run `notify_slack.py pulled`, and record a `PULLED` line in `history.md`.
+2. Merge it and release, following steps 3–5 of Publish. Skip step 6; instead confirm that `https://docshunt.ai/blog_detail/<slug>` no longer returns 200 and that the URL no longer appears in `https://docshunt.ai/sitemap-blog_detail.xml`.
+3. Notify search engines that the page is gone with `npm run indexnow:submit -- /blog_detail/<slug> /blog_list`.
+4. Run `notify_slack.py pulled`, and record a `PULLED` line in `history.md`.
 
 ## Report
 
