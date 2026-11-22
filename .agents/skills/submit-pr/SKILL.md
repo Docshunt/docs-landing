@@ -15,7 +15,7 @@ description: Docs Landing 변경사항에 대해 precommit/build/Aside MCP E2E/S
 - 병합 전 required check 통과, 리뷰 스레드 전부 해결을 확인하고 preview deployment, SEO/GEO 영향, rollout risk를 maintainer에게 요약합니다. 병합은 `gh pr merge`로만 하고, `main`에 직접 push하거나 local `git merge`로 병합하지 않습니다.
 - `main` branch protection은 force push 금지, `precommit-and-build` required check, conversation resolution required 상태를 유지해야 합니다.
 - required check가 실패했거나 unresolved review thread/comment가 남아 있으면 절대 병합하지 않습니다.
-- 사용자가 "머지해줘"라고 요청해도 agent는 병합하지 않고, GitHub 웹 UI에서 직접 진행해야 한다고 안내합니다.
+- 예외: `.agents/skills/blog-auto-publish/SKILL.md`를 따르는 자동 발행 실행은 그 스킬의 조건을 모두 통과한 자기 글 PR 하나만 요청 없이 병합하고 릴리스할 수 있습니다(2026-11-22 maintainer 결정).
 
 ## 실행 흐름
 

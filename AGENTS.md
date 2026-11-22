@@ -35,6 +35,7 @@
 - 한국어 블로그 주제·키워드·후킹 제목·자연스러운 본문·사실검증·대표 이미지 제작·외부 문장 검수: `.agents/skills/docshunt-blog-editor/SKILL.md`
 - 블로그 글 작성/수정/가져오기 및 post 단위 데이터 관리: `.agents/skills/blog-writing/SKILL.md`
 - 노션 수정본·사진 순서·작성자·반응형 제목을 블로그에 동기화하고 검수·PR 게시: `.agents/skills/notion-blog-publishing/SKILL.md`
+- 매일 예약 실행되는 블로그 자동 발행(주제 찾기 → 작성 → 검사 → 병합·릴리스 → 알림)과 자동 발행 글 내리기: `.agents/skills/blog-auto-publish/SKILL.md`
 
 Codex-compatible skill discovery is exposed through `.codex/skills` when the symlink is present.
 
@@ -99,6 +100,7 @@ PR notes must include which checks ran, the verified routes/viewports, and the p
 - Because this is a public repository, run `npm run security:scan` and review the result before every push.
 - Do not push if the sensitive-info scan reports `.env`, private key material, API tokens, credentialed URLs, DB URLs, local cache, or private production data.
 - Coding agents merge a PR into `main` only when the maintainer explicitly asks for that PR to be merged in the current conversation. Never merge on your own initiative, and never enable auto-merge.
+- Exception (maintainer decision, 2026-11-22: "블로그 자동 발행은 병합까지 실행해"): a run that follows `.agents/skills/blog-auto-publish/SKILL.md` may merge its own single-post PR and create the next `v*` release without a request in the conversation, but only after every check and condition in that skill passes. It never enables auto-merge and never merges any other PR.
 - Before merging, confirm required checks pass, every review thread is resolved, and the preview deployment, SEO/GEO impact, and rollout risk are summarized for the maintainer. Merge with `gh pr merge` only; never push to `main` or merge locally.
 - GitHub branch protection for `main` must keep force-push disabled, require `precommit-and-build`, and require conversation resolution before merge.
 - If required checks fail or any PR review thread/comment remains unresolved, the PR must not be merged.
