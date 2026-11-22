@@ -220,4 +220,4 @@ Do not call a draft publish-ready until all are true:
 
 After this editorial gate passes, hand the post to `.agents/skills/blog-writing/SKILL.md` for data integration and publication QA. That skill and the repository-wide landing, SEO/GEO, and submit-PR skills own security checks, builds, route smoke, and responsive screenshots.
 
-Do not publish, push, deploy, or post externally unless the user explicitly requests it.
+Do not publish, push, deploy, or post externally unless the user explicitly requests it. The scheduled run under `.agents/skills/blog-auto-publish/SKILL.md` counts as that request.
