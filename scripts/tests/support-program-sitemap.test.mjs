@@ -40,3 +40,12 @@ test("사이트맵에는 마감 전 공고만 lastmod와 함께 들어간다", (
     ],
   );
 });
+
+test("마감일을 한국어 날짜로 보여준다", async () => {
+  const { formatSupportProgramDeadline } = await import("../../src/server/support-programs.ts");
+  assert.equal(formatSupportProgramDeadline({ deadline: "2026-12-03T18:00", deadlineDateOnly: false }), "2026년 12월 3일(목) 18:00");
+  assert.equal(formatSupportProgramDeadline({ deadline: "2026-11-24T23:59:59", deadlineDateOnly: false }), "2026년 11월 24일(화)");
+  assert.equal(formatSupportProgramDeadline({ deadline: "2026-11-24", deadlineDateOnly: true }), "2026년 11월 24일(화)");
+  assert.equal(formatSupportProgramDeadline({ deadline: "상시", deadlineDateOnly: true }), "상시");
+  assert.equal(formatSupportProgramDeadline({ deadline: null }), undefined);
+});

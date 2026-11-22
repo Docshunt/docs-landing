@@ -24,6 +24,10 @@ export type SupportProgram = {
   region?: string | null | undefined;
   businessFields: string[];
   supportContent: string[];
+  /** 신청 자격 조건(지원 대상·지역·업력 등). 공고에 없는 조건은 뺀다. */
+  conditions?: SupportProgramCondition[] | undefined;
+  /** 공고 첨부 파일 이름. 내려받기 주소는 만료되는 서명 주소라 쓰지 않는다. */
+  attachmentNames?: string[] | undefined;
   announcementSummary?:
     | {
         oneLine?: string | null | undefined;
@@ -32,6 +36,8 @@ export type SupportProgram = {
     | null
     | undefined;
 };
+
+export type SupportProgramCondition = { label: string; value: string };
 
 export type SupportProgramListPage = {
   items: SupportProgram[];
@@ -64,6 +70,31 @@ function optionalString(value: unknown) {
 
 function stringArray(value: unknown) {
   return Array.isArray(value) ? value.filter((item): item is string => typeof item === "string") : [];
+}
+
+function parseConditions(...groups: unknown[]): SupportProgramCondition[] {
+  const seen = new Set<string>();
+  const conditions: SupportProgramCondition[] = [];
+  for (const group of groups) {
+    if (!Array.isArray(group)) continue;
+    for (const item of group) {
+      if (!isObject(item) || item.state === "absent") continue;
+      const label = typeof item.label === "string" ? item.label.trim() : "";
+      const value = typeof item.value === "string" ? item.value.trim() : "";
+      if (!label || !value || value === "-") continue;
+      const key = `${label}\u0000${value}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      conditions.push({ label, value });
+    }
+  }
+  return conditions;
+}
+
+function parseAttachmentNames(value: unknown) {
+  if (!Array.isArray(value)) return [];
+  const names = value.map((item) => (isObject(item) && typeof item.filename === "string" ? item.filename.trim() : "")).filter(Boolean);
+  return [...new Set(names)];
 }
 
 function parseSupportProgram(value: unknown): SupportProgram {
@@ -102,6 +133,8 @@ function parseSupportProgram(value: unknown): SupportProgram {
     region: optionalString(value.region),
     businessFields: stringArray(value.businessFields),
     supportContent: stringArray(value.supportContent),
+    conditions: parseConditions(value.eligibilityConditions, value.directCheckConditions),
+    attachmentNames: parseAttachmentNames(value.attachments),
     announcementSummary: summary,
   };
 }
@@ -148,6 +181,21 @@ export function supportProgramDescription(program: SupportProgram) {
     program.organizingAgency?.trim() ||
     program.title.trim();
   return value.replace(/\s+/g, " ").slice(0, 160);
+}
+
+const WEEKDAYS = ["일", "월", "화", "수", "목", "금", "토"];
+
+/** "2026-12-03T18:00" → "2026년 12월 3일(목) 18:00". 읽을 수 없으면 원래 값을 돌려준다. */
+export function formatSupportProgramDeadline(program: Pick<SupportProgram, "deadline" | "deadlineDateOnly">) {
+  const value = program.deadline?.trim();
+  if (!value) return undefined;
+  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})(?:[T ](\d{2}):(\d{2}))?/);
+  if (!match) return value;
+  const [, year, month, day, hour, minute] = match;
+  const weekday = WEEKDAYS[new Date(Date.UTC(Number(year), Number(month) - 1, Number(day))).getUTCDay()];
+  const date = `${Number(year)}년 ${Number(month)}월 ${Number(day)}일(${weekday})`;
+  const dateOnly = program.deadlineDateOnly !== false || !hour;
+  return dateOnly || (hour === "23" && minute === "59") ? date : `${date} ${hour}:${minute}`;
 }
 
 export function safePostingUrl(value: string | null | undefined) {
