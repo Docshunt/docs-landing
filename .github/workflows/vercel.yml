@@ -216,3 +216,17 @@ jobs:
           echo "url=$deployment_url" >> "$GITHUB_OUTPUT"
           echo "### Vercel production" >> "$GITHUB_STEP_SUMMARY"
           echo "$deployment_url" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Notify IndexNow of changed blog posts
+        # 검색엔진 알림이 실패해도 배포는 이미 끝났으므로 작업을 실패로 만들지 않는다.
+        continue-on-error: true
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          previous_tag=$(git describe --tags --abbrev=0 --match 'v*' "${RELEASE_TAG}^" 2>/dev/null || true)
+          if [[ -z "$previous_tag" ]]; then
+            echo "이전 릴리스 태그가 없어 IndexNow를 건너뜁니다."
+            exit 0
+          fi
+          node scripts/indexnow-changed-posts.mjs "$previous_tag" "$RELEASE_TAG"

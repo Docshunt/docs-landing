@@ -46,10 +46,42 @@ ${items}
 </rss>`;
 }
 
-export function supportProgramSitemapUrls(programs: SupportProgram[]): SitemapUrl[] {
-  return programs.map((program) => ({
-    loc: supportProgramPath(supportProgramId(program)),
-    priority: "0.7",
-    changefreq: "daily",
-  }));
+function kstTime(value: string, endOfDay: boolean) {
+  const hasTimeZone = /(?:Z|[+-]\d{2}:\d{2})$/i.test(value);
+  const normalized = hasTimeZone
+    ? value
+    : /^\d{4}-\d{2}-\d{2}$/.test(value)
+      ? `${value}T${endOfDay ? "23:59:59" : "00:00:00"}+09:00`
+      : `${value}+09:00`;
+  const time = new Date(normalized).getTime();
+  return Number.isNaN(time) ? undefined : time;
+}
+
+/** 마감이 지난 공고인지. 마감일이 없거나 읽을 수 없으면 지나지 않은 것으로 본다. */
+export function isSupportProgramClosed(program: SupportProgram, now: Date) {
+  if (!program.deadline) return false;
+  const deadline = kstTime(program.deadline, program.deadlineDateOnly !== false);
+  return deadline !== undefined && deadline < now.getTime();
+}
+
+function sitemapDate(value: string | null | undefined) {
+  if (!value) return undefined;
+  const time = kstTime(value, false);
+  return time === undefined ? undefined : new Date(time).toISOString().slice(0, 10);
+}
+
+// 마감이 지난 공고는 검색엔진이 우선순위를 낮춰 "발견됨 - 색인 생성 안 됨"으로 쌓이므로 사이트맵에서 뺀다.
+// 페이지 자체는 그대로 열리고, 이미 색인된 주소는 유지된다.
+export function supportProgramSitemapUrls(programs: SupportProgram[], now = new Date()): SitemapUrl[] {
+  return programs
+    .filter((program) => !isSupportProgramClosed(program, now))
+    .map((program) => {
+      const lastmod = sitemapDate(program.createdAt);
+      return {
+        loc: supportProgramPath(supportProgramId(program)),
+        ...(lastmod ? { lastmod } : {}),
+        priority: "0.7",
+        changefreq: "daily",
+      };
+    });
 }

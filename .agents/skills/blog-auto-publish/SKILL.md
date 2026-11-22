@@ -126,7 +126,7 @@ Run every command from the repository root. All must pass.
 6. Live check:
    - `https://docshunt.ai/blog_detail/<slug>` returns 200 with the new title.
    - The URL appears in `https://docshunt.ai/sitemap-blog_detail.xml`.
-7. Notify search engines with `npm run indexnow:submit -- /blog_detail/<slug> /blog_list`. IndexNow forwards to Naver and Bing. Google reads the sitemap.
+7. Search engine notice: the release workflow's `Notify IndexNow of changed blog posts` step sends every changed post and `/blog_list` to IndexNow, which forwards to Naver and Bing. Check that step's log; only if it failed or was skipped, run `npm run indexnow:submit -- /blog_detail/<slug> /blog_list`. Google reads the sitemap.
 8. Optional Google request:
    - Only if the ego-browser profile "독스헌트 업무" is signed in to Search Console, run URL inspection for the new URL and click 색인 생성 요청.
    - Stop at any CAPTCHA or quota message.
