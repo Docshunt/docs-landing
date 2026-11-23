@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const MANAGEMENT_CRITERIA_URL = "https://www.k-startup.go.kr/afile/fileDownload/79cLn";
 const MANAGEMENT_CRITERIA_NOTICE_URL =
   "https://www.k-startup.go.kr/user/board/webRFRR_view_reference.do?id=175865&page=1&schM=view&viewCount=18";
@@ -23,14 +26,16 @@ export const post95 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.17",
-  modifiedDate: "2026.08.17",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.17",
-    note: "모두의 창업 프로젝트 세부관리기준 2026.6.23. 개정본을 기준으로 작성했습니다. 일반·기술트랙 외주용역비의 선금 합계 50% 이하, 부가가치세 포함 2천만원 초과 단일 건 또는 동일 거래업체 누적 거래의 지역허브기관 사업운영위원회 사전심의, 로컬트랙 일반용역비의 선금 50% 초과 불가를 확인했습니다. 업체 요구 선금이 큰 경우 지급 구조와 심의 필요성을 먼저 확인하라는 부분은 독스헌트의 실행 권고입니다. 이후 기수 또는 새 공고·운영기관 안내가 나오면 그 안내가 우선합니다.",
+    date: "2026.11.23",
+    note: "모두의 창업 프로젝트 세부관리기준 2026.6.23. 개정본을 기준으로 작성했습니다. 일반·기술트랙 외주용역비의 선금 합계 50% 이하, 부가가치세 포함 2천만원 초과 단일 건 또는 동일 거래업체 누적 거래의 지역허브기관 사업운영위원회 사전심의, 로컬트랙 일반용역비의 선금 50% 초과 불가를 확인했습니다. 업체 요구 선금이 큰 경우 지급 구조와 심의 필요성을 먼저 확인하라는 부분은 독스헌트의 실행 권고입니다. 이후 기수 또는 새 공고·운영기관 안내가 나오면 그 안내가 우선합니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "모두의 창업 프로젝트 세부관리기준(2026.6.23. 개정)", url: MANAGEMENT_CRITERIA_URL },
       { label: "창업진흥원, 모두의 창업 프로젝트 세부관리기준 개정본 안내", url: MANAGEMENT_CRITERIA_NOTICE_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내", url: SECOND_COHORT_STATUS_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00095-modoo-startup-outsourcing-advance-payment-limit-list.jpg",
@@ -42,6 +47,7 @@ export const post95 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>모두의 창업 외주용역 선금을 전체 용역비의 절반 넘게 주는 구조는 안 됩니다.</strong> 2026년 6월 23일 개정된 세부관리기준은 일반·기술트랙 외주용역비의 선금 합계를 전체 용역비의 50% 이하로 두고 있습니다. 업체가 “착수금 70%를 받아야 시작한다”고 말하더라도, 그 조건을 그대로 계약하고 사업비로 집행하면 기준과 맞지 않을 수 있습니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>한 가지를 더 봐야 합니다. 일반·기술트랙에서 단일 건 또는 동일 거래업체와의 누적 외주용역 거래가 부가가치세를 포함해 2천만원을 초과하면 지역허브기관 사업운영위원회 사전심의가 필요합니다.</p>
 
   <h2>일반·기술트랙은 외주용역비, 로컬트랙은 일반용역비로 봅니다</h2>
@@ -100,7 +106,7 @@ export const post95 = {
   <p>반면 “업체가 큰 착수금을 요구하면 지급 구조를 다시 협의하고 운영기관에 먼저 묻자”는 문장은 독스헌트의 실행 권고입니다. 기준의 숫자를 실제 계약서에 맞추기 위한 체크 순서이지, 공식 문서에 적힌 별도 문구라고 보시면 안 됩니다.</p>
 
   <h2>이 글은 2026.6.23. 개정 기준입니다</h2>
-  <p>이 글은 <a href="${MANAGEMENT_CRITERIA_NOTICE_URL}" target="_blank" rel="noopener noreferrer">창업진흥원이 안내한 모두의 창업 프로젝트 세부관리기준 개정본</a>과 2026년 6월 23일 개정된 문서를 기준으로 작성했습니다. 중소벤처기업부는 <a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">2기 모집 관련 안내</a>에서 보안 강화와 신뢰 회복 뒤 2기 모집을 시작할 예정이라고 설명했습니다.</p>
+  <p>이 글은 <a href="${MANAGEMENT_CRITERIA_NOTICE_URL}" target="_blank" rel="noopener noreferrer">창업진흥원이 안내한 모두의 창업 프로젝트 세부관리기준 개정본</a>과 2026년 6월 23일 개정된 문서를 기준으로 작성했습니다. 위 업데이트처럼 2차 모집은 끝났고 1라운드 진출자 1만 명이 선발됐습니다.</p>
   <p>따라서 이후 기수, 새 공고, 협약 뒤 운영기관 안내가 나오면 그 기준이 우선입니다. 이 글의 숫자를 다음 기수에 자동 적용하지 말고, 계약 전 최신 공고와 운영기관 안내를 다시 확인하세요.</p>
   <p><strong class="dh-emphasis">선금 비율을 맞추는 일은 계약서 맨 마지막에 고치는 숫자가 아닙니다. 산출물, 검수, 지급 시점, 심의 여부를 같이 설계해야 사업비 집행이 흔들리지 않습니다.</strong></p>
 
@@ -115,6 +121,8 @@ export const post95 = {
       <li><a href="${MANAGEMENT_CRITERIA_URL}" target="_blank" rel="noopener noreferrer">모두의 창업 프로젝트 세부관리기준(2026.6.23. 개정)</a></li>
       <li><a href="${MANAGEMENT_CRITERIA_NOTICE_URL}" target="_blank" rel="noopener noreferrer">창업진흥원, 모두의 창업 프로젝트 세부관리기준 개정본 안내</a></li>
       <li><a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

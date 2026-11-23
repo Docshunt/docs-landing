@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const MODOO_BRIEFING_URL = "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156767570";
 const MSS_CLARIFICATION_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148967078";
 const KIPO_ORIGINAL_PROOF_URL =
@@ -23,14 +26,16 @@ export const post53 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.05",
-  modifiedDate: "2026.08.05",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.05",
-    note: "2026년 6월 22일 중소벤처기업부 브리핑, 6월 25일 보도설명자료, 지식재산처 원본증명 안내를 대조했습니다. 실제 지원 절차와 법적 효과는 중소벤처기업부·지식재산처의 최신 개별 안내 및 전문가 상담을 최종 기준으로 확인해야 합니다.",
+    date: "2026.11.23",
+    note: "2026년 6월 22일 중소벤처기업부 브리핑, 6월 25일 보도설명자료, 지식재산처 원본증명 안내를 대조했습니다. 실제 지원 절차와 법적 효과는 중소벤처기업부·지식재산처의 최신 개별 안내 및 전문가 상담을 최종 기준으로 확인해야 합니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "대한민국 정책브리핑, 모두의 창업 관련 브리핑", url: MODOO_BRIEFING_URL },
       { label: "중소벤처기업부, 모두의 창업 아이디어 보호 보도설명자료", url: MSS_CLARIFICATION_URL },
       { label: "지식재산처, 영업비밀 원본증명 서비스 안내", url: KIPO_ORIGINAL_PROOF_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00053-modoo-startup-idea-proof-technology-escrow-list.jpg",
@@ -42,6 +47,7 @@ export const post53 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>모두의 창업</strong> 1기 선정자에게 안내된 영업비밀 원본증명과 기술임치는 같은 제도가 아닙니다. 원본증명은 전자파일의 존재와 보유 시점을 입증하는 데 쓰이고, 기술임치는 구체화된 기술자료를 맡겨 보관하는 제도입니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>중소벤처기업부는 2026년 6월 22일 브리핑에서 1기 선정자 5,000명 전원에게 제출한 도전신청서의 원본증명 등록을 무상 지원하고, 사업자를 등록한 경우 향후 1년간 기술임치도 무상 지원하겠다고 밝혔습니다.</p>
 
   <h2>원본증명은 ‘이 파일을 언제 보유했는지’를 남깁니다</h2>
@@ -79,6 +85,8 @@ export const post53 = {
       <li><a href="${MODOO_BRIEFING_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 모두의 창업 관련 브리핑</a></li>
       <li><a href="${MSS_CLARIFICATION_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 아이디어 보호 보도설명자료</a></li>
       <li><a href="${KIPO_ORIGINAL_PROOF_URL}" target="_blank" rel="noopener noreferrer">지식재산처, 영업비밀 원본증명 서비스 안내</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

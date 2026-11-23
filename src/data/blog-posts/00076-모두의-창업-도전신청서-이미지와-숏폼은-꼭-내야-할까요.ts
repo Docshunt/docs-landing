@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const FIRST_COHORT_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310&parentSeq=1066642";
 const FIRST_COHORT_PDF_URL =
   "https://mss.go.kr/common/board/Download.do?bcIdx=1066642&cbIdx=310&streFileNm=b1db7f65-7bee-461b-861a-168c81873553.pdf";
@@ -23,14 +26,16 @@ export const post76 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.11",
-  modifiedDate: "2026.08.11",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.11",
-    note: "중소벤처기업부의 2026년 모두의 창업 1기 통합 모집공고와 공식 PDF에서 도전신청서 직접 입력, 신청서 외 별도 제출서류 없음, 아이디어를 설명하는 이미지 5장 이내와 30~60초 숏폼 URL의 선택 제출 안내를 확인했습니다. 7월 31일 중소벤처기업부 브리핑은 8월 중순까지 추가 행정절차를 진행한 뒤 그 무렵 2기를 시작할 것으로 예상한다고 밝혔지만, 2026년 8월 11일 현재 최종 2기 모집공고는 확인되지 않았습니다. 다음 모집의 필수·선택 항목은 새 공고와 실제 입력 화면에서 다시 확인해야 합니다.",
+    date: "2026.11.23",
+    note: "중소벤처기업부의 2026년 모두의 창업 1기 통합 모집공고와 공식 PDF에서 도전신청서 직접 입력, 신청서 외 별도 제출서류 없음, 아이디어를 설명하는 이미지 5장 이내와 30~60초 숏폼 URL의 선택 제출 안내를 확인했습니다. 7월 31일 중소벤처기업부 브리핑은 8월 중순까지 추가 행정절차를 진행한 뒤 그 무렵 2기를 시작할 것으로 예상한다고 밝혔지만, 이후 2차 모집은 2026년 8월 20일부터 9월 17일까지 진행됐습니다. 다음 모집의 필수·선택 항목은 새 공고와 실제 입력 화면에서 다시 확인해야 합니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고", url: FIRST_COHORT_NOTICE_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고 PDF", url: FIRST_COHORT_PDF_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 관련 브리핑", url: SECOND_COHORT_BRIEFING_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00076-modoo-startup-application-image-shortform-list.jpg",
@@ -39,10 +44,11 @@ export const post76 = {
     "2026년 모두의 창업 1기 도전신청서에서 아이디어 이해를 돕는 이미지와 숏폼은 필수가 아니라 선택사항이었습니다.",
     "1기 공고는 이미지 5장 이내를 JPG·PNG·GIF 형식으로, 숏폼은 30~60초 내외의 URL로 제출할 수 있다고 안내했습니다.",
     "최대 5장은 채워야 하는 수량이 아닙니다. 신청 문장만으로 설명하기 어려운 제품 구조, 사용 흐름, 관찰 기록을 보여주는 자료만 고르는 편이 낫습니다.",
-    "중소벤처기업부는 8월 중순까지 추가 행정절차를 진행한 뒤 그 무렵 2기를 시작할 것으로 예상한다고 밝혔지만, 최종 공고는 아직 확인되지 않았습니다. 다음 모집에서 형식·용량·공개 범위를 다시 확인해야 합니다.",
+    "중소벤처기업부는 8월 중순까지 추가 행정절차를 진행한 뒤 그 무렵 2기를 시작할 것으로 예상한다고 밝혔지만, 2차 모집은 2026년 8월 20일부터 9월 17일까지 진행됐습니다. 다음 모집에서 형식·용량·공개 범위를 다시 확인해야 합니다.",
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>2026년 모두의 창업 1기 도전신청서에서 이미지와 숏폼은 필수가 아니라 선택사항이었습니다.</strong> 이미지는 최대 5장, 숏폼은 30~60초 내외의 URL을 제출할 수 있었습니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>선택사항이라고 해서 무조건 빼거나, 반대로 최대 수량을 모두 채울 필요는 없습니다. 신청 문장만으로 이해하기 어려운 내용을 <strong>한눈에 확인하게 만드는 자료인지</strong>를 기준으로 고르면 됩니다.</p>
 
   <h2>1기 공고는 이미지와 숏폼을 ‘제출 가능’으로 안내했습니다</h2>
@@ -109,7 +115,7 @@ export const post76 = {
   <p>링크가 열리는지만 본인 계정에서 확인하면 이미 로그인돼 있어 문제를 놓칠 수 있습니다. 로그아웃 상태나 시크릿 창에서 다시 열어보고, 접근 권한과 음소거 상태에서도 핵심이 이해되는지 확인하세요.</p>
 
   <h2>2기에서는 새 입력 화면을 다시 확인해야 합니다</h2>
-  <p><a href="${SECOND_COHORT_BRIEFING_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부의 2026년 7월 31일 브리핑</a>은 7월 중 보안·개인정보 관리 개선 조치를 마쳤고, 8월 중순까지 추가 행정절차를 진행한 뒤 그 무렵 2기를 시작할 것으로 예상한다고 밝혔습니다. 2026년 8월 11일 기준 최종 일정과 조건을 담은 새 모집공고는 확인되지 않았습니다.</p>
+  <p>위 업데이트처럼 2차 모집은 끝났고 1라운드 진출자 1만 명이 선발됐습니다. 2차 도전신청서에는 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">역량과 창업 준비 과정을 쓰는 문항, 재도전자의 개선·보완 사항 항목이 추가</a>됐습니다. 이미지와 숏폼의 형식·용량은 해당 회차 신청 화면에서 다시 확인하세요.</p>
   <p>따라서 1기의 최대 장수, 영상 길이, 파일 형식과 링크 제출 방식이 2기에도 같다고 단정할 수 없습니다. 새 모집이 열리면 <a href="${FIRST_COHORT_NOTICE_URL}" target="_blank" rel="noopener noreferrer">종료된 1기 공고</a> 대신 새 공고와 실제 입력 화면부터 확인하세요.</p>
   <p><strong class="dh-emphasis">선택 자료는 빈칸을 채우는 용도가 아닙니다. 신청 문장의 한 부분을 더 빨리 이해시키는 데 쓰입니다.</strong></p>
 
@@ -124,6 +130,8 @@ export const post76 = {
       <li><a href="${FIRST_COHORT_NOTICE_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고</a></li>
       <li><a href="${FIRST_COHORT_PDF_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고 PDF</a></li>
       <li><a href="${SECOND_COHORT_BRIEFING_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 관련 브리핑</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

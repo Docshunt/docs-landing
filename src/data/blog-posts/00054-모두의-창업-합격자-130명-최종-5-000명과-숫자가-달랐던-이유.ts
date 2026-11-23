@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const MSS_FAST_SCREENING_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1068081&cbIdx=86";
 const MSS_FINAL_SELECTION_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1068890&cbIdx=86";
 
@@ -21,13 +24,15 @@ export const post54 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.05",
-  modifiedDate: "2026.08.05",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.05",
-    note: "중소벤처기업부의 2026년 5월 11일 신속심사 첫 발표와 6월 9일 1기 최종 선발 발표를 대조했습니다. 본문은 두 발표의 기준일과 단계 차이를 설명하며, 개별 선정 여부는 공식 플랫폼의 본인 결과를 기준으로 확인해야 합니다.",
+    date: "2026.11.23",
+    note: "중소벤처기업부의 2026년 5월 11일 신속심사 첫 발표와 6월 9일 1기 최종 선발 발표를 대조했습니다. 본문은 두 발표의 기준일과 단계 차이를 설명하며, 개별 선정 여부는 공식 플랫폼의 본인 결과를 기준으로 확인해야 합니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "중소벤처기업부, 신속심사 첫 합격자 130명 발표", url: MSS_FAST_SCREENING_URL },
       { label: "중소벤처기업부, 모두의 창업 1기 5,000명 최종 선발", url: MSS_FINAL_SELECTION_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00054-modoo-startup-fast-screening-final-selection-list.jpg",
@@ -39,6 +44,7 @@ export const post54 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>모두의 창업</strong> 합격자 130명과 최종 5,000명은 서로 충돌하는 숫자가 아닙니다. 130명은 신청자가 집중된 기관에서 신속심사로 먼저 발표한 인원이고, 5,000명은 전체 평가를 마친 뒤 발표한 1기 최종 선발 인원입니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>혼란은 두 자료 모두 합격자를 다루지만 발표 범위가 달랐기 때문에 생겼습니다. 날짜와 보도자료의 첫 문장을 같이 보면 어느 단계의 결과인지 구분할 수 있습니다.</p>
 
   <h2>5월 11일의 130명은 신속심사 첫 발표였습니다</h2>
@@ -72,6 +78,8 @@ export const post54 = {
     <ul>
       <li><a href="${MSS_FAST_SCREENING_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 뜨거운 ‘모두의 창업’ 열기, 신속 심사 첫 합격자 명단 발표</a></li>
       <li><a href="${MSS_FINAL_SELECTION_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 「모두의 창업 프로젝트」 5천명의 시작, 모두의 내일이 되다!</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

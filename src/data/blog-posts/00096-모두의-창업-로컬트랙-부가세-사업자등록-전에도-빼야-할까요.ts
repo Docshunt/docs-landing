@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const MANAGEMENT_CRITERIA_URL = "https://www.k-startup.go.kr/afile/fileDownload/79cLn";
 const MANAGEMENT_CRITERIA_NOTICE_URL =
   "https://www.k-startup.go.kr/user/board/webRFRR_view_reference.do?id=175865&page=1&schM=view&viewCount=18";
@@ -24,14 +27,16 @@ export const post96 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.17",
-  modifiedDate: "2026.08.17",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.17",
-    note: "모두의 창업 프로젝트 세부관리기준 2026.6.23. 개정본을 기준으로 작성했습니다. 로컬트랙 사업화자금은 원칙적으로 부가세 10%를 사업비로 집행할 수 없고 사업자등록을 하지 않은 경우에는 예외적으로 부가세 포함 집행이 가능하다는 문구를 확인했습니다. 모든 지출 증빙은 사업비카드 카드매출전표 또는 세금계산서를 원칙으로 한다는 점과 양산비용 자부담 원칙도 함께 확인했습니다. 등록일 전후 계약의 적용 시점을 운영기관에 확인하라는 부분은 독스헌트의 실행 권고입니다. 이후 기수 또는 새 공고·운영기관 안내가 나오면 그 안내가 우선합니다.",
+    date: "2026.11.23",
+    note: "모두의 창업 프로젝트 세부관리기준 2026.6.23. 개정본을 기준으로 작성했습니다. 로컬트랙 사업화자금은 원칙적으로 부가세 10%를 사업비로 집행할 수 없고 사업자등록을 하지 않은 경우에는 예외적으로 부가세 포함 집행이 가능하다는 문구를 확인했습니다. 모든 지출 증빙은 사업비카드 카드매출전표 또는 세금계산서를 원칙으로 한다는 점과 양산비용 자부담 원칙도 함께 확인했습니다. 등록일 전후 계약의 적용 시점을 운영기관에 확인하라는 부분은 독스헌트의 실행 권고입니다. 이후 기수 또는 새 공고·운영기관 안내가 나오면 그 안내가 우선합니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "모두의 창업 프로젝트 세부관리기준(2026.6.23. 개정)", url: MANAGEMENT_CRITERIA_URL },
       { label: "창업진흥원, 모두의 창업 프로젝트 세부관리기준 개정본 안내", url: MANAGEMENT_CRITERIA_NOTICE_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내", url: SECOND_COHORT_STATUS_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00096-modoo-startup-local-track-vat-before-registration-list.jpg",
@@ -43,6 +48,7 @@ export const post96 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>모두의 창업 로컬트랙 사업화자금은 원칙적으로 부가세 10%를 사업비로 집행할 수 없습니다.</strong> 다만 2026년 6월 23일 개정된 세부관리기준은 로컬트랙 진출자가 사업자등록을 하지 않은 경우 예외적으로 부가세를 포함해 집행할 수 있다고 봅니다. 그래서 답은 “미등록 상태라면 예외가 있지만, 등록 전후의 모든 결제를 같은 방식으로 처리하면 안 된다”입니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>이 글은 로컬트랙 부가세 기준을 다룹니다. 일반·기술트랙 사업비나 외주용역비 기준에 이 예외를 그대로 옮겨 적용한다는 뜻이 아닙니다.</p>
 
   <h2>로컬트랙 부가세는 원칙과 예외를 같이 읽어야 합니다</h2>
@@ -105,7 +111,7 @@ export const post96 = {
   <p>반면 등록일 전후에 걸친 계약은 결제 전에 운영기관에 적용 시점과 증빙 방법을 묻자는 부분은 독스헌트의 실행 권고입니다. 공식 기준이 모든 경계 사례를 예시로 풀어주지는 않기 때문에, 결제 전에 내 상황을 문장으로 정리해 확인하는 절차가 필요합니다.</p>
 
   <h2>이 글은 2026.6.23. 개정 기준입니다</h2>
-  <p>이 글은 <a href="${MANAGEMENT_CRITERIA_NOTICE_URL}" target="_blank" rel="noopener noreferrer">창업진흥원이 안내한 모두의 창업 프로젝트 세부관리기준 개정본</a>과 2026년 6월 23일 개정된 문서를 기준으로 작성했습니다. 중소벤처기업부는 <a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">2기 모집 관련 안내</a>에서 보안 강화와 신뢰 회복 뒤 2기 모집을 시작할 예정이라고 설명했습니다.</p>
+  <p>이 글은 <a href="${MANAGEMENT_CRITERIA_NOTICE_URL}" target="_blank" rel="noopener noreferrer">창업진흥원이 안내한 모두의 창업 프로젝트 세부관리기준 개정본</a>과 2026년 6월 23일 개정된 문서를 기준으로 작성했습니다. 위 업데이트처럼 2차 모집은 끝났고 1라운드 진출자 1만 명이 선발됐습니다.</p>
   <p>따라서 이후 기수, 새 공고, 협약 뒤 운영기관 안내가 나오면 그 기준이 우선입니다. 이 글의 로컬트랙 예외를 다음 기수나 다른 트랙에 자동 적용하지 마세요.</p>
   <p><strong class="dh-emphasis">부가세는 작은 숫자처럼 보여도 여러 건이 쌓이면 사업비 계획이 달라집니다. 결제 전에 등록 상태, 증빙, 부가세 처리, 지출 목적을 한 줄씩 분리해두세요.</strong></p>
 
@@ -120,6 +126,8 @@ export const post96 = {
       <li><a href="${MANAGEMENT_CRITERIA_URL}" target="_blank" rel="noopener noreferrer">모두의 창업 프로젝트 세부관리기준(2026.6.23. 개정)</a></li>
       <li><a href="${MANAGEMENT_CRITERIA_NOTICE_URL}" target="_blank" rel="noopener noreferrer">창업진흥원, 모두의 창업 프로젝트 세부관리기준 개정본 안내</a></li>
       <li><a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

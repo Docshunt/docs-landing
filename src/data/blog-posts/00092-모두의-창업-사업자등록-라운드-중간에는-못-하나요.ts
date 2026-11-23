@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const FIRST_COHORT_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310&parentSeq=1066642";
 const FIRST_COHORT_PDF_URL =
   "https://www.mss.go.kr/common/board/Download.do?bcIdx=1066642&cbIdx=310&streFileNm=b1db7f65-7bee-461b-861a-168c81873553.pdf";
@@ -25,15 +28,17 @@ export const post92 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.16",
-  modifiedDate: "2026.08.16",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.16",
-    note: "2026년 모두의 창업 1기 통합 모집공고와 일반·기술트랙 FAQ를 확인했습니다. FAQ Q32의 라운드 중 사업자등록 허용, 예비창업자의 신규 사업자등록, 기존 창업자의 이종업종 사업자등록, 등록 예정 전과 등록 결과 후 운영기관 통보 요청을 기준으로 작성했습니다. Q33의 3라운드 차년도 사업화자금 관련 사업자등록 필요성은 별도 요건으로 구분했습니다. 2기 모집은 보안 강화와 신뢰 회복 뒤 시작한다는 새 안내가 있으므로 이후 모집은 새 공고가 우선합니다.",
+    date: "2026.11.23",
+    note: "2026년 모두의 창업 1기 통합 모집공고와 일반·기술트랙 FAQ를 확인했습니다. FAQ Q32의 라운드 중 사업자등록 허용, 예비창업자의 신규 사업자등록, 기존 창업자의 이종업종 사업자등록, 등록 예정 전과 등록 결과 후 운영기관 통보 요청을 기준으로 작성했습니다. Q33의 3라운드 차년도 사업화자금 관련 사업자등록 필요성은 별도 요건으로 구분했습니다. 2기 모집은 보안 강화와 신뢰 회복 뒤 시작한다는 새 안내가 있으므로 이후 모집은 새 공고가 우선합니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고", url: FIRST_COHORT_NOTICE_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고 PDF", url: FIRST_COHORT_PDF_URL },
       { label: "모두의 창업 일반·기술트랙 FAQ", url: FIRST_COHORT_FAQ_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내", url: SECOND_COHORT_STATUS_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00092-modoo-startup-business-registration-during-round-list.jpg",
@@ -46,6 +51,7 @@ export const post92 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>2026년 모두의 창업 1기 일반·기술트랙 FAQ는 라운드가 진행되는 중에도 사업자등록이 가능하다고 안내했습니다.</strong> 예비창업자는 신규 사업자등록을, 기존 창업자는 기존 사업과 다른 이종업종 사업자등록을 하는 경우로 구분했습니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>그래서 답은 “가능하다”입니다. 다만 “아무 때나 조용히 등록해도 된다”는 뜻은 아닙니다. 사업자등록을 하기로 정했다면 등록 예정 사실을 먼저 운영기관에 알려야 했습니다. 등록이 끝난 뒤에도 결과를 다시 전달해야 했습니다.</p>
 
   <h2>라운드 중 사업자등록은 허용됐습니다</h2>
@@ -97,7 +103,7 @@ export const post92 = {
   <p>정리하면, 라운드 중 등록은 허용될 수 있습니다. 하지만 뒤 라운드에서 사업화자금을 받기 위한 등록 요건을 이미 충족했다는 뜻은 아닙니다.</p>
 
   <h2>2026년 1기 기준 글입니다</h2>
-  <p>이 글은 <a href="${FIRST_COHORT_PDF_URL}" target="_blank" rel="noopener noreferrer">2026년 모두의 창업 프로젝트 1기 통합 모집공고</a>와 일반·기술트랙 FAQ를 기준으로 작성했습니다. 중소벤처기업부는 <a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">2기 모집 관련 안내</a>에서 플랫폼 보안 강화와 신뢰 회복 뒤 2기 모집을 시작할 예정이라고 설명했습니다.</p>
+  <p>이 글은 <a href="${FIRST_COHORT_PDF_URL}" target="_blank" rel="noopener noreferrer">2026년 모두의 창업 프로젝트 1기 통합 모집공고</a>와 일반·기술트랙 FAQ를 기준으로 작성했습니다. 위 업데이트처럼 2차 모집은 끝났고 1라운드 진출자 1만 명이 선발됐습니다.</p>
   <p>따라서 이후 모집에서는 1기 FAQ보다 새 공고와 선정 뒤 운영기관 안내가 우선입니다. 등록 가능 여부, 업종 구분, 통보 방식과 사업화자금 요건이 바뀔 수 있습니다.</p>
   <p><strong class="dh-emphasis">사업자등록을 서두르기 전에 “지금 등록 가능한가”와 “다음 단계 지원 요건을 충족하는가”를 따로 적어보세요. 두 질문을 섞으면 운영기관에 물어야 할 핵심이 흐려집니다.</strong></p>
 
@@ -113,6 +119,8 @@ export const post92 = {
       <li><a href="${FIRST_COHORT_PDF_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고 PDF</a></li>
       <li><a href="${FIRST_COHORT_FAQ_URL}" target="_blank" rel="noopener noreferrer">모두의 창업 일반·기술트랙 FAQ</a></li>
       <li><a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

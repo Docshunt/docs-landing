@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const FIRST_COHORT_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310&parentSeq=1066642";
 const FIRST_COHORT_PDF_URL =
   "https://mss.go.kr/common/board/Download.do?bcIdx=1066642&cbIdx=310&streFileNm=b1db7f65-7bee-461b-861a-168c81873553.pdf";
@@ -25,15 +28,17 @@ export const post84 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.13",
-  modifiedDate: "2026.08.13",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.13",
-    note: "2026년 모두의 창업 1기 통합 모집공고와 일반·기술트랙 FAQ를 확인했습니다. 1기에서는 신청할 때 운영기관 1곳을 선택했습니다. 접수 기간 중에는 아이디어와 운영기관을 변경할 수 있었지만 마감 이후에는 변경할 수 없었습니다. 다른 지역 기관도 선택할 수 있으나 대면 프로그램 참여 가능성을 고려하도록 안내했습니다. 다음 모집에서는 새 공고와 FAQ를 다시 확인해야 합니다.",
+    date: "2026.11.23",
+    note: "2026년 모두의 창업 1기 통합 모집공고와 일반·기술트랙 FAQ를 확인했습니다. 1기에서는 신청할 때 운영기관 1곳을 선택했습니다. 접수 기간 중에는 아이디어와 운영기관을 변경할 수 있었지만 마감 이후에는 변경할 수 없었습니다. 다른 지역 기관도 선택할 수 있으나 대면 프로그램 참여 가능성을 고려하도록 안내했습니다. 다음 모집에서는 새 공고와 FAQ를 다시 확인해야 합니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고", url: FIRST_COHORT_NOTICE_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고 PDF", url: FIRST_COHORT_PDF_URL },
       { label: "모두의 창업 일반·기술트랙 FAQ", url: FIRST_COHORT_FAQ_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내", url: SECOND_COHORT_STATUS_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00084-modoo-startup-operating-organization-change-list.jpg",
@@ -46,6 +51,7 @@ export const post84 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>2026년 모두의 창업 1기에서는 최종 제출을 했더라도 접수 기간이 끝나기 전이면 운영기관을 바꿀 수 있었습니다.</strong> 접수 마감 이후에는 변경이나 교체가 불가능했습니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>잘못 선택했다면 마감 전 수정·재제출 절차를 확인해야 합니다. “일단 아무 기관이나 고르고 나중에 옮기자”는 방식은 마감 뒤에 막힐 수 있습니다.</p>
 
   <h2>운영기관은 신청할 때 한 곳만 선택했습니다</h2>
@@ -100,7 +106,7 @@ export const post84 = {
     <p><strong>제출 전 확인</strong><br>선택 기관명, 지역, 아이디어 분야, 공개 설정, 최종 제출 상태</p>
   </div>
   <p>기관을 바꿨다면 사업계획의 지역·고객·실행 일정도 새 기관의 보육 방식과 맞는지 읽어보세요. 기관명만 바꾸고 지역 검증 계획을 그대로 두면 문서 안에서 앞뒤가 어긋날 수 있습니다.</p>
-  <p>이 글은 2026년 모두의 창업 1기 기준입니다. 중소벤처기업부는 보안 강화를 거쳐 2기 모집을 시작할 예정이라고 안내했으므로, 다음 모집에서는 <a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">최신 공식 안내</a>와 신청 화면을 다시 확인해야 합니다.</p>
+  <p>이 글은 2026년 모두의 창업 1기 기준입니다. 위 업데이트처럼 2차 모집은 끝났고 1라운드 진출자 1만 명이 선발됐습니다. 다음 모집에서는 <a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">최신 공식 안내</a>와 신청 화면을 다시 확인해야 합니다.</p>
   <p><strong class="dh-emphasis">운영기관은 마감 전에는 고칠 수 있었습니다. 마감 뒤에는 바꿀 수 없었습니다. 이름보다 실제로 참여하고 도움받을 수 있는 곳인지 먼저 보세요.</strong></p>
 
   <div class="dh-cta">
@@ -115,6 +121,8 @@ export const post84 = {
       <li><a href="${FIRST_COHORT_PDF_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고 PDF</a></li>
       <li><a href="${FIRST_COHORT_FAQ_URL}" target="_blank" rel="noopener noreferrer">모두의 창업 일반·기술트랙 FAQ</a></li>
       <li><a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const MSS_PROJECT_PLAN_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066621&cbIdx=86";
 const MSS_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310&parentSeq=1066642";
 const MSS_SOCIAL_VENTURE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1070161&cbIdx=310";
@@ -24,10 +27,10 @@ export const post58 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.06",
-  modifiedDate: "2026.08.06",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.06",
-    note: "Search Console에서 모두의창업 멘토 등록 검색 수요를 확인했습니다. 2026년 8월 6일 기준 1기 통합 모집은 종료되었고, 중소벤처기업부의 별도 공고인 「모두의 창업:사회혁신 소셜벤처 리그」는 2026년 8월 19일 18시까지 접수 중입니다. 2기 일정은 플랫폼 보안점검과 안전성 확보로 조정됐으며 보안 강화 후 모집을 시작한다는 중소벤처기업부 공지를 확인했습니다.",
+    date: "2026.11.23",
+    note: "Search Console에서 모두의창업 멘토 등록 검색 수요를 확인했습니다. 2026년 8월 6일 기준 1기 통합 모집은 종료되었고, 중소벤처기업부의 별도 공고인 「모두의 창업:사회혁신 소셜벤처 리그」는 2026년 8월 19일 18시에 접수를 마쳤습니다. 2기 일정은 플랫폼 보안점검과 안전성 확보로 조정됐으며 보안 강화 후 모집을 시작한다는 중소벤처기업부 공지를 확인했습니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "중소벤처기업부, 모두의 창업 프로젝트 추진계획", url: MSS_PROJECT_PLAN_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 통합 모집공고", url: MSS_NOTICE_URL },
@@ -35,6 +38,8 @@ export const post58 = {
       { label: "대한민국 정책브리핑, 모두의 창업 진행 현황", url: KOREA_PROGRESS_URL },
       { label: "대한민국 정책브리핑, 2026 하반기 업무계획", url: KOREA_SECOND_HALF_PLAN_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 보도설명자료", url: MSS_SECURITY_NOTICE_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00058-modoo-startup-mentor-registration-role-list.jpg",
@@ -46,11 +51,12 @@ export const post58 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>모두의창업 멘토 등록</strong>을 찾고 있다면 먼저 본인의 참여 역할을 구분해야 합니다. 도전자로 신청하는 것과 멘토로 참여하는 것은 서로 다른 절차입니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>공식 통합 모집공고는 도전자 신청이 모두의 창업 플랫폼에서 진행된다고 안내했습니다. 반면 멘토링은 도전자가 선발된 뒤 성장 과정을 돕는 지원 구조에 가깝습니다.</p>
 
   <h2>도전자라면 멘토 등록보다 신청 경로를 먼저 봐야 합니다</h2>
   <p>중소벤처기업부의 2026년 통합 모집공고는 모두의 창업 프로젝트 참여 신청이 모두의 창업 플랫폼에서 진행된다고 공지했습니다. 2026년 8월 6일 기준 해당 1기 신청접수는 2026년 5월 15일 16시에 종료되었습니다.</p>
-  <p>다만 모두의 창업 관련 공고가 모두 닫힌 것은 아닙니다. 중소벤처기업부는 「모두의 창업:사회혁신 소셜벤처 리그」를 2026년 7월 30일부터 8월 19일 18시까지 별도로 모집 중이라고 공고했고, 이 공고의 신청은 기술보증기금 ONE플랫폼에서 진행된다고 안내했습니다.</p>
+  <p>이 글을 쓴 8월 6일에는 별도 공고인 「모두의 창업:사회혁신 소셜벤처 리그」가 2026년 7월 30일부터 8월 19일 18시까지 기술보증기금 ONE플랫폼에서 접수를 받고 있었습니다. 이 리그 접수도 지금은 끝났습니다.</p>
   <p>따라서 도전자가 “멘토 등록” 화면을 찾는다면 신청 절차를 잘못 이해했을 가능성이 있습니다. 도전자는 멘토가 되는 것이 아니라, 아이디어를 제출하고 선발 이후 멘토링을 받는 입장입니다.</p>
 
   <h2>멘토링은 선발 이후의 지원 과정입니다</h2>
@@ -67,7 +73,7 @@ export const post58 = {
 
   <h2>멘토로 참여하려는 경우에는 공식 모집 경로를 따로 확인하세요</h2>
   <p>창업 멘토로 참여하고 싶은 사람이라면 도전자 신청 페이지가 아니라 운영기관과 중소벤처기업부의 별도 안내를 확인해야 합니다. 이 글은 도전자 신청 절차 중심의 안내이므로, 멘토 위촉·등록 자격은 중소벤처기업부나 운영기관의 별도 모집 공고를 확인해야 합니다.</p>
-  <p>정책브리핑의 2026년 8월 4일 하반기 업무계획에는 국민 참여형 모두의 창업 2차 프로젝트 추진이 포함돼 있습니다. 다만 중소벤처기업부는 2026년 7월 3일 보도설명자료에서 2기 일정이 플랫폼 보안점검과 안전성 확보를 위해 조정됐고, 보안 강화 후 모집을 시작할 예정이라고 밝혔습니다. 따라서 일반 2차 모집의 세부 접수기간은 단정할 수 없으며, 신청 전에는 중소벤처기업부 사업공고와 플랫폼 공지를 확인해야 합니다.</p>
+  <p>2기 일정은 7월 보안점검으로 한 차례 조정됐다가, 위 업데이트처럼 2차 모집은 끝났고 1라운드 진출자 1만 명이 선발됐습니다. 다음 모집 일정은 중소벤처기업부 사업공고와 모두의 창업 플랫폼 공지로 확인하세요.</p>
   <p><strong class="dh-emphasis">모두의창업 멘토 등록이라는 검색어가 헷갈리는 이유는 도전자, 멘토, 운영기관, 별도 리그 공고가 한 이름 아래 함께 움직이기 때문입니다.</strong> 내가 어떤 역할로 들어가는지 먼저 정하면 다음 화면에서 헤매는 시간을 줄일 수 있습니다.</p>
 
   <div class="dh-cta">
@@ -84,6 +90,8 @@ export const post58 = {
       <li><a href="${KOREA_PROGRESS_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 6만 명 넘게 몰린 모두의 창업 진행 현황</a></li>
       <li><a href="${KOREA_SECOND_HALF_PLAN_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2026 하반기 업무계획</a></li>
       <li><a href="${MSS_SECURITY_NOTICE_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트는 보안 강화를 통한 신뢰 회복 후 2기 모집을 시작할 예정입니다</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310";
 const FAQ_URL = "https://ec.jnu.ac.kr/bbs/ec/237/835571/download.do";
 const STATUS_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1069596&cbIdx=87";
@@ -17,14 +20,16 @@ export const post48 = {
     "모두의 창업에 직장인과 팀이 신청할 수 있는지 1기 공식 FAQ를 기준으로 확인했습니다. 대표 신청자가 개인으로 접수하고 팀원 정보를 입력했던 방식, 재직자의 겸직 규정과 프로그램 참여 가능 시간을 신청 전에 확인해야 하는 이유를 정리합니다.",
   author: "독스헌트 마케팅팀",
   date: "2026.08.05",
-  modifiedDate: "2026.08.05",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.05",
-    note: "모두의 창업 1기 일반·기술 분야 FAQ를 기준으로 직장인·팀 신청 규정을 확인했습니다. 소속 회사의 겸직 규정과 2기 최종 공고는 신청자가 별도로 확인해야 합니다.",
+    date: "2026.11.23",
+    note: "모두의 창업 1기 일반·기술 분야 FAQ를 기준으로 직장인·팀 신청 규정을 확인했습니다. 소속 회사의 겸직 규정과 2기 최종 공고는 신청자가 별도로 확인해야 합니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고", url: NOTICE_URL },
       { label: "모두의 창업 프로젝트 1기 일반·기술 분야 FAQ", url: FAQ_URL },
       { label: "중소벤처기업부, 모두의 창업 2기 모집 일정 조정 설명", url: STATUS_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00048-modoo-startup-team-employee-list.jpg",
@@ -37,6 +42,7 @@ export const post48 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>모두의 창업 1기 FAQ 기준으로 직장인도 신청할 수 있었고, 팀과 함께 도전하는 것도 가능했습니다.</strong> 다만 팀 법인이나 팀 이름으로 접수하는 방식은 아니었습니다. 대표 신청자가 개인으로 신청하고 팀원 정보를 함께 입력하는 구조였습니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>아래 내용은 1기 일반·기술 분야 기준입니다. 2기 세부 공고는 아직 나오지 않았으므로 새 접수가 열리면 신청 주체와 재직자 조건을 다시 확인해야 합니다.</p>
 
   <h2>팀이 있어도 신청자는 개인이었습니다</h2>
@@ -66,7 +72,7 @@ export const post48 = {
   <p>신청서에는 화려한 직함보다 실제로 누가 무엇을 맡을지 쓰는 편이 읽기 쉽습니다. “공동창업자 3명”보다 “신청자는 고객 인터뷰와 사업 운영, 팀원 A는 시제품 개발, 팀원 B는 디자인 테스트를 맡는다”가 구체적입니다.</p>
 
   <h2>2기에서는 네 항목을 다시 확인하세요</h2>
-  <p>중기부는 <a href="${STATUS_URL}" target="_blank" rel="noopener noreferrer">플랫폼 보안 강화 후 2기 모집을 시작할 예정</a>이라고 밝혔습니다. 신청 가능 여부, 팀원 입력 방식, 직장인 제한, 선정 이후 의무가 1기와 같은지는 최종 공고를 기준으로 판단하세요.</p>
+  <p>2차 모집에서는 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">이종창업을 원하는 기창업자의 참여 자격이 업력 3년 이내에서 7년 이내로 넓어졌고</a>, 전체 선발 인원의 80% 이상을 예비창업자로 뽑는다고 안내됐습니다. 팀원 입력 방식, 직장인 제한, 선정 이후 의무가 1기와 같은지는 해당 회차 공고를 기준으로 판단하세요.</p>
   <p>직장인이나 팀이라는 이유만으로 먼저 포기할 필요는 없습니다. 다만 신청할 수 있다는 것과 선정 이후 프로그램을 실제로 수행할 수 있다는 것은 별개의 문제입니다.</p>
 
   <div class="dh-cta">
@@ -80,6 +86,8 @@ export const post48 = {
       <li><a href="${NOTICE_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고</a></li>
       <li><a href="${FAQ_URL}" target="_blank" rel="noopener noreferrer">모두의 창업 프로젝트 1기 일반·기술 분야 FAQ</a></li>
       <li><a href="${STATUS_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 2기 모집 일정 조정 설명</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const FIRST_COHORT_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310&parentSeq=1066642";
 const FIRST_COHORT_PDF_URL =
   "https://mss.go.kr/common/board/Download.do?bcIdx=1066642&cbIdx=310&streFileNm=b1db7f65-7bee-461b-861a-168c81873553.pdf";
@@ -25,15 +28,17 @@ export const post83 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.13",
-  modifiedDate: "2026.08.13",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.13",
-    note: "2026년 모두의 창업 1기 통합 모집공고와 일반·기술트랙 FAQ를 확인했습니다. 1기 FAQ에서는 도전자가 한 줄 아이디어의 공개·비공개를 선택합니다. 한 줄 외 세부 내용은 비공개입니다. 선정 이후 아이디어 발전 과정 공개는 도전자 동의를 전제로 합니다. 핵심·원천기술은 제외합니다. 이 내용은 1기 기준입니다. 다음 모집에서는 새 공고와 FAQ를 다시 확인해야 합니다.",
+    date: "2026.11.23",
+    note: "2026년 모두의 창업 1기 통합 모집공고와 일반·기술트랙 FAQ를 확인했습니다. 1기 FAQ에서는 도전자가 한 줄 아이디어의 공개·비공개를 선택합니다. 한 줄 외 세부 내용은 비공개입니다. 선정 이후 아이디어 발전 과정 공개는 도전자 동의를 전제로 합니다. 핵심·원천기술은 제외합니다. 이 내용은 1기 기준입니다. 다음 모집에서는 새 공고와 FAQ를 다시 확인해야 합니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고", url: FIRST_COHORT_NOTICE_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고 PDF", url: FIRST_COHORT_PDF_URL },
       { label: "모두의 창업 일반·기술트랙 FAQ", url: FIRST_COHORT_FAQ_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내", url: SECOND_COHORT_STATUS_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00083-modoo-startup-one-line-idea-privacy-list.jpg",
@@ -46,6 +51,7 @@ export const post83 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>2026년 모두의 창업 1기 일반·기술트랙에서는 한 줄 아이디어를 비공개로 제출할 수 있었습니다.</strong> 신청서에서 공개·비공개 여부를 확인한 뒤 도전자가 직접 선택하는 방식이었습니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>한 줄을 비공개로 선택한다고 신청서의 다른 항목을 비워도 된다는 뜻은 아닙니다. 공개 범위와 평가를 위해 작성하는 범위를 따로 봐야 합니다.</p>
 
   <h2>공개 선택 대상은 한 줄 아이디어였습니다</h2>
@@ -96,7 +102,7 @@ export const post83 = {
   <p>비공개는 심사자가 내용을 보지 못한다는 뜻이 아닙니다. 평가에 필요한 세부 답변은 사실대로 작성하되, 공개 선택의 대상과 제출 범위를 구분해야 합니다.</p>
 
   <h2>다음 모집에서는 공개 설정을 다시 확인하세요</h2>
-  <p>이 글은 2026년 모두의 창업 1기 FAQ를 기준으로 작성했습니다. 중소벤처기업부는 보안 강화를 거쳐 2기 모집을 시작할 예정이라고 안내했으므로, 다음 모집에서는 <a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">최신 공식 안내</a>와 실제 신청 화면의 공개 설정을 다시 확인해야 합니다.</p>
+  <p>이 글은 2026년 모두의 창업 1기 FAQ를 기준으로 작성했습니다. 위 업데이트처럼 2차 모집은 끝났고 1라운드 진출자 1만 명이 선발됐습니다. 다음 모집에서는 <a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">최신 공식 안내</a>와 실제 신청 화면의 공개 설정을 다시 확인해야 합니다.</p>
   <p><strong class="dh-emphasis">한 줄 아이디어의 공개 여부는 선택할 수 있었습니다. 제출 전에 선택값과 공개 문장을 직접 확인하는 과정은 신청자의 몫입니다.</strong></p>
 
   <div class="dh-cta">
@@ -111,6 +117,8 @@ export const post83 = {
       <li><a href="${FIRST_COHORT_PDF_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고 PDF</a></li>
       <li><a href="${FIRST_COHORT_FAQ_URL}" target="_blank" rel="noopener noreferrer">모두의 창업 일반·기술트랙 FAQ</a></li>
       <li><a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

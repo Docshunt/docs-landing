@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const STARTUP_DECREE_URL =
+  "https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%EC%B0%BD%EC%97%85%EC%A7%80%EC%9B%90%EB%B2%95%EC%8B%9C%ED%96%89%EB%A0%B9";
+
 const PRE_STARTUP_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066579&cbIdx=310";
 const BUDGET_BRIEFING_URL = "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156775671";
 const K_STARTUP_URL = "https://www.k-startup.go.kr/";
@@ -23,20 +26,21 @@ export const post21 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2025.12.11",
-  modifiedDate: "2026.11.20",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.11.20",
-    note: "신청 자격 기준일, 폐업 이력 기준, 신청 제외 대상, 분야별 선정 규모, 제출서류, 가점, 서류평가 2배수 내외와 70점 기준은 2026년 예비창업패키지 수정 공고(2차, 제2026-207호) 첨부 공고문에서 확인했습니다. 2026년 접수(3월 6일~3월 26일)는 끝난 지난 공고입니다. 공고문에 경쟁률이 없어 경쟁률 숫자는 싣지 않았고, 이전 글의 평가 기준과 가산점 대상 목록은 공고문과 달라 삭제했습니다.",
+    date: "2026.11.23",
+    note: "신청 자격 기준일, 폐업 이력 기준, 신청 제외 대상, 분야별 선정 규모, 제출서류, 가점, 서류평가 2배수 내외와 70점 기준은 2026년 예비창업패키지 수정 공고(2차, 제2026-207호) 첨부 공고문에서 확인했습니다. 2026년 접수(3월 6일~3월 26일)는 끝난 지난 공고입니다. 공고문에 경쟁률이 없어 경쟁률 숫자는 싣지 않았고, 이전 글의 평가 기준과 가산점 대상 목록은 공고문과 달라 삭제했습니다. 2026년 11월 23일 국가법령정보센터의 현행 「중소기업창업 지원법 시행령」(2026.9.1. 시행)으로 같은 업종 재창업 기준이 1년으로 바뀐 점을 추가했습니다.",
     sources: [
       { label: "중소벤처기업부, 2026년 예비창업패키지 예비창업자 모집 수정 공고(2차)", url: PRE_STARTUP_NOTICE_URL },
       { label: "정책브리핑, 중소벤처기업부 재정운용전략 사전 브리핑", url: BUDGET_BRIEFING_URL },
+      { label: "국가법령정보센터, 중소기업창업 지원법 시행령", url: STARTUP_DECREE_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00021-pre-startup-package-eligibility-qa-list.jpg",
   heroImage: "/docshunt-assets/blog-covers/00021-pre-startup-package-eligibility-qa-hero.jpg",
   paragraphs: [
     "이 글은 지난 공고를 다룹니다. 2026년 예비창업패키지는 2026년 1월 22일을 기준으로 본인 명의 사업자등록증이 없고 법인 대표권도 없는 사람을 대상으로 했습니다. 1월 23일 이후에 사업자등록이나 법인등기를 마쳤다면 신청할 수 있었습니다.",
-    "공고일 기준 최근 1개월(1월 28일~2월 27일) 안에 폐업한 사람은 신청할 수 없었고, 그 전에 폐업했다면 다른 업종은 신청할 수 있었지만 같은 업종은 폐업 뒤 3년(부도·파산은 2년)이 지나야 했습니다.",
+    "공고일 기준 최근 1개월(1월 28일~2월 27일) 안에 폐업한 사람은 신청할 수 없었고, 그 전에 폐업했다면 다른 업종은 신청할 수 있었지만 같은 업종은 폐업 뒤 3년(부도·파산은 2년)이 지나야 했습니다. 2026년 9월 시행령 개정으로 지금은 이 기간이 1년입니다.",
     "선정 규모는 300명 내외로 일반분야 110명, 여성 70명, 소셜벤처 70명, 사내벤처 50팀(별도 공고)이었습니다. 사업계획서는 공고 양식으로 첨부했고, 가점 증빙은 신청할 때 내야 인정됐습니다.",
     "공고문에는 경쟁률이 없습니다. 대신 서류평가에서 최종 선정규모의 2배수 내외를 발표평가 대상으로 고르고, 단계별 70점 미만은 제외한다는 기준이 적혀 있었습니다.",
   ],
@@ -73,10 +77,11 @@ export const post21 = {
       <tr>
         <td>2026년 1월 28일 이전</td>
         <td>신청 가능</td>
-        <td>폐업일로부터 3년(부도·파산은 2년)이 지나야 신청 가능</td>
+        <td>폐업일로부터 3년(부도·파산은 2년)이 지나야 신청 가능<br><small>2026.9.1. 시행령 개정으로 현재 기준은 1년</small></td>
       </tr>
     </tbody>
   </table>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트: 같은 업종 재창업 기준이 1년으로 줄었습니다</strong><br>위 3년 기준은 2026년 공고 당시 「중소기업창업 지원법 시행령」을 따른 것입니다. 2026년 9월 1일 시행된 <a href="${STARTUP_DECREE_URL}" target="_blank" rel="noopener noreferrer">현행 시행령</a> 제2조 제1항 제3호는 폐업한 날부터 1년 이상 지난 뒤 같은 업종으로 시작하면 창업으로 봅니다. 2027년 예비창업자 공고가 바뀐 기준을 따르는지는 공고문의 폐업 이력 조항으로 확인하세요. 업력 계산 전반은 <a href="/blog_detail/startup-business-age-criteria">창업 업력 기준 글</a>에 정리했습니다.</p></div>
   <p>같은 업종인지는 업종 분류의 세세분류가 같은지로 판단했습니다.</p>
 
   <h2>Q3. 어떤 분야로 신청할 수 있었고, 몇 명을 뽑았나요?</h2>
@@ -144,6 +149,7 @@ export const post21 = {
     <ul>
       <li><a href="${PRE_STARTUP_NOTICE_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 2026년 예비창업패키지 예비창업자 모집 수정 공고(2차)</a></li>
       <li><a href="${BUDGET_BRIEFING_URL}" target="_blank" rel="noopener noreferrer">정책브리핑, 중소벤처기업부 재정운용전략 사전 브리핑</a></li>
+      <li><a href="${STARTUP_DECREE_URL}" target="_blank" rel="noopener noreferrer">국가법령정보센터, 중소기업창업 지원법 시행령 (2026.9.1. 시행, 2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

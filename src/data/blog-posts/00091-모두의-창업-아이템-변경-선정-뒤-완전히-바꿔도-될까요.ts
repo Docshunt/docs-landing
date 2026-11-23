@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const FIRST_COHORT_FAQ_URL = "https://ec.jnu.ac.kr/bbs/ec/237/835571/download.do";
 const SECOND_COHORT_STATUS_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1069596&cbIdx=87";
 
@@ -22,13 +25,15 @@ export const post91 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.16",
-  modifiedDate: "2026.08.16",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.16",
-    note: "2026년 모두의 창업 1기 일반·기술트랙 FAQ의 Q29, Q30을 기준으로 작성했습니다. Q30의 전혀 다른 아이템 변경 불가 안내와 Q29의 멘토링을 통한 아이디어 구체화·개발 가능 안내를 구분했습니다. FAQ는 허용되는 보완과 금지되는 교체의 세부 경계선을 정의하지 않았으므로, 고객·문제·핵심가치 비교표는 독스헌트의 실무 점검 기준으로 표시했습니다. 2기에는 새 공고와 운영기관 안내를 다시 확인해야 합니다.",
+    date: "2026.11.23",
+    note: "2026년 모두의 창업 1기 일반·기술트랙 FAQ의 Q29, Q30을 기준으로 작성했습니다. Q30의 전혀 다른 아이템 변경 불가 안내와 Q29의 멘토링을 통한 아이디어 구체화·개발 가능 안내를 구분했습니다. FAQ는 허용되는 보완과 금지되는 교체의 세부 경계선을 정의하지 않았으므로, 고객·문제·핵심가치 비교표는 독스헌트의 실무 점검 기준으로 표시했습니다. 2기에는 새 공고와 운영기관 안내를 다시 확인해야 합니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "모두의 창업 일반·기술트랙 FAQ", url: FIRST_COHORT_FAQ_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내", url: SECOND_COHORT_STATUS_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00091-modoo-startup-item-change-after-selection-list.jpg",
@@ -41,6 +46,7 @@ export const post91 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>2026년 모두의 창업 1기 일반·기술트랙 FAQ는 선정 뒤 전혀 다른 아이템으로 변경할 수 없다고 안내했습니다.</strong> 선정은 제출한 창업 아이디어를 기준으로 이루어졌습니다. 선정 뒤 전혀 다른 아이템으로 바꾸면 지원의 형평성 문제가 생길 수 있기 때문입니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>다만 “전혀 다른 아이템으로 교체”와 “기존 아이디어를 구체화”는 같은 말이 아닙니다. 같은 FAQ는 멘토링을 통해 아이디어를 더 구체화하고 발전시킬 수 있다고 설명했습니다.</p>
 
   <h2>FAQ Q30의 답은 전혀 다른 아이템 변경 불가입니다</h2>
@@ -120,6 +126,8 @@ export const post91 = {
     <ul>
       <li><a href="${FIRST_COHORT_FAQ_URL}" target="_blank" rel="noopener noreferrer">모두의 창업 일반·기술트랙 FAQ</a></li>
       <li><a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,
