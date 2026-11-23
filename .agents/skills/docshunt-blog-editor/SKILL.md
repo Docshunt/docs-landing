@@ -47,7 +47,7 @@ Do not copy a key, browser binary, global skill, generated test artifact, or abs
    - task guide: obstacle → smallest useful action → example → next action
 6. Draft the article before optimizing keyword placement.
 7. Run the human-language pass and delete repeated conclusions, filler transitions, symmetrical section padding, and abstract advice.
-8. Run a separate title pass using one defensible risk, mistake, loss, or unanswered question. Do not reveal the complete answer in the title.
+8. Run a separate title pass. Start with the phrase the reader actually searches; add one defensible risk, mistake, loss, or unanswered question only when it fits. Do not reveal the complete answer in the title.
 9. Check the title, first 100 visible characters, headings, description, source links, CTA, and cover copy as one editorial unit.
 10. For a substantial new post or batch rewrite, request an independent review from an available external model only after removing personal, customer, and confidential data and explicitly authorizing the transfer. Ask only for concrete context, naturalness, repetition, and factuality problems. Apply suggestions selectively.
 11. Render the real blog list and detail routes on mobile, tablet, and desktop before handoff.
@@ -153,8 +153,8 @@ Read every sentence as a reader encountering the topic for the first time.
 
 ## Title Rules
 
-- Put the main keyword near the beginning.
-- Create one truthful curiosity gap using a risk, mistake, loss, or question.
+- Put the reader's own search phrase, including the main keyword, at the beginning. Search fit comes before the hook.
+- Optionally add one truthful curiosity gap using a risk, mistake, loss, or question. Do not repeat a title pattern used in the last five posts.
 - Avoid unsupported guarantees such as `이것만 하면 합격`, automatic rejection, or fixed ranking claims.
 - Keep the title readable in one breath and suitable for a two- or three-line 1200×750 cover.
 - Make the opening prove the title's implied risk within the first two paragraphs. If it cannot, weaken or replace the title.

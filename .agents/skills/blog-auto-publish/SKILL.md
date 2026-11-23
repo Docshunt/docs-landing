@@ -31,40 +31,50 @@ The run keeps private material outside this public repository.
 
 ## 1. Find the Topic
 
+### Who we write for
+
+The reader is a **예비창업자** or a founder **within three years of starting**: usually a sole proprietor or a small corporation, writing a first or second government-grant business plan, with no staff who handle paperwork. Every post must be useful to most of these readers, not to a small group inside them.
+
 Read the last 30 lines of `history.md` and the `seo.mainKeyword` values of all files in `src/data/blog-posts/`. Never repeat a main keyword or a source that is already used.
 
-Collect five to eight candidates from at least three of the four pools below.
+### What to write: questions first, notices second
 
-1. **Official notices (first-party)**
-   - K-Startup 사업공고: <https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do>
-   - 중소벤처기업부 보도자료: <https://www.mss.go.kr/site/smba/ex/bbs/List.do?cbIdx=86>
-   - 기업마당: <https://www.bizinfo.go.kr>
-   - 정책브리핑: <https://www.korea.kr>
-   - 소상공인시장진흥공단 and 창업진흥원 notices
-   - Prefer a notice that opened or changed in the last 14 days and is still accepting applications.
-2. **News (radar only)**
-   - Naver News or Google News searches from the last 3 days, for example `창업 지원사업`, `정부지원사업 공고`, `예비창업패키지`, `소상공인 지원금`, `사업계획서`, `R&D 지원`.
-   - A news story only tells you a topic is live. Confirm every fact in it from the official notice.
-3. **Content that took off**
-   - YouTube searches for the same keywords, sorted by upload date this week; note videos with many more views than the channel's usual.
-   - Instagram and Threads reference sheets in `/Users/laude/Documents/cardnews/yt_channels/docshunt/research/`.
-   - Naver blog and cafe posts that rank on page one for a grant keyword.
-   - Use these only for the angle: the question people ask and the hook that worked. Never copy their wording, structure, or images.
-4. **Our own search data**
-   - Search Console, `sc-domain:docshunt.ai`, on the ego-browser profile "독스헌트 업무". Look under 실적 → 검색어 for queries with many impressions whose page has a low CTR or sits at position 8–20.
-   - Read only. If Search Console is not reachable, skip this pool.
+Most posts answer a question this reader keeps asking, in a form that stays useful for a year or more. A notice summary that dies at its deadline is the exception.
+
+- **Evergreen task question (default, about four runs in five).** Examples of the kind of question, not a list to fill in: how 창업 업력 is counted for eligibility, whether to register as 개인사업자 or 법인 before applying, when to get a 사업자등록 if you are a 예비창업자, which expenses a grant can and cannot pay, how 정산 works and what gets rejected, 창업기업 확인서, 청년창업사관학교 vs 예비창업패키지, 중진공 창업자금 or 신보·기보 창업보증 for a first loan, 벤처기업 확인, what changes when you hire the first employee.
+- **Timely notice (about one run in five).** Only for a program many readers can apply to and many people search, such as 예비창업패키지, 초기창업패키지, 청년창업사관학교, 창업중심대학, 모두의 창업, 소상공인 정책자금, or a large regional program. Write it so it keeps working after the deadline: explain how the program works and how to prepare, and put this round's dates in one clearly dated box.
+- **Improving an existing post** counts as a run. When the best question is already covered by a weak or outdated post, rewrite that post under the Legacy Post Rewrite rules in `.agents/skills/docshunt-blog-editor/SKILL.md` instead of adding a competing page.
+
+Do not write a standalone post about a program that most of our readers cannot apply to: corporation-only investment or accelerator programs, programs limited to one gender, age band, region, or industry, or rounds selecting about ten companies or fewer. Such a program may appear as one example inside a broader post.
+
+### Where to look
+
+Collect five to eight candidates from at least three of these pools.
+
+1. **What readers ask (demand).**
+   - Naver and Google autocomplete and 연관검색어 for seed words like `예비창업자`, `창업 3년 이내`, `정부지원사업`, `사업계획서`, `개인사업자 법인`, `지원금 정산`.
+   - Recent questions in Naver 지식iN and startup cafes, and the comments on popular YouTube videos about grants. Note the exact wording people use.
+   - Search Console, `sc-domain:docshunt.ai`, on the ego-browser profile "독스헌트 업무": open 실적 → 검색어 and look for queries with many impressions and low CTR, or a position of 8–20. Read only. If the profile is signed out, write `서치콘솔: 로그아웃` in `history.md`; do not just skip it silently.
+2. **Official notices and rule changes (first-party).** K-Startup 사업공고 <https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do>, 중소벤처기업부 보도자료 <https://www.mss.go.kr/site/smba/ex/bbs/List.do?cbIdx=86>, 기업마당 <https://www.bizinfo.go.kr>, 정책브리핑 <https://www.korea.kr>, 소상공인시장진흥공단, 창업진흥원, 국세청 for registration and tax basics. Use them for timely notices and to verify every fact in an evergreen post.
+3. **News (radar only).** Naver News or Google News from the last 3 days. A news story only tells you a topic is live; confirm every fact from the official source.
+4. **Content that took off.** YouTube videos this week with many more views than the channel's usual, the reference sheets in `/Users/laude/Documents/cardnews/yt_channels/docshunt/research/`, and Naver blog or cafe posts on page one for a grant keyword. Use them for the question and the angle only. Never copy their wording, structure, or images.
 
 Browse politely: use ego-browser read-only, wait 3–5 seconds between pages, stay under 30 pages per run, and stop at any login wall or CAPTCHA (do not solve it). Finish the TaskSpace with `finish({ keep: [] })`.
 
-**Topic gate.** Pick one candidate that passes all of these:
+### Topic gate
 
-- A Korean founder, small-business owner, or grant applicant would search for it this week.
-- An official or first-party page confirms its key facts: dates, amounts, eligibility, evaluation items.
-- Its main keyword does not collide with an existing post.
-- DocsHunt can help naturally: finding notices, writing or reviewing a business plan, preparing documents.
-- It is not about stock or crypto picks, legal or tax advice to an individual, politics, or a private person.
+Pick one candidate that passes all of these:
 
-Record three to five candidates with their source URLs and the reason for the pick in `history.md` before writing.
+- **Reader:** most 예비창업자 or founders within three years could use it this month.
+- **Demand:** the question or its keyword shows up in autocomplete, 연관검색어, Search Console, or several real reader questions. Write down the evidence.
+- **Search fit:** we can rank for it. A query answered only by one organization's own site, such as a single program's brand name, is a poor target.
+- **Lifetime:** the page is still useful six months from now, or it is one of the large programs listed above.
+- **Facts:** an official or first-party page confirms every date, amount, rule, and eligibility condition the post will state.
+- **No collision:** the main keyword does not collide with an existing post. If it does, improve that post instead.
+- **Fit:** DocsHunt can help naturally, for example by finding notices, writing or reviewing a business plan, or preparing documents.
+- **Safe:** it is not about stock or crypto picks, legal or tax advice to an individual, politics, or a private person. General rules from 국세청 or a law text are fine; say where an accountant or the agency must be asked.
+
+Record three to five candidates in `history.md` before writing. Give each one its source URLs, its demand evidence, and the reason it was picked or dropped.
 
 ## 2. Write the Article
 
@@ -80,7 +90,16 @@ Follow `.agents/skills/docshunt-blog-editor/SKILL.md` in full, then `.agents/ski
 - **Cover.**
   - Use the cover compositor with a new descriptive filename in `public/docshunt-assets/blog-covers/`.
   - Do not use news photos or other people's thumbnails. Use a text-free generated visual, a public document excerpt, or an owned product screenshot.
-- **Variety.** Choose the article shape, cover look, and title pattern fresh each day. Never fill in a fixed template. The last three auto posts must not share the same structure.
+- **Title and slug.**
+  - Put the reader's own search phrase at the start of the title, for example `개인사업자 법인 전환, 지원사업 신청 전에 해야 할까`. A curiosity hook is optional and comes after the phrase.
+  - Keep years, months, and round numbers out of the slug unless the post is about one dated round.
+  - Do not reuse a title pattern from the last five posts. Phrases such as `~보다 먼저 걸리는` and `고칠 문장 하나` are already used up.
+- **Shape follows the question.** There is no fixed skeleton.
+  - Before drafting, list the H2 headings of the last three auto posts. The new outline must not follow the same order or reuse their headings.
+  - Answer the question directly in the first two or three sentences, before any background.
+  - Then use only the parts the question needs, for example a decision table, step-by-step order, cost or timeline numbers, a worked example, common mistakes, or a short Q&A at the end with the follow-up questions people actually ask.
+  - Skip the standard `확인 기준` box, `고치기 전/고친 뒤` quotes, and `맞지 않는 경우` section unless this topic really needs them.
+- **Usefulness test.** Before checks, answer in the PR notes: what can a 예비창업자 or a founder within three years do after reading this that they could not do before? If the answer is "know that a notice exists", rewrite the post or pick another topic.
 - **Exactly one DocsHunt CTA,** after the useful part.
 - **External review.** If `GEMINI_API_KEY` or `GOOGLE_API_KEY` is set, run the independent review script; otherwise do the same checklist manually and note it in the PR.
 
