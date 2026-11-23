@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const MSS_MODOO_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310&parentSeq=1066642";
 const MSS_PRE_STARTUP_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1065953&cbIdx=310&parentSeq=1065953";
 const MSS_MODOO_PROGRESS_URL = "https://www.mss.go.kr/site/gyeongnam/ex/bbs/View.do?bcIdx=1068519&cbIdx=217";
@@ -22,14 +25,16 @@ export const post63 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.07",
-  modifiedDate: "2026.08.07",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.07",
-    note: "Search Console에서 모두의 창업 사업계획서·사업계획서 양식 검색 수요를 확인했습니다. 2026년 모두의 창업 1기 통합 모집공고는 플랫폼에서 도전신청서를 직접 입력하고 신청서 외 별도 제출서류가 없다고 안내합니다. 2026년 예비창업패키지는 첨부 사업계획서 양식 1부 제출을 요구해 두 절차를 구분했습니다.",
+    date: "2026.11.23",
+    note: "Search Console에서 모두의 창업 사업계획서·사업계획서 양식 검색 수요를 확인했습니다. 2026년 모두의 창업 1기 통합 모집공고는 플랫폼에서 도전신청서를 직접 입력하고 신청서 외 별도 제출서류가 없다고 안내합니다. 2026년 예비창업패키지는 첨부 사업계획서 양식 1부 제출을 요구해 두 절차를 구분했습니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "중소벤처기업부, 모두의 창업 프로젝트 통합 모집공고", url: MSS_MODOO_NOTICE_URL },
       { label: "중소벤처기업부, 2026년도 예비창업패키지 예비창업자 모집 수정 공고", url: MSS_PRE_STARTUP_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 진행 현황", url: MSS_MODOO_PROGRESS_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00063-modoo-startup-business-plan-form-difference-list.jpg",
@@ -41,6 +46,7 @@ export const post63 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>모두의 창업 사업계획서 양식</strong>을 찾고 있다면, 먼저 어떤 단계의 문서를 말하는지 구분해야 합니다. 2026년 1기 최초 신청 절차는 공식 플랫폼에서 <strong>도전신청서</strong>를 직접 입력하는 방식이었습니다. 예비창업패키지 한글 파일 업로드와는 다른 흐름입니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>예비창업패키지 원고를 참고자료로 쓸 수는 있습니다. 다만 그 파일을 그대로 제출하는 것과, 확인된 사업 정보를 새 질문에 맞춰 옮겨 쓰는 것은 다른 일입니다.</p>
 
   <h2>2026년 모두의 창업 1기는 도전신청서를 직접 입력했습니다</h2>
@@ -90,6 +96,8 @@ export const post63 = {
       <li><a href="${MSS_MODOO_NOTICE_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 통합 모집공고</a></li>
       <li><a href="${MSS_PRE_STARTUP_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 2026년도 예비창업패키지 예비창업자 모집 수정 공고</a></li>
       <li><a href="${MSS_MODOO_PROGRESS_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 진행 현황</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

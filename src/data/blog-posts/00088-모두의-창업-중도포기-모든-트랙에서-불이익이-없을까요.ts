@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const FIRST_COHORT_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310&parentSeq=1066642";
 const FIRST_COHORT_PDF_URL =
   "https://www.mss.go.kr/common/board/Download.do?bcIdx=1066642&cbIdx=310&streFileNm=b1db7f65-7bee-461b-861a-168c81873553.pdf";
@@ -25,15 +28,17 @@ export const post88 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.15",
-  modifiedDate: "2026.08.15",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.15",
-    note: "2026년 모두의 창업 1기 통합 모집공고와 일반·기술트랙 FAQ를 대조했습니다. 일반·기술트랙 FAQ의 중도포기 별도 패널티가 없다는 안내와 사전 통보 요청, 로컬트랙 1라운드 진출 뒤 정당한 사유 없는 사업수행 포기에 향후 참여 제한 가능성이 있다는 공고문을 구분했습니다. 2기에서는 새 공고와 트랙별 안내를 다시 확인해야 합니다.",
+    date: "2026.11.23",
+    note: "2026년 모두의 창업 1기 통합 모집공고와 일반·기술트랙 FAQ를 대조했습니다. 일반·기술트랙 FAQ의 중도포기 별도 패널티가 없다는 안내와 사전 통보 요청, 로컬트랙 1라운드 진출 뒤 정당한 사유 없는 사업수행 포기에 향후 참여 제한 가능성이 있다는 공고문을 구분했습니다. 2기에서는 새 공고와 트랙별 안내를 다시 확인해야 합니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고", url: FIRST_COHORT_NOTICE_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고 PDF", url: FIRST_COHORT_PDF_URL },
       { label: "모두의 창업 일반·기술트랙 FAQ", url: FIRST_COHORT_FAQ_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내", url: SECOND_COHORT_STATUS_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00088-modoo-startup-withdrawal-track-difference-list.jpg",
@@ -46,6 +51,7 @@ export const post88 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>2026년 모두의 창업 1기에서 중도포기 안내는 트랙마다 같지 않았습니다.</strong> 일반·기술트랙 FAQ는 별도 패널티가 없다고 안내했습니다. 로컬트랙 공고에는 특정 단계 뒤 정당한 사유 없이 포기할 경우 향후 참여가 제한될 수 있다는 내용이 있었습니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>“모두의 창업은 중간에 그만둬도 아무 불이익이 없다”거나 반대로 “포기하면 무조건 참여제한을 받는다”고 하나로 단정하면 두 규정을 모두 놓칩니다.</p>
 
   <h2>일반·기술트랙 FAQ는 별도 패널티가 없다고 안내했습니다</h2>
@@ -95,7 +101,7 @@ export const post88 = {
   <p>환수나 정산 조건을 추측해 임의로 추가 결제하거나 반환하지 마세요. 운영기관에 현재 사용 내역을 전달하고 공식 절차를 확인하는 편이 안전합니다.</p>
 
   <h2>다음 모집은 트랙별 유의사항이 기준입니다</h2>
-  <p>이 글은 2026년 모두의 창업 1기 공고와 일반·기술트랙 FAQ를 대조한 내용입니다. 중소벤처기업부는 플랫폼 보안 강화 뒤 2기 모집을 시작할 예정이라고 안내했습니다.</p>
+  <p>이 글은 2026년 모두의 창업 1기 공고와 일반·기술트랙 FAQ를 대조한 내용입니다. 위 업데이트처럼 2차 모집은 끝났고 1라운드 진출자 1만 명이 선발됐습니다.</p>
   <p>2기에서는 트랙 구성, 라운드와 중도포기 조건이 달라질 수 있습니다. <a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">2기 모집 관련 공식 안내</a>를 확인하세요. 새 공고와 선정 뒤 받은 운영기관 안내가 최종 기준입니다.</p>
   <p><strong class="dh-emphasis">중도포기 여부를 결정하기 전에 자신의 트랙과 현재 단계를 확인한 뒤 운영기관에 사실관계를 전달하세요.</strong></p>
 
@@ -111,6 +117,8 @@ export const post88 = {
       <li><a href="${FIRST_COHORT_PDF_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고 PDF</a></li>
       <li><a href="${FIRST_COHORT_FAQ_URL}" target="_blank" rel="noopener noreferrer">모두의 창업 일반·기술트랙 FAQ</a></li>
       <li><a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

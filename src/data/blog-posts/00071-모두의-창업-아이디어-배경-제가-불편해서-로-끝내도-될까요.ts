@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const MODOO_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310&parentSeq=1066642";
 const YASU_APPLICATION_URL = "https://www.yasu.ac.kr/kor/CMS/Board/Board.do?board_seq=241546&mCode=MN133&mgr_seq=6&mode=view";
 
@@ -21,13 +24,15 @@ export const post71 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.09",
-  modifiedDate: "2026.08.09",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.09",
-    note: "2026년 모두의 창업 1기 통합 모집공고의 온라인 도전신청서 방식과 용인예술과학대학교 창업교육센터가 안내한 당시 작성 항목을 확인했습니다. 1기 접수는 종료됐으며 차기 모집에서는 실제 입력 질문과 글자 수를 다시 확인해야 합니다.",
+    date: "2026.11.23",
+    note: "2026년 모두의 창업 1기 통합 모집공고의 온라인 도전신청서 방식과 용인예술과학대학교 창업교육센터가 안내한 당시 작성 항목을 확인했습니다. 1기 접수는 종료됐으며 차기 모집에서는 실제 입력 질문과 글자 수를 다시 확인해야 합니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고", url: MODOO_NOTICE_URL },
       { label: "용인예술과학대학교 창업교육센터, 모두의 창업 작성 항목 안내", url: YASU_APPLICATION_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00071-modoo-startup-idea-background-story-list.jpg",
@@ -39,6 +44,7 @@ export const post71 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>“제가 불편해서 이 아이디어를 떠올렸습니다.”</strong> 시작 문장으로는 괜찮지만 여기서 끝나면 왜 사업으로 풀어야 하는 문제가 됐는지 알기 어렵습니다. 어떤 장면에서 불편을 봤고, 다른 사람에게도 반복되는지 무엇으로 확인했는지가 이어져야 합니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p><a href="${YASU_APPLICATION_URL}" target="_blank" rel="noopener noreferrer">용인예술과학대학교 창업교육센터의 2026년 모두의 창업 작성 항목 안내</a>에는 아이디어 한 줄 소개와 별도로 <strong>‘아이디어를 떠올린 배경 이야기’</strong>가 포함돼 있었습니다. 배경 문항에서는 제품 기능을 반복하기보다 문제를 발견한 출발점과 확인 과정을 적는 편이 자연스럽습니다.</p>
 
   <h2>불편했다는 감정 뒤에 장면이 필요합니다</h2>
@@ -83,6 +89,8 @@ export const post71 = {
     <ul>
       <li><a href="${MODOO_NOTICE_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고</a></li>
       <li><a href="${YASU_APPLICATION_URL}" target="_blank" rel="noopener noreferrer">용인예술과학대학교 창업교육센터, 모두의 창업 작성 항목 안내</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

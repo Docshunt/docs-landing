@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const MODOO_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310&parentSeq=1066642";
 const MODOO_GUIDELINES_URL = "https://www.k-startup.go.kr/user/board/webRFRR_view_reference.do?page=1&viewCount=18&id=175865&schM=view";
 
@@ -21,13 +24,15 @@ export const post70 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.09",
-  modifiedDate: "2026.08.09",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.09",
-    note: "중소벤처기업부의 2026년 1기 통합 모집공고와 2026년 6월 23일 개정 세부관리기준을 확인했습니다. 1기 모집은 종료됐으며 차기 모집의 평가 표현과 절차는 새 공고가 최종 기준입니다.",
+    date: "2026.11.23",
+    note: "중소벤처기업부의 2026년 1기 통합 모집공고와 2026년 6월 23일 개정 세부관리기준을 확인했습니다. 1기 모집은 종료됐으며 차기 모집의 평가 표현과 절차는 새 공고가 최종 기준입니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고", url: MODOO_NOTICE_URL },
       { label: "K-Startup, 모두의 창업 프로젝트 세부관리기준(2026.6.23. 개정)", url: MODOO_GUIDELINES_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00070-modoo-startup-evaluation-track-difference-list.jpg",
@@ -39,6 +44,7 @@ export const post70 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>같은 기준이라고 보기 어렵습니다.</strong> <a href="${MODOO_NOTICE_URL}" target="_blank" rel="noopener noreferrer">2026년 모두의 창업 프로젝트 1기 통합 모집공고</a>는 일반·기술 트랙의 아이디어 심사에서 <strong>차별성·효과성</strong>을, 로컬 트랙에서는 <strong>창의성·지역적 가치</strong>를 종합 평가한다고 안내했습니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>두 트랙 모두 좋은 아이디어를 찾지만, 신청서에서 먼저 증명해야 할 지점은 다릅니다. 트랙의 정의를 확인하지 않은 채 같은 설명을 붙여 넣으면 아이디어와 평가 문구가 어긋날 수 있습니다.</p>
 
   <h2>일반·기술은 기존 대안과 효과를 묻습니다</h2>
@@ -85,6 +91,8 @@ export const post70 = {
     <ul>
       <li><a href="${MODOO_NOTICE_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고</a></li>
       <li><a href="${MODOO_GUIDELINES_URL}" target="_blank" rel="noopener noreferrer">K-Startup, 모두의 창업 프로젝트 세부관리기준(2026.6.23. 개정)</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

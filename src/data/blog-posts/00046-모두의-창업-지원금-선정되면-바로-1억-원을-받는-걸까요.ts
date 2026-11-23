@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310";
 const FAQ_URL = "https://ec.jnu.ac.kr/bbs/ec/237/835571/download.do";
 const STATUS_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1069596&cbIdx=87";
@@ -17,14 +20,16 @@ export const post46 = {
     "모두의 창업 1기에서 처음 선정됐다고 곧바로 1억 원을 받는 구조는 아니었습니다. 공식 공고를 바탕으로 트랙과 진출 단계에 따라 달랐던 활동비·시제품 제작비·사업화자금 구조를 설명하고, 최대 금액 기사에서 반드시 확인할 조건을 정리했습니다.",
   author: "독스헌트 마케팅팀",
   date: "2026.08.05",
-  modifiedDate: "2026.08.05",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.05",
-    note: "금액과 단계는 모두의 창업 1기 일반·기술 및 로컬 트랙 공고 기준입니다. 2기 지원 규모와 지급 조건은 최종 공고에서 달라질 수 있습니다.",
+    date: "2026.11.23",
+    note: "금액과 단계는 모두의 창업 1기 일반·기술 및 로컬 트랙 공고 기준입니다. 2기 지원 규모와 지급 조건은 최종 공고에서 달라질 수 있습니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고", url: NOTICE_URL },
       { label: "모두의 창업 프로젝트 1기 일반·기술 분야 FAQ", url: FAQ_URL },
       { label: "중소벤처기업부, 모두의 창업 2기 모집 일정 조정 설명", url: STATUS_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00046-modoo-startup-funding-stages-list.jpg",
@@ -37,6 +42,7 @@ export const post46 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>아닙니다. 모두의 창업 1기에서는 처음 선정됐다고 곧바로 1억 원을 받는 구조가 아니었습니다.</strong> 지원 금액은 트랙과 진출 단계에 따라 달랐고, '최대' 금액은 뒤 라운드까지 진출한 일부 도전자에게 해당했습니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>아래 금액은 <a href="${NOTICE_URL}" target="_blank" rel="noopener noreferrer">1기 통합 모집공고</a> 기준입니다. 2기 세부 공고는 아직 발표되지 않았으므로 실제 신청 때는 새 지원 규모와 지급 조건을 다시 확인해야 합니다.</p>
 
   <h2>일반·기술 트랙은 단계별 지원이었습니다</h2>
@@ -65,8 +71,8 @@ export const post46 = {
   </ol>
   <p>지원금은 자유롭게 쓸 수 있는 상금과 다를 수 있습니다. 시제품 제작비와 사업화자금은 공고와 협약에 정해진 목적과 절차에 따라 집행해야 합니다. 따라서 최대 금액보다 당장 다음 단계에서 무엇을 만들고 어떤 결과를 제출해야 하는지부터 보는 편이 현실적입니다.</p>
 
-  <h2>2기 금액은 아직 확정된 것으로 보면 안 됩니다</h2>
-  <p>중기부는 <a href="${STATUS_URL}" target="_blank" rel="noopener noreferrer">플랫폼 보안 강화 후 2기 모집을 시작할 예정</a>이라고 밝혔습니다. 새 공고가 나오면 지원 인원, 단계, 금액, 자부담 여부, 협약 조건을 한 표 안에서 다시 확인하세요.</p>
+  <h2>2차 지원 금액은 2차 공고로 확인하세요</h2>
+  <p>2차에서는 1라운드 진출자 전원에게 창업활동자금 2백만 원을 지원한다고 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">중기부가 밝혔습니다</a>. 그다음 라운드의 인원, 금액, 자부담 여부, 협약 조건은 2차 공고와 운영기관 안내를 한 표에 모아 다시 확인하세요.</p>
   <p>“선정되면 1억 원”이 아니라 “어느 단계까지 진출하면 어떤 목적으로 최대 얼마를 지원받는가”라고 읽어야 실제 준비 계획을 세울 수 있습니다.</p>
 
   <div class="dh-cta">
@@ -80,6 +86,8 @@ export const post46 = {
       <li><a href="${NOTICE_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고</a></li>
       <li><a href="${FAQ_URL}" target="_blank" rel="noopener noreferrer">모두의 창업 프로젝트 1기 일반·기술 분야 FAQ</a></li>
       <li><a href="${STATUS_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 2기 모집 일정 조정 설명</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

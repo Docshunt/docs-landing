@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const FIRST_COHORT_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310&parentSeq=1066642";
 const FIRST_COHORT_PDF_URL =
   "https://mss.go.kr/common/board/Download.do?bcIdx=1066642&cbIdx=310&streFileNm=b1db7f65-7bee-461b-861a-168c81873553.pdf";
@@ -24,14 +27,16 @@ export const post80 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.12",
-  modifiedDate: "2026.08.12",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.12",
-    note: "중소벤처기업부의 2026년 모두의 창업 1기 통합 모집공고와 첨부 PDF에서 신청자 본인의 아이디어라도 다른 공모전에서 수상해 공개됐고 제출안과 실질적으로 동일한 경우 신청 제외 대상이 될 수 있다는 안내를 확인했습니다. 이 내용은 1기 규정이며, 2026년 8월 12일 현재 최종 2기 모집공고는 확인되지 않았습니다. 다음 모집에서는 새 공고와 운영기관의 공식 답변을 최종 기준으로 삼아야 합니다.",
+    date: "2026.11.23",
+    note: "중소벤처기업부의 2026년 모두의 창업 1기 통합 모집공고와 첨부 PDF에서 신청자 본인의 아이디어라도 다른 공모전에서 수상해 공개됐고 제출안과 실질적으로 동일한 경우 신청 제외 대상이 될 수 있다는 안내를 확인했습니다. 이 내용은 1기 규정이며, 이후 2차 모집은 2026년 8월 20일부터 9월 17일까지 진행됐습니다. 다음 모집에서는 새 공고와 운영기관의 공식 답변을 최종 기준으로 삼아야 합니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고", url: FIRST_COHORT_NOTICE_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고 PDF", url: FIRST_COHORT_PDF_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 관련 브리핑", url: SECOND_COHORT_BRIEFING_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00080-modoo-startup-public-idea-reapplication-list.jpg",
@@ -40,10 +45,11 @@ export const post80 = {
     "2026년 모두의 창업 1기에서는 신청자 본인의 아이디어라도 다른 공모전에서 수상해 공개됐고 제출안과 실질적으로 동일하다면 신청 제외 대상이 될 수 있었습니다.",
     "제품 이름이나 문구만 바꿨다고 다른 아이디어가 되는 것은 아닙니다. 고객 문제, 해결 방식, 핵심 기능과 실행 구조가 실제로 달라졌는지 확인해야 합니다.",
     "이전 수상 여부, 공개된 자료, 현재 제출안의 차이를 한 표에 놓고 비교하세요. 판단이 모호하면 접수 전에 운영기관에 아이디어 공개 범위와 달라진 내용을 구체적으로 적어 문의하는 편이 안전합니다.",
-    "해당 기준은 1기 공고 내용입니다. 2026년 8월 12일 현재 최종 2기 공고는 확인되지 않았으므로 다음 모집에서는 새 규정을 다시 확인해야 합니다.",
+    "해당 기준은 1기 공고 내용입니다. 2차 모집(2026.8.20~9.17)은 끝났으므로 다음 모집에서는 새 규정을 다시 확인해야 합니다.",
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>2026년 모두의 창업 1기에서는 다른 공모전에서 수상해 공개된 아이디어와 실질적으로 동일한 아이디어를 다시 제출할 수 없었습니다.</strong> 신청자 본인의 아이디어라도 이 기준에 해당할 수 있었습니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>따라서 이름, 디자인, 소개 문장만 바꾸기보다 고객 문제·해결 방식·핵심 기능·실행 구조가 실제로 달라졌는지 먼저 확인해야 합니다.</p>
 
   <h2>본인 아이디어라도 ‘수상 후 공개’ 여부를 확인하세요</h2>
@@ -109,7 +115,7 @@ export const post80 = {
   </ul>
 
   <h2>2기에서는 새 공고와 공식 답변을 확인하세요</h2>
-  <p><a href="${SECOND_COHORT_BRIEFING_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부의 2026년 7월 31일 브리핑</a>은 국정원 보안성 검토 등 관련 절차를 8월 중순까지 마칠 계획이며 2기 시작도 비슷한 시기로 예상한다고 밝혔습니다. 2026년 8월 12일 현재 최종 2기 모집공고는 확인되지 않았습니다.</p>
+  <p>위 업데이트처럼 2차 모집은 끝났고 1라운드 진출자 1만 명이 선발됐습니다. 2차 심사에는 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">AI 생성률·표절률을 검사하는 AI 검증 모델</a>이 도입됐습니다. 이미 공개된 아이디어를 다시 낼 때의 제한은 해당 회차 공고에서 확인하세요.</p>
   <p>재신청을 준비한다면 <a href="${FIRST_COHORT_NOTICE_URL}" target="_blank" rel="noopener noreferrer">1기 공고</a>의 표현을 그대로 적용하지 말고 새 공고의 공개 아이디어·중복 제출·권리 조항과 문의처를 다시 확인하세요.</p>
   <p><strong class="dh-emphasis">제목을 바꾸는 데서 멈추지 말고 이전 수상작과 무엇이 실질적으로 달라졌는지 근거로 설명할 수 있어야 합니다.</strong></p>
 
@@ -124,6 +130,8 @@ export const post80 = {
       <li><a href="${FIRST_COHORT_NOTICE_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고</a></li>
       <li><a href="${FIRST_COHORT_PDF_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고 PDF</a></li>
       <li><a href="${SECOND_COHORT_BRIEFING_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 관련 브리핑</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

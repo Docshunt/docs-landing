@@ -4,6 +4,10 @@ import type { BlogPost } from "./types";
 
 const POLICY_STATUS_URL = "https://www.korea.kr/briefing/actuallyView.do?newsId=148968906";
 const SECOND_COHORT_BRIEFING_URL = "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156772942";
+const BUDGET_BRIEFING_URL = "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156775671";
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+const PACKAGE_2027_HOST_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1072172&cbIdx=310";
 const FIRST_COHORT_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310&parentSeq=1066642";
 
 export const post75 = {
@@ -14,7 +18,7 @@ export const post75 = {
   title: "모두의 창업 2기, 예비창업패키지가 사라지는 걸까요?",
   titleLines: ["모두의 창업 2기,", "예창패가 사라질까요?"],
   description:
-    "모두의 창업 2기 때문에 예비창업패키지가 사라지거나 흡수된다는 내용은 2026년 8월 11일 기준 확정 사항이 아닙니다. 정부 설명자료로 확정된 것과 아직 정해지지 않은 것을 나눴습니다.",
+    "모두의 창업 2기 이후 예비창업패키지는 어떻게 될까요? 정부는 2027년 예산안에서 예비창업 사업을 모두의 창업으로 일원화할 계획을 밝혔습니다. 국회 확정 전 계획과 2차 진행 상황을 정리했습니다.",
   seo: {
     mainKeyword: "모두의 창업 2기",
     supportKeywords: ["예비창업패키지", "모두의 창업 모집공고", "예비창업자 지원사업"],
@@ -22,39 +26,73 @@ export const post75 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.11",
-  modifiedDate: "2026.08.11",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.11",
-    note: "대한민국 정책브리핑의 2026년 7월 28일 보도설명자료에서 예비창업패키지의 모두의 창업 흡수와 지원사업 일원화가 확정되지 않았음을 확인했습니다. 7월 31일 중소벤처기업부 브리핑은 7월 중 보안·개인정보 조치를 마쳤고 8월 중순까지 추가 행정절차를 진행한 뒤 그 무렵 2기를 시작할 것으로 예상한다고 밝혔습니다. 2026년 8월 11일 공식 사업공고를 재확인했으나 최종 일정과 조건을 담은 2기 모집공고는 확인되지 않았습니다.",
+    date: "2026.11.23",
+    note: "2026년 11월 23일 업데이트: 2026년 8월 27일 재정운용전략협의회 안건 사전 브리핑에서 도전 K-스타트업, 예비창업패키지 등 예비창업 사업을 모두의 창업 지원사업으로 일원화할 계획(2027년 정부 예산안 기준)을 확인했고, 2차 모집(2026.8.20~9.17)과 1라운드 진출자 선발(2026.10.15) 자료를 추가했습니다. 아래는 최초 작성 당시 확인 내용입니다. 대한민국 정책브리핑의 2026년 7월 28일 보도설명자료에서 예비창업패키지의 모두의 창업 흡수와 지원사업 일원화가 확정되지 않았음을 확인했습니다. 7월 31일 중소벤처기업부 브리핑은 7월 중 보안·개인정보 조치를 마쳤고 8월 중순까지 추가 행정절차를 진행한 뒤 그 무렵 2기를 시작할 것으로 예상한다고 밝혔습니다. 2026년 8월 11일 공식 사업공고를 재확인했으나 최종 일정과 조건을 담은 2기 모집공고는 확인되지 않았습니다.",
     sources: [
       { label: "대한민국 정책브리핑, 예비창업패키지 흡수 보도 관련 설명", url: POLICY_STATUS_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 관련 브리핑", url: SECOND_COHORT_BRIEFING_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고", url: FIRST_COHORT_NOTICE_URL },
+      { label: "대한민국 정책브리핑, 재정운용전략협의회 안건 사전 브리핑", url: BUDGET_BRIEFING_URL },
+      { label: "중소벤처기업부, 2027년도 초기창업·창업도약 패키지 사업 신규 주관기관 모집 공고", url: PACKAGE_2027_HOST_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00075-modoo-startup-2-pre-startup-package-status-list.jpg",
   heroImage: "/docshunt-assets/blog-covers/00075-modoo-startup-2-pre-startup-package-status-hero.jpg",
   paragraphs: [
-    "2026년 8월 11일 기준 예비창업패키지가 모두의 창업에 흡수되거나 사라진다는 내용은 확정되지 않았습니다.",
-    "중소벤처기업부는 예비창업자 지원체계 개편 방향을 검토 중이지만 두 사업의 운영 방식은 예산 심의 단계이며, 흡수와 일원화는 확정 사항이 아니라고 설명했습니다.",
-    "중소벤처기업부는 7월 31일 브리핑에서 8월 중순까지 추가 행정절차를 진행한 뒤 그 무렵 2기를 시작할 것으로 예상한다고 밝혔지만, 8월 11일 현재 최종 모집공고는 확인되지 않았습니다.",
+    "정부는 2026년 8월 27일 브리핑에서 도전 K-스타트업, 예비창업패키지 등 여러 예비창업 사업을 모두의 창업으로 일원화할 계획을 밝혔습니다. 2027년 정부 예산안 기준이며 국회 심의를 거쳐 확정됩니다.",
+    "브리핑 질의응답에서는 예산 과목은 통합하되, 업력별 지원 체계를 유지할지는 내년 사업계획에서 정한다고 답했습니다.",
+    "앞서 7월 28일 설명자료에서는 흡수와 일원화가 확정 사항이 아니라고 했지만, 8월 27일 브리핑에서 정부안으로 일원화 계획이 발표됐습니다.",
+    "중소벤처기업부는 7월 31일 브리핑에서 8월 중순까지 추가 행정절차를 진행한 뒤 그 무렵 2기를 시작할 것으로 예상한다고 밝혔지만, 2차 모집은 8월 20일부터 9월 17일까지 진행됐습니다.",
     "지금은 특정 양식이나 일정에 맞춰 원고를 완성하기보다 고객 문제, 검증 기록, 실행 일정과 비용처럼 두 사업에서 다시 활용할 수 있는 근거를 정리해두는 편이 낫습니다.",
   ],
   contentHtml: `<div class="dh-seo-post">
-  <p><strong>2026년 8월 11일 기준으로 예비창업패키지가 모두의 창업에 흡수되거나 사라진다는 내용은 확정되지 않았습니다.</strong> 예비창업자 지원체계의 개편 방향은 검토 중이지만, 두 사업의 운영 방식과 예산은 아직 확정 단계가 아닙니다.</p>
-  <p>모두의 창업 2기 역시 새 모집공고가 확인되지 않은 상태입니다. 검색 결과의 전망을 확정 공고처럼 읽기보다 <strong>정부가 확인한 사실과 아직 정하지 않은 항목</strong>을 나눠 봐야 합니다.</p>
+  <p><strong>정부는 2027년 예산안에서 예비창업패키지를 포함한 예비창업 사업을 모두의 창업으로 일원화할 계획을 밝혔습니다.</strong> 다만 이는 국회 심의 전인 정부안이고, 2027년 예비창업자 지원이 실제로 어떤 공고로 나올지는 아직 정해지지 않았습니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 8월 11일에 처음 썼고, 그 뒤 두 가지가 바뀌었습니다. 첫째, 8월 27일 <a href="${BUDGET_BRIEFING_URL}" target="_blank" rel="noopener noreferrer">재정운용전략협의회 안건 사전 브리핑</a>에서 일원화 계획이 발표됐습니다. 둘째, 2차 모두의 창업이 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>을 마치고 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>을 선발했습니다. 아래 8월 기준 내용은 당시 상황으로 읽어 주세요.</p></div>
 
-  <h2>정부는 ‘흡수·일원화가 확정되지 않았다’고 설명했습니다</h2>
+  <h2>8월 27일 브리핑: 예비창업 사업을 모두의 창업으로 일원화할 계획</h2>
+  <p><a href="${BUDGET_BRIEFING_URL}" target="_blank" rel="noopener noreferrer">브리핑</a>에서 정부는 지원 목적과 대상이 같은 사업을 일원화하겠다며, 그 예로 중기부가 도전 K-스타트업, 예비창업패키지 등 여러 예비창업 사업을 모두의 창업 지원사업으로 일원화해 운영비 등 764억 원을 절감할 계획이라고 밝혔습니다.</p>
+  <p>질의응답에서 초기창업패키지·창업도약패키지까지 합쳐지는지 묻자, 예산 과목 기준으로는 통합하되 업력별로 나눠 지원하는 체계는 유지되는 것으로 안다고 답하면서도, 이는 확정적으로 말하기 어렵고 내년 사업계획에서 반영할 부분이라고 덧붙였습니다.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>구분</th>
+        <th>지금 확인된 것</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>예비창업패키지</td>
+        <td>2027년 정부 예산안에서 모두의 창업으로 일원화 계획. 국회 확정 전</td>
+      </tr>
+      <tr>
+        <td>초기·도약 패키지</td>
+        <td>예산 과목 통합 언급. 10월 30일 <a href="${PACKAGE_2027_HOST_URL}" target="_blank" rel="noopener noreferrer">2027년도 초기창업·창업도약 패키지 신규 주관기관 모집 공고</a>(제2026-621호)가 나왔습니다</td>
+      </tr>
+      <tr>
+        <td>모두의 창업 2차</td>
+        <td>8.20~9.17 모집, 10.15 1라운드 1만 명 선발, 미선정자 재도전 멘토링 12.14까지</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>예비창업자라면 2027년에 "예창패 한글 양식 사업계획서"만 준비해 두기보다, 모두의 창업 도전신청서처럼 짧은 문항에도 옮길 수 있는 고객 문제, 검증 기록, 실행 일정과 비용을 정리해 두는 편이 안전합니다.</p>
+
+  <h2>8월 11일 당시 확인한 내용</h2>
+
+  <h3>7월 28일 설명자료: 당시에는 확정되지 않았다고 설명</h3>
   <p><a href="${POLICY_STATUS_URL}" target="_blank" rel="noopener noreferrer">2026년 7월 28일 대한민국 정책브리핑의 보도설명자료</a>는 중소벤처기업부가 예비창업자 지원체계 개편 방향을 검토 중이라고 밝혔습니다. 다만 예비창업패키지와 모두의 창업의 운영 방식, 초기창업패키지의 모집 규모와 운영 방식은 예산 심의 단계로 확정되지 않았다고 설명했습니다.</p>
   <p>예비창업패키지의 모두의 창업 흡수와 예비창업자 지원사업 일원화도 확정 사항이 아니며, 예산안 확정 과정에서 바뀔 수 있다고 명시했습니다. 따라서 “내년부터 예창패 폐지”나 “모두의 창업으로 완전 통합”처럼 단정해서 준비 방향을 바꾸기는 이릅니다.</p>
 
-  <h2>모두의 창업 2기 일정 역시 새 공고를 확인해야 합니다</h2>
+  <h3>7월 31일 브리핑: 2기 일정은 당시 미정</h3>
   <p>중소벤처기업부는 <a href="${SECOND_COHORT_BRIEFING_URL}" target="_blank" rel="noopener noreferrer">2026년 7월 31일 브리핑</a>에서 7월 중 보안 취약점과 개인정보 관리 개선 조치를 마쳤고, 8월 중순까지 추가 행정절차를 진행할 계획이라고 설명했습니다. 2기는 그 절차가 끝나는 무렵 시작할 것으로 예상한다고 답했지만, 이는 접수일을 확정한 모집공고가 아닙니다.</p>
-  <p>2026년 8월 11일 공식 사업공고를 다시 확인했을 때도 최종 일정과 조건을 담은 2기 모집공고는 확인되지 않았습니다. 브리핑에서 밝힌 예상 시점을 접수 시작일로 단정하거나, 앞서 공개된 추진계획의 인원·대상·일정을 최종 신청 조건으로 사용해서는 안 됩니다.</p>
+  <p>8월 11일에는 2기 모집공고가 아직 없었고, 이후 2차 모집은 8월 20일에 시작했습니다.</p>
 
   <div class="dh-note">
-    <p><strong>확인된 것</strong><br>지원체계 개편 방향은 검토 중이며, 중기부는 8월 중순까지 추가 행정절차를 진행할 계획이라고 밝혔습니다.</p>
-    <p><strong>확정되지 않은 것</strong><br>예비창업패키지 흡수·폐지, 지원사업 일원화, 2기 접수기간·신청 자격·최종 선발 규모입니다.</p>
+    <p><strong>11월 현재 확인된 것</strong><br>2027년 정부 예산안의 예비창업 사업 일원화 계획, 2차 모두의 창업 모집과 1라운드 선발 결과입니다.</p>
+    <p><strong>아직 확정되지 않은 것</strong><br>국회 예산 확정, 2027년 예비창업자 지원 공고의 이름·일정·자격·양식입니다.</p>
   </div>
 
   <h2>1기 공고와 2기 예상 조건을 섞지 마세요</h2>
@@ -118,6 +156,10 @@ export const post75 = {
       <li><a href="${POLICY_STATUS_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 예비창업패키지 흡수 보도 관련 설명</a></li>
       <li><a href="${SECOND_COHORT_BRIEFING_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 관련 브리핑</a></li>
       <li><a href="${FIRST_COHORT_NOTICE_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고</a></li>
+      <li><a href="${BUDGET_BRIEFING_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 재정운용전략협의회 안건 사전 브리핑 (2026.11.23 확인)</a></li>
+      <li><a href="${PACKAGE_2027_HOST_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 2027년도 초기창업·창업도약 패키지 사업 신규 주관기관 모집 공고 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,

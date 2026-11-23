@@ -2,6 +2,9 @@ import { APP_URL } from "@/seo/metadata";
 
 import type { BlogPost } from "./types";
 
+const MODOO2_RECRUIT_URL = "https://www.korea.kr/news/policyNewsView.do?newsId=148970279";
+const MODOO2_ROUND1_URL = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156785521";
+
 const FIRST_COHORT_NOTICE_URL = "https://www.mss.go.kr/site/smba/ex/bbs/View.do?bcIdx=1066642&cbIdx=310&parentSeq=1066642";
 const FIRST_COHORT_PDF_URL =
   "https://www.mss.go.kr/common/board/Download.do?bcIdx=1066642&cbIdx=310&streFileNm=b1db7f65-7bee-461b-861a-168c81873553.pdf";
@@ -25,15 +28,17 @@ export const post87 = {
   },
   author: "독스헌트 마케팅팀",
   date: "2026.08.15",
-  modifiedDate: "2026.08.15",
+  modifiedDate: "2026.11.23",
   verification: {
-    date: "2026.08.15",
-    note: "2026년 모두의 창업 1기 통합 모집공고와 일반·기술트랙 FAQ를 확인했습니다. 1기 일반·기술트랙 아이디어 선정자의 창업활동자금 200만원, 대중교통 출장비와 재료비 등 허용 예시, 제한 업종, 창업활동보고서 제출과 1라운드 평가 활용 안내를 근거로 작성했습니다. 2기에서는 새 공고와 사용 지침을 다시 확인해야 합니다.",
+    date: "2026.11.23",
+    note: "2026년 모두의 창업 1기 통합 모집공고와 일반·기술트랙 FAQ를 확인했습니다. 1기 일반·기술트랙 아이디어 선정자의 창업활동자금 200만원, 대중교통 출장비와 재료비 등 허용 예시, 제한 업종, 창업활동보고서 제출과 1라운드 평가 활용 안내를 근거로 작성했습니다. 2기에서는 새 공고와 사용 지침을 다시 확인해야 합니다. 2026년 11월 23일 정책브리핑의 2차 모집 안내(2026.8.19)와 1라운드 진출자 선발 보도자료(2026.10.16)로 2차 진행 상황을 추가했습니다.",
     sources: [
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고", url: FIRST_COHORT_NOTICE_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고 PDF", url: FIRST_COHORT_PDF_URL },
       { label: "모두의 창업 일반·기술트랙 FAQ", url: FIRST_COHORT_FAQ_URL },
       { label: "중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내", url: SECOND_COHORT_STATUS_URL },
+      { label: "대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집", url: MODOO2_RECRUIT_URL },
+      { label: "대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발", url: MODOO2_ROUND1_URL },
     ],
   },
   image: "/docshunt-assets/blog-covers/00087-modoo-startup-activity-fund-eligible-expenses-list.jpg",
@@ -46,6 +51,7 @@ export const post87 = {
   ],
   contentHtml: `<div class="dh-seo-post">
   <p><strong>2026년 모두의 창업 1기 일반·기술트랙 FAQ는 창업활동자금을 기차 등 대중교통 출장비와 창업 준비 재료비 등에 사용할 수 있다고 안내했습니다.</strong> 항목 이름만 맞는다고 자동으로 인정되지는 않습니다. 아이디어를 구현하고 검증하는 활동과 연결돼야 합니다.</p>
+  <div class="dh-note"><p><strong>2026년 11월 업데이트</strong><br>이 글은 2026년 1기 공고와 FAQ를 기준으로 썼습니다. 이후 2차 모두의 창업은 2026년 8월 20일부터 9월 17일까지 <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">모집</a>했고, 10월 15일 <a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">1라운드 진출자 1만 명</a>(일반·기술 8천 명, 로컬 2천 명)을 선발했습니다. 2차 진출자라면 2차 공고와 운영기관 안내를 최종 기준으로 확인하세요.</p></div>
   <p>사용한 뒤에는 간략한 창업활동보고서도 제출해야 했습니다. 구매 내역만 남겨서는 부족합니다. 어떤 가설을 확인하려고 썼고 결과가 어땠는지 함께 설명할 수 있어야 합니다.</p>
 
   <h2>1기 일반·기술트랙의 초기 활동자금은 200만원이었습니다</h2>
@@ -97,7 +103,7 @@ export const post87 = {
   <p>영수증이나 결제 내역만 모아두고 활동 기록을 나중에 떠올리면 결과를 설명하기 어렵습니다. 운영기관이 요구하는 증빙 방식에 맞춰 결제 시점부터 자료를 함께 정리하세요.</p>
 
   <h2>2기는 새 공고와 사용 지침이 기준입니다</h2>
-  <p>이 글은 2026년 1기 일반·기술트랙의 공고와 FAQ를 기준으로 작성했습니다. 중소벤처기업부는 플랫폼 보안 강화 뒤 2기 모집을 시작할 예정이라고 안내했습니다. 새 모집에서는 금액, 대상, 허용 사용처와 보고 양식이 달라질 수 있습니다.</p>
+  <p>이 글은 2026년 1기 일반·기술트랙의 공고와 FAQ를 기준으로 작성했습니다. 위 업데이트처럼 2차 모집은 끝났고 1라운드 진출자 1만 명이 선발됐습니다. 2차에서는 선정자 전원에게 창업활동자금 2백만 원이 지원되고, <a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">사용 범위가 온라인 결제대행(PG) 업종까지 넓어졌습니다</a>. 허용 사용처와 보고 양식은 2차 운영기관의 집행 지침으로 확인하세요.</p>
   <p><a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">2기 모집 관련 공식 안내</a>를 확인하세요. 새 공고와 선정 뒤 받은 운영기관의 집행 지침이 최종 기준입니다.</p>
   <p><strong class="dh-emphasis">쓸 수 있는 비용인지 묻기 전에 어떤 아이디어를 어떻게 검증하려는 지출인지 한 문장으로 설명해보세요.</strong></p>
 
@@ -113,6 +119,8 @@ export const post87 = {
       <li><a href="${FIRST_COHORT_PDF_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 1기 통합 모집공고 PDF</a></li>
       <li><a href="${FIRST_COHORT_FAQ_URL}" target="_blank" rel="noopener noreferrer">모두의 창업 일반·기술트랙 FAQ</a></li>
       <li><a href="${SECOND_COHORT_STATUS_URL}" target="_blank" rel="noopener noreferrer">중소벤처기업부, 모두의 창업 프로젝트 2기 모집 관련 안내</a></li>
+      <li><a href="${MODOO2_RECRUIT_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 아이디어 있으면 누구나 도전…내달 17일까지 '모두의 창업' 2차 모집 (2026.11.23 확인)</a></li>
+      <li><a href="${MODOO2_ROUND1_URL}" target="_blank" rel="noopener noreferrer">대한민국 정책브리핑, 2차 '모두의 창업' 1라운드 진출자 선발 (2026.11.23 확인)</a></li>
     </ul>
   </section>
 </div>`,
