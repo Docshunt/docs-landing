@@ -13,7 +13,7 @@ export const post57 = {
   sourceUrl: "https://docshunt.ai/blog_detail/business-plan-table-of-contents-evidence-map",
   title: "사업계획서 목차, 평가항목을 그대로 베끼면 왜 흐름이 끊길까요?",
   description:
-    "사업계획서 목차는 평가항목을 복사하는 일이 아니라 고객 문제, 검증 근거, 실행 계획을 읽히는 순서로 배치하는 일입니다. 제출 전 근거 지도 만드는 법을 정리했습니다.",
+    "사업계획서 목차 순서는 평가항목을 복사하는 일이 아니라 고객 문제, 검증 근거, 실행 계획을 읽히는 순서로 배치하는 일입니다. 제출 전 근거 지도 만드는 법을 정리했습니다.",
   seo: {
     mainKeyword: "사업계획서 목차",
     supportKeywords: ["사업 계획서 목차", "사업계획서 작성법", "예창패 사업계획서 예시"],

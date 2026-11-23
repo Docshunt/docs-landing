@@ -9,7 +9,12 @@ export const post34 = {
   sourceUrl: "https://docshunt.ai/blog_detail/gpt-business-plan-rejection",
   title: "GPT 사업계획서, 그대로 제출하면 왜 티가 날까요?",
   description:
-    "GPT 사업계획서를 그대로 제출하면 왜 비슷한 글처럼 보일까요? 반복되는 표현보다 더 큰 문제는 고객을 만난 흔적과 실제 실행 조건이 빠져 있다는 점입니다. AI 초안을 내 사업 이야기로 바꾸는 방법을 예시와 함께 살펴봅니다.",
+    "GPT 사업계획서 제출 전에 확인하세요. 그대로 내면 왜 비슷한 글처럼 보일까요? 반복되는 표현보다 더 큰 문제는 고객을 만난 흔적과 실제 실행 조건이 빠져 있다는 점입니다. AI 초안을 내 사업 이야기로 바꾸는 방법을 예시와 함께 살펴봅니다.",
+  seo: {
+    mainKeyword: "GPT 사업계획서",
+    supportKeywords: ["AI 사업계획서 티", "GPT 초안 수정", "사업계획서 AI 활용"],
+    searchIntent: "GPT로 쓴 사업계획서를 그대로 제출하면 왜 티가 나는지, AI 초안을 내 사업 이야기로 바꾸는 방법을 알고 싶다",
+  },
   date: "2026.07.23",
   modifiedDate: "2026.07.26",
   verification: {

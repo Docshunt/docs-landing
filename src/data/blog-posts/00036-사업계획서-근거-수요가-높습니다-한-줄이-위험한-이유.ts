@@ -13,7 +13,12 @@ export const post36 = {
   sourceUrl: "https://docshunt.ai/blog_detail/business-plan-missing-evidence",
   title: "사업계획서 근거, ‘수요가 높습니다’ 한 줄이 위험한 이유",
   description:
-    "사업계획서에 ‘수요가 높습니다’라고 썼다면 무엇으로 확인했는지도 함께 보여줘야 합니다. 인터뷰, 문의, 사용 기록 중 주장에 맞는 근거를 고르고 과장 없이 문장으로 옮기는 방법을 정리했습니다.",
+    "사업계획서 근거로 ‘수요가 높습니다’라고만 썼다면 무엇으로 확인했는지도 함께 보여줘야 합니다. 인터뷰, 문의, 사용 기록 중 주장에 맞는 근거를 고르고 과장 없이 문장으로 옮기는 방법을 정리했습니다.",
+  seo: {
+    mainKeyword: "사업계획서 근거",
+    supportKeywords: ["수요 근거", "고객 인터뷰 근거", "시장 수요 증명"],
+    searchIntent: "사업계획서에 '수요가 높다'고 쓸 때 어떤 근거를 어떻게 보여줘야 하는지 알고 싶다",
+  },
   date: "2026.07.31",
   modifiedDate: "2026.07.31",
   verification: {
