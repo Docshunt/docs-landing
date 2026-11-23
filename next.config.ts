@@ -30,6 +30,16 @@ const nextConfig: NextConfig = {
       { source: "/blog_detail", destination: "/blog_list", permanent: true },
       { source: "/Home", destination: "/", permanent: true },
       { source: "/how_credits_work", destination: "/pricing", permanent: true },
+      {
+        source: "/blog_detail/startup-incubator-move-in-december-2026",
+        destination: "/blog_detail/startup-incubator-move-in-cost-guide",
+        permanent: true,
+      },
+      {
+        source: "/blog_detail/kdb-nextone-14th-application-2027",
+        destination: "/blog_detail/startup-ir-deck-structure",
+        permanent: true,
+      },
     ];
   },
 };
