@@ -10,6 +10,11 @@ export const post40 = {
   title: "좋은 사업계획서의 기준: 왜 지금, 왜 이 팀, 무엇을 검증했는가",
   description:
     "기술창업·벤처투자 전문가인 허공회 숭실대학교 교수에게 좋은 사업계획서의 기준, 심사 순서, 시장·매출 작성법, AI 활용 주의점과 독스헌트의 개선 방향을 물었습니다.",
+  seo: {
+    mainKeyword: "좋은 사업계획서의 기준",
+    supportKeywords: ["사업계획서 심사 순서", "왜 지금 왜 이 팀", "사업계획서 AI 활용 주의점"],
+    searchIntent: "좋은 사업계획서의 기준과 심사 순서, 시장·매출 작성법을 전문가 인터뷰로 알고 싶다",
+  },
   date: "2026.08.03",
   image: "/docshunt-assets/blog-covers/00040-business-plan-review-criteria-professor-interview-editorial-list.jpg",
   heroImage: "/docshunt-assets/blog-covers/00040-business-plan-review-criteria-professor-interview-editorial-hero.jpg",

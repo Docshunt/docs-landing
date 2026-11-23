@@ -8,6 +8,11 @@ export const post03 = {
   title: "독스헌트, 중기부 ‘모두의 창업’ AI 솔루션 공급기업 선정",
   description:
     "독스헌트가 2026년 모두의 창업 프로젝트 AI 솔루션 공급기업으로 선정됐습니다. 사업계획서 작성이 막히는 창업자가 기존 독스헌트 서비스에서 초안을 빠르게 만들 수 있도록 돕겠습니다.",
+  seo: {
+    mainKeyword: "AI 솔루션 공급기업",
+    supportKeywords: ["모두의 창업 AI 솔루션", "독스헌트 모두의 창업", "사업계획서 AI"],
+    searchIntent: "독스헌트가 모두의 창업 AI 솔루션 공급기업으로 선정된 내용과 창업자가 이용할 수 있는 방식을 알고 싶다",
+  },
   date: "2026.05.21",
   modifiedDate: "2026.07.26",
   verification: {

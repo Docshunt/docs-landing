@@ -11,7 +11,12 @@ export const post50 = {
   titleLines: ["독스헌트 AI 인터뷰 업데이트:", "사업계획서 제출 단계까지"],
   titleLineBreaks: "always",
   description:
-    "7월 29일 독스헌트 업데이트: AI 인터뷰로 공고별 빈 항목을 묻고, 답변을 사업 아이템과 기업 프로필에 쌓아 제출 전까지 사업계획서를 고도화하는 흐름을 소개합니다.",
+    "독스헌트 AI 인터뷰 업데이트(7월 29일): AI 인터뷰로 공고별 빈 항목을 묻고, 답변을 사업 아이템과 기업 프로필에 쌓아 제출 전까지 사업계획서를 고도화하는 흐름을 소개합니다.",
+  seo: {
+    mainKeyword: "독스헌트 AI 인터뷰",
+    supportKeywords: ["독스헌트 업데이트", "사업계획서 AI 인터뷰", "공고별 빈 항목"],
+    searchIntent: "독스헌트 AI 인터뷰 기능이 공고별 사업계획서 작성을 어떻게 돕는지 알고 싶다",
+  },
   date: "2026.08.05",
   image: "/docshunt-assets/blog-covers/00050-ai-business-plan-interview-update-list.jpg",
   heroImage: "/docshunt-assets/blog-covers/00050-ai-business-plan-interview-update-hero.jpg",
