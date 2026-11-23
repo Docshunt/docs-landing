@@ -102,8 +102,8 @@ import { post101 } from "./00101-모두의-창업-2차-신청서-작성-가이�
 import { post102 } from "./00102-2027년-지원사업-공고보다-먼저-3년-성장-경로를-정리해야-하는-이유";
 import { post103 } from "./00103-어사이드-AI-브라우저-2년간-7번-피벗하고-2주-만에-2만-유저";
 import { post104 } from "./00104-마크-큐반은-왜-반값-약국을-차렸을까";
-import { post105 } from "./00105-창업보육센터-입주-신청-사업계획서보다-먼저-걸리는-건-제외-대상입니다";
-import { post106 } from "./00106-KDB-넥스트원-14기-지원-IR-자료-20쪽보다-먼저-걸리는-조건";
+import { post105 } from "./00105-창업보육센터-입주-비용과-조건-예비창업자도-들어갈-수-있을까";
+import { post106 } from "./00106-IR-자료-구조-심사위원이-찾는-순서대로-20쪽-짜는-법";
 import { post107 } from "./00107-창업-업력-기준-개업일부터-세나요-법인-전환-재창업-계산법";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
@@ -116,8 +116,8 @@ type BlogPostPlacement = {
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
   "startup-business-age-criteria": { category: "startup-programs" },
-  "kdb-nextone-14th-application-2027": { category: "startup-programs" },
-  "startup-incubator-move-in-december-2026": { category: "support-programs" },
+  "startup-ir-deck-structure": { category: "business-plan-writing" },
+  "startup-incubator-move-in-cost-guide": { category: "support-programs" },
   "mark-cuban-cost-plus-drugs-price-transparency": { category: "startup-insights" },
   "aside-ai-browser-seven-pivots": { category: "startup-insights" },
   "2027-support-program-budget-growth-path": { category: "support-programs" },
