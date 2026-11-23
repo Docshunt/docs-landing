@@ -103,6 +103,7 @@ import { post102 } from "./00102-2027년-지원사업-공고보다-먼저-3년-�
 import { post103 } from "./00103-어사이드-AI-브라우저-2년간-7번-피벗하고-2주-만에-2만-유저";
 import { post104 } from "./00104-마크-큐반은-왜-반값-약국을-차렸을까";
 import { post105 } from "./00105-창업보육센터-입주-신청-사업계획서보다-먼저-걸리는-건-제외-대상입니다";
+import { post106 } from "./00106-KDB-넥스트원-14기-지원-IR-자료-20쪽보다-먼저-걸리는-조건";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -113,6 +114,7 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "kdb-nextone-14th-application-2027": { category: "startup-programs" },
   "startup-incubator-move-in-december-2026": { category: "support-programs" },
   "mark-cuban-cost-plus-drugs-price-transparency": { category: "startup-insights" },
   "aside-ai-browser-seven-pivots": { category: "startup-insights" },
@@ -257,6 +259,7 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post106,
   post105,
   post104,
   post103,
