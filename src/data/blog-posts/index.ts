@@ -105,6 +105,7 @@ import { post104 } from "./00104-마크-큐반은-왜-반값-약국을-차렸을
 import { post105 } from "./00105-창업보육센터-입주-비용과-조건-예비창업자도-들어갈-수-있을까";
 import { post106 } from "./00106-IR-자료-구조-심사위원이-찾는-순서대로-20쪽-짜는-법";
 import { post107 } from "./00107-창업-업력-기준-개업일부터-세나요-법인-전환-재창업-계산법";
+import { post108 } from "./00108-창업자금-대출-조건-직원-5명-미만이면-중진공이-아닐-수-있습니다";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -115,6 +116,7 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "startup-loan-conditions": { category: "support-programs" },
   "startup-business-age-criteria": { category: "startup-programs" },
   "startup-ir-deck-structure": { category: "business-plan-writing" },
   "startup-incubator-move-in-cost-guide": { category: "support-programs" },
@@ -261,6 +263,7 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post108,
   post107,
   post106,
   post105,
