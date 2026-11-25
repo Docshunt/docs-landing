@@ -108,6 +108,7 @@ import { post107 } from "./00107-창업-업력-기준-개업일부터-세나요-
 import { post108 } from "./00108-창업자금-대출-조건-직원-5명-미만이면-중진공이-아닐-수-있습니다";
 import { post109 } from "./00109-벤처기업-인증-요건-투자도-연구소도-없으면-어떤-유형으로-받나";
 import { post110 } from "./00110-중소기업확인서-발급-방법-갓-창업해-재무제표가-없다면";
+import { post111 } from "./00111-정부지원사업-자부담-지원금-1억-원에-내-돈은-얼마나-필요할까";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -118,6 +119,7 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "government-grant-self-funding": { category: "support-programs" },
   "sme-confirmation-certificate": { category: "startup-programs" },
   "venture-company-certification-requirements": { category: "startup-programs" },
   "startup-loan-conditions": { category: "support-programs" },
@@ -267,6 +269,7 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post111,
   post110,
   post109,
   post108,
