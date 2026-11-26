@@ -3,7 +3,7 @@ import type { BlogPost } from "./types";
 const APPLY_URL = "https://forms.gle/sKyuUBNzSzM3Qjqa7";
 const LOUD_MAKERS_URL = "https://www.loud-makers.com/?utm_source=docs_a&utm_medium=blog&utm_campaign=docs_a";
 
-export const post113 = {
+export const post114 = {
   page: 1,
   index: 1,
   slug: "docshunt-loudmakers-free-webinar",
@@ -21,8 +21,8 @@ export const post113 = {
   author: "독스헌트 마케팅팀",
   date: "2026.11.26",
   modifiedDate: "2026.11.26",
-  image: "/docshunt-assets/blog-covers/00113-docshunt-loudmakers-free-webinar-list.jpg",
-  heroImage: "/docshunt-assets/blog-covers/00113-docshunt-loudmakers-free-webinar-hero.jpg",
+  image: "/docshunt-assets/blog-covers/00114-docshunt-loudmakers-free-webinar-list.jpg",
+  heroImage: "/docshunt-assets/blog-covers/00114-docshunt-loudmakers-free-webinar-hero.jpg",
   paragraphs: [
     "사업계획서가 첫 줄부터 막히거나 제출할 때마다 떨어진다면, 대부분은 글솜씨 문제가 아닙니다. 내 사업이 누구를 위한 것이고 남과 무엇이 다른지가 아직 한 문장으로 정리되지 않았기 때문입니다.",
     "독스헌트는 정부지원사업 500건 이상을 수행한 라우드메이커스와 함께 2027년 정부지원사업을 준비하는 창업자를 위한 무료 웨비나를 엽니다. 일정은 2026년 12월 15일(화) 오후 7시, 실시간 온라인 Zoom입니다.",
@@ -51,7 +51,7 @@ export const post113 = {
 
   <h2>1부: 내 사업을 브랜드로 정리하는 법</h2>
   <figure class="dh-image">
-    <img src="/docshunt-assets/blog-inline/00113-docshunt-loudmakers-free-webinar-part1-branding.jpg" alt="웨비나 1부 나의 사업에 대한 브랜딩 내용 작성 및 정리, 라우드메이커스 김재정 실장">
+    <img src="/docshunt-assets/blog-inline/00114-docshunt-loudmakers-free-webinar-part1-branding.jpg" alt="웨비나 1부 나의 사업에 대한 브랜딩 내용 작성 및 정리, 라우드메이커스 김재정 실장">
     <figcaption>1부 · 나의 사업에 대한 브랜딩 내용 작성 및 정리 | 라우드메이커스 김재정 실장</figcaption>
   </figure>
   <p>1부에서는 브랜딩을 로고 만들기가 아니라 내 사업을 정리하는 도구로 다룹니다. 브랜딩을 세 가지 구성 요소로 나눠 살펴보고, 사업 초기에 바로 쓸 수 있는 템플릿 작성 방법을 실제 예시와 함께 소개합니다.</p>
@@ -84,7 +84,7 @@ export const post113 = {
 
   <h2>2부: 심사위원은 사업계획서에서 무엇을 보나</h2>
   <figure class="dh-image">
-    <img src="/docshunt-assets/blog-inline/00113-docshunt-loudmakers-free-webinar-part2-business-plan.jpg" alt="웨비나 2부 심사위원은 무엇을 보나 합격 사업계획서의 특징, 독스헌트 김성우 대표">
+    <img src="/docshunt-assets/blog-inline/00114-docshunt-loudmakers-free-webinar-part2-business-plan.jpg" alt="웨비나 2부 심사위원은 무엇을 보나 합격 사업계획서의 특징, 독스헌트 김성우 대표">
     <figcaption>2부 · 합격하는 사업계획서의 5가지 특징 | 독스헌트 김성우 대표</figcaption>
   </figure>
   <p>2부는 사업계획서를 쓰는 사람이 아니라 읽는 사람, 즉 심사위원의 관점에서 출발합니다. 1부에서 정리한 내용이 사업계획서 안에서 어떻게 읽히는지, 심사위원이 확인하는 기준에 맞춰 짚어 봅니다.</p>
@@ -128,7 +128,7 @@ export const post113 = {
   <p>2027년 정부지원사업 공고 전, 12월 15일 화요일 저녁 7시에 함께 준비해 보세요.</p>
 
   <figure class="dh-image">
-    <a href="${APPLY_URL}" target="_blank" rel="noopener noreferrer"><img src="/docshunt-assets/blog-inline/00113-docshunt-loudmakers-free-webinar-apply-cta.jpg" alt="12월 15일 무료 웨비나, 내 사업을 설명하는 한 문장부터 사업계획서 초안까지, 무료 웨비나 신청하기"></a>
+    <a href="${APPLY_URL}" target="_blank" rel="noopener noreferrer"><img src="/docshunt-assets/blog-inline/00114-docshunt-loudmakers-free-webinar-apply-cta.jpg" alt="12월 15일 무료 웨비나, 내 사업을 설명하는 한 문장부터 사업계획서 초안까지, 무료 웨비나 신청하기"></a>
   </figure>
   <div class="dh-cta">
     <p>내 사업을 설명하는 한 문장부터 사업계획서 초안까지, 무료 웨비나에서 확인하세요.</p>

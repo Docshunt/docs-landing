@@ -110,7 +110,8 @@ import { post109 } from "./00109-벤처기업-인증-요건-투자도-연구소�
 import { post110 } from "./00110-중소기업확인서-발급-방법-갓-창업해-재무제표가-없다면";
 import { post111 } from "./00111-정부지원사업-자부담-지원금-1억-원에-내-돈은-얼마나-필요할까";
 import { post112 } from "./00112-국세-지방세-완납증명서-발급-법인이면-몇-장을-떼야-할까";
-import { post113 } from "./00113-무료-웨비나-합격-사업계획서의-시작-내-사업을-설명하는-한-문장";
+import { post113 } from "./00113-사업자등록-업종코드-6자리와-지원사업이-보는-5자리-산업분류";
+import { post114 } from "./00114-무료-웨비나-합격-사업계획서의-시작-내-사업을-설명하는-한-문장";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -122,6 +123,7 @@ type BlogPostPlacement = {
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
   "docshunt-loudmakers-free-webinar": { category: "docshunt-news" },
+  "business-registration-industry-code": { category: "support-programs" },
   "national-local-tax-payment-certificate": { category: "support-programs" },
   "government-grant-self-funding": { category: "support-programs" },
   "sme-confirmation-certificate": { category: "startup-programs" },
@@ -273,6 +275,7 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post114,
   post113,
   post112,
   post111,
