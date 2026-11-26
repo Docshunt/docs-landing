@@ -18,6 +18,14 @@ export const post114 = {
     supportKeywords: ["정부지원사업 무료 웨비나", "사업계획서 웨비나", "2027 정부지원사업 준비"],
     searchIntent: "2027년 정부지원사업 공고 전에 합격하는 사업계획서를 어떻게 준비하는지 배울 수 있는 무료 웨비나 일정과 내용을 알고 싶다",
   },
+  verification: {
+    date: "2026.11.26",
+    note: "웨비나 일시, 진행 방식, 연사, 1·2부 구성, 라우드메이커스의 정부지원사업 수행 실적(500건 이상)은 공동 주최사인 라우드메이커스가 전달한 웨비나 안내 자료와 공식 신청서에서 2026년 11월 26일 확인했습니다. 접속 링크와 세부 진행은 주최 측 사정에 따라 바뀔 수 있습니다.",
+    sources: [
+      { label: "라우드메이커스 공식 홈페이지", url: "https://www.loud-makers.com/" },
+      { label: "독스헌트 x 라우드메이커스 무료 웨비나 신청서", url: APPLY_URL },
+    ],
+  },
   author: "독스헌트 마케팅팀",
   date: "2026.11.26",
   modifiedDate: "2026.11.26",
@@ -130,9 +138,5 @@ export const post114 = {
   <figure class="dh-image">
     <a href="${APPLY_URL}" target="_blank" rel="noopener noreferrer"><img src="/docshunt-assets/blog-inline/00114-docshunt-loudmakers-free-webinar-apply-cta.jpg" alt="12월 15일 무료 웨비나, 내 사업을 설명하는 한 문장부터 사업계획서 초안까지, 무료 웨비나 신청하기"></a>
   </figure>
-  <div class="dh-cta">
-    <p>내 사업을 설명하는 한 문장부터 사업계획서 초안까지, 무료 웨비나에서 확인하세요.</p>
-    <a class="dh-cta-button" href="${APPLY_URL}" target="_blank" rel="noopener noreferrer">무료 웨비나 신청하기</a>
-  </div>
 </div>`,
 } satisfies BlogPost;
