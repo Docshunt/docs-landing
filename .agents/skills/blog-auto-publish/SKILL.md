@@ -55,6 +55,12 @@ Collect five to eight candidates from at least three of these pools.
    - Naver and Google autocomplete and 연관검색어 for seed words like `예비창업자`, `창업 3년 이내`, `정부지원사업`, `사업계획서`, `개인사업자 법인`, `지원금 정산`.
    - Recent questions in Naver 지식iN and startup cafes, and the comments on popular YouTube videos about grants. Note the exact wording people use.
    - Search Console, `sc-domain:docshunt.ai`, on the ego-browser profile "독스헌트 업무": open 실적 → 검색어 and look for queries with many impressions and low CTR, or a position of 8–20. Read only. If the profile is signed out, write `서치콘솔: 로그아웃` in `history.md`; do not just skip it silently.
+   - Naver monthly search volume (maintainer decision, 2026-11-27).
+     - Run `node .agents/skills/blog-auto-publish/scripts/keyword-volume.mjs --related 30 <seed words>` to widen the list with related keywords.
+     - Then run it again without `--related` on every candidate main keyword, using the phrase a reader would type. The script takes any number of keywords and queries them five at a time.
+     - Drop related keywords that are off-topic for our reader, such as 알바, 상속세 or 퇴직연금.
+     - The key lives outside this repository in `~/.config/docshunt/naver-searchad.env`, and the script never prints it.
+     - If the script exits with `검색량 키 없음` or an API error, write `검색량: 조회 실패 (<이유>)` in `history.md` and fall back to the other demand evidence. Never ask for the key and never copy it anywhere.
 2. **Official notices and rule changes (first-party).** K-Startup 사업공고 <https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do>, 중소벤처기업부 보도자료 <https://www.mss.go.kr/site/smba/ex/bbs/List.do?cbIdx=86>, 기업마당 <https://www.bizinfo.go.kr>, 정책브리핑 <https://www.korea.kr>, 소상공인시장진흥공단, 창업진흥원, 국세청 for registration and tax basics. Use them for timely notices and to verify every fact in an evergreen post.
 3. **News (radar only).** Naver News or Google News from the last 3 days. A news story only tells you a topic is live; confirm every fact from the official source.
 4. **Content that took off.** YouTube videos this week with many more views than the channel's usual, the reference sheets in `/Users/laude/Documents/cardnews/yt_channels/docshunt/research/`, and Naver blog or cafe posts on page one for a grant keyword. Use them for the question and the angle only. Never copy their wording, structure, or images.
@@ -67,6 +73,11 @@ Pick one candidate that passes all of these:
 
 - **Reader:** most 예비창업자 or founders within three years could use it this month.
 - **Demand:** the question or its keyword shows up in autocomplete, 연관검색어, Search Console, or several real reader questions. Write down the evidence.
+  - When the volume lookup worked, the main keyword should have a Naver monthly volume (PC + mobile) of **at least 100**.
+  - Among candidates that pass every other gate, prefer the one with more volume.
+  - A keyword under 100 can still win when Search Console shows us already earning impressions for it, or when it is a precise long-tail form of a larger keyword. Write down the reason.
+  - `광고 경쟁` is how hard advertisers bid on the keyword. It is not organic difficulty, so treat it only as a hint.
+  - Also look up the volumes of near-variants, for example `창업기업확인서` (about 4,200 a month) vs `창업 업력` (about 10). Put the variant with more volume in `seo.mainKeyword` and at the start of the title, and use the others as `supportKeywords`.
 - **Search fit:** we can rank for it. A query answered only by one organization's own site, such as a single program's brand name, is a poor target.
 - **Lifetime:** the page is still useful six months from now, or it is one of the large programs listed above.
 - **Facts:** an official or first-party page confirms every date, amount, rule, and eligibility condition the post will state.
@@ -74,7 +85,13 @@ Pick one candidate that passes all of these:
 - **Fit:** DocsHunt can help naturally, for example by finding notices, writing or reviewing a business plan, or preparing documents.
 - **Safe:** it is not about stock or crypto picks, legal or tax advice to an individual, politics, or a private person. General rules from 국세청 or a law text are fine; say where an accountant or the agency must be asked.
 
-Record three to five candidates in `history.md` before writing. Give each one its source URLs, its demand evidence, and the reason it was picked or dropped.
+Record three to five candidates in `history.md` before writing. Give each one:
+
+- its source URLs;
+- its demand evidence, including the Naver monthly volume of its main keyword, for example `월 4210`;
+- the reason it was picked or dropped.
+
+Put the chosen keyword's volume in the PR notes too.
 
 ## 2. Write the Article
 
