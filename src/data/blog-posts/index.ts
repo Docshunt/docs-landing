@@ -113,6 +113,7 @@ import { post112 } from "./00112-국세-지방세-완납증명서-발급-법인�
 import { post113 } from "./00113-사업자등록-업종코드-6자리와-지원사업이-보는-5자리-산업분류";
 import { post114 } from "./00114-무료-웨비나-합격-사업계획서의-시작-내-사업을-설명하는-한-문장";
 import { post115 } from "./00115-창업중소기업-세액감면-사업장-주소와-대표-나이로-감면율이-갈립니다";
+import { post116 } from "./00116-법인설립-절차와-비용-자본금-2812만-원까지-세금이-같습니다";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -123,6 +124,7 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "corporation-setup-procedure-cost": { category: "support-programs" },
   "startup-sme-tax-reduction": { category: "support-programs" },
   "docshunt-loudmakers-free-webinar": { category: "docshunt-news" },
   "business-registration-industry-code": { category: "support-programs" },
@@ -277,6 +279,7 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post116,
   post115,
   post114,
   post113,
