@@ -61,6 +61,7 @@ Collect five to eight candidates from at least three of these pools.
      - Drop related keywords that are off-topic for our reader, such as 알바, 상속세 or 퇴직연금.
      - The key lives outside this repository in `~/.config/docshunt/naver-searchad.env`, and the script never prints it.
      - If the script exits with `검색량 키 없음` or an API error, write `검색량: 조회 실패 (<이유>)` in `history.md` and fall back to the other demand evidence. Never ask for the key and never copy it anywhere.
+     - A keyword printed as `조회 결과 없음` has unknown volume, not zero. Treat it the same way as a failed lookup: write `검색량: 조회 결과 없음 (<키워드>)` in `history.md` and judge it on the other demand evidence. Never drop it under the 100 rule.
 2. **Official notices and rule changes (first-party).** K-Startup 사업공고 <https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do>, 중소벤처기업부 보도자료 <https://www.mss.go.kr/site/smba/ex/bbs/List.do?cbIdx=86>, 기업마당 <https://www.bizinfo.go.kr>, 정책브리핑 <https://www.korea.kr>, 소상공인시장진흥공단, 창업진흥원, 국세청 for registration and tax basics. Use them for timely notices and to verify every fact in an evergreen post.
 3. **News (radar only).** Naver News or Google News from the last 3 days. A news story only tells you a topic is live; confirm every fact from the official source.
 4. **Content that took off.** YouTube videos this week with many more views than the channel's usual, the reference sheets in `/Users/laude/Documents/cardnews/yt_channels/docshunt/research/`, and Naver blog or cafe posts on page one for a grant keyword. Use them for the question and the angle only. Never copy their wording, structure, or images.
@@ -77,7 +78,7 @@ Pick one candidate that passes all of these:
   - Among candidates that pass every other gate, prefer the one with more volume.
   - A keyword under 100 can still win when Search Console shows us already earning impressions for it, or when it is a precise long-tail form of a larger keyword. Write down the reason.
   - `광고 경쟁` is how hard advertisers bid on the keyword. It is not organic difficulty, so treat it only as a hint.
-  - Also look up the volumes of near-variants, for example `창업기업확인서` (about 4,200 a month) vs `창업 업력` (about 10). Put the variant with more volume in `seo.mainKeyword` and at the start of the title, and use the others as `supportKeywords`.
+  - Also look up near-variants that ask the **same question**, and compare only those. For example, `업종코드` (about 2,150 a month) vs `사업자등록 업종코드` (about 180), or `개인사업자 법인전환` (about 900) vs `법인전환` (about 380). Put the variant with more volume in `seo.mainKeyword` and at the start of the title, and use the others as `supportKeywords`. Never swap in a keyword about a different question just because it has more volume.
 - **Search fit:** we can rank for it. A query answered only by one organization's own site, such as a single program's brand name, is a poor target.
 - **Lifetime:** the page is still useful six months from now, or it is one of the large programs listed above.
 - **Facts:** an official or first-party page confirms every date, amount, rule, and eligibility condition the post will state.

@@ -32,6 +32,12 @@ function loadCredentials() {
     console.error(`검색량 키 없음: ${missing.join(", ")} (${ENV_PATH})`);
     process.exit(2);
   }
+  // 줄바꿈이나 NUL이 섞인 값은 헤더 검증 오류 메시지에 키가 찍힐 수 있으므로 미리 막는다.
+  const malformed = KEYS.filter((key) => /[\r\n\0]/.test(values[key]));
+  if (malformed.length > 0) {
+    console.error(`검색량 키 형식 오류: ${malformed.join(", ")} 값에 줄바꿈 문자가 있습니다.`);
+    process.exit(2);
+  }
   return values;
 }
 
@@ -51,7 +57,8 @@ function parseArgs(argv) {
 }
 
 const normalize = (keyword) => keyword.replace(/\s+/g, "").toLowerCase();
-const count = (value) => (typeof value === "number" ? value : value === "< 10" ? 5 : Number(value) || 0);
+// API는 10 미만을 "<10" 또는 "< 10" 문자열로 돌려준다.
+const count = (value) => (typeof value === "number" ? value : /^<\s*10$/.test(String(value).trim()) ? 5 : Number(value) || 0);
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function fetchKeywordTool(credentials, hints) {
@@ -59,14 +66,20 @@ async function fetchKeywordTool(credentials, hints) {
   const timestamp = String(Date.now());
   const signature = createHmac("sha256", credentials.NAVER_SEARCHAD_SECRET_KEY).update(`${timestamp}.GET.${uri}`).digest("base64");
   const query = new URLSearchParams({ hintKeywords: hints.map(normalize).join(","), showDetail: "1" });
-  const response = await fetch(`https://api.searchad.naver.com${uri}?${query}`, {
-    headers: {
-      "X-Timestamp": timestamp,
-      "X-API-KEY": credentials.NAVER_SEARCHAD_ACCESS_LICENSE,
-      "X-Customer": credentials.NAVER_SEARCHAD_CUSTOMER_ID,
-      "X-Signature": signature,
-    },
-  });
+  let response;
+  try {
+    response = await fetch(`https://api.searchad.naver.com${uri}?${query}`, {
+      headers: {
+        "X-Timestamp": timestamp,
+        "X-API-KEY": credentials.NAVER_SEARCHAD_ACCESS_LICENSE,
+        "X-Customer": credentials.NAVER_SEARCHAD_CUSTOMER_ID,
+        "X-Signature": signature,
+      },
+    });
+  } catch {
+    // 원문 오류에는 헤더 값이 들어갈 수 있어 고정 문구만 보여 준다.
+    throw new Error("키워드 도구 요청을 보내지 못했습니다. 네트워크와 키 설정을 확인하세요.");
+  }
   if (!response.ok) {
     const body = (await response.text()).slice(0, 200);
     throw new Error(`키워드 도구 응답 ${response.status}: ${body}`);
@@ -86,14 +99,15 @@ async function main() {
   const credentials = loadCredentials();
   const exact = new Map();
   const related = new Map();
+  const askedSet = new Set(options.keywords.map(normalize));
 
   // 키워드 도구는 한 번에 힌트 키워드 5개까지 받는다.
   for (let i = 0; i < options.keywords.length; i += 5) {
     const hints = options.keywords.slice(i, i + 5);
-    const wanted = new Set(hints.map(normalize));
     for (const item of await fetchKeywordTool(credentials, hints)) {
       const row = toRow(item);
-      if (wanted.has(normalize(item.relKeyword))) exact.set(normalize(item.relKeyword), row);
+      // 다른 묶음에서 조회한 키워드도 연관 목록에 섞이지 않게 전체 요청 목록으로 가른다.
+      if (askedSet.has(normalize(item.relKeyword))) exact.set(normalize(item.relKeyword), row);
       else related.set(normalize(item.relKeyword), row);
     }
     if (i + 5 < options.keywords.length) await sleep(1000);
@@ -103,10 +117,11 @@ async function main() {
     (keyword) =>
       exact.get(normalize(keyword)) ?? {
         keyword,
-        pc: 0,
-        mobile: 0,
-        total: 0,
-        competition: "데이터 없음",
+        pc: null,
+        mobile: null,
+        total: null,
+        competition: null,
+        missing: true,
       },
   );
   const relatedRows = [...related.values()].sort((a, b) => b.total - a.total).slice(0, options.related);
@@ -118,6 +133,10 @@ async function main() {
 
   const print = (rows) => {
     for (const row of rows) {
+      if (row.missing) {
+        console.log(`${row.keyword}\t조회 결과 없음 (검색량 0이 아님, 조회 실패로 기록할 것)`);
+        continue;
+      }
       console.log(`${row.keyword}\t월 ${row.total} (PC ${row.pc} / 모바일 ${row.mobile})\t광고 경쟁 ${row.competition}`);
     }
   };
