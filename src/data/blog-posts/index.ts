@@ -115,6 +115,7 @@ import { post114 } from "./00114-무료-웨비나-합격-사업계획서의-시�
 import { post115 } from "./00115-창업중소기업-세액감면-사업장-주소와-대표-나이로-감면율이-갈립니다";
 import { post116 } from "./00116-법인설립-절차와-비용-자본금-2812만-원까지-세금이-같습니다";
 import { post117 } from "./00117-창업기업확인서-발급-중소기업확인서가-먼저-나와야-끝납니다";
+import { post118 } from "./00118-간이과세자-기준-1억-400만-원-아래여도-일반과세자가-나은-창업자";
 import type { BlogCategory, CategorizedBlogPost } from "./types";
 
 type BlogPostPlacement = {
@@ -125,6 +126,7 @@ type BlogPostPlacement = {
 };
 
 const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
+  "simplified-taxpayer-criteria": { category: "support-programs" },
   "startup-company-confirmation-certificate": { category: "startup-programs" },
   "corporation-setup-procedure-cost": { category: "support-programs" },
   "startup-sme-tax-reduction": { category: "support-programs" },
@@ -281,6 +283,7 @@ const BLOG_POST_PLACEMENTS: Record<string, BlogPostPlacement> = {
 
 // Keep stable post IDs ordered here; the public list is sorted by publication date below.
 const BLOG_POST_SOURCE = [
+  post118,
   post117,
   post116,
   post115,
